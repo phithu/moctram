@@ -1,0 +1,34 @@
+{%layout 'none'-%}
+
+{%capture cartData-%} 
+{
+	"cart_id": [
+		{%for item in cart.items-%}
+			{%if forloop.last-%}
+				"{{item.product.id-}}"
+			{%else-%}
+				"{{item.product.id-}}",
+			{%endif-%}
+		{%endfor-%}
+	],
+	"cart_tags": [
+		{%assign boolLast = false-%}
+
+		{%for item in cart.items-%}
+			{%if forloop.last-%}
+				{%assign boolLast = true-%}
+			{%endif-%}
+
+			{%for tagItem in item.product.tags-%} 
+				{%if boolLast and forloop.last-%}
+					"{{tagItem-}}"
+				{%else-%}
+					"{{tagItem-}}",
+				{%endif-%}
+			{%endfor-%}
+		{%endfor-%}
+	]
+}
+{%endcapture-%}
+
+{{cartData-}}

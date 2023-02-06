@@ -1,0 +1,235 @@
+{% include 'breadcrumb' -%}
+
+{% assign invoice = 'Xuất hóa đơn' -%}
+{% assign company_name = 'Tên công ty' -%}
+{% assign company_address = 'Địa chỉ công ty' -%}
+{% assign tax_code = 'Mã số thuế' -%}
+{% assign invoice_email = 'Email nhận hóa đơn' -%}
+
+{%if settings.cart_coupon_show -%}
+<div class="cart-coupon my-4">
+	<div class="cart-coupon-header">
+		<span class="coupon-toggle-btn">
+			<i class="fa fa-arrow-left "> </i>
+		</span>
+		<span>Mã giảm giá</span>
+	</div>
+	{% include 'section_coupons' -%}
+	<div class="cart-coupon-footer ">
+		<button class="btn btn-main btn-block rounded-sm coupon-toggle-btn">
+			Quay lại trang giỏ hàng
+		</button>
+	</div>
+</div>
+<div class="cart-coupon-overlay coupon-toggle-btn"></div>
+{% endif -%}
+<div id="tab-header"></div>
+<section class="main-cart-page main-container col1-layout mobile-tab active" id="cart-tab"  data-title="Giỏ hàng">
+	<div class="wrap_background_aside padding-top-15 margin-bottom-40 padding-left-0 padding-right-0 cartmbstyle">
+		<div class="cart-mobile container card border-0 py-2">
+			<form action="/cart" method="post" novalidate="" class="margin-bottom-0">
+				<div class="header-cart">
+					{% if cart.item_count > 0 -%}
+					<div class=" title_cart_mobile heading-bar">
+						<h1 class="heading-bar__title">Giỏ hàng</h1>
+					</div>
+					{% endif -%}
+				</div>
+				<div class="header-cart-content"></div>
+			</form>
+		</div>
+		<div class="cart-empty container card border-0 py-2 "{% if cart.item_count > 0 %} style="display:none" {%endif%}>
+			<div class="alert green-alert section" role="alert">
+				<div class="title-cart text-center">
+					<h1 class="d-none">Giỏ hàng</h1>
+					<div>
+						<img loading="lazy" src="{{'cart_empty_background.png' | asset_url}}"
+							 class="img-fluid"
+							 width="298"
+							 height="152">
+					</div>
+					<h3>
+						{{settings.cart_empty_title}}
+					</h3>
+					<p>	{{settings.cart_empty_subtitle}}</p>
+					<a href="{{settings.cart_empty_cta_link}}" title="{{settings.cart_empty_cta}}" class="btn btn-main">{{settings.cart_empty_cta}}</a> 
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+{% assign collection_cart = settings.collection_cart -%}
+{% assign limit = settings.collection_cart_limit  | plus: 0 -%}
+{% if settings.use_collection_cart_products and collections[collection_cart].products_count > 0 and limit > 0 -%}
+<section class="section mobile-tab" id="product-tab" data-title="{{settings.heading_collection_cart}}">
+	<div class="container card py-md-4 px-md-4">
+		<div class="title_module  heading-bar d-none d-sm-flex justify-content-between align-items-center">
+			<h2 class="bf_flower heading-bar__title">
+				<a href="{{collections[collection_cart].url}}" title="{{settings.heading_collection_cart}}">{{settings.heading_collection_cart}}</a>
+			</h2>
+		</div>
+		<div class="row recent-view-list slickrelated">
+			{% for product in collections[collection_cart].products limit: limit -%}
+			<div class="col-12 col-md-15">
+				<div class="item_product_main">
+					{% include 'product_grid_office' -%}
+				</div>
+			</div>
+			{% endfor -%}
+		</div>
+	</div>
+</section>
+{% endif -%}
+{% include 'vat-conditional-cart' -%}
+{% include 'templatecart' -%}
+<script src="{{'cart.js'| asset_url}}" defer></script>
+
+<script>
+	function relatedProductSlide(){
+		if(window.matchMedia('(min-width: 768px)').matches && $('.slickrelated .item_product_main').length >= 6){
+			$('.slickrelated').slick({
+				autoplay: false,
+				autoplaySpeed: 6000,
+				dots: false,
+				arrows: true,
+				infinite: false,
+				speed: 300,
+				slidesToShow: 5,
+				slidesToScroll: 5,
+				centerMode: false,
+				responsive: [
+					{
+						breakpoint: 1200,
+						settings: {
+							slidesToShow: 4,
+							slidesToScroll: 4
+						}
+					},
+					{
+						breakpoint: 991,
+						settings: {
+							slidesToShow: 4,
+							slidesToScroll: 1
+						}
+					},
+					{
+						breakpoint: 767,
+						settings: {
+							slidesToShow: 2,
+							slidesToScroll: 2
+						}
+					}
+				]
+			});
+		}
+	}
+	function initProductsRelated() {
+		var cartData = {};
+		$.ajax({
+			url: "/cart?view=data",
+			async : false,
+			success: function(data){
+				cartData = JSON.parse(data);
+			}
+		})
+
+		var relatedPrefix = "{{settings.tag_sanphamlienquan-}}";
+		var relatedTags = cartData.cart_tags.filter(function onlyUnique(value, index, self) {
+			return self.indexOf(value) === index && value.indexOf(`${relatedPrefix.trim()}_`) >= 0
+		})
+
+		if(relatedTags.length > 0){
+			$.get(`/search?q= NOT id:(${cartData.cart_id.join(" OR ")}) AND  tags:(${relatedTags.join(" OR ")})&view=cart`).then(response => {
+				if(response && response.length) {
+					$('.slickrelated').html(response)
+					relatedProductSlide()			
+				} else {
+					window.matchMedia('(min-width: 768px)').matches && $('.item_product_main').length >= 5 && $(`.recent-view-list`).slick({
+						autoplay: false,
+						autoplaySpeed: 6000,
+						dots: false,
+						arrows: true,
+						infinite: false,
+						speed: 300,
+						slidesToShow: 5,
+						slidesToScroll: 5,
+						centerMode: false,
+						responsive: [
+							{
+								breakpoint: 1200,
+								settings: {
+									slidesToShow: 5,
+									slidesToScroll: 5
+								}
+							},
+							{
+								breakpoint: 1024,
+								settings: {
+									slidesToShow: 4,
+									slidesToScroll: 4
+								}
+							},
+							{
+								breakpoint: 991,
+								settings: {
+									slidesToShow: 3,
+									slidesToScroll: 1
+								}
+							},
+							{
+								breakpoint: 767,
+								settings: {
+									slidesToShow: 2,
+									slidesToScroll: 2
+								}
+							}
+						]
+					});
+				}
+			})
+		} else {
+			window.matchMedia('(min-width: 768px)').matches && $('.item_product_main').length >= 5 && $(`.recent-view-list`).slick({
+				autoplay: false,
+				autoplaySpeed: 6000,
+				dots: false,
+				arrows: true,
+				infinite: false,
+				speed: 300,
+				slidesToShow: 5,
+				slidesToScroll: 5,
+				centerMode: false,
+				responsive: [
+					{
+						breakpoint: 1200,
+						settings: {
+							slidesToShow: 5,
+							slidesToScroll: 5
+						}
+					},
+					{
+						breakpoint: 1024,
+						settings: {
+							slidesToShow: 4,
+							slidesToScroll: 4
+						}
+					},
+					{
+						breakpoint: 991,
+						settings: {
+							slidesToShow: 3,
+							slidesToScroll: 1
+						}
+					},
+					{
+						breakpoint: 767,
+						settings: {
+							slidesToShow: 2,
+							slidesToScroll: 2
+						}
+					}
+				]
+			});
+		}
+	}
+	initProductsRelated();
+</script>

@@ -1,0 +1,910 @@
+{% assign variantCount = product.variants | size -%}
+{% assign on_var = false -%}
+{% if variantCount > 1 -%}
+{% assign on_var = true -%}
+{% endif -%}
+{% assign contact = false -%}
+{% if product.price == 0 -%}
+{% assign contact = true -%}
+{% endif -%}
+{% assign baohanh = false -%}
+{% assign related_tag = '' -%}
+{% for tag in product.tags -%}
+{% assign tags = tag -%}
+{% if tags contains 'baohanh_' -%}
+{% assign sothang = tags | remove: 'baohanh_' -%}
+{% assign baohanh = true -%}
+{% endif -%}
+{% if tag contains "video" and settings.use_video_product -%}
+{% assign video_id = tag | split:"video_" | last -%}
+{% capture videoUrl -%}https://www.youtube.com/watch?v={{video_id}}?width=800&height=450&autoplay=1{% endcapture -%}
+{% endif -%}
+{% endfor -%}
+{% include 'product-video'-%}
+{% include 'breadcrumb' -%}
+
+{% assign promotion_divider = settings.product_promotion_heading | handleize -%}
+{% assign content = '' -%}
+{% assign promotion = '' -%}
+{% assign promotion_content = '' -%}
+
+{% assign product_content_arr = product.description | split: '<h6>' -%}
+
+{% for content_item in product_content_arr -%}
+{% if forloop.index > 0 -%}
+{% if content_item contains '</h6>' -%}
+{% assign content_item_title = content_item | split: '</h6>' | first | strip_html -%}
+{% assign content_item_title_handleize = content_item_title | handleize -%}
+
+{% if content_item_title_handleize contains promotion_divider -%}
+{% assign promotion = content_item | split: '</h6>' | last -%}
+{% assign promotion_content = '<h6>' | append: content_item_title | append: '</h6>' | append: promotion -%}
+{% endif -%}
+
+{% endif -%}
+{% endif -%}
+{% endfor -%}
+
+{% assign content = product.description -%}
+{% if promotion_content != '' -%}
+{% assign content = content | remove: promotion_content -%}
+{% endif -%}
+
+{% if settings.product_lightbox_enable -%}		
+<link rel="preload" as='style' type="text/css" href="{{ 'lightbox.css' | asset_url}}">
+
+{{ 'lightbox.css' | asset_url | stylesheet_tag }}
+<link rel="preload" as="script" href="{{ 'lightgallery.js' | asset_url}}">
+{{ 'lightgallery.js' | asset_url | script_tag }}
+{% endif -%}
+<section class="product details-main">	
+
+	<section class='section mt-0 mb-lg-4 mb-3 mb-sm-0'>
+		<div class="container">
+			<div class="section wrap-padding-15 wp_product_main m-0">
+				<div class="details-product">
+					<div class="row m-sm-0">
+						{% if settings.use_product_tag_blog and settings.product_related_blog_tag_prefix != '' -%}
+						{% assign hasRight =  true -%}
+						{% endif -%}
+						<div class="product-detail-left product-images bg-white py-3 col-12 col-lg-6 overflow-hidden">
+							{%if product.images.size  > 1 or (product.images.size == 1 and video_id) %}
+							<div class="section slickthumb_relative_product_1{%unless settings.product_thumb_enable %} d-none{%endunless-%}">
+								<div id="gallery_02" class=" slider-nav slickproduct thumb_product_details">
+									{%unless hasVideoImage -%}
+									{%if video_id  -%}
+									<div class="item">
+										<a href="javascript:void(0)">
+											{{videoImg}}
+										</a>
+									</div>
+									{%endif-%}
+									{%endunless%}
+									{% for image in product.images -%}
+									{% if image.src contains "video" and video_id-%}
+									<div class="item">
+										<a href="javascript:void(0)">
+											{{videoImg}}
+										</a>
+									</div>
+									{% else -%}
+									{% unless image.src contains "color-" -%}
+									<div class="item">
+										<a href="javascript:void(0)" data-zoom-image="{{ image.src | img_url: '1024x1024' }}">
+											<img class=" img-fluid" data-img="{{ image.src}}" 
+												 src="{{ image.src | img_url:'medium' }}" 
+												 alt="{{ product.title}}"
+												 loading="lazy" />
+										</a>
+									</div>
+									{% endunless -%}
+									{% endif -%}
+									{% endfor %}
+								</div>
+							</div>
+							{%endif%}
+							<div class="pt-0{% if product.images.size > 1 and settings.product_thumb_enable%} col_large_default{%elsif product.images.size == 1 and video_id%} col_large_default{% else %} col_large_full{% endif %} large-image">
+								{%if product.images.size > 0%}
+								{%if product.images.size > 1 or (product.images.size == 1 and video_id) -%}
+								<div id="gallery_1" class="slider-for">
+									{%unless hasVideoImage -%}
+									{{videoItem}}
+									{% endunless -%}
+									{% for image in product.images -%}
+									{% if image.src contains "video" && video_id -%}
+									{{videoItem}}
+
+									{% else -%}
+									{% unless image.src contains "color-" -%}
+									<div class="item" data-src="{{ image.src }}">
+										<a class="d-block pos-relative embed-responsive embed-responsive-1by1" 
+										   href="{{ image.src }}" title="{{product.title}}" data-image="{{ image.src }}" data-zoom-image="{{ image.src }}" {%if settings.product_lightbox_enable%} data-rel="prettyPhoto[product-gallery]" {%endif%}>	
+											{%include "product-frame"%}
+											{%if forloop.first -%}
+											<img loading="lazy" class=" img-fluid" style="--image-scale: {{image_scale}};{{img_position}}"
+												 data-img="{{ image.src }}" src="{{ image.src | img_url:'grande' }}" 
+												 alt="{{ product.title}}"
+												 width="600"
+												 height="600"
+												 data-src="{{ image.src }}"
+												 >
+											{%else -%}
+											<img class=" img-fluid" style="--image-scale: {{image_scale}}; {{img_position}}"
+												 data-img="{{ image.src }}" src="{{ image.src | img_url:'1024x1024' }}" 
+												 alt="{{ product.title}}"
+												 loading="lazy"
+												 width="600"
+												 height="600"
+												 >
+											{%endif-%}
+										</a>
+									</div>	
+									{%endunless-%}
+									{%endif -%}
+									{% endfor %}
+								</div>
+								{%else -%}
+								<div id="gallery_1">
+									<a class="d-block pos-relative 
+											  {% unless settings.product_zoom_enable and product.variants.size > 0 %}		 
+											  embed-responsive embed-responsive-1by1 {%endunless%}" 
+									   data-src="{{ product.featured_image.src | img_url:'1024x1024' }}"
+									   {%if settings.product_lightbox_enable%} 
+									   href="{{ product.featured_image.src | img_url:'1024x1024' }}" data-rel="prettyPhoto[product-gallery]" {%else%} data-href="{{ product.featured_image.src | img_url:'1024x1024' }}" data-rel="prettyPhoto[product-gallery]" href="javascript:;"{%endif%}>
+										{% assign featured_image_alt = product.featured_image.alt | default: product.title %}
+										{%include "product-frame"%}
+										<img loading="lazy" class="checkurl img-fluid" 
+											 width="600"
+											 height="600"
+											 style="--image-scale: {{image_scale}};{{img_position}}" 
+											 {%if product.images.size > 0 and settings.product_zoom_enable%}id="img_01"{%endif%} src="{{ product.featured_image.src | img_url:'grande' }}" alt="{{ featured_image_alt | default:product.title }}">
+									</a>
+								</div>
+								{%endif -%}
+
+								{%else%}
+								<a class="d-block pos-relative{% unless settings.product_zoom_enable and product.variants.size > 0 %}		 
+										  embed-responsive embed-responsive-1by1 {%endunless%} large_image_url checkurl" 
+								   data-href="{{ product.featured_image.src | img_url:'1024x1024' }}"
+								   >
+									{% assign featured_image_alt = product.title %}
+									{%include "product-frame"%}
+									<img loading="lazy" class="img-fluid" 
+										 style="--image-scale: {{image_scale}};{{img_position}}"
+										 width="600"
+										 height="600"
+										 src="https://mixcdn.egany.com/themes/assets/thumb/large/noimage.gif" alt="{{ featured_image_alt | default:product.title}}">
+								</a>
+								{%endif%}
+								<div class="hidden">
+									{% for image in product.images offset:1%}
+									{%if image.alt ==""%}
+									{% assign alt = product.title %}
+									{%else%}
+									{% assign alt = image.alt | default: product.title%}
+									{%endif%}
+									<div class="item ">
+										<a class="d-block  pos-relative embed-responsive embed-responsive-1by1" href="{{ image.src }}" title="{{product.title}}" data-image="{{ image.src }}" 
+										   data-zoom-image="{{ image.src }}" {%if settings.product_lightbox_enable%} 
+										   {%endif%}>	
+										</a>
+									</div>	
+									{% endfor %}
+								</div>
+								
+								{% if settings.product_share_enable -%}
+								{% include 'share-buttons' -%}
+								{% endif -%}
+							</div>
+						</div>
+						<div class="col-xs-12 col-lg-6 details-pro bg-white py-3 mt-3 mt-lg-0 px-3">
+							<h1 class="title-product">{{ product.title }}</h1>
+							<form enctype="multipart/form-data" id="add-to-cart-form" action="/cart/add" method="post" 
+								  class="form_background  margin-bottom-0">
+								{% include 'product-detail' -%}
+							</form>
+							{% if settings.use_stock_notify -%}
+							{% include 'stock-notify' -%}
+							{% endif -%}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	{%if settings.sanphamlienquan_show%}
+	<section class="section sec_tab mt-0 mb-lg-4 mb-3 mb-sm-0">
+		<div class='container'>
+			<div class='row ml-sm-0 mr-sm-0'>
+				<div class='col-12 pl-0 pr-0'>
+					{%include 'related-products'%}
+				</div>
+			</div>
+		</div>
+	</section>
+	{%endif%}
+	<section class="section sec_tab">
+		<div class="container">
+			<div class="row mr-sm-0 ml-sm-0 align-items-start">
+				<div class="mb-3 mb-sm-0 col-12{%if hasRight %} col-md-8{%endif%} product-content js-content-wrapper card border-0">
+					<div class="title_module_main heading-bar d-flex justify-content-between align-items-center pl-0 pt-0">
+						<h2 class="heading-bar__title ">
+							{{settings.product_description_heading}}
+						</h2>
+					</div>
+					<div id="ega-uti-editable-content" data-platform='haravan' data-id="{{product.id}}" 
+						 class="rte js-product-getcontent product_getcontent pos-relative" style='--content-height: 693px'>
+						{% if content != null and content != '' -%}
+						<div id="content" class='content js-content'>
+							{{content | replace: '<img', '<img loading="lazy"'| replace: '<iframe', '<iframe loading="lazy"'}}
+						</div>
+						{% else %}
+						<div id="content" class='content'>
+							Nội dung đang được cập nhật
+						</div>
+						{% endif -%}
+					</div>
+					<div class="js-seemore ega-pro__seemore text-center pos-relative mt-3">
+						<a href="javascript:void(0)" title="Xem thêm" class="btn btn-main btn-pill mx-auto">Xem thêm</a>
+					</div>
+				</div>
+				{%if hasRight %}
+				<div class="col-12 col-md-4 pl-0 pl-md-3 product-right pr-0">
+					{% include 'product_related_blog' -%}
+				</div>
+				{%endif%}
+			</div>
+		</div>
+	</section>
+	
+	{%if settings.use_product_review_tab -%}
+	<section class="section" id="section-review">
+		<div class="container">
+			<div class="card">
+			<div>
+				{% include 'product-reviews' %}
+			</div>
+			</div>
+		</div>
+	</section>
+	{%endif-%}
+
+	{% if settings.use_product_repeated_addcart -%}
+	{% include 'product-repeated-cta' -%}
+	{% endif -%}
+	
+	{% if settings.use_product_comments -%}
+	{% include 'product-comments' -%}
+	{% endif -%}
+</section>
+
+{% if settings.equalprice_show -%}
+<section class='section sec_tab container' id='equalprice-products'>
+	<div class='row ml-sm-0 mr-sm-0'>
+		<div class='col-12 pl-0 pr-0'>
+			{% include 'equalprice-products' -%}
+		</div>
+	</div>
+</section>
+{% endif -%}
+
+{% if settings.use_product_recent -%}
+<section class="section sec_tab container" id="recent-view-coll">
+	<div class='row ml-sm-0 mr-sm-0'>
+		<div class='col-12 pl-0 pr-0'>
+			<div class=''>
+				<div class="title_module section heading-bar d-flex justify-content-between align-items-center"
+					 style='background-color: {{settings.section_heading_bg}}'>
+					<h2 class="bf_flower heading-bar__title" 
+						style='color: {{settings.section_heading_color}};'>
+						{{ settings.recent_products_title }}
+					</h2>
+				</div>
+				{% include 'recent-view' -%}
+			</div>
+		</div>
+	</div>
+</section>
+{% endif -%}
+{% if settings.product_zoom_enable -%}
+{{ 'jquery-elevatezoom308-min.js' | asset_url | script_tag }}		
+{% endif -%}
+
+{%assign promotion_app_name = settings.promotion_app_name-%}
+{%if promotion_app_name == "combo_app"-%}
+{%include 'ega-combo'-%}
+{%endif%}
+
+<script> 
+	var ww = $(window).width();
+	var getLimit = {{ settings.product_recent_limit | default: 3 }};
+	var productDetail = {{product | json}}
+
+		function validate(evt) {
+			var theEvent = evt || window.event;
+			var key = theEvent.keyCode || theEvent.which;
+			key = String.fromCharCode( key );
+			var regex = /[0-9]|\./;
+			if( !regex.test(key) ) {
+				theEvent.returnValue = false;
+				if(theEvent.preventDefault) theEvent.preventDefault();
+			}
+		}
+	function changeContactFormBody  (sku){
+		$('#comment').val(`Đăng ký nhận thông báo khi có hàng. Sản phảm: {{product.title}}. SKU: ${sku}`)
+
+	}
+	changeContactFormBody('{{product.variants[0].sku}}')
+						  var selectCallback = function (variant, selector) {
+		if (variant) {
+			var form = jQuery('#' + selector.domIdPrefix).closest('form');
+
+			for (var i = 0, length = variant.options.length; i < length; i++) {
+
+				var radioButton = form.find('.swatch[data-option-index="' + i + '"] :radio[value="' + variant.options[i] + '"]');
+				if (radioButton.size()) {
+					radioButton.get(0).checked = true;
+				}
+			}
+		}
+		var addToCart = jQuery('.form-product .add_to_cart'),
+			buyNow = jQuery('.form-product .buynow'),
+			group = jQuery('.form_product_content'),
+			form = jQuery('.form-product .button_actions'),
+			form2 = jQuery('.soluong'),
+			product_sku = jQuery('.details-pro .product_sku .status_name'),
+			productPrice = jQuery('.details-pro .special-price .product-price'),
+			qty = jQuery('.first_status .availabel'),
+			sale = jQuery('.details-pro .old-price .product-price-old'),
+			comparePrice = jQuery('.details-pro .old-price .product-price-old'),
+			discountLabel= jQuery('.details-pro .label_product'),
+			savePrice = jQuery('.details-pro .save-price'),
+			vat = jQuery('.form-group .vat');
+
+		/* SKU */
+		if (variant && variant.sku != "" && variant.sku != null) {
+			product_sku.html(variant.sku);
+			changeContactFormBody(variant.sku)
+
+		} else {
+			product_sku.html('Đang cập nhật');
+			changeContactFormBody('')
+
+		}
+		/*** VAT ***/
+		if (variant) {
+			if (variant.taxable) {
+				$('.form-group').removeClass('hidden').find('.vat').text('(Đã bao gồm VAT)');
+			} else {
+				$('.form-group').removeClass('hidden').find('.vat').text('(Chưa bao gồm VAT)');
+			}
+		}
+
+		if (variant && variant.available) {
+			if (variant.inventory_management == "haravan") {
+				if (variant.inventory_quantity != 0  ) {
+					qty.html('<link itemprop="availability" href="http://schema.org/OutOfStock" />Còn hàng');
+				} else if (variant.inventory_quantity == '') {
+					qty.html('<link itemprop="availability" href="http://schema.org/InStock" />Hết hàng');
+				}
+			} else {
+				qty.html('<link itemprop="availability" href="http://schema.org/OutOfStock" />Còn hàng');
+			}
+
+			group.removeClass('hidden');
+			addToCart.html(`{{settings.product_addtocart_content}}`).removeAttr('disabled').removeAttr('disabled').removeClass('hidden');
+		buyNow.html(`{{settings.product_buynow_content}}`).removeAttr('disabled');
+		$('#stock-notify').addClass('hidden')
+		if (variant.price == 0) {
+			productPrice.html('Liên hệ');
+			comparePrice.hide();
+			discountLabel.hide();
+			savePrice.hide();
+			form.addClass('hidden');
+			vat.addClass('hidden');
+			form2.addClass('hidden');
+			sale.removeClass('sale');
+			group.addClass('hidden');
+			$('#stock-notify').addClass('hidden')
+
+			if (variant.inventory_management == "haravan") {
+				if (variant.inventory_quantity != 0) {
+					qty.html('<link itemprop="availability" href="http://schema.org/InStock" />Còn hàng');
+				} else if (variant.inventory_quantity == '') {
+					qty.html('<link itemprop="availability" href="http://schema.org/OutOfStock" />Hết hàng');
+				}
+			} else {
+				qty.html('<link itemprop="availability" href="http://schema.org/InStock" />Còn hàng');
+			}
+		} else {
+			form.removeClass('hidden');
+			productPrice.html(Haravan.formatMoney(variant.price, "{{ shop.money_format }}"));
+												 // Also update and show the product's compare price if necessary
+												 if (variant.compare_at_price > variant.price) {
+							  let save = variant.compare_at_price - variant.price
+							  let savePercent = Math.ceil(save / variant.compare_at_price * 100);
+							  if(savePercent >= 100){
+							  	savePercent = 99;
+							  }
+							  if(savePercent < 1){
+							  	savePercent = 1;
+							  }
+							  discountLabel.html(`-${savePercent}%`).show()
+savePrice.html(`(Tiết kiệm <span>${Haravan.formatMoney(save, "{{ shop.money_format }}")}</span>)`).show();
+				 comparePrice.html(Haravan.formatMoney(variant.compare_at_price, "{{ shop.money_format }}")).show();
+				 sale.addClass('sale');
+
+		if (variant.inventory_management == "haravan") {
+			if (variant.inventory_quantity != 0) {
+				qty.html('<link itemprop="availability" href="http://schema.org/InStock" />Còn hàng');
+				form2.removeClass('hidden');
+				form.removeClass('hidden');
+				vat.removeClass('hidden');
+			} else if (variant.inventory_quantity == '') {
+				qty.html('<link itemprop="availability" href="http://schema.org/InStock" />Còn hàng');
+				form2.removeClass('hidden');
+				form.removeClass('hidden');
+				vat.removeClass('hidden');
+			}
+		} else {
+			qty.html('<link itemprop="availability" href="http://schema.org/InStock" />Còn hàng');
+			form2.removeClass('hidden');
+			form.removeClass('hidden');
+			vat.removeClass('hidden');
+		}
+
+	} else {
+		comparePrice.hide();
+		discountLabel.hide();
+		savePrice.hide();
+		sale.removeClass('sale');
+		form2.removeClass('hidden');
+		vat.removeClass('hidden');
+		if (variant.inventory_management == "haravan") {
+			if (variant.inventory_quantity != 0) {
+				qty.html('<link itemprop="availability" href="http://schema.org/InStock" />Còn hàng');
+				form2.removeClass('hidden');
+				form.removeClass('hidden');
+			} else if (variant.inventory_quantity == '') {
+				qty.html('<link itemprop="availability" href="http://schema.org/InStock" />Còn hàng');
+				form2.removeClass('hidden');
+				form.removeClass('hidden');
+			}
+		} else {
+			qty.html('<link itemprop="availability" href="http://schema.org/InStock" />Còn hàng');
+			form2.removeClass('hidden');
+			form.removeClass('hidden');
+		}
+	}
+	}
+
+	} else {
+		addToCart.html('<span class="text_1">Hết hàng</span>').attr('disabled', 'disabled');
+		addToCart.addClass('is-full')
+		buyNow.html('<span class="text_1">Hết hàng</span>').attr('disabled', 'disabled');
+
+		qty.html('Hết hàng');
+		$('#stock-notify').removeClass('hidden')
+		form.removeClass('hidden');
+		form2.addClass('hidden');
+		group.removeClass('hidden');
+		vat.removeClass('hidden');
+
+		if (variant) {
+			if (variant.price != 0) {
+
+				form.removeClass('hidden');
+				productPrice.html(Haravan.formatMoney(variant.price, "{{ shop.money_format }}"));
+													 // Also update and show the product's compare price if necessary
+													 if (variant.compare_at_price > variant.price) {
+								  form.addClass('hidden');
+				let save = variant.compare_at_price - variant.price
+				let savePercent = Math.ceil(save / variant.compare_at_price * 100);
+				if(savePercent >= 100){
+					savePercent = 99;
+				}
+				if(savePercent < 1){
+					savePercent = 1;
+				}
+				discountLabel.html(`-${savePercent}%`).show()
+				savePrice.html(`(Tiết kiệm <span>${Haravan.formatMoney(save, "{{ shop.money_format }}")}</span>)`).show();
+																	  comparePrice.html(Haravan.formatMoney(variant.compare_at_price, "{{ shop.money_format }}")).show();
+																	  sale.addClass('sale');
+							   addToCart.html('<span class="text_1">Hết hàng</span>').attr('disabled', 'disabled').removeClass('hidden');
+				addToCart.addClass('is-full')
+				buyNow.html('<span class="text_1">Hết hàng</span>').attr('disabled', 'disabled')
+				$('#stock-notify').removeClass('hidden')
+				if (variant.inventory_management == "haravan") {
+
+					if (variant.inventory_quantity != 0 && variant.available) {
+						qty.html('<link itemprop="availability" href="http://schema.org/InStock" />Còn hàng');
+					} else {
+						qty.html('<link itemprop="availability" href="http://schema.org/OutOfStock" />Hết hàng');
+						form2.addClass('hidden');
+						form.removeClass('hidden');
+					}
+				} else {
+					qty.html('<link itemprop="availability" href="http://schema.org/InStock" />Còn hàng');
+				}
+
+			} else {
+				discountLabel.hide();
+				savePrice.hide();
+				comparePrice.hide();
+				vat.removeClass('hidden');
+				sale.removeClass('sale');
+				form.addClass('hidden');
+				addToCart.html('<span class="text_1">Hết hàng</span>').attr('disabled', 'disabled').removeClass('hidden');
+				addToCart.addClass('is-full')
+				buyNow.html('<span class="text_1">Hết hàng</span>').attr('disabled', 'disabled')
+				$('#stock-notify').removeClass('hidden')
+				if (variant.inventory_management == "haravan") {
+					if (variant.inventory_quantity != 0 && variant.available) {
+						qty.html('<link itemprop="availability" href="http://schema.org/InStock" />Còn hàng');
+					} else{
+						form2.addClass('hidden');
+						qty.html('<link itemprop="availability" href="http://schema.org/OutOfStock" />Hết hàng');
+						form.removeClass('hidden');
+					}
+				} else {
+					qty.html('<link itemprop="availability" href="http://schema.org/InStock" />Còn hàng');
+				}
+			}
+		} else {
+			productPrice.html('Liên hệ');
+			form2.addClass('hidden');
+			vat.addClass('hidden');
+			comparePrice.hide();
+			discountLabel.hide();
+			savePrice.hide();
+			form.addClass('hidden');
+			sale.removeClass('sale');
+			$('#stock-notify').addClass('hidden')
+		}
+	} else {
+		productPrice.html('Liên hệ');
+		form2.addClass('hidden');
+		vat.addClass('hidden');
+		comparePrice.hide();
+		discountLabel.hide();
+		savePrice.hide();
+		form.addClass('hidden');
+		sale.removeClass('sale');
+		$('#stock-notify').addClass('hidden')
+
+	}
+	}
+	/*begin variant image*/
+	if (variant && variant.featured_image) {
+	var originalImage = jQuery(".large-image img");
+		var newImage = variant.featured_image;
+		var element = originalImage[0];
+		Haravan.Image.switchImage(newImage, element, function (newImageSizedSrc, newImage, element) {
+		
+			$('.slider-nav .slick-slide').each(function () {
+				var $this = $(this);
+				var imgThis = $this.find('img').attr('data-img');
+				if (newImage.src.split("?")[0] == imgThis.split("?")[0]) {
+					var pst = $this.attr('data-slick-index');
+					jQuery(".slider-for").slick('slickGoTo', pst);
+					$('.pict.image').attr('src',newImage.src)
+				}
+			});
+		});
+
+		setTimeout(function () {
+			$('.checkurl').attr('href', $(this).attr('src'));
+
+			if (ww >= 1200) {
+				{% if settings.product_zoom_enable and product.variants.size > 0 %}
+				$('.zoomContainer').remove();
+				$("#img_01").elevateZoom({
+					gallery: 'gallery_02',
+					zoomWindowWidth: 420,
+					zoomWindowHeight: 500,
+					zoomWindowOffetx: 10,
+					easing: true,
+					scrollZoom: false,
+					cursor: 'pointer',
+					galleryActiveClass: 'active',
+					imageCrossfade: true
+				});
+				{% endif %}
+			}
+		}, 200);
+
+	}
+	};
+	jQuery('.swatch .swatch-element  :radio').change(function() {
+		var optionIndex = jQuery(this).closest('.swatch').attr('data-option-index');
+		var optionValue = jQuery(this).val();
+		$(`.single-option-selector[data-option="option${+optionIndex+1}"]`)
+			.val(optionValue)
+			.trigger('change');
+	});
+	$('#ega-sticky-addcart').on('change','.single-option-selector',function(e){
+		var optionIndex = jQuery(e.target).data('option')
+		var optionValue  = jQuery(e.target).val()
+		$(`.form-product .single-option-selector[data-option="${optionIndex}"]`)
+			.val(optionValue)
+			.trigger('change');
+	})
+	$(".dp-flex img").click(function(e){
+		e.preventDefault();
+		var hr = $(this).attr('data-src');
+		$('.checkurl ').attr('src',hr);
+		$('.large-image a').attr('data-href',hr);
+	});
+
+	if (ww >= 1200){
+		{% if settings.product_zoom_enable and product.variants.size > 0 %}
+		$(document).ready(function() {
+			if($(window).width()>1200){
+				$('#img_01').elevateZoom({
+					gallery:'gallery_02',
+					zoomWindowWidth:420,
+					zoomWindowHeight:500,
+					zoomWindowOffetx: 10,
+					easing : true,
+					scrollZoom : true,
+					cursor: 'pointer', 
+					galleryActiveClass: 'active', 
+					imageCrossfade: true
+				});
+			}
+		});
+		{% endif %}
+	}
+
+	/*For recent product*/
+	var alias = '{{product.handle}}';
+	/*end*/
+	if (ww >= 1200){
+		{% if settings.product_zoom_enable and product.variants.size > 0 %}
+		$(document).ready(function() {
+			$('#img_01').elevateZoom({
+				gallery:'gallery_02',
+				zoomWindowWidth:420,
+				zoomWindowHeight:500,
+				zoomWindowOffetx: 10,
+				easing : true,
+				scrollZoom : true,
+				cursor: 'pointer', 
+				galleryActiveClass: 'active', 
+				imageCrossfade: true
+
+			});
+		});
+		{% endif %}
+	}
+
+</script>
+
+<script>
+	var productDetail = {{product | json}}
+		function onQtyChange(){
+			let qty = parseInt($('.pd-qtym').val())
+			let variantId = parseInt($('#product-selectors').val()) || parseInt($('.details-product [name="id"]').val())
+			let validQty = validateQty(productDetail,variantId, qty)
+			validQty && $('.pd-qtym').val(validQty)
+		}
+	function onQtyCRChange(){
+		let qty = parseInt($('.cr-qty-input').val())
+		console.log(qty)
+		let variantId = window.EGACRAddonSettings.variantId
+		let validQty = validateQty(productDetail,variantId, qty)
+		if(validQty){
+			window.EGACRAddon.updateQty(validQty)
+		}
+	}
+	let isProductInit = false;
+
+	$(document).ready(function (e) {
+		$('#gallery_02').slick({
+			slidesToShow: 5,
+			vertical: true,
+			slidesToScroll: 1,
+			asNavFor: '.slider-for',
+			dots: false,
+			arrows: false,
+			focusOnSelect: true,
+			infinite: false,
+			responsive: [
+				{
+					breakpoint: 767,
+					settings: {
+						slidesToShow: 3,
+						slidesToScroll: 1,
+					}
+				}
+			]
+		});
+		$(window).on('scroll mousemove touchstart',()=>{
+			if(isProductInit) return
+			isProductInit = true
+			{%if settings.product_lightbox_enable -%}
+			$('#gallery_1').lightGallery({
+				thumbnail: false,
+				youtubePlayerParams: { autoplay: 1 }
+			});
+
+			{%endif -%}
+			var wDW = $(window).width();
+			$('#gallery_1').slick({
+				autoplay: false,
+				autoplaySpeed: 6000,
+				dots: false,
+				arrows: true,
+				infinite: false,
+				speed: 300,
+				slidesToShow: 1,
+				slidesToScroll: 1,
+				asNavFor: '#gallery_02'
+			})
+			let prevPos = 0
+			$('#gallery_1 .item').on('mousedown', function(e){
+				prevPos = e.pageX
+				$(this).one('mouseup', function(e){
+					$(this).off('mousemove');
+					$('#gallery_1 .item').css('pointer-events','initial')
+
+				}).on('mousemove', function(e){
+					if(prevPos !== e.pageX){ 
+						prev = e.pageX
+						$('#gallery_1 .item').css('pointer-events','none')
+						e.preventDefault()
+					}
+				});
+
+			});
+			$('#gallery_1').on('swipe', function(event, slick, currentSlide, nextSlide){
+
+				$('#gallery_1 .item').css('pointer-events','none')
+			});
+			$('#gallery_1').on('beforeChange', function(event, slick, currentSlide, nextSlide){
+				$('#gallery_1 .item').css('pointer-events','initial')
+			});
+			$('#gallery_1').on('afterChange', function(event, slick, currentSlide, nextSlide){
+				$('#gallery_1 .item').css('pointer-events','initial')
+			});
+
+
+			jQuery(function($) {
+				{% if  product.variants.size > 1 %}
+				if(navigator.userAgent.indexOf("Speed Insights") == -1) {
+
+					new Haravan.OptionSelectors('product-selectors', {
+						product: productDetail,
+						onVariantSelected: selectCallback, 
+						enableHistoryState: true
+					});     
+				}
+
+				{% endif %}
+
+				// Add label if only one product option and it isn't 'Title'. Could be 'Size'.
+				{% if product.options.size == 1 and product.options.first != 'Title' %}
+				$('.selector-wrapper:eq(0)').prepend('<label>{{ product.options.first }}</label>');
+													 {% endif %}
+													 // Hide selectors if we only have 1 variant and its title contains 'Default'.
+													 {% if product.variants.size == 1 and product.variants.first.title contains 'Default' %}
+													 $('.selector-wrapper').hide();
+				{% endif %} 
+				$('.selector-wrapper').css({
+					'text-align':'left',
+					'margin-bottom':'15px'
+				});
+
+				$('#ega-sticky-addcart .box-variant').append($('.selector-wrapper').clone())
+			});
+
+
+			// load more content
+			const $contentWrapper = $('.js-content-wrapper');
+			$contentWrapper.each(function (index, element) {
+				const $proContent = $(element).find('.js-content');
+				const $seeMore = $(element).find('.js-seemore');
+				const $proGetContent = $(element).find('.js-product-getcontent');
+				let contentMaxHeight = 693;
+				if(window.matchMedia('(max-width: 767px)').matches){
+					contentMaxHeight = 370;
+					$proGetContent.css("maxHeight",`${contentMaxHeight}px`);
+				}
+				if($proContent.height() > contentMaxHeight){
+					$seeMore.show();
+					$seeMore.click(function() {
+						$(this).toggleClass("show");
+						if($(this).hasClass('show')) {
+							$proGetContent.css("maxHeight","none");
+							$(this).find('a').html('Thu gọn').attr("title","Thu gọn");
+						} else {
+							$proGetContent.css("maxHeight",`${contentMaxHeight}px`);
+							$(this).find('a').html('Xem thêm').attr("title","Xem thêm");
+							$('html, body').animate({
+								scrollTop: $proGetContent.offset().top - 100 //#DIV_ID is an example. Use the id of your destination on the page
+							}, 'slow');
+						}
+					})
+				} else {
+					$seeMore.hide();
+				}
+			})
+
+			// set recent view
+			function  setProductRecent(){
+				try{
+					let productUrl = '{{product.handle}}'
+					let storage =  JSON.parse(localStorage.getItem('recentProduct')) || []
+					if(storage  && !storage.includes(productUrl) ){
+						storage =	[productUrl].concat(storage)
+						storage.length > 7 && storage.pop()
+						localStorage.setItem('recentProduct', JSON.stringify(storage))
+					}}catch(e){
+						console.log(e)
+					}
+			}
+			setProductRecent()
+			$(document).on('change', '#qtym',onQtyChange)
+			$(document).on('click', '.btn_num',onQtyChange)
+			$(document).on('click', '.cr-qty-btn',onQtyCRChange)
+			$(document).on('change','.cr-qty-input',onQtyCRChange)
+
+		})
+
+		$(".action-buy").click(function(){
+			$("#add-to-cart-form .add_to_cart").trigger("click");
+		})
+
+		$('#ega-sticky-addcart .add_to_cart').click(()=>{
+			$('.details-product .add_to_cart').trigger('click');
+		})
+
+		{% if settings.use_product_promotion -%}
+		var saleboxHtml = $("#ega-salebox .product-promotion__heading").siblings().clone().wrap("<div/>").parent().html()
+		if (saleboxHtml) {
+		var newContent = saleboxHtml;
+		
+		if(saleboxHtml.indexOf("[coupon=") >= 0){
+			newContent = convertCouponItem(saleboxHtml);
+		}
+		
+		$("#ega-salebox .product-promotion__heading").siblings().replaceWith(newContent);
+		}
+		{% endif -%}
+	});
+
+
+	var copyButton = {"copiedText": "{{settings.product_promotion_copied-}}", "copyText": "{{settings.product_promotion_copy-}}"};
+
+					  function convertCouponItem(content) {
+					  const regex = /\[(.*?)\]/gi
+					  content = content.replace(regex, function (str, innerString) {
+					  let code = innerString.split('=')[1].replace(/"/g,'').trim();
+
+					  return `<span onClick="codeCopy(this)" class="smb-copy smb-cursor-pointer text-danger" 
+data-code="${code}"
+data-copied-text="${copyButton.copiedText}">${copyButton.copyText}</span>`
+	})
+	return content
+	}
+	function codeCopy(el){
+		const copyText = copyButton.copyText;
+		const copiedText = el.dataset.copiedText;
+		const coupon = el.dataset.code;
+
+
+		const _this = $(el);
+		_this.html(`<span>${copiedText}</span>`);
+		_this.addClass('disabled');
+		setTimeout(function() {
+			_this.html(`<span>${copyText}</span>`);
+			_this.removeClass('disabled');
+		}, 3000)
+		navigator.clipboard.writeText(coupon);
+	}
+	
+	// Hide Promotion
+				 const promotionTitle = 'h6:contains("{{settings.product_promotion_heading}}")';
+				 $(`#content ${promotionTitle}, #content ${promotionTitle} + *`).hide();
+</script>

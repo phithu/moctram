@@ -1,0 +1,26 @@
+<h1 class="d-none">{{shop.name}} - {{shop.description}}</h1>
+<div class='container'>
+	<div class='row'>
+		<div class="col-lg-3 d-lg-block d-none">
+
+			<div class='menu-wrapper'>
+				{%include 'subheader'%}
+
+				<div class="navigation-wrapper">
+					{% include 'main-nav' -%}
+				</div>
+				{% include 'subheader-left' -%}
+			</div>
+		</div>
+		<div class="col-lg-9 col-12 pl-xl-0">
+			{% for i in (1..17) -%}
+			{% capture enable -%}home_section_{{i}}{% endcapture -%}
+			{% if settings[enable] and settings[enable] != 'none' -%}
+			<section class="section {{settings[enable]}} awe-section-{{forloop.index}}{% if forloop.index == 1 %} mt-2{% endif %}">
+				{% include settings[enable] -%}
+			</section>
+			{% endif -%}
+			{% endfor -%}
+		</div>
+	</div>
+</div>

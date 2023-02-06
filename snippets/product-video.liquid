@@ -1,0 +1,38 @@
+{%capture videoImg -%}
+{%if video_id -%}
+{% for image in product.images %}
+{%if image.src contains "video"-%} 
+{%assign videoThumb = image.src -%}
+{%assign hasVideoImage = true -%}
+{%break-%}
+{%endif-%}																																													 
+{% endfor %}
+
+		{%if videoThumb -%}
+		<img class=" img-fluid" data-img="{{ videoThumb}}" 
+			 src="{{ videoThumb | img_url:'large' }}" 
+			 alt="{{ product.title}}"
+			 loading="lazy">
+		{%else -%}
+		{%capture videoThumb %}https://img.youtube.com/vi/{{video_id}}/maxresdefault.jpg{%endcapture-%}
+		<img class=" img-fluid" data-img="{{ videoThumb}}" 
+			 src="{{ videoThumb' }}" 
+			 alt="{{ product.title}}"
+			 loading="lazy">
+		{%endif-%}
+		{%if settings.use_video_play_button-%} 
+			<img loading="lazy" class="icon-button-play img-fluid" src="{{ "icon-button-play.png" | asset_url -}}" alt="video-play-button"/>
+		{%endif-%}
+{%endif-%}
+{%endcapture -%}
+{%capture  videoItem-%}
+{%if settings.use_video_product and videoUrl -%}
+<div class="item video-item" data-src="{{ videoUrl}}">
+	<a class="d-block pos-relative embed-responsive embed-responsive-1by1"
+	    
+	   href="{{videoUrl-}}" title="{{product.title}}" data-rel="prettyPhoto[product-gallery]">
+		{{videoImg}}
+	</a>
+</div>	
+{%endif-%}		
+{%endcapture -%}

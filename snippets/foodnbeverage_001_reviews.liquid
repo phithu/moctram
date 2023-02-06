@@ -1,0 +1,51 @@
+<div id="section-reviews" class="reviews" data-setting="reviews" {%unless settings.foodnbeverage_001__footer__show%}style="padding-bottom: 200px"{%endunless%}>
+	<div class="ega-container">
+		<div class="block__heading way-up">
+			<h2 class="block__title" data-setting="reviews__title">{{ settings.foodnbeverage_001__reviews__title }}</h2>
+		</div>
+		{%-if settings.foodnbeverage_001__reviews__1__show-%}
+			<div class="reviews__heading way-up" data-setting="reviews__1">
+				<div class="reviews__img">
+					<img src="{{ 'foodnbeverage_001_reviews_avatar_1.jpg' | asset_url }}" alt="foodnbeverage_001_reviews_avatar_1.jpg" data-setting="reviews__1__img_url"/>
+				</div>
+				<div class="reviews__info">
+					<h3 class="reviews__author">
+						{{ settings.foodnbeverage_001__reviews__1__name }} 
+						<span>{{ settings.foodnbeverage_001__reviews__1__job }}</span></h3>
+					<div class="reviews__content">
+						{{ settings.foodnbeverage_001__reviews__1__content }}
+					</div>
+				</div>
+		</div>
+		{%-endif-%}
+
+		<div class="reviews__intro way-up">
+			{{ settings.foodnbeverage_001__reviews__desc }}
+		</div>
+		<div class="reviews__list">
+			{%-assign count = 0-%}
+			{%-for i in (2..4)-%}
+			{%-capture use_reviews_item-%}foodnbeverage_001__reviews__{{i}}__show{%-endcapture-%}
+			{%-capture reviews_avatar-%}foodnbeverage_001_reviews_avatar_{{i}}.jpg{%-endcapture-%}
+			{%-capture reviews_author_name-%}foodnbeverage_001__reviews__{{i}}__name{%-endcapture-%}
+			{%-capture reviews_author_pos-%}foodnbeverage_001__reviews__{{i}}__job{%-endcapture-%}
+			{%-capture reviews_content-%}foodnbeverage_001__reviews__{{i}}__content{%-endcapture-%}
+			{%-if settings[use_reviews_item]-%}
+			{%-assign count = count | plus:1-%}
+			<div class="reviews__item way-down" data-delay="{{ 300 | times:count  }}" data-setting="reviews__{{i}}">
+				<div class="reviews__img">
+					<img src="{{ reviews_avatar | asset_url }}" alt="{{ reviews_avatar }}" data-setting="reviews__{{i}}__img_url"/>
+				</div>
+				<div class="reviews__info">
+					<h3 class="reviews__author">
+						{{ settings[reviews_author_name] }} <span>{{ settings[reviews_author_pos] }}</span></h3>
+					<div class="reviews__content">
+						{{ settings[reviews_content] }}
+					</div>
+				</div>
+			</div>
+			{%-endif-%}
+			{%-endfor-%}
+		</div>
+	</div>
+</div>

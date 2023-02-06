@@ -1,0 +1,27 @@
+{%layout none%}
+{% form 'contact' %}
+{% if form.posted_successfully? %}
+<div class="">
+	Cám ơn bạn đã liên hệ! Chúng tôi sẽ trả lời ngay khi có thể
+</div>
+{% endif %}
+<div class="cr-form-group" data-cr-input="nameInput">
+	<input class="cr-form-control"  required type="text" name="contact[name]"  placeholder="Tên của bạn" />
+	<span class="cr-form-error"></span>
+</div>
+<div class="cr-form-group"  data-cr-input="emailInput">
+	<input  class="cr-form-control" required type="email" name="contact[email]"  placeholder="Email của bạn" />
+	<span class="cr-form-error"></span>
+</div>
+<div class="cr-form-group"  data-cr-input="phoneInput" >
+	<input class="cr-form-control" name="contact[phone]" pattern="[0-9]{10,12}" required type="text" placeholder="Số điện thoại của bạn"/>
+	<span class="cr-form-error"></span>
+</div>
+<div class="cr-form-group"  data-cr-input="messageInput">
+	<textarea  class="cr-form-control" name="contact[body]" placeholder="Nội dung"></textarea>
+	<span class="cr-form-error"></span>
+</div>
+<button type="submit" class="crbtn-modal__cta" id="cro-submit-form">
+	Gửi
+</button>
+{% endform %}

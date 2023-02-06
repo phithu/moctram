@@ -1,0 +1,70 @@
+<section class="section_product_banner section">
+	<div class="container card border-0">
+		<div class="row ">
+			<div class="col-12">
+				{% assign product_count = collections[settings.section_pro_banner_url]products_count %}
+				{% assign use_banner = settings.section_pro_banner_use_banner  -%}
+				<div class="title_module_main heading-bar d-flex justify-content-between align-items-center">
+					<h2 class="heading-bar__title ">
+						<a class='link' href="{{settings.section_pro_banner_url}}" title="{{settings.section_pro_banner_title}}">{{settings.section_pro_banner_title}}</a>
+					</h2>
+				</div>
+				<div class="row mt-3">
+					{%if use_banner -%}
+					<div class="col-12 col-md-30 banner_col d-flex align-items-center mb-3 {{settings.section_pro_banner_position}}">
+						<a  class="banner" href="{{settings.section_pro_banner_link | default: settings.section_pro_banner_url}}" title="{{settings.section_pro_banner_title}}">
+							<picture>
+								<source media="(max-width: 600px)"
+										srcset="{{ 'section_pro_banner.jpg' | asset_url | img_url:'grande' }}">
+								<img class="img-fluid" loading="lazy"
+									 src="{{'section_pro_banner.jpg'|asset_url}}"
+									 width="{{settings.section_pro_banner_width}}"
+									 height="{{settings.section_pro_banner_height}}"
+									 alt="{{settings.section_pro_banner_title}}">
+							</picture>
+						</a>
+					</div>
+					{%endif -%}
+					<div class="mx-0 {%if use_banner %} col-12 col-md-7 row {%else%} col-12 row {%endif%}" >
+						{% if product_count >= 1 %}
+						<div data-section="product-banner-section" class="slick-pro-banner mt-3 mt-md-0 {%if use_banner %}has_banner{%endif%}" >
+							{%assign limit = settings.section_pro_banner_limit -%}
+							{%assign count = collections[settings.section_pro_banner_url].products_count -%}
+							{%assign product_html = '' -%}
+
+							{% for product in collections[settings.section_pro_banner_url].products limit: limit -%}
+							<div class='col-5 {%if use_banner  %} {%if limit < count %}col-md-4{%else%} col-md-12 {%endif%} {%else%} col-md-15 {%endif%}'>
+								<div class="item_product_main item_skeleton">
+								</div>
+							</div>
+
+							{%capture product_block -%}
+							<div class='col-5 {%if use_banner  %} {%if limit < count %}col-md-4{%else%} col-md-12 {%endif%} {%else%} col-md-15 {%endif%}'>
+								<div class="item_product_main">
+									{% include 'product_grid_office' -%}
+								</div>
+							</div>	
+							{%endcapture%}
+							{%assign product_html = product_html | append : product_block -%}
+
+							{%endfor%}
+							<script  type="text/x-custom-template" data-template="product-banner-section">
+					{{product_html}}
+							</script>
+						</div>
+						{%else%}
+						<p class="a-center margin-top-15 mt-3">Hiện tại chưa có sản phẩm nào trong danh mục này!...</p>
+						{%endif%}
+					</div>
+				</div>
+			</div>
+			{% if product_count >= 1 %}
+			<div class="col-12 text-center mt-3">
+				<a href="{{settings.section_pro_banner_url}}" title="Xem tất cả" class="btn btn-main btn-icon">
+					Xem tất cả <i class="fas fa-chevron-right"></i>
+				</a>
+			</div>						
+			{%endif %}
+		</div>
+	</div>
+</section>

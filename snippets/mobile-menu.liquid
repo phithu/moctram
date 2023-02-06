@@ -1,0 +1,54 @@
+<div id="mobile-menu" class="scroll">
+	<div class='media d-flex user-menu'>
+
+		<i class="fas fa-user-circle mr-3 align-self-center"></i>
+		<div class="media-body d-md-flex flex-column ">
+			{% if customer %}
+			<a rel="nofollow" class="d-block" href="/account" title="Tài khoản">
+				Tài khoản</a>
+			<small>
+				<a href="/account/logout" title="Đăng xuất" class="font-weight: light">
+					Đăng xuất
+				</a> </small>
+			{%else -%}
+			<a rel="nofollow" href="/account/login" class="d-block" title="Tài khoản" >
+				Tài khoản
+			</a>
+			<small>
+				<a href="/account/login" title="Đăng nhập" class="font-weight: light">
+					Đăng nhập
+				</a> </small>
+			{%endif -%}
+
+		</div>
+	</div>
+	<div class="mobile-menu-body scroll">
+		{{navigation}}
+		{% comment -%}
+		{%include 'subheader-left'-%}
+		{% endcomment -%}
+	</div>
+
+	<div class="mobile-menu-footer border-top w-100 d-flex align-items-center text-center">
+		<div class="hotline {%if settings.messenger and settings.messenger != blank%} w-50 {%else%} w-100 {%endif%}  p-2 ">
+			<a  href="tel:{{settings.phone | default: shop.phone_number | remove: ' '}}" title="{{settings.phone | default: shop.phone_number}}">
+				Gọi điện <i class="fas fa-phone ml-3"></i>
+			</a>
+		</div>
+		{%if settings.messenger and settings.messenger != blank-%}
+		<div class="messenger border-left p-2 w-50 border-left">
+			{%assign messenger = settings.messenger -%}
+			{%unless messenger contains 'http'%}
+			{%assign messenger = 'https://'| append : messenger -%}
+			{%endunless%}
+			<a  href="{{messenger}}" title="{{messenger}}">
+				Nhắn tin
+				<i class="fab fa-facebook-messenger ml-3"></i>
+			</a>
+		</div>
+		{%endif %}
+	</div>
+</div>
+<div class='menu-overlay'>
+
+</div>

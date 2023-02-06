@@ -1,0 +1,100 @@
+{%- include 'breadcrumb' -%}
+
+<section class="signup section search-main wrap_background background_white" >
+	<div class="container card py-3 mb-4">
+		{%- if search.performed and search.terms != blank -%}
+		{%- if search.results_count == 0 -%}
+		<div class="row">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center mt-3">
+				<h1 class="title_page">Nhập từ khóa để tìm kiếm</h1>
+			</div>
+			<div class="serachpc_searchpage section margin-bottom-20 col-md-6 offset-md-3 py-3">
+				<div class="searchform col-12">
+					<form action="/search" method="get" class="input-group search-bar custom-input-group border-1 js-not-smartsearch" role="search">
+						<input type="text" name="q" value="{{ search.terms }}" autocomplete="off" placeholder="Tìm kiếm sản phẩm..."
+									 class="input-group-field form-control " style="border: 1px solid #f1f1f1;background: #f1f1f1" required="">
+						{%- if settings.ega_sm_show_article -%}
+						<input type="hidden" name="type" value="product,article" />
+						{%- else -%}
+						<input type="hidden" name="type" value="product" />
+						{%- endif -%}
+						<span class="input-group-btn btn-action">
+							<button type="submit" class="btn text-white icon-fallback-text h-100">
+								<span class="fa fa-search"></span>
+							</button>
+						</span>
+					</form>
+				</div>
+			</div>
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<h2 class="title-head text-center">Không tìm thấy bất kỳ kết quả nào với từ khóa trên.</h2>				
+			</div>
+		</div>
+		{%- else -%}
+		{%- if settings.ega_sm_show_article -%}
+		<div class='search-type-tabs mx-auto' style='display: none'>
+			<ul class="tabs tabs-title list-unstyled mt-2 mt-sm-0 mb-0 tabs-group d-flex 
+								 justify-content-center">
+				<li class="tab-link px-3 py-2 link" data-tab="product">
+					Sản phẩm		
+				</li>
+				<li class="tab-link px-3 py-2 link ml-2" data-tab="article">
+					Bài viết
+				</li>
+			</ul>
+		</div>
+		{%- endif -%}
+		<div class='row mt-3' id='search-result'>
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-bottom-15 mt-3">
+				<h1 class="title-head">Có {{ search.results_count }} kết quả tìm kiếm phù hợp</h1>
+			</div>
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-bottom-30">
+				{% paginate search.results by settings.ega_sm_result_limit -%} 
+				<div class="products-view-grid products cls_search list_hover_pro">
+					<div class="row content-col">
+						{% for product in search.results limit: settings.ega_sm_result_limit %}
+						<div class="col-xl-15 col-lg-3 col-md-4 col-sm-6 col-6 product-col">
+							<div class="item_product_main">
+								<div class="item">
+									{% include 'product_grid_office' %}
+								</div>
+							</div>
+						</div>
+						{% endfor %}
+					</div>
+				</div>
+				{% if paginate.pages > 1 %}
+				<div class="col-12 text-center">
+					{% include 'paginate-pages' %}
+				</div>
+				{% endif %}
+				{% endpaginate -%} 
+			</div>
+		</div>
+		{%- endif -%}
+		{%- else -%}
+		<div class="row">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center mt-3">
+				<h1 class="title_page">Nhập từ khóa để tìm kiếm</h1>
+			</div>
+			<div class="serachpc_searchpage section margin-bottom-20 col-md-6 offset-md-3 py-3">
+				<div class="searchform col-12">
+					<form action="/search" method="get" class="input-group search-bar custom-input-group border-1 js-not-smartsearch" role="search">
+						<input type="text" name="q" value="{{ search.terms }}" autocomplete="off" placeholder="Tìm kiếm sản phẩm..."
+									 class="input-group-field form-control " style="border: 1px solid #f1f1f1;background: #f1f1f1" required="">
+						<input type="hidden" name="type" value="product">
+						<span class="input-group-btn btn-action">
+							<button type="submit" class="btn text-white icon-fallback-text h-100">
+								<span class="fa fa-search"></span>
+							</button>
+						</span>
+					</form>
+				</div>
+			</div>
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<h2 class="title-head text-center">Không tìm thấy bất kỳ kết quả nào với từ khóa trên.</h2>				
+			</div>
+		</div>
+		{%- endif -%}
+	</div>
+</section>

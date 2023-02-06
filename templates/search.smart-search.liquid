@@ -1,0 +1,79 @@
+{% include 'breadcrumb' %} 
+<section class="signup section search-main wrap_background background_white">
+	<div class="container card py-3">
+		<div class="row">
+			{% if search.performed and search.terms != blank %}   
+			{% paginate search.results by 12 %}        
+			{% if search.results_count == 0 %}
+			
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center mt-3">
+				<h1 class="title_page">Nhập từ khóa để tìm kiếm</h1>
+			</div>
+
+					<div class="serachpc_searchpage section margin-bottom-20 col-md-6 offset-md-3  py-3">
+				<div class="searchform col-12">
+					<form action="/search" method="get" class="input-group search-bar custom-input-group border-1 " role="search">
+						<input type="text" name="q" value="{{ search.terms | escape }}"  autocomplete="off" placeholder="Tìm kiếm sản phẩm..."
+							   class="input-group-field auto-search form-control " style="border: 1px solid #eee;" required="">
+						<input type="hidden" name="type" value="product">
+						<span class="input-group-btn btn-action">
+							<button type="submit" class="btn text-white icon-fallback-text">
+								<span class="fa fa-search"></span>
+							</button>
+						</span>
+					</form>
+				</div>
+			</div>
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<h2 class="title-head text-center">Không tìm thấy bất kỳ kết quả nào với từ khóa trên.</h2>				
+			</div>
+						{% else %}
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-bottom-15">
+				<h1 class="title-head">Có {{ search.results_count }} kết quả tìm kiếm phù hợp</h1>
+			</div>
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-bottom-30">
+				<div class="products-view-gridsss products cls_search list_hover_pro">
+					<div class="row content-col">
+						{% for product in search.results %}
+						<div class="col-lg-3 col-md-4 col-sm-6 col-6 product-col">
+							<div class="item_product_main">
+								<div class="item">
+									{% include 'product_grid_office' %}
+								</div>
+							</div>
+						</div>
+						{% endfor %}
+					</div>
+				</div>
+				{% if paginate.pages > 1 %}
+				<div class="col-12 text-center">
+					{% include 'paginate-pages' %}
+				</div>
+				{% endif %}
+			</div>
+			{% endif %}
+			{% endpaginate %}
+			{% else %}
+
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center mt-3">
+				<h1 class="title_page">Nhập từ khóa để tìm kiếm</h1>
+			</div>
+
+			<div class="serachpc_searchpage section margin-bottom-20 col-md-6 offset-md-3  py-3">
+				<div class="searchform col-12">
+					<form action="/search" method="get" class="input-group search-bar custom-input-group border-1 " role="search">
+						<input type="text" name="q" value="{{ search.terms | escape }}"  autocomplete="off" placeholder="Tìm kiếm sản phẩm..."
+							   class="input-group-field auto-search form-control " style="border: 1px solid #eee;" required="">
+						<input type="hidden" name="type" value="product">
+						<span class="input-group-btn btn-action">
+							<button type="submit" class="btn text-white icon-fallback-text">
+								<span class="fa fa-search"></span>
+							</button>
+						</span>
+					</form>
+				</div>
+			</div> 
+			{% endif %}
+		</div>
+	</div>
+</section>

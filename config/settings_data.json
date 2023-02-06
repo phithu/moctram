@@ -1,0 +1,6897 @@
+{
+
+"current": {
+
+
+"foodnbeverage_001__theme__title_font": "Google+Dancing+Script",
+
+
+"foodnbeverage_001__theme__font": "Google+Roboto",
+
+
+"foodnbeverage_001__theme__main_color": "#eb212e",
+
+
+"foodnbeverage_001__theme__favicon__img_url": null,
+
+
+"foodnbeverage_001__title_line__img_url": null,
+
+
+"foodnbeverage_001__hover_line": null,
+
+
+"foodnbeverage_001__theme__buynow__text": "ĐẶT HÀNG NGAY ",
+
+
+"foodnbeverage_001__theme__buynow__action": "0",
+
+
+"foodnbeverage_001__menu__show": true,
+
+
+"foodnbeverage_001__theme__logo__img_url": null,
+
+
+"foodnbeverage_001__menu__logo__logo_pos": "3",
+
+
+"foodnbeverage_001__menu__1__show": true,
+
+
+"foodnbeverage_001__menu__1__title": "Giới thiệu ",
+
+
+"foodnbeverage_001__menu__1__target_id": "#section-about",
+
+
+"foodnbeverage_001__menu__2__show": true,
+
+
+"foodnbeverage_001__menu__2__title": "Lợi ích của Matcha",
+
+
+"foodnbeverage_001__menu__2__target_id": "#section-benefit",
+
+
+"foodnbeverage_001__menu__3__show": true,
+
+
+"foodnbeverage_001__menu__3__title": "Sản phẩm",
+
+
+"foodnbeverage_001__menu__3__target_id": "#section-detail",
+
+
+"foodnbeverage_001__menu__4__show": true,
+
+
+"foodnbeverage_001__menu__4__title": "Đánh giá",
+
+
+"foodnbeverage_001__menu__4__target_id": "#section-reviews",
+
+
+"foodnbeverage_001__menu__buynow__btn_text": "MUA NGAY!!",
+
+
+"foodnbeverage_001__banner__show": true,
+
+
+"foodnbeverage_001__banner__img_url": null,
+
+
+"foodnbeverage_001__banner__title": "NAMA SOCOLA MATCHA GRAND OPENING ",
+
+
+"foodnbeverage_001__banner__content": "Chương trình ưu đãi đặc biệt nhân dịp khai trương cửa hàng mới tại Hồ Chí Minh. ",
+
+
+"foodnbeverage_001__banner__link_text": "",
+
+
+"foodnbeverage_001__banner__title_color": "#ffffff",
+
+
+"foodnbeverage_001__banner__content_color": "#ffffff",
+
+
+"foodnbeverage_001__banner__link_color": "#ffffff",
+
+
+"foodnbeverage_001__intro__show": true,
+
+
+"foodnbeverage_001__intro__title": "Thông tin công ty ",
+
+
+"foodnbeverage_001__intro__desc": "Công ty được thành lập từ năm 1960 trải qua hơn 50 năm phấn đấu và trưởng thành Công ty đã không ngừng lớn mạnh, tích lũy được nhiều kinh nghiệm trong sản xuất kinh doanh. Với đội ngũ lãnh đạo giàu kinh nghiệm, chiến lược kinh doanh tốt, đội ngũ kỹ sư được đào tạo chuyên ngành có năng lực và lực lượng công nhân giỏi tay nghề Công ty  đã tiến bước vững chắc và phát triển liên tục để giữ vững uy tín và chất lượng xứng đáng với niềm tin yêu của người tiêu dùng.",
+
+
+"foodnbeverage_001__intro__bg": "#ffffff",
+
+
+"foodnbeverage_001__intro__img_url": null,
+
+
+"foodnbeverage_001__benefit__show": true,
+
+
+"foodnbeverage_001__benefit__title": "Lợi ích từ Matcha",
+
+
+"foodnbeverage_001__benefit__desc": "",
+
+
+"foodnbeverage_001__benefit__bg": "#ffffff",
+
+
+"foodnbeverage_001__benefit__1__show": true,
+
+
+"foodnbeverage_001__benefit__1__img_url": null,
+
+
+"foodnbeverage_001__benefit__1__title": "Giàu chất chống Oxy hoá",
+
+
+"foodnbeverage_001__benefit__1__desc": "Một trong những lợi ích lớn nhất đối với sức khỏe của matcha chính là chứa chất chống oxy hóa bao gồm một loại flavonol gọi là catechin , trong đó nhiều nhất là epigallocatechin gallate (EGCG ). Catechin đã được chứng minh có hoạt tính kháng viêm, chống ung thư và chống lão hóa. Một nghiên cứu tiến hành tại Đại học Colorado, Mỹ cho thấy EGCG catechin có trong một ly matcha có thể lớn hơn 100 lần so với các loại trà xanh, trà đen hay loại trà thông thường khác",
+
+
+"foodnbeverage_001__benefit__1__target_id": "#benefit-2",
+
+
+"foodnbeverage_001__benefit__2__show": true,
+
+
+"foodnbeverage_001__benefit__2__img_url": null,
+
+
+"foodnbeverage_001__benefit__2__title": "Giải độc & giảm cân hiệu quả ",
+
+
+"foodnbeverage_001__benefit__2__desc": "Trong quá trình sản xuất bột matcha, các lá trà phải tránh các tia nắng mặt trời nhằm bảo vệ hoàn toàn tất cả các chất dinh dưỡng trà và nồng độ diệp lục có trong lá trà. Hàm lượng diệp lục cao không chỉ mang lại màu sắc rực rỡ mà còn giúp làm sạch các độc tố có hại ra khỏi cơ thể một cách tự nhiên nhất. ",
+
+
+"foodnbeverage_001__benefit__2__target_id": "#benefit-3",
+
+
+"foodnbeverage_001__benefit__3__show": true,
+
+
+"foodnbeverage_001__benefit__3__img_url": null,
+
+
+"foodnbeverage_001__benefit__3__title": "Chống nám da\r\n",
+
+
+"foodnbeverage_001__benefit__3__desc": "Trong một nghiên cứu 60 phụ nữ tuổi từ 40 đến 65 tuổi, một nửa phụ nữ được cho uống matcha và nửa còn lại được uống giả dược mỗi ngày trong vòng 12 tuần. Kết quả cho thấy, những người phụ nữ đã uống trà xanh, da của họ ít đỏ hơn 25% trong phản ứng với một liều lượng bức xạ tia cực tím (nghĩa là mô phỏng ánh sáng mặt trời) sau 12 tuần so với nhóm trà không xanh. Điều này cho thấy rằng các hoạt chất trong trà xanh tác động đến và bảo vệ da chống lại các tác hại của ánh nắng mặt trời.",
+
+
+"foodnbeverage_001__benefit__3__target_id": "#benefit-4",
+
+
+"foodnbeverage_001__benefit__4__show": true,
+
+
+"foodnbeverage_001__benefit__4__img_url": null,
+
+
+"foodnbeverage_001__benefit__4__title": "Giữ xương chắc khoẻ",
+
+
+"foodnbeverage_001__benefit__4__desc": "Matcha rất có lợi cho phụ nữ mãn kinh, người bị gãy xương. Nhiều nghiên cứu đã chứng minh rằng EGCG trong matcha có thể làm giảm số lượng hủy cốt bào, các tế bào hủy xương và tăng số lượng cũng như hoạt động của các tế bào tạo xương. Vì vậy, uống trà matcha trà cũng là một lựa chọn tuyệt vời cho những ai muốn duy trì sức mạnh của xương, ngăn ngừa mất xương hay tăng tốc cho quá trình điều trị gãy xương.",
+
+
+"foodnbeverage_001__benefit__4__target_id": "#benefit-5",
+
+
+"foodnbeverage_001__benefit__5__show": false,
+
+
+"foodnbeverage_001__benefit__5__img_url": null,
+
+
+"foodnbeverage_001__benefit__5__title": "",
+
+
+"foodnbeverage_001__benefit__5__desc": "",
+
+
+"foodnbeverage_001__benefit__5__target_id": "#section-about",
+
+
+"foodnbeverage_001__product__title": "Sản phẩm ",
+
+
+"foodnbeverage_001__product__handle": "banh-nama-socola-tra-xanh",
+
+
+"foodnbeverage_001__product__bg": "#423f3f",
+
+
+"foodnbeverage_001__product__color": "#ffffff",
+
+
+"foodnbeverage_001__product__1__show": true,
+
+
+"foodnbeverage_001__product__1__content": "Xuất xứ:  Nhật Bản",
+
+
+"foodnbeverage_001__product__2__show": true,
+
+
+"foodnbeverage_001__product__2__content": "Sản xuất bởi: MatchaJapan",
+
+
+"foodnbeverage_001__product__3__show": true,
+
+
+"foodnbeverage_001__product__3__content": "Chứng nhận chất lượng bởi JAS ",
+
+
+"foodnbeverage_001__product__4__show": true,
+
+
+"foodnbeverage_001__product__4__content": "Sản phẩm đạt tiêu chuẩn chứng nhận ISO 22000:2005 ",
+
+
+"foodnbeverage_001__product__5__show": true,
+
+
+"foodnbeverage_001__product__5__content": "Công nhận Chất lượng bởi JAB – Japan Accreditation Board ",
+
+
+"foodnbeverage_001__clock__show": true,
+
+
+"foodnbeverage_001__clock__desc": "Chương trình sẽ kết thúc sau ",
+
+
+"foodnbeverage_001__clock__time": "12:00:00",
+
+
+"foodnbeverage_001__clock__day": "30",
+
+
+"foodnbeverage_001__clock__month": "12",
+
+
+"foodnbeverage_001__clock__year": "2022",
+
+
+"foodnbeverage_001__reviews__show": true,
+
+
+"foodnbeverage_001__reviews__bg": "#ffffff",
+
+
+"foodnbeverage_001__reviews__title": "Khách hàng đánh giá ",
+
+
+"foodnbeverage_001__reviews__desc": "Sự hài lòng của khách hàng chính hạnh phúc của chúng tôi ",
+
+
+"foodnbeverage_001__reviews__1__show": true,
+
+
+"foodnbeverage_001__reviews__1__img_url": null,
+
+
+"foodnbeverage_001__reviews__1__name": "RADISLAV GANDAPAS ",
+
+
+"foodnbeverage_001__reviews__1__job": "CEO & Founder AothunTX ",
+
+
+"foodnbeverage_001__reviews__1__content": "Tôi rất hài lòng về sản phẩm dịch vụ của EGA-CAKE. Ba mẹ tôi rất thích dùng sản phẩm này. Chắc chắn sẽ giới thiệu thêm nhiều người dùng EGA-CAKE nữa. ",
+
+
+"foodnbeverage_001__reviews__2__show": true,
+
+
+"foodnbeverage_001__reviews__2__img_url": null,
+
+
+"foodnbeverage_001__reviews__2__name": "LÊ THÙY ",
+
+
+"foodnbeverage_001__reviews__2__job": "Chủ tịch và sáng lập MaxVN ",
+
+
+"foodnbeverage_001__reviews__2__content": "Chồng tôi cũng rất thích món bánh này",
+
+
+"foodnbeverage_001__reviews__3__show": true,
+
+
+"foodnbeverage_001__reviews__3__img_url": null,
+
+
+"foodnbeverage_001__reviews__3__name": "KHƯƠNG DƯƠNG",
+
+
+"foodnbeverage_001__reviews__3__job": "Phó giám đốc Chuỗi cửa hàng Riot",
+
+
+"foodnbeverage_001__reviews__3__content": "Sản phẩm tôi đang dùng thật là tuyệt vời",
+
+
+"foodnbeverage_001__reviews__4__show": true,
+
+
+"foodnbeverage_001__reviews__4__img_url": null,
+
+
+"foodnbeverage_001__reviews__4__name": "THÁI TRÂM",
+
+
+"foodnbeverage_001__reviews__4__job": "Chuyên gia chăm sóc sắc đẹp",
+
+
+"foodnbeverage_001__reviews__4__content": "Tôi rất hài lòng về sản phẩm dịch vụ của bạn.",
+
+
+"foodnbeverage_001__facebook_comment__show": false,
+
+
+"foodnbeverage_001__facebook_comment__url": "https://www.facebook.com/EGAnyCom/?fref=ts",
+
+
+"foodnbeverage_001__footer__show": true,
+
+
+"foodnbeverage_001__footer__bg": "#222222",
+
+
+"foodnbeverage_001__footer__linklist": "main-menu",
+
+
+"foodnbeverage_001__footer__copyright": "Copyright © 2018 EGANY. All rights reserved. ",
+
+
+"foodnbeverage_001__footer__contact__show": true,
+
+
+"foodnbeverage_001__footer__contact__title": "LIÊN LẠC VỚI CHÚNG TÔI ",
+
+
+"foodnbeverage_001__footer__contact__url": "mailto:hello@egany.com ",
+
+
+"foodnbeverage_001__footer__social__show": true,
+
+
+"foodnbeverage_001__footer__social__title": "Theo dõi chúng tôi",
+
+
+"foodnbeverage_001__footer__social__facebook__show": true,
+
+
+"foodnbeverage_001__footer__social__facebook__url": "https://www.facebook.com/",
+
+
+"foodnbeverage_001__footer__social__instagram__show": true,
+
+
+"foodnbeverage_001__footer__social__instagram__url": "https://www.instagram.com/",
+
+
+"foodnbeverage_001__footer__social__youtube__show": true,
+
+
+"foodnbeverage_001__footer__social__youtube__url": "https://www.youtube.com/",
+
+
+"foodnbeverage_001__footer__social__twitter__show": true,
+
+
+"foodnbeverage_001__footer__social__twitter__url": "https://www.instagram.com/",
+
+
+"foodnbeverage_001__footer__social__googleplus__show": true,
+
+
+"foodnbeverage_001__footer__social__googleplus__url": "https://www.google.com.vn",
+
+
+"blackfriday_001__theme__font": "Google+Open+Sans",
+
+
+"blackfriday_001__theme__main_color": "#fc0b0b",
+
+
+"blackfriday_001__theme__sale_color": "#f90b0b",
+
+
+"blackfriday_001__theme__bg": "#f2f2f2",
+
+
+"blackfriday_001__theme__logo__img_url": null,
+
+
+"blackfriday_001__theme__favicon__img_url": null,
+
+
+"blackfriday_001__theme__buynow__text": "THÊM VÀO GIỎ ",
+
+
+"blackfriday_001__theme__buynow__action": "2",
+
+
+"blackfriday_001__clock__show": true,
+
+
+"blackfriday_001__clock__bg": "#ed0c0c",
+
+
+"blackfriday_001__clock__color": "#fdfdf8",
+
+
+"blackfriday_001__clock__time": "12:00:00",
+
+
+"blackfriday_001__clock__day": "21",
+
+
+"blackfriday_001__clock__month": "12",
+
+
+"blackfriday_001__clock__year": "2022",
+
+
+"blackfriday_001__banner__show": true,
+
+
+"blackfriday_001__banner__img_url": null,
+
+
+"blackfriday_001__sub_banner__show": true,
+
+
+"blackfriday_001__sub_banner__1__show": true,
+
+
+"blackfriday_001__sub_banner__1__img_url": null,
+
+
+"blackfriday_001__sub_banner__1__desc": "FREESHIP TOÀN QUỐC",
+
+
+"blackfriday_001__sub_banner__1__url": "#block-1",
+
+
+"blackfriday_001__sub_banner__2__show": true,
+
+
+"blackfriday_001__sub_banner__2__img_url": null,
+
+
+"blackfriday_001__sub_banner__2__desc": "MUA 1 TẶNG 1",
+
+
+"blackfriday_001__sub_banner__2__url": "#block-2",
+
+
+"blackfriday_001__sub_banner__3__show": true,
+
+
+"blackfriday_001__sub_banner__3__img_url": null,
+
+
+"blackfriday_001__sub_banner__3__desc": "CÙNG HÀNG NGÀN KHUYẾN MÃI KHÁC ",
+
+
+"blackfriday_001__sub_banner__3__url": "#block-3",
+
+
+"blackfriday_001__collection__1__show": true,
+
+
+"blackfriday_001__collection__1__bg": "#f2f2f2",
+
+
+"blackfriday_001__collection__1__color": "#262626",
+
+
+"blackfriday_001__collection__1__title": "KHUYẾN MÃI CỰC LỚN",
+
+
+"blackfriday_001__collection__1__coll": "san-pham-noi-bat",
+
+
+"blackfriday_001__collection__1__limit": "8",
+
+
+"blackfriday_001__collection__1__title_icon__show": true,
+
+
+"blackfriday_001__collection__1__title_icon__img_url": null,
+
+
+"blackfriday_001__collection__1__banner__banner_pos": "1",
+
+
+"blackfriday_001__collection__1__banner__img_url": null,
+
+
+"blackfriday_001__collection__1__banner__url": "/collections/all",
+
+
+"blackfriday_001__collection__2__show": true,
+
+
+"blackfriday_001__collection__2__bg": "#f2f2f2",
+
+
+"blackfriday_001__collection__2__color": "#262626",
+
+
+"blackfriday_001__collection__2__title": "SẢN PHẨM BÁN CHẠY",
+
+
+"blackfriday_001__collection__2__coll": "san-pham-noi-bat",
+
+
+"blackfriday_001__collection__2__limit": "8",
+
+
+"blackfriday_001__collection__2__title_icon__show": true,
+
+
+"blackfriday_001__collection__2__title_icon__img_url": null,
+
+
+"blackfriday_001__collection__2__banner__banner_pos": "2",
+
+
+"blackfriday_001__collection__2__banner__img_url": null,
+
+
+"blackfriday_001__collection__2__banner__url": "/collections/all",
+
+
+"blackfriday_001__collection__3__show": true,
+
+
+"blackfriday_001__collection__3__bg": "#f2f2f2",
+
+
+"blackfriday_001__collection__3__color": "#262626",
+
+
+"blackfriday_001__collection__3__title": "TẶNG PHIẾU MUA HÀNG TRỊ GIÁ 200K",
+
+
+"blackfriday_001__collection__3__coll": "san-pham-noi-bat",
+
+
+"blackfriday_001__collection__3__limit": "4",
+
+
+"blackfriday_001__collection__3__title_icon__show": true,
+
+
+"blackfriday_001__collection__3__title_icon__img_url": null,
+
+
+"blackfriday_001__collection__3__banner__banner_pos": "0",
+
+
+"blackfriday_001__collection__3__banner__img_url": null,
+
+
+"blackfriday_001__collection__3__banner__url": "/collections/all",
+
+
+"blackfriday_001__collection__4__show": false,
+
+
+"blackfriday_001__collection__4__bg": "#ffffff",
+
+
+"blackfriday_001__collection__4__color": "#ffffff",
+
+
+"blackfriday_001__collection__4__title": "",
+
+
+"blackfriday_001__collection__4__coll": "",
+
+
+"blackfriday_001__collection__4__limit": "8",
+
+
+"blackfriday_001__collection__4__title_icon__show": false,
+
+
+"blackfriday_001__collection__4__title_icon__img_url": null,
+
+
+"blackfriday_001__collection__4__banner__banner_pos": "0",
+
+
+"blackfriday_001__collection__4__banner__img_url": null,
+
+
+"blackfriday_001__collection__4__banner__url": "",
+
+
+"blackfriday_001__collection__5__show": false,
+
+
+"blackfriday_001__collection__5__bg": "#ffffff",
+
+
+"blackfriday_001__collection__5__color": "#ffffff",
+
+
+"blackfriday_001__collection__5__title": "",
+
+
+"blackfriday_001__collection__5__coll": "",
+
+
+"blackfriday_001__collection__5__limit": "8",
+
+
+"blackfriday_001__collection__5__title_icon__show": false,
+
+
+"blackfriday_001__collection__5__title_icon__img_url": null,
+
+
+"blackfriday_001__collection__5__banner__banner_pos": "0",
+
+
+"blackfriday_001__collection__5__banner__img_url": null,
+
+
+"blackfriday_001__collection__5__banner__url": "",
+
+
+"blackfriday_001__collection__6__show": false,
+
+
+"blackfriday_001__collection__6__bg": "#ffffff",
+
+
+"blackfriday_001__collection__6__color": "#ffffff",
+
+
+"blackfriday_001__collection__6__title": "",
+
+
+"blackfriday_001__collection__6__coll": "",
+
+
+"blackfriday_001__collection__6__limit": "8",
+
+
+"blackfriday_001__collection__6__title_icon__show": false,
+
+
+"blackfriday_001__collection__6__title_icon__img_url": null,
+
+
+"blackfriday_001__collection__6__banner__banner_pos": "0",
+
+
+"blackfriday_001__collection__6__banner__img_url": null,
+
+
+"blackfriday_001__collection__6__banner__url": "",
+
+
+"blackfriday_001__collection__7__show": false,
+
+
+"blackfriday_001__collection__7__bg": "#ffffff",
+
+
+"blackfriday_001__collection__7__color": "#ffffff",
+
+
+"blackfriday_001__collection__7__title": "",
+
+
+"blackfriday_001__collection__7__coll": "",
+
+
+"blackfriday_001__collection__7__limit": "8",
+
+
+"blackfriday_001__collection__7__title_icon__show": false,
+
+
+"blackfriday_001__collection__7__title_icon__img_url": null,
+
+
+"blackfriday_001__collection__7__banner__banner_pos": "0",
+
+
+"blackfriday_001__collection__7__banner__img_url": null,
+
+
+"blackfriday_001__collection__7__banner__url": "",
+
+
+"blackfriday_001__collection__8__show": false,
+
+
+"blackfriday_001__collection__8__bg": "#ffffff",
+
+
+"blackfriday_001__collection__8__color": "#ffffff",
+
+
+"blackfriday_001__collection__8__title": "",
+
+
+"blackfriday_001__collection__8__coll": "",
+
+
+"blackfriday_001__collection__8__limit": "8",
+
+
+"blackfriday_001__collection__8__title_icon__show": false,
+
+
+"blackfriday_001__collection__8__title_icon__img_url": null,
+
+
+"blackfriday_001__collection__8__banner__banner_pos": "0",
+
+
+"blackfriday_001__collection__8__banner__img_url": null,
+
+
+"blackfriday_001__collection__8__banner__url": "",
+
+
+"blackfriday_001__carousel__show": true,
+
+
+"blackfriday_001__carousel__bg": "#000000",
+
+
+"blackfriday_001__carousel__title": "SẢN PHẨM NỔI BẬT ",
+
+
+"blackfriday_001__carousel__icon_title__show": true,
+
+
+"blackfriday_001__carousel__icon_title__img_url": null,
+
+
+"blackfriday_001__carousel__coll": "san-pham-noi-bat",
+
+
+"blackfriday_001__carousel__limit": "8",
+
+
+"blackfriday_001__partner__show": true,
+
+
+"blackfriday_001__partner__title": "DANH SÁCH ĐỐI TÁC ",
+
+
+"blackfriday_001__partner__icon_title__show": true,
+
+
+"blackfriday_001__partner__icon_title__img_url": null,
+
+
+"blackfriday_001__partner__1__show": true,
+
+
+"blackfriday_001__partner__1__img_url": null,
+
+
+"blackfriday_001__partner__2__show": true,
+
+
+"blackfriday_001__partner__2__img_url": null,
+
+
+"blackfriday_001__partner__3__show": true,
+
+
+"blackfriday_001__partner__3__img_url": null,
+
+
+"blackfriday_001__partner__4__show": true,
+
+
+"blackfriday_001__partner__4__img_url": null,
+
+
+"blackfriday_001__partner__5__show": true,
+
+
+"blackfriday_001__partner__5__img_url": null,
+
+
+"blackfriday_001__partner__6__show": true,
+
+
+"blackfriday_001__partner__6__img_url": null,
+
+
+"blackfriday_001__partner__7__show": true,
+
+
+"blackfriday_001__partner__7__img_url": null,
+
+
+"blackfriday_001__partner__8__show": true,
+
+
+"blackfriday_001__partner__8__img_url": null,
+
+
+"blackfriday_001__partner__9__show": true,
+
+
+"blackfriday_001__partner__9__img_url": null,
+
+
+"blackfriday_001__partner__10__show": false,
+
+
+"blackfriday_001__partner__10__img_url": null,
+
+
+"blackfriday_001__footer__show": true,
+
+
+"blackfriday_001__footer__bg": "#0d0d0d",
+
+
+"blackfriday_001__footer__color": "#b7b7b7",
+
+
+"blackfriday_001__footer__copyright": "Copyright © 2018 Mộc Trầm Agarwood. All rights reserved.  ",
+
+
+"xmas_002__theme__font": "Google+Roboto",
+
+
+"xmas_002__theme__title__font": "Google+Dancing+Script",
+
+
+"xmas_002__theme__main_color": "#f71111",
+
+
+"xmas_002__theme__bg_color": "#ffffff",
+
+
+"xmas_002__theme__logo": null,
+
+
+"xmas_002__theme__favicon": null,
+
+
+"xmas_002__theme__buynow__text": "THÊM VÀO GIỎ ",
+
+
+"xmas_002__theme__buynow__action": "2",
+
+
+"xmas_002__snow__show": true,
+
+
+"xmas_002__snow__speed": "5s",
+
+
+"xmas_002__clock__show": true,
+
+
+"xmas_002__clock__bg": "#f11212",
+
+
+"xmas_002__clock__number__color": "#edbf05",
+
+
+"xmas_002__clock__text__color": "#ffffff",
+
+
+"xmas_002__clock__pos": "1",
+
+
+"xmas_002__clock__time": "12:00:00",
+
+
+"xmas_002__clock__day": "21",
+
+
+"xmas_002__clock__month": "12",
+
+
+"xmas_002__clock__year": "2022",
+
+
+"xmas_002__banner__show": true,
+
+
+"xmas_002__banner__img_url": null,
+
+
+"xmas_002__banner__content__show": true,
+
+
+"xmas_002__banner__content__title": "ĐÓN GIÁNG SINH CÙNG EGA  CAKE",
+
+
+"xmas_002__banner__content__desc": "Nhân dịp Giáng sinh và năm mới 2021, EGA CAKE gửi tặng tới các <br> khách hàng chương trình KHUYẾN MÃI ĐẶC BIỆT, với mức chiết khấu ưu đãi <br> và nhiều quà tặng độc đáo. ",
+
+
+"xmas_002__banner__content__button__text": "DEAL NÓNG GIÁ SỐC ",
+
+
+"xmas_002__banner__content__url": "#featured",
+
+
+"xmas_002__sub_banner__show": true,
+
+
+"xmas_002__sub_banner__1__show": true,
+
+
+"xmas_002__sub_banner__1__img_url": null,
+
+
+"xmas_002__sub_banner__1__title": "HÀNG TRĂM QUÀ TẶNG MỪNG GIÁNG SINH ",
+
+
+"xmas_002__sub_banner__1__url": "#featured",
+
+
+"xmas_002__sub_banner__2__show": true,
+
+
+"xmas_002__sub_banner__2__img_url": null,
+
+
+"xmas_002__sub_banner__2__title": "CÙNG TẬN HƯỞNG GIÁNG SINH",
+
+
+"xmas_002__sub_banner__2__url": "#collection-1",
+
+
+"xmas_002__sub_banner__3__show": true,
+
+
+"xmas_002__sub_banner__3__img_url": null,
+
+
+"xmas_002__sub_banner__3__title": "KHUYẾN MÃI NGẬP TRÀN",
+
+
+"xmas_002__sub_banner__3__url": "#collection-2",
+
+
+"xmas_002__featured__show": true,
+
+
+"xmas_002__featured__title": "DEAL SHOCK GIÁNG SINH ",
+
+
+"xmas_002__featured__img_url": null,
+
+
+"xmas_002__featured__coll": "san-pham-noi-bat",
+
+
+"xmas_002__featured__limit": "4",
+
+
+"xmas_002__gift__show": true,
+
+
+"xmas_002__gift__bg": "#2c6838",
+
+
+"xmas_002__gift__color": "#fdec34",
+
+
+"xmas_002__gift__title": "Giảm ngay 10% ",
+
+
+"xmas_002__gift__code": "EGA_XMAS ",
+
+
+"xmas_002__gift__desc": "Nhập mã lúc thanh toán để được giảm 10% cho đơn hàng >500k",
+
+
+"xmas_002__collection__1__show": true,
+
+
+"xmas_002__collection__1__title": "Khuyến mãi cực lớn ",
+
+
+"xmas_002__collection__1__coll": "san-pham-noi-bat",
+
+
+"xmas_002__collection__1__limit": "8",
+
+
+"xmas_002__collection__2__show": true,
+
+
+"xmas_002__collection__2__title": "Ngày hội mua sắm",
+
+
+"xmas_002__collection__2__coll": "san-pham-noi-bat",
+
+
+"xmas_002__collection__2__limit": "8",
+
+
+"xmas_002__collection__3__show": false,
+
+
+"xmas_002__collection__3__title": "SẢN PHẨM BÁN NHIỀU NHẤT",
+
+
+"xmas_002__collection__3__coll": "sach-sau-am-min",
+
+
+"xmas_002__collection__3__limit": "8",
+
+
+"xmas_002__collection__4__show": false,
+
+
+"xmas_002__collection__4__title": "",
+
+
+"xmas_002__collection__4__coll": "",
+
+
+"xmas_002__collection__4__limit": "8",
+
+
+"xmas_002__collection__5__show": false,
+
+
+"xmas_002__collection__5__title": "",
+
+
+"xmas_002__collection__5__coll": "",
+
+
+"xmas_002__collection__5__limit": "8",
+
+
+"xmas_002__banner_offer__show": true,
+
+
+"xmas_002__banner_offer__img_url": null,
+
+
+"xmas_002__banner_offer__title": "NHỮNG BỘ SƯU TẬP KHÁC ĐANG CHỜ BẠN",
+
+
+"xmas_002__banner_offer__url": "#promotion",
+
+
+"xmas_002__promotion__show": true,
+
+
+"xmas_002__promotion__title": "CÁC BỘ SƯU TẬP ĐANG CÓ ƯU ĐÃI LỚN MÙA GIÁNG SINH",
+
+
+"xmas_002__promotion__desc": "Thoả sức mua sắm, ấm lòng mùa Giáng sinh ",
+
+
+"xmas_002__promotion__1__show": true,
+
+
+"xmas_002__promotion__1__img_url": null,
+
+
+"xmas_002__promotion__1__title": "BỘ SƯU TẬP BÁNH MÌ",
+
+
+"xmas_002__promotion__1__desc": "Tiết kiệm 40% mùa Giáng sinh ",
+
+
+"xmas_002__promotion__1__url": "/collections/all",
+
+
+"xmas_002__promotion__2__show": true,
+
+
+"xmas_002__promotion__2__img_url": null,
+
+
+"xmas_002__promotion__2__title": "BỘ SƯU TẬP BÁNH KEM LỚN",
+
+
+"xmas_002__promotion__2__desc": "Cùng sum vầy hạnh phúc bên người thân",
+
+
+"xmas_002__promotion__2__url": "/collections/all",
+
+
+"xmas_002__promotion__3__show": true,
+
+
+"xmas_002__promotion__3__img_url": null,
+
+
+"xmas_002__promotion__3__title": "BÁNH KEM NHỎ ",
+
+
+"xmas_002__promotion__3__desc": "Thảo sức vui cùng bạn bè",
+
+
+"xmas_002__promotion__3__url": "/collections/all",
+
+
+"xmas_002__payment__show": true,
+
+
+"xmas_002__payment__desc": "Giao hàng miễn phí cho đơn hàng từ <strong>200 ngàn</strong> trở lên ",
+
+
+"xmas_002__footer__coupon__show": true,
+
+
+"xmas_002__payment__img_url": null,
+
+
+"xmas_002__footer__coupon__desc": "Nhập mã khuyến mãi <strong>XMAS20</strong> để thanh toán và giảm ngay thêm <b>20%</b>. <br>Áp dụng cho 100 khách hàng đầu tiên ",
+
+
+"xmas_002__footer__coupon__bg": "#5b9a68",
+
+
+"xmas_002__footer__coupon__color": "#ffffff",
+
+
+"xmas_002__footer__register__show": true,
+
+
+"xmas_002__footer__register__img_url": null,
+
+
+"xmas_002__footer__register__bg": "#1a2f4c",
+
+
+"xmas_002__footer__register__title": "ĐĂNG KÝ NHẬN CÁC ƯU ĐÃI ĐẶC BIỆT ",
+
+
+"xmas_002__footer__register__desc": "Để không bỏ lỡ bất kì thông tin ưu đãi nào từ chúng tôi. ",
+
+
+"xmas_002__footer__register__btn_text": "NHẬN THÔNG TIN ",
+
+
+"xmas_002__footer__copyright__show": true,
+
+
+"xmas_002__footer__copyright__text": "Copyright © 2020 EGANY. All rights reserved. ",
+
+
+"xmas_002__footer__gotop__show": true,
+
+
+"xmas_002__footer__gotop__img_url": null,
+
+
+"use_variant_img": true,
+
+
+"favicon_enable": true,
+
+
+"backtotop_enable": true,
+
+
+"main-color": "#c4953c",
+
+
+"color_body_text": "#333333",
+
+
+"addThis_listSharing": true,
+
+
+"addthis_icon1_show": true,
+
+
+"subheader_bg": "#2F2D8E",
+
+
+"subheader_color": "#BCE4FD",
+
+
+"logo_use_image": true,
+
+
+"logo_width": "90",
+
+
+"logo_height": "50",
+
+
+"search_placeholder": "Bạn cần tìm gì..;\r\nNhập tên sản phẩm..",
+
+
+"policy_header_title_1": "Giao hàng đúng giờ",
+
+
+"policy_header_title_3": "Uy tín - chất lượng",
+
+
+"policy_header_link_2": "/",
+
+
+"policy_header_title_2": "Đóng gói cẩn thận",
+
+
+"policy_header_use_2": true,
+
+
+"policy_header_use_1": true,
+
+
+"policy_header_use_3": true,
+
+
+"main_menu": "main-menu",
+
+
+"use_menu_icon_1": true,
+
+
+"use_menu_icon_2": true,
+
+
+"use_menu_icon_3": true,
+
+
+"use_menu_icon_4": true,
+
+
+"use_menu_icon_5": true,
+
+
+"use_menu_icon_6": true,
+
+
+"use_menu_icon_7": true,
+
+
+"use_menu_icon_8": true,
+
+
+"use_menu_icon_9": true,
+
+
+"use_menu_icon_10": true,
+
+
+"home_section_1": "section_slider",
+
+
+"home_section_2": "section_coupons",
+
+
+"section_hot_banner_width": "1200",
+
+
+"section_hot_banner_height": "108",
+
+
+"section_hot_banner": true,
+
+
+"header_bg": "#2d2d2d",
+
+
+"header_color": "#ffffff",
+
+
+"secondary-color": "#fabd0d",
+
+
+"slider_1_enable": true,
+
+
+"right_banner_1_enable": true,
+
+
+"right_banner_2_enable": true,
+
+
+"right_banner_2_url": "/collections/all",
+
+
+"right_banner_2_width": "355",
+
+
+"right_banner_2_height": "172",
+
+
+"right_banner_1_width": "355",
+
+
+"right_banner_1_height": "172",
+
+
+"right_banner_1_url": "/collections/all",
+
+
+"bottom_banner_1_enable": true,
+
+
+"bottom_banner_2_enable": true,
+
+
+"bottom_banner_3_enable": true,
+
+
+"bottom_banner_1_width": "355",
+
+
+"bottom_banner_1_height": "172",
+
+
+"bottom_banner_2_width": "355",
+
+
+"bottom_banner_2_height": "172",
+
+
+"bottom_banner_3_width": "355",
+
+
+"bottom_banner_3_height": "172",
+
+
+"home_section_3": "section_flashsale",
+
+
+"coupon_copy_text": "Sao chép",
+
+
+"coupon_copied_text": "Đã chép",
+
+
+"coupon_text_color": "#2d2d2d",
+
+
+"coupon_button_color": "#cd3344",
+
+
+"coupon_1_home_show": true,
+
+
+"coupon_1_text": "Mua nhiều chiết khấu cao",
+
+
+"coupon_1_desc": "Giảm giá trực tiếp cho sản phẩm khi mua số lượng lớn",
+
+
+"coupon_1_code": "Mua nhiều chiết khấu cao",
+
+
+"coupon_1_imgshow": false,
+
+
+"coupon_2_home_show": true,
+
+
+"coupon_2_text": "Miễn phí vận chuyển cho đơn từ 1.000.000đ",
+
+
+"coupon_2_desc": "Khi mua hàng có tổng giá trị trên 1.000.000đ sẽ được miễn phí vận chuyển",
+
+
+"coupon_2_code": "Miễn phí vận chuyển cho đơn từ 300k",
+
+
+"coupon_2_imgshow": false,
+
+
+"coupon_3_home_show": true,
+
+
+"coupon_3_text": "Ưa đãi với giá sỉ",
+
+
+"coupon_3_desc": "Khi mua đến sản phẩm nhất định sẽ nhận giá ưu đãi",
+
+
+"coupon_3_imgshow": false,
+
+
+"coupon_3_code": "Ưa đãi với giá sỉ",
+
+
+"coupon_4_home_show": false,
+
+
+"coupon_4_text": "Giảm 25% khi mua trên 40 sản phẩm",
+
+
+"coupon_4_desc": "Khi mua trên 40 sản phẩm bạn sẽ được giảm 25% ",
+
+
+"coupon_4_imgshow": false,
+
+
+"coupon_4_code": "Giảm 25% khi mua trên 40 sản phẩm",
+
+
+"home_section_4": "section_product_tag_1",
+
+
+"flashsale_coll": "frontpage",
+
+
+"flashsale_bg": "#c4953c",
+
+
+"home_section_5": "section_product_tag_2",
+
+
+"flashsale_title": "Sản phẩm \"HOT\"",
+
+
+"section_top_title": "PHỤ KIỆN NỔI BẬT NHẤT",
+
+
+"section_top_url": "dien-thoai",
+
+
+"home_section_6": "section_product_tag_3",
+
+
+"home_section_10": "none",
+
+
+"home_section_11": "none",
+
+
+"brand_title": "THƯƠNG HIỆU SẢN PHẨM",
+
+
+"brand_1_en": true,
+
+
+"brand_width": "157",
+
+
+"brand_height": "67",
+
+
+"brand_2_en": true,
+
+
+"brand_3_en": true,
+
+
+"brand_4_en": true,
+
+
+"brand_5_en": true,
+
+
+"brand_6_en": true,
+
+
+"brand_7_en": true,
+
+
+"brand_8_en": true,
+
+
+"brand_9_en": false,
+
+
+"brand_10_en": false,
+
+
+"home_section_8": "none",
+
+
+"banner_coll_1_1_en": false,
+
+
+"banner_coll_1_2_en": false,
+
+
+"banner_coll_1_3_en": false,
+
+
+"banner_coll_2_1_en": true,
+
+
+"banner_coll_2_2_en": true,
+
+
+"banner_coll_2_3_en": true,
+
+
+"home_section_7": "section_product_tag_4",
+
+
+"home_section_9": "none",
+
+
+"product_top_1_title": "Phụ kiện trầm hương",
+
+
+"product_top_1_url": "phu-kien-tram-huong",
+
+
+"product_top_1_tab_1_show": false,
+
+
+"product_top_1_tab_1_title": "",
+
+
+"product_top_1_tab_1_coll": "",
+
+
+"product_top_1_tab_2_show": false,
+
+
+"product_top_1_tab_2_title": "",
+
+
+"product_top_1_tab_2_coll": "",
+
+
+"product_top_1_tab_3_show": false,
+
+
+"product_top_1_tab_3_title": "",
+
+
+"product_top_1_tab_3_coll": "",
+
+
+"product_top_2_title": "Trang trí nhà cửa",
+
+
+"product_top_2_mobile_layout": "multi_row",
+
+
+"product_top_2_url": "trang-tri-nha-cua",
+
+
+"product_top_2_tab_1_show": false,
+
+
+"product_top_2_tab_1_title": "Tab1",
+
+
+"product_top_2_tab_1_coll": "banh-can-lop",
+
+
+"product_top_2_tab_2_show": false,
+
+
+"product_top_2_tab_2_title": "Tab2",
+
+
+"product_top_2_tab_2_coll": "san-pham-noi-bat",
+
+
+"product_top_2_tab_3_show": false,
+
+
+"product_top_2_tab_3_title": "Tab3",
+
+
+"product_top_2_tab_3_coll": "san-pham-noi-bat",
+
+
+"product_top_3_title": "Tab 3",
+
+
+"product_top_3_url": "chocolate",
+
+
+"product_top_3_limit": "10",
+
+
+"product_top_3_tab_1_show": true,
+
+
+"product_top_3_tab_1_title": "Tab1",
+
+
+"product_top_3_tab_1_coll": "chocolate",
+
+
+"product_top_3_tab_2_show": true,
+
+
+"product_top_3_tab_2_title": "Tab2",
+
+
+"product_top_3_tab_2_coll": "chocolate",
+
+
+"product_top_3_tab_3_show": true,
+
+
+"product_top_3_tab_3_title": "Tab3",
+
+
+"product_top_3_tab_3_coll": "chocolate",
+
+
+"product_top_1_limit": "8",
+
+
+"product_top_2_limit": "5",
+
+
+"brand_items_display": "7",
+
+
+"brand_display_type": "grid",
+
+
+"brand_11_en": false,
+
+
+"brand_12_en": false,
+
+
+"brand_13_en": false,
+
+
+"brand_14_en": false,
+
+
+"slider_1_width": "913",
+
+
+"slider_1_height": "371",
+
+
+"use_menu_icon_11": true,
+
+
+"use_menu_icon_12": true,
+
+
+"use_menu_icon_13": true,
+
+
+"use_menu_icon_14": true,
+
+
+"flashsale_countdown_show": false,
+
+
+"flashsale_countdown_label": "Kết thúc sau",
+
+
+"flashsale_countdown_end_label": "Chương trình đã kết thúc!!",
+
+
+"flashsale_countdown_hour_start": "00:00",
+
+
+"flashsale_countdown_hour_finish": "24",
+
+
+"flashsale_countdown_date_start": "30/1/2022",
+
+
+"flashsale_countdown_date_finish": "30",
+
+
+"flashsale_coll_limit": "4",
+
+
+"flashsale_news_use": false,
+
+
+"flashsale_news_title": "",
+
+
+"flashsale_news_title_1": "Giảm 30K cho đơn hàng từ 399K",
+
+
+"flashsale_news_link_1": "/",
+
+
+"flashsale_news_title_2": "Giảm 8% cho đơn hàng từ 499K",
+
+
+"flashsale_news_link_2": "/",
+
+
+"flashsale_news_title_3": "Giảm 10% cho đơn hàng từ 800K",
+
+
+"flashsale_news_link_3": "/",
+
+
+"flashsale_heading_color": "#ffffff",
+
+
+"flashsale_countdown_color": "#ffffff",
+
+
+"color_price": "#ed3324",
+
+
+"index_blog_layout": "2blog",
+
+
+"limit_index_blog": "4",
+
+
+"url_index_blog_1": "tin-tuc-1",
+
+
+"url_index_blog_2": "tin-tuc-1",
+
+
+"title_index_blog_1": "TIN TỨC",
+
+
+"title_index_blog_2": "CÔNG THỨC LÀM BÁNH",
+
+
+"fot_use_logo": true,
+
+
+"footer_bg": "#ffffff",
+
+
+"footer_color": "#333333",
+
+
+"fot_contact": true,
+
+
+"footer_bg_overlay": "",
+
+
+"fot_c2_title": "Hỗ trợ khách hàng",
+
+
+"fot_menu3": "main-menu",
+
+
+"fot_c3_title": "Chính sách",
+
+
+"fot_menu4": "main-menu",
+
+
+"use_trustbadge_fot": true,
+
+
+"logo_bct_width": "104",
+
+
+"logo_bct_height": "40",
+
+
+"use_logo_bct": false,
+
+
+"fot_c4_title": "Liên hệ mua hàng",
+
+
+"fot_c4_content": "Gọi mua hàng:##0936271518##(8h-20h)@##@\nXem hàng trực tiếp tại: Chung Cư De Capella, đường Lương Định Của, phường An Khánh, TP Thủ",
+
+
+"promo_tag_1": "banchay",
+
+
+"promo_tag_color_1": "#333",
+
+
+"promo_tag_2": "dealhetsay",
+
+
+"promo_tag_color_2": "",
+
+
+"color_bg_label": "#fa3d38",
+
+
+"color_label": "#ffffff",
+
+
+"newsletter_form_action": "https://egany.us5.list-manage.com/subscribe/post?u=30fc9d9e428051fcf936d142c&id=8a0a96cc36",
+
+
+"use_newsletter": false,
+
+
+"addthis_icon3_show": true,
+
+
+"addthis_icon2_show": true,
+
+
+"social_facebook_link": "https://www.facebook.com/tramhuongthiennhienagarwood",
+
+
+"social_zalo_link": "https://zalo.me/0936271518",
+
+
+"newsletter_form_title": "Bạn muốn nhận khuyến mãi đặc biệt? Đăng ký ngay.",
+
+
+"flashsale_mobile_layout": "multi_row",
+
+
+"flashsale_countdown_bg": "#a50a06",
+
+
+"quickview_enable": true,
+
+
+"add_cart_enable": true,
+
+
+"add_cart_style": "style2",
+
+
+"addthis_icon1_tootlip": "Gọi ngay cho chúng tôi",
+
+
+"addthis_icon2_tootlip": "Chat với chúng tôi qua zalo",
+
+
+"color_addtocart": "#c4953c",
+
+
+"color_buynow": "#ed3324",
+
+
+"color_checkout": "#c4953c",
+
+
+"cro_show": true,
+
+
+"cro_add_cart_show": true,
+
+
+"cro_cart_show": true,
+
+
+"promo_tag_3": "sticker_2",
+
+
+"promo_tag_color_3": "#8f8f8f",
+
+
+"use_product_policy": true,
+
+
+"policy_product_title": "Chỉ có tại EGA Techstore",
+
+
+"policy_product_use_1": true,
+
+
+"policy_product_title_1": "Giao hàng đúng giờ",
+
+
+"policy_product_use_2": true,
+
+
+"policy_product_title_2": "Ưu đãi mỗi ngày",
+
+
+"policy_product_use_3": false,
+
+
+"policy_product_title_3": "Mi",
+
+
+"use_product_trustbadge": false,
+
+
+"use_product_coupons": true,
+
+
+"product_swatch_enable": true,
+
+
+"footer_trustbadge_title": "Phương thức thanh toán",
+
+
+"use_product_sidebar": true,
+
+
+"use_product_sumary": true,
+
+
+"header_location_link": "/pages/cua-hang",
+
+
+"sanphamlienquan_show": false,
+
+
+"sanphamlienquan_title": "SẢN PHẨM THƯỜNG MUA CÙNG",
+
+
+"limit_sanphamlienquan": "10",
+
+
+"type_sanphamlienquan": "collection",
+
+
+"tag_sanphamlienquan": "lienquan",
+
+
+"use_collection_alternative": true,
+
+
+"use_product_promotion": true,
+
+
+"product_promotion_heading": "KHUYẾN MÃI - ƯU ĐÃI",
+
+
+"use_product_recent": true,
+
+
+"product_thumb_enable": true,
+
+
+"installment_enable": true,
+
+
+"product_installment_content": "MUA TRẢ GÓP<span>Duyệt hồ sơ trong 5 phút</span>",
+
+
+"product_addtocart_content": "THÊM VÀO GIỎ",
+
+
+"equalprice_show": true,
+
+
+"equalprice_heading": "SẢN PHẨM CÙNG PHÂN KHÚC GIÁ",
+
+
+"equalprice_limit": "5",
+
+
+"equalprice_empty_message": "Không có sản phẩm nào",
+
+
+"section_hot_title": "Mỹ nghệ trầm hương",
+
+
+"section_hot_url": "my-nghe-tram-huong",
+
+
+"section_hot_limit": "8",
+
+
+"section_hot_use_banner": false,
+
+
+"section_product_tag_menu": "dien-thoai",
+
+
+"section_product_tag_title": "PHỤ KIỆN NỔI BẬT",
+
+
+"section_product_tag_url": "dien-thoai",
+
+
+"section_product_tag_banner": false,
+
+
+"section_product_tag_list": "",
+
+
+"section_product_tag_limit": "10",
+
+
+"section_product_tag_1_title": "Miếng giác trầm hương",
+
+
+"section_product_tag_1_menu": " ",
+
+
+"section_product_tag_1_url": "mieng-giac-tram-huong",
+
+
+"section_product_tag_1_limit": "8",
+
+
+"section_product_tag_1_layout": "grid",
+
+
+"home_section_12": "none",
+
+
+"section_product_tag_2_title": "Vòng tay - Trang sức trầm hương",
+
+
+"section_product_tag_2_menu": "",
+
+
+"section_product_tag_2_url": "vong-tay-trang-suc-tram-huong",
+
+
+"section_product_tag_2_limit": "8",
+
+
+"section_product_tag_3_title": "Nhang trầm hương",
+
+
+"section_product_tag_3_menu": "",
+
+
+"section_product_tag_3_url": "nhang-tram-huong",
+
+
+"section_product_tag_3_limit": "8",
+
+
+"section_product_tag_1_banner": false,
+
+
+"section_product_tag_1_list": "",
+
+
+"section_product_tag_2_list": "",
+
+
+"section_product_tag_3_list": "",
+
+
+"footer_logo_height": "50",
+
+
+"footer_logo_width": "66",
+
+
+"coll_1_en": true,
+
+
+"coll_2_en": true,
+
+
+"coll_3_en": true,
+
+
+"coll_4_en": true,
+
+
+"coll_5_en": true,
+
+
+"coll_6_en": true,
+
+
+"coll_7_en": true,
+
+
+"coll_8_en": false,
+
+
+"coll_9_en": false,
+
+
+"coll_10_en": false,
+
+
+"coll_title": "",
+
+
+"coll_link": "",
+
+
+"coll_1_title": "Sản phẩm HOT",
+
+
+"coll_2_title": "Bánh kem nhỏ",
+
+
+"coll_3_title": "Bánh ngọt ",
+
+
+"coll_4_title": "Bánh kem ",
+
+
+"coll_5_title": "Bánh mì",
+
+
+"coll_6_title": "Bánh theo mùa ",
+
+
+"coll_7_title": "Bánh đóng gói ",
+
+
+"coll_8_title": "Ốp lưng",
+
+
+"coll_9_title": "Củ sạc ",
+
+
+"coll_10_title": "Phụ kiện ",
+
+
+"coupon_icon_background": "#ed3324",
+
+
+"coupon_1_coll": "",
+
+
+"flashsale_show_quantity": true,
+
+
+"flashsale_max_stock": "500",
+
+
+"flashsale_percent_min": "30",
+
+
+"flashsale_percent_max": "90",
+
+
+"flashsale_quantity_style": "style2",
+
+
+"flashsale_process_background": "#ffaaaf",
+
+
+"flashsale_process_color1": "#cd3344",
+
+
+"flashsale_process_color2": "#ff424e",
+
+
+"flashsale_stock_color": "#ffffff",
+
+
+"flashsale_quantity": "random",
+
+
+"coll_width": "64",
+
+
+"coll_height": "64",
+
+
+"coll_1_link": "/collections/all",
+
+
+"coll_2_link": "/collections/all",
+
+
+"coll_3_link": "/collections/all",
+
+
+"coll_4_link": "/collections/all",
+
+
+"coll_5_link": "/collections/all",
+
+
+"coll_6_link": "/collections/all",
+
+
+"coll_7_link": "/collections/all",
+
+
+"coll_8_link": "/collections/all",
+
+
+"coll_9_link": "/collections/all",
+
+
+"coll_10_link": "/collections/all",
+
+
+"use_top_banner": false,
+
+
+"use_label_1": false,
+
+
+"label_1_tag": "flashsale",
+
+
+"use_label_2": false,
+
+
+"label_2_tag": "flashsale",
+
+
+"promo_tag_type_1": "none",
+
+
+"promo_tag_type_2": "image",
+
+
+"promo_tag_bg_1": "#f0f0f0",
+
+
+"promo_tag_type_3": "image",
+
+
+"promo_tag_border_3": "#ff1010",
+
+
+"color_1": "Trắng",
+
+
+"color_1_c": "#ffffff",
+
+
+"variant_color_type": "code",
+
+
+"filter_tag1": false,
+
+
+"filter_price": true,
+
+
+"filter_vendor": false,
+
+
+"filter_vendor_title": "Hãng sản xuất",
+
+
+"filter_type": true,
+
+
+"filter_type_title": "Loại sản phẩm",
+
+
+"aside_category_enable": true,
+
+
+"filter_tag1_title": "Màu sắc",
+
+
+"filter_tag1_list": "Trắng; Đen; Xám; Xanh dương; Đỏ; Hồng; Tím; Xanh rêu; Kem; Bạc",
+
+
+"promo_tag_border_1": "#f0f0f0",
+
+
+"product_promotion_bg": "#c4953c",
+
+
+"product_promotion_color": "#ffffff",
+
+
+"product_promotion_boxbg": "#eeeeee",
+
+
+"product_promotion_1_content": "Mua nhiều giá tốt",
+
+
+"product_promotion_2_content": "Miễn phí ship cho đơn hàng từ 1.000.000đ",
+
+
+"product_promotion_3_content": "Hỗ trợ 10.000 phí ship cho đơn hàng từ 200.000đ",
+
+
+"product_promotion_copy": "Sao chép",
+
+
+"product_promotion_copied": "Đã chép",
+
+
+"top_banner_height": "44",
+
+
+"slider_2_enable": true,
+
+
+"page_id": "1683898xx84826236",
+
+
+"product_lightbox_enable": true,
+
+
+"use_product_repeated_addcart": true,
+
+
+"use_product_review_tab": false,
+
+
+"use_video_play_button_pditem": true,
+
+
+"color_2": "Xanh dương",
+
+
+"color_2_c": "#009cce",
+
+
+"color_3": "Xám",
+
+
+"color_3_c": "#7e7e7e",
+
+
+"color_4": "Đỏ",
+
+
+"color_4_c": "#ff0505",
+
+
+"color_5": "Đen",
+
+
+"color_5_c": "#000000",
+
+
+"color_6": "Hồng",
+
+
+"color_6_c": "#ffd1d1",
+
+
+"color_7": "Tím",
+
+
+"color_7_c": "#a000bb",
+
+
+"color_8": "Xanh biển",
+
+
+"color_8_c": "#afeeee",
+
+
+"color_9": "Kem",
+
+
+"color_9_c": "#fff8e2",
+
+
+"color_10": "Bạc",
+
+
+"color_10_c": "#f0f0f0",
+
+
+"use_collection_main_banner": false,
+
+
+"collection_banner_width": "1200",
+
+
+"collection_banner_height": "200",
+
+
+"filter_price_title": "GIÁ",
+
+
+"filter_price_node": "1000000;2000000;3000000;5000000;7000000;10000000",
+
+
+"top_banner_color": "#a50a06",
+
+
+"collection_number_product": "12",
+
+
+"store_locator_form_title": "Tìm cửa hàng",
+
+
+"store_locator_dist_label": "Chọn tỉnh thành",
+
+
+"store_locator_stores_label": "Chọn cửa hàng",
+
+
+"store_locator_address_label": "Địa chỉ",
+
+
+"store_locator_spreadsheet": "https://docs.google.com/spreadsheets/d/1ZQ34V3c4GJqXdXJcarHsHX4-hqKldORIHQVZiaG_Raw/edit#gid=0",
+
+
+"use_cart_trustbadge": true,
+
+
+"cart_coupon_show": true,
+
+
+"use_collection_cart_products": false,
+
+
+"collection_cart": "chocolate",
+
+
+"collection_cart_limit": "10",
+
+
+"heading_collection_cart": "Sản phẩm thường mua cùng",
+
+
+"contactr_contact_maps": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.3145634531375!2d106.73273631526044!3d10.787202061943342!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317527f6e9c7ef1b%3A0xa1fa9a21351d62b1!2sde%20Capella!5e0!3m2!1svi!2s!4v1675072253867!5m2!1svi!2s\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>",
+
+
+"title_page": "Mộc Trầm Agarwood",
+
+
+"policy_header_link_3": "/",
+
+
+"product_installment_link": "/huong-dan-tra-gop",
+
+
+"blogs_number_perpage": "6",
+
+
+"blogs_related_enable": true,
+
+
+"blogs_related_limit": "5",
+
+
+"blogs_aside_enable": true,
+
+
+"blogs_aside_url": "tin-tuc",
+
+
+"blogs_aside_limit": "5",
+
+
+"blogs_related_title": "Bài viết liên quan",
+
+
+"blogs_aside_title": "Tin tức nổi bật",
+
+
+"aside_category_blog_title": "Danh mục",
+
+
+"use_collection_coupons": true,
+
+
+"use_recent_view": true,
+
+
+"installment_type": "enabled_with_price",
+
+
+"coupon_1_info": "- Khi mua số lượng lớn sẽ được giá ưu đãi . <br/>\n- Không giới hạn số lần mua. . <br/>\n- Không giới hạn sản phẩm.",
+
+
+"installment_price": "1000000",
+
+
+"coupon_2_info": "- Khi mua hàng có tổng giá trị trên 1.000.000đ sẽ được miễn phí vận chuyển . <br/>\n- Không giới hạn số lần mua. . <br/>\n- Không giới hạn sản phẩm.",
+
+
+"coupon_3_info": "- Khi mua đến sản phẩm nhất định sẽ nhận giá ưu đãi. <br/>\n- Không giới hạn số lần mua. . <br/>\n- Không giới hạn sản phẩm.",
+
+
+"coupon_4_info": "- Khi mua trên 40 sản phẩm bạn sẽ được giảm 25% . <br/>\n- Không giới hạn số lần mua.",
+
+
+"equalprice_percent": "50",
+
+
+"slider_1_url": "/collections/all",
+
+
+"slider_1_alt": "Sản phẩm nổi bật",
+
+
+"slider_2_url": "/collections/all",
+
+
+"slider_2_alt": "Khuyến mãi lớn chào xuân",
+
+
+"right_banner_1_alt": "Củ sạc",
+
+
+"right_2_banner_alt": "Máy tính bảng",
+
+
+"bottom_banner_1_url": "/collections/all",
+
+
+"bottom_banner_1_alt": "Đồng hồ thông minh",
+
+
+"bottom_banner_2_url": "/collections/all",
+
+
+"bottom_banner_2_alt": "Ốp lưng điện thoại",
+
+
+"bottom_banner_3_url": "/collections/all",
+
+
+"bottom_banner_3_alt": "Pin sạc dự phòng",
+
+
+"buynow_enable": true,
+
+
+"product_buynow_content": "MUA NGAY",
+
+
+"policy_header_link_1": "/",
+
+
+"filter_search_list": "",
+
+
+"top_banner_width": "1200",
+
+
+"color_buynow_text": "#ffffff",
+
+
+"brand_1_link": "/collections/all",
+
+
+"brand_1_title": "Tiệm bánh gia đình",
+
+
+"brand_2_link": "/collections/all",
+
+
+"brand_2_title": "Đức Phát",
+
+
+"brand_3_link": "/collections/all",
+
+
+"brand_3_title": "Cake",
+
+
+"brand_5_link": "/collections/all",
+
+
+"brand_5_title": "Hạnh Phúc",
+
+
+"brand_8_title": "Hủ Lâm Môn",
+
+
+"brand_8_link": "/collections/all",
+
+
+"brand_9_title": "LG",
+
+
+"brand_9_link": "/collections/all",
+
+
+"brand_10_title": "Sam sung",
+
+
+"brand_10_link": "/collections/all",
+
+
+"use_video_product": true,
+
+
+"use_video_play_button": true,
+
+
+"product_review_heading": "ĐÁNH GIÁ SẢN PHẨM",
+
+
+"use_reviews": false,
+
+
+"section_product_tag_1_banner_width": "285",
+
+
+"section_product_tag_1_banner_height": "371",
+
+
+"flashsale_sold_text": "Đã bán [soluong] sản phẩm",
+
+
+"banner_popup_show": false,
+
+
+"section_product_tag_1_banner_link": "/",
+
+
+"section_product_tag_1_banner_title": "Đông hồ thông minh",
+
+
+"email": "moctramroyalagarwood@gmail.com",
+
+
+"address": "Chung Cư De Capella, đường Lương Định Của, phường An Khánh, TP Thủ ",
+
+
+"phone": "0936271518",
+
+
+"section_hot_banner_link": "/collections/all",
+
+
+"section_hot_banner_alt": "Teabreak",
+
+
+"sanphamlienquan_empty_message": "Không có sản phẩm nào",
+
+
+"banner_coll_2_1_link": "/collections/all",
+
+
+"banner_coll_2_1_title": "Phụ kiện chính hãng",
+
+
+"banner_coll_2_2_link": "",
+
+
+"banner_coll_2_2_title": "Điện thoại",
+
+
+"banner_coll_2_3_link": "",
+
+
+"banner_coll_2_3_title": "Loa không dây",
+
+
+"banner_coll_1_1_link": "/collections/all",
+
+
+"banner_coll_1_1_title": "Bánh bì",
+
+
+"banner_coll_1_2_title": "Bánh kem",
+
+
+"banner_coll_1_2_link": "/collections/all",
+
+
+"banner_coll_1_3_title": "Bánh kem nhỏ",
+
+
+"banner_coll_1_3_link": "/collections/all",
+
+
+"equalprice_from": "all",
+
+
+"banner_popup_height": "393",
+
+
+"top_banner_url": "/collections/all",
+
+
+"top_banner_title": "Khuyến mãi",
+
+
+"banner_popup_width": "319",
+
+
+"use_frame_1": false,
+
+
+"frame_1_position": "center-center",
+
+
+"frame_1_coll": "valentine",
+
+
+"frame_1_scale": "0.7",
+
+
+"brand_6_link": "/collections/all",
+
+
+"brand_6_title": "Baker Kitchen",
+
+
+"brand_7_link": "/collections/all",
+
+
+"brand_7_title": "Anh Quân",
+
+
+"brand_11_link": "/collections/all",
+
+
+"brand_11_title": "Realme",
+
+
+"brand_12_link": "/collections/all",
+
+
+"brand_12_title": "BackBerry",
+
+
+"brand_13_link": "/collections/all",
+
+
+"brand_4_link": "/collections/all",
+
+
+"brand_4_title": "Kem Bơ Bánh Ngọt",
+
+
+"brand_13_title": "Huawei",
+
+
+"brand_14_link": "/collections/all",
+
+
+"brand_14_title": "Lenovo",
+
+
+"ega_sm_enable": true,
+
+
+"ega_sm_product_limit": "6",
+
+
+"ega_sm_product_heading": "Sản phẩm",
+
+
+"ega_sm_search_width": "512",
+
+
+"ega_sm_search_height": "380",
+
+
+"ega_sm_search_header": "Kết quả tìm kiếm cho ",
+
+
+"ega_sm_notfound": "Không tìm thấy kết quả nào",
+
+
+"ega_sm_show_all": "Xem tất cả sản phẩm có chứa ",
+
+
+"ega_sm_color_bg_hover": "",
+
+
+"ega_sm_color_header": "#dd0115",
+
+
+"ega_sm_color_item_text_price": "#dd0115",
+
+
+"section_product_tag_1_bg": "#f2f2f2",
+
+
+"section_product_tag_1_color": "#707070",
+
+
+"use_product_hotline": true,
+
+
+"product_hotline_message": "Gọi đặt mua [0936271518] (7:30 - 22:00)",
+
+
+"cart_empty_title": "Hổng” có gì trong giỏ hết",
+
+
+"cart_empty_subtitle": "Về trang cửa hàng để chọn mua sản phẩm bạn nhé!!",
+
+
+"cart_empty_cta_link": "/",
+
+
+"cart_empty_cta": "Mua sắm ngay",
+
+
+"cro_home_show": "3",
+
+
+"cro_home_url": "/collections/frontpage",
+
+
+"cro_home_title": "Ưu đãi",
+
+
+"cro_coll_show": "4",
+
+
+"cro_coll_title": "Sản phẩm",
+
+
+"cro_coll_url": "/collections/all",
+
+
+"cro_blog_show": "5",
+
+
+"cro_blog_title": "Cửa hàng",
+
+
+"cro_blog_url": "/pages/cua-hang",
+
+
+"cro_hotline_show": "1",
+
+
+"cro_mess_show": "2",
+
+
+"banner_popup_alt": "Chào mừng bạn!!",
+
+
+"banner_popup_url": "/collections/all",
+
+
+"footer_trustbadge_url": "/",
+
+
+"delivery_show": true,
+
+
+"delivery_heading": "HẸN GIỜ NHẬN HÀNG",
+
+
+"delivery_heading_color": "#000000",
+
+
+"delivery_date_title": "Ngày nhận hàng",
+
+
+"delivery_time_title": "Thời gian nhận hàng",
+
+
+"delivery_time_default": "Chọn thời gian",
+
+
+"delivery_time": "08h00 - 12h00; 14h00 - 18h00; 19h00 - 21h00",
+
+
+"messenger": "https://www.messenger.com/t/100065120635865",
+
+
+"zalo": "https://zalo.me/0936271518",
+
+
+"sale_pop_coll": "san-pham-noi-bat",
+
+
+"sale_pop_desc": "[name] ở [address] vừa mua cách đây [time]",
+
+
+"sale_pop_show": false,
+
+
+"sale_pop_color": "#e40303",
+
+
+"flashsale_opening_text": "Vừa mở bán",
+
+
+"flashsale_out_of_stock_soon_text": "Sắp cháy hàng",
+
+
+"slider_2_width": "913",
+
+
+"slider_2_height": "371",
+
+
+"banner_coll_1_1_width": "289",
+
+
+"banner_coll_1_1_height": "175",
+
+
+"banner_coll_1_2_width": "289",
+
+
+"banner_coll_1_2_height": "175",
+
+
+"banner_coll_1_3_width": "289",
+
+
+"banner_coll_1_3_height": "175",
+
+
+"section_hot_width": "472",
+
+
+"section_hot_height": "345",
+
+
+"policy_product_title_4": "Đói gói cẩn thận",
+
+
+"policy_product_use_4": true,
+
+
+"right_banner_2_alt": "Máy tính bảng",
+
+
+"checkout_action": "checkout",
+
+
+"use_cart_limit": false,
+
+
+"cart_limit": "1000000",
+
+
+"cart_limit_message": "Đơn hàng của bạn chưa đạt giá trị tối thiểu 1000.000đ. \r\nVui lòng chọn mua thêm sản phẩm.",
+
+
+"use_cart_vat": true,
+
+
+"cart_vat_checkbox_text": "Xuất hóa đơn công ty",
+
+
+"cart_vat_company_label": "Tên công ty",
+
+
+"cart_vat_company_placeholder": "Tên công ty",
+
+
+"cart_vat_tax_code_label": "Mã số thuế",
+
+
+"cart_vat_tax_code_placeholder": "Mã số thuế",
+
+
+"cart_vat_tax_min": "10",
+
+
+"cart_vat_address_label": "Địa chỉ công ty",
+
+
+"cart_vat_address_placeholder": "Nhập địa chỉ công ty (bao gồm Phường/Xã, Quận/Huyện, Tỉnh/Thành phố nếu có)",
+
+
+"cart_vat_email_label": "Email nhận hoá đơn",
+
+
+"cart_vat_email_placeholder": "Email nhận hoá đơn",
+
+
+"use_pirce_vat": true,
+
+
+"pirce_vat": "(Đã bao gồm VAT nếu có)",
+
+
+"cart_vat_checked_title": "Bạn có chắc muốn xuất hóa đơn?",
+
+
+"cart_vat_checked_description": "Hãy kiểm tra lại thông tin hóa đơn của mình thật chính xác!",
+
+
+"cart_vat_checked_confirm": "Có, tiến hành thanh toán",
+
+
+"cart_vat_checked_cancel": "Kiểm tra lại",
+
+
+"cart_vat_empty_message": "Bạn không được để trống trường này",
+
+
+"cart_vat_tax_min_message": "Mã số thuế phải tối thiểu 10 ký tự nè",
+
+
+"cart_vat_email_error_message": "Định dạng email không đúng",
+
+
+"blog_image_width_ratio": "425",
+
+
+"blog_image_height_ratio": "227",
+
+
+"logo_bct_alt": "Logo Bộ Công Thương",
+
+
+"top_banner_mb": true,
+
+
+"top_banner_mb_width": "828",
+
+
+"home_page_keywords": "Giao diện website cho cửa hàng bán bánh ngọt, EGA-Cake, Egany",
+
+
+"logo_bct_url": "/",
+
+
+"collection_main_banner_alt": "Tất cả sản phẩm",
+
+
+"collection_main_banner_url": "/collections/all",
+
+
+"xmas_002__banner0__show": false,
+
+
+"hotline_content": "Gọi mua hàng: 0936271518",
+
+
+"hotline_sub_content": "(8:00 - 19:00 T2 - CN)",
+
+
+"section_coupon_bg": "#f1f1f1",
+
+
+"coll_11_en": false,
+
+
+"coll_12_en": false,
+
+
+"coll_13_en": false,
+
+
+"coll_14_en": false,
+
+
+"coll_11_title": "Phụ kiện ",
+
+
+"coll_11_link": "/collections/all",
+
+
+"coll_12_link": "/collections/all",
+
+
+"coll_13_link": "/collections/all",
+
+
+"coll_14_link": "/collections/all",
+
+
+"coll_12_title": "Phụ kiện ",
+
+
+"coll_13_title": "Phụ kiện ",
+
+
+"coll_14_title": "Phụ kiện ",
+
+
+"section_collections_bg": "#ffffff",
+
+
+"section_hot_use_icon": false,
+
+
+"product_top_1_mobile_layout": "multi_row",
+
+
+"title_index_blog_1_use_icon": true,
+
+
+"title_index_blog_2_use_icon": true,
+
+
+"banner_coll_2_1_width": "39",
+
+
+"banner_coll_2_1_height": "33",
+
+
+"banner_coll_2_2_width": "39",
+
+
+"banner_coll_2_2_height": "33",
+
+
+"banner_coll_2_3_width": "39",
+
+
+"banner_coll_2_3_height": "33",
+
+
+"banner_coll_2_bg": "#ffffff",
+
+
+"banner_coll_2_content_position": "right",
+
+
+"banner_coll_2_1_content": "Giao hàng đúng giờ",
+
+
+"banner_coll_2_2_content": "Ưu đãi hấp dẫn mỗi ngày",
+
+
+"banner_coll_2_3_content": "Đổi trả miễn phí 7 ngày",
+
+
+"section_policies_1_en": true,
+
+
+"section_policies_1_content": "Giao hàng đúng giờ",
+
+
+"section_policies_1_title": "Giao hàng đúng giờ",
+
+
+"section_policies_2_en": true,
+
+
+"section_policies_2_content": "Ưu đãi mỗi ngày",
+
+
+"section_policies_2_title": "Ưu đãi mỗi ngày",
+
+
+"section_policies_3_en": true,
+
+
+"section_policies_3_content": "Đổi trả trong vòng 7 ngày",
+
+
+"section_policies_3_title": "Miễn phí đổi trả trong 7 ngày",
+
+
+"section_policies_bg": "#ffffff",
+
+
+"section_coupon_item_per_row": "3",
+
+
+"product_top_1_use_icon": false,
+
+
+"section_hot_title_color": "#fcf9f9",
+
+
+"section_hot_title_bg": "#c4953c",
+
+
+"product_top_1_title_color": "#ffffff",
+
+
+"product_top_1_title_bg": "#212121",
+
+
+"index_blog_title_color": "#ffffff",
+
+
+"index_blog_title_bg": "#212121",
+
+
+"social_instagram_link": "https://bikipweb.site",
+
+
+"social_youtube_link": "https://bikipweb.site",
+
+
+"social_tiktok_link": "https://bikipweb.site",
+
+
+"header_category_bg": "#c4953c",
+
+
+"header_category_color": "#fff",
+
+
+"use_frame_2": false,
+
+
+"frame_2_coll": "giam50",
+
+
+"frame_2_position": "bottom-center",
+
+
+"product_promotion_4_content": "",
+
+
+"product_top_1_active_tab_bg": "#fabd0d",
+
+
+"product_top_1_active_tab_color": "#333333",
+
+
+"flashsale_countdown_week_loop": "7",
+
+
+"flashsale_countdown_type": "hours",
+
+
+"blackfriday_001__banner0__show": false,
+
+
+"blackfriday_001__sub_banner0__1__show": false,
+
+
+"blackfriday_001__sub_banner0__2__show": false,
+
+
+"blackfriday_001__sub_banner0__3__show": false,
+
+
+"blackfriday_001_coll_banner0_img_1_show": false,
+
+
+"blackfriday_001_coll_banner0_img_2_show": false,
+
+
+"section_product_tag_1_use_icon": false,
+
+
+"xmas_002__sub_banner0__1__show": false,
+
+
+"xmas_002__sub_banner0__2__show": false,
+
+
+"xmas_002__sub_banner0__3__show": false,
+
+
+"section_product_tag_1_title_bg": "#c4953c",
+
+
+"section_product_tag_1_title_color": "#fcf9f9",
+
+
+"flashsale_news_color": "#ffffff",
+
+
+"use_hover_change_image": true,
+
+
+"flashsale_banner_link": "/collections/all",
+
+
+"flashsale_banner_alt": "Flash sale",
+
+
+"flashsale_coll_bg": "#fcf4eb",
+
+
+"use_promo_box_coll": true,
+
+
+"menu_col": "1",
+
+
+"filter_tag2_title": "BÁNH THEO MÙA",
+
+
+"filter_tag2": true,
+
+
+"filter_tag2_list": "Lễ tình nhân; Ngày của mẹ; Ngày của cha; Giáng sinh",
+
+
+"coupon_lite_border_text": "#ed3324",
+
+
+"foodnbeverage_001__banner0__show": false,
+
+
+"sale_pop_delay": "15000",
+
+
+"home_section_13": "none",
+
+
+"home_section_14": "none",
+
+
+"home_section_15": "none",
+
+
+"home_section_16": "none",
+
+
+"home_section_17": "none",
+
+
+"use_product_tag_blog": false,
+
+
+"product_related_blog_heading": "BÀI VIẾT LIÊN QUAN",
+
+
+"product_related_blog_tag_prefix": "baivietlienquan",
+
+
+"product_related_blog_heading_bg": "#a50a06",
+
+
+"product_related_blog_heading_color": "#ffffff",
+
+
+"section_heading_color": "#ffffff",
+
+
+"section_heading_bg": "#2d2d2d",
+
+
+"color_addtocart_text": "#ffffff",
+
+
+"recent_products_title": "SẢN PHẨM ĐÃ XEM",
+
+
+"foodnbeverage_001__benefit0__1__show": true,
+
+
+"foodnbeverage_001__benefit0__2__show": true,
+
+
+"foodnbeverage_001__benefit0__3__show": true,
+
+
+"foodnbeverage_001__benefit0__4__show": true,
+
+
+"product_related_blog_alternative": "tin-tuc",
+
+
+"use_product_related_blog_alternative": true,
+
+
+"use_product_share_facebook": true,
+
+
+"use_product_share_messenger": true,
+
+
+"use_product_share_pinterest": true,
+
+
+"use_product_share_twitter": true,
+
+
+"product_share_enable": false,
+
+
+"use_product_comments": false,
+
+
+"product_comments_heading": "HỎI ĐÁP - BÌNH LUẬN",
+
+
+"slider_autoplay": true,
+
+
+"slider_autoplay_speed": "10000",
+
+
+"product_description_heading": "MÔ TẢ SẢN PHẨM",
+
+
+"header_order_link": "/pages/kiem-tra-don-hang",
+
+
+"use_sub_menu": true,
+
+
+"sub_menu": "main-menu",
+
+
+"sub_menu_bg": "#2d2d2d",
+
+
+"sub_menu_color": "#ffffff",
+
+
+"hotline_number": "0936271518",
+
+
+"ega_sm_color_item_text_compare_at_price": "#c5c0c0",
+
+
+"ega_sm_color_item_text_title": "#1b6bf2",
+
+
+"cart_vat_unchecked_confirm_show": true,
+
+
+"cart_vat_unchecked_title": "Bạn có chắc không xuất hóa đơn",
+
+
+"cart_vat_unchecked_confirm": "Xác nhận",
+
+
+"cart_vat_unchecked_cancel": "Đóng",
+
+
+"cart_vat_unchecked_description": "Chọn Đóng khi muốn bổ sung thông tin hóa đơn",
+
+
+"add_cart_variants": "detail",
+
+
+"favicon.png": "",
+
+
+"share_fb_home.jpg": "",
+
+
+"cro-home-icon.png": "",
+
+
+"icon-cro-coll.png": "",
+
+
+"icon-cro-blog.png": "",
+
+
+"cro-phone-icon.png": "",
+
+
+"cro-mess-icon.png": "",
+
+
+"cro-cart-icon.png": "",
+
+
+"banner-popup-img.png": "",
+
+
+"footer_trustbadge.jpg": "",
+
+
+"footer_trustbadge_width": "",
+
+
+"footer_trustbadge_height": "",
+
+
+"top_banner.jpg": "",
+
+
+"top_banner_mb.jpg": "",
+
+
+"top_banner_mb_height": "",
+
+
+"order-icon.png": "",
+
+
+"address-icon.png": "",
+
+
+"account-icon.png": "",
+
+
+"cart-icon.png": "",
+
+
+"policy_header_image_1.png": "",
+
+
+"policy_header_image_2.png": "",
+
+
+"policy_header_image_3.png": "",
+
+
+"phone-icon.png": "",
+
+
+"logo.png": "",
+
+
+"default-menu-icon.png": "",
+
+
+"menu_icon_1.png": "",
+
+
+"menu_icon_2.png": "",
+
+
+"menu_icon_3.png": "",
+
+
+"menu_icon_4.png": "",
+
+
+"menu_icon_5.png": "",
+
+
+"menu_icon_6.png": "",
+
+
+"menu_icon_7.png": "",
+
+
+"menu_icon_8.png": "",
+
+
+"menu_icon_9.png": "",
+
+
+"menu_icon_10.png": "",
+
+
+"menu_icon_11.png": "",
+
+
+"menu_icon_12.png": "",
+
+
+"menu_icon_13.png": "",
+
+
+"menu_icon_14.png": "",
+
+
+"fot_c1_title": "",
+
+
+"logo-footer.png": "",
+
+
+"fot_about": "",
+
+
+"logo_bct.png": "",
+
+
+"slider_1.jpg": "",
+
+
+"slider_2.jpg": "",
+
+
+"slider_3_enable": false,
+
+
+"slider_3.jpg": "",
+
+
+"slider_3_url": "",
+
+
+"slider_3_alt": "",
+
+
+"slider_3_width": "",
+
+
+"slider_3_height": "",
+
+
+"coupon_1_text_short": "",
+
+
+"coupon_1_img.png": "",
+
+
+"coupon_1_link": "",
+
+
+"coupon_2_coll": "",
+
+
+"coupon_2_text_short": "",
+
+
+"coupon_2_img.png": "",
+
+
+"coupon_2_link": "",
+
+
+"coupon_3_coll": "",
+
+
+"coupon_3_text_short": "",
+
+
+"coupon_3_img.png": "",
+
+
+"coupon_3_link": "",
+
+
+"coupon_4_coll": "",
+
+
+"coupon_4_text_short": "",
+
+
+"coupon_4_img.png": "",
+
+
+"coupon_4_link": "",
+
+
+"coupon_5_home_show": false,
+
+
+"coupon_5_coll": "",
+
+
+"coupon_5_text": "",
+
+
+"coupon_5_text_short": "",
+
+
+"coupon_5_desc": "",
+
+
+"coupon_5_info": "",
+
+
+"coupon_5_code": "",
+
+
+"coupon_5_imgshow": false,
+
+
+"coupon_5_img.png": "",
+
+
+"coupon_5_link": "",
+
+
+"coupon_6_home_show": false,
+
+
+"coupon_6_coll": "",
+
+
+"coupon_6_text": "",
+
+
+"coupon_6_text_short": "",
+
+
+"coupon_6_desc": "",
+
+
+"coupon_6_info": "",
+
+
+"coupon_6_code": "",
+
+
+"coupon_6_imgshow": false,
+
+
+"coupon_6_img.png": "",
+
+
+"coupon_6_link": "",
+
+
+"coupon_7_home_show": false,
+
+
+"coupon_7_coll": "",
+
+
+"coupon_7_text": "",
+
+
+"coupon_7_text_short": "",
+
+
+"coupon_7_desc": "",
+
+
+"coupon_7_info": "",
+
+
+"coupon_7_code": "",
+
+
+"coupon_7_imgshow": false,
+
+
+"coupon_7_img.png": "",
+
+
+"coupon_7_link": "",
+
+
+"coupon_8_home_show": false,
+
+
+"coupon_8_coll": "",
+
+
+"coupon_8_text": "",
+
+
+"coupon_8_text_short": "",
+
+
+"coupon_8_desc": "",
+
+
+"coupon_8_info": "",
+
+
+"coupon_8_code": "",
+
+
+"coupon_8_imgshow": false,
+
+
+"coupon_8_img.png": "",
+
+
+"coupon_8_link": "",
+
+
+"banner_coll_1_1.jpg": "",
+
+
+"banner_coll_1_2.jpg": "",
+
+
+"banner_coll_1_3.jpg": "",
+
+
+"banner_coll_2_1.jpg": "",
+
+
+"banner_coll_2_2.jpg": "",
+
+
+"banner_coll_2_3.jpg": "",
+
+
+"coll_per_row": "",
+
+
+"coll_1.jpg": "",
+
+
+"coll_2.jpg": "",
+
+
+"coll_3.jpg": "",
+
+
+"coll_4.jpg": "",
+
+
+"coll_5.jpg": "",
+
+
+"coll_6.jpg": "",
+
+
+"coll_7.jpg": "",
+
+
+"coll_8.jpg": "",
+
+
+"coll_9.jpg": "",
+
+
+"coll_10.jpg": "",
+
+
+"coll_11.jpg": "",
+
+
+"coll_12.jpg": "",
+
+
+"coll_13.jpg": "",
+
+
+"coll_14.jpg": "",
+
+
+"brand_link": "",
+
+
+"brand_1.jpg": "",
+
+
+"brand_2.jpg": "",
+
+
+"brand_3.jpg": "",
+
+
+"brand_4.jpg": "",
+
+
+"brand_5.jpg": "",
+
+
+"brand_6.jpg": "",
+
+
+"brand_7.jpg": "",
+
+
+"brand_8.jpg": "",
+
+
+"brand_9.jpg": "",
+
+
+"brand_10.jpg": "",
+
+
+"brand_11.jpg": "",
+
+
+"brand_12.jpg": "",
+
+
+"brand_13.jpg": "",
+
+
+"brand_14.jpg": "",
+
+
+"section_policies_1.jpg": "",
+
+
+"section_policies_1_width": "",
+
+
+"section_policies_1_height": "",
+
+
+"section_policies_1_link": "",
+
+
+"section_policies_2.jpg": "",
+
+
+"section_policies_2_width": "",
+
+
+"section_policies_2_height": "",
+
+
+"section_policies_2_link": "",
+
+
+"section_policies_3.jpg": "",
+
+
+"section_policies_3_width": "",
+
+
+"section_policies_3_height": "",
+
+
+"section_policies_3_link": "",
+
+
+"section_hot_banner.png": "",
+
+
+"flashsale_product_bg": "",
+
+
+"flashsale_product_heading_color": "",
+
+
+"flashsale_product_heading_bg": "",
+
+
+"flashsale_product_countdown_color": "",
+
+
+"flashsale_product_countdown_bg": "",
+
+
+"flashsale-hot.png": "",
+
+
+"flashsale_finish_action": "show",
+
+
+"section_product_tag_1-icon.png": "",
+
+
+"section_product_tag_1_banner.jpg": "",
+
+
+"section_product_tag_2_use_icon": false,
+
+
+"section_product_tag_2-icon.png": "",
+
+
+"section_product_tag_2_title_color": "#fcf9f9",
+
+
+"section_product_tag_2_title_bg": "#c4953c",
+
+
+"section_product_tag_2_bg": "#f2f2f2",
+
+
+"section_product_tag_2_color": "#707070",
+
+
+"section_product_tag_2_layout": "grid",
+
+
+"section_product_tag_2_banner": false,
+
+
+"section_product_tag_2_banner.jpg": "",
+
+
+"section_product_tag_2_banner_width": "",
+
+
+"section_product_tag_2_banner_height": "",
+
+
+"section_product_tag_2_banner_link": "",
+
+
+"section_product_tag_2_banner_title": "",
+
+
+"section_product_tag_3_use_icon": false,
+
+
+"section_product_tag_3-icon.png": "",
+
+
+"section_product_tag_3_title_color": "#fcf9f9",
+
+
+"section_product_tag_3_title_bg": "#c4953c",
+
+
+"section_product_tag_3_bg": "#f2f2f2",
+
+
+"section_product_tag_3_color": "#707070",
+
+
+"section_product_tag_3_layout": "grid",
+
+
+"section_product_tag_3_banner": false,
+
+
+"section_product_tag_3_banner.jpg": "",
+
+
+"section_product_tag_3_banner_width": "",
+
+
+"section_product_tag_3_banner_height": "",
+
+
+"section_product_tag_3_banner_link": "",
+
+
+"section_product_tag_3_banner_title": "",
+
+
+"section-hot-icon.png": "",
+
+
+"section_hot.jpg": "",
+
+
+"section_hot_link": "/collections/my-nghe-tram-huong",
+
+
+"product_top_1-icon.png": "",
+
+
+"product_top_2_use_icon": false,
+
+
+"product_top_2-icon.png": "",
+
+
+"product_top_2_title_color": "",
+
+
+"product_top_2_title_bg": "",
+
+
+"product_top_2_active_tab_color": "",
+
+
+"product_top_2_active_tab_bg": "",
+
+
+"product_top_3_use_icon": false,
+
+
+"product_top_3-icon.png": "",
+
+
+"product_top_3_title_color": "",
+
+
+"product_top_3_title_bg": "",
+
+
+"product_top_3_active_tab_color": "",
+
+
+"product_top_3_active_tab_bg": "",
+
+
+"product_top_3_mobile_layout": "one_row",
+
+
+"index-blog-1-icon.png": "",
+
+
+"index-blog-2-icon.png": "",
+
+
+"collection_main_banner.jpg": "",
+
+
+"icon-button-play.png": "",
+
+
+"icon-product-promotion.png": "",
+
+
+"product_promotion_5_content": "",
+
+
+"policy_product_image_1.png": "",
+
+
+"policy_product_image_2.png": "",
+
+
+"policy_product_image_3.png": "",
+
+
+"policy_product_image_4.png": "",
+
+
+"sanphamlienquan_title_color": "",
+
+
+"sanphamlienquan_title_bg": "",
+
+
+"use_img_from": "variant",
+
+
+"color_1.png": "",
+
+
+"color_2.png": "",
+
+
+"color_3.png": "",
+
+
+"color_4.png": "",
+
+
+"color_5.png": "",
+
+
+"color_6.png": "",
+
+
+"color_7.png": "",
+
+
+"color_8.png": "",
+
+
+"color_9.png": "",
+
+
+"color_10.png": "",
+
+
+"aside_category_blog_menu": "",
+
+
+"cart_empty_background.png": "",
+
+
+"promo_tag_1.png": "",
+
+
+"promo_tag_2.png": "",
+
+
+"promo_tag_bg_2": "",
+
+
+"promo_tag_border_2": "",
+
+
+"promo_tag_3.png": "",
+
+
+"promo_tag_bg_3": "",
+
+
+"frame_1.png": "",
+
+
+"frame_2.png": "",
+
+
+"frame_2_scale": "",
+
+
+"use_frame_3": false,
+
+
+"frame_3.png": "",
+
+
+"frame_3_coll": "",
+
+
+"frame_3_scale": "",
+
+
+"frame_3_position": "top-left",
+
+
+"ega_sm_color_bg": "",
+
+
+"ega_sm_color_label_bg": "",
+
+
+"ega_sm_color_label_text": "",
+
+
+"ega_sm_color_item_border": "",
+
+
+"ega_sm_color_item_text_view_all": "",
+
+
+"ega_sm_color_loading": "",
+
+
+"ega_sm_product_sort_by": "default",
+
+
+"delivery-icon.png": "",
+
+
+"sale_pop_customer_gender": "Không chọn",
+
+
+"flashsale_banner.png": "",
+
+
+"xmas_002_logo.png": "",
+
+
+"xmas_002_favicon.png": "",
+
+
+"xmas_002__banner__img.jpg": "",
+
+
+"xmas_002__sub_banner__1__img.jpg": "",
+
+
+"xmas_002__sub_banner__2__img.jpg": "",
+
+
+"xmas_002__sub_banner__3__img.jpg": "",
+
+
+"xmas_002__featured__img.jpg": "",
+
+
+"xmas_002__banner_offer__img.jpg": "",
+
+
+"xmas_002__promotion__1__img.jpg": "",
+
+
+"xmas_002__promotion__2__img.jpg": "",
+
+
+"xmas_002__promotion__3__img.jpg": "",
+
+
+"xmas_002__payment__img.jpg": "",
+
+
+"xmas_002__footer__register__img.png": "",
+
+
+"xmas_002__footer__gotop__img.png": "",
+
+
+"blackfriday_001_logo.png": "",
+
+
+"blackfriday_001_favicon.png": "",
+
+
+"blackfriday_001_banner_img.jpg": "",
+
+
+"blackfriday_001_banner_top_img_1.jpg": "",
+
+
+"blackfriday_001_banner_top_img_2.jpg": "",
+
+
+"blackfriday_001_banner_top_img_3.jpg": "",
+
+
+"blackfriday_001_coll_title_icon_img_1.png": "",
+
+
+"blackfriday_001_coll_banner_img_1.jpg": "",
+
+
+"blackfriday_001_coll_title_icon_img_2.png": "",
+
+
+"blackfriday_001_coll_banner_img_2.jpg": "",
+
+
+"blackfriday_001_coll_title_icon_img_3.png": "",
+
+
+"blackfriday_001_coll_banner_img_3.jpg": "",
+
+
+"blackfriday_001_coll_title_icon_img_4.png": "",
+
+
+"blackfriday_001_coll_banner_img_4.jpg": "",
+
+
+"blackfriday_001_coll_title_icon_img_5.png": "",
+
+
+"blackfriday_001_coll_banner_img_5.jpg": "",
+
+
+"blackfriday_001_coll_title_icon_img_6.png": "",
+
+
+"blackfriday_001_coll_banner_img_6.jpg": "",
+
+
+"blackfriday_001_coll_title_icon_img_7.png": "",
+
+
+"blackfriday_001_coll_banner_img_7.jpg": "",
+
+
+"blackfriday_001_coll_title_icon_img_8.png": "",
+
+
+"blackfriday_001_coll_banner_img_8.jpg": "",
+
+
+"blackfriday_001_trend_icon_img.png": "",
+
+
+"blackfriday_001_partner_icon_img.png": "",
+
+
+"blackfriday_001_partner_logo_1.jpg": "",
+
+
+"blackfriday_001_partner_logo_2.jpg": "",
+
+
+"blackfriday_001_partner_logo_3.jpg": "",
+
+
+"blackfriday_001_partner_logo_4.jpg": "",
+
+
+"blackfriday_001_partner_logo_5.jpg": "",
+
+
+"blackfriday_001_partner_logo_6.jpg": "",
+
+
+"blackfriday_001_partner_logo_7.jpg": "",
+
+
+"blackfriday_001_partner_logo_8.jpg": "",
+
+
+"blackfriday_001_partner_logo_9.jpg": "",
+
+
+"blackfriday_001_partner_logo_10.jpg": "",
+
+
+"foodnbeverage_001_favicon.png": "",
+
+
+"foodnbeverage_001_title_line.png": "",
+
+
+"foodnbeverage_001_hover_line.png": "",
+
+
+"foodnbeverage_001_logo.png": "",
+
+
+"foodnbeverage_001_banner_img.jpg": "",
+
+
+"foodnbeverage_001_home_intro_quote.png": "",
+
+
+"foodnbeverage_001_benefit_img_1.jpg": "",
+
+
+"foodnbeverage_001_benefit_img_2.jpg": "",
+
+
+"foodnbeverage_001_benefit_img_3.jpg": "",
+
+
+"foodnbeverage_001_benefit_img_4.jpg": "",
+
+
+"foodnbeverage_001__benefit0__5__show": false,
+
+
+"foodnbeverage_001_benefit_img_5.jpg": "",
+
+
+"foodnbeverage_001_reviews_avatar_1.jpg": "",
+
+
+"foodnbeverage_001_reviews_avatar_2.jpg": "",
+
+
+"foodnbeverage_001_reviews_avatar_3.jpg": "",
+
+
+"foodnbeverage_001_reviews_avatar_4.jpg": "",
+
+
+"icon-email.png": "",
+
+
+"newsletter_placeholder": "",
+
+
+"ega_sm_result_limit": "",
+
+
+"ega_sm_product_accuracy": "title",
+
+
+"ega_sm_show_article": false,
+
+
+"ega_sm_article_heading": "",
+
+
+"ega_sm_article_limit": "1",
+
+
+"promotion_app_name": "no_app",
+
+
+"ega-product-gift.png": "",
+
+
+"customer_layout": "theme",
+
+
+"section_product_tag_4_title": "Mỹ nghệ trầm hương",
+
+
+"section_product_tag_4_use_icon": false,
+
+
+"section_product_tag_4-icon.png": "",
+
+
+"section_product_tag_4_title_color": "#fcf9f9",
+
+
+"section_product_tag_4_title_bg": "#c4953c",
+
+
+"section_product_tag_4_menu": "",
+
+
+"section_product_tag_4_list": "",
+
+
+"section_product_tag_4_bg": "#f2f2f2",
+
+
+"section_product_tag_4_color": "#707070",
+
+
+"section_product_tag_4_url": "my-nghe-tram-huong",
+
+
+"section_product_tag_4_layout": "grid",
+
+
+"section_product_tag_4_limit": "8"
+
+},
+
+"presets": {
+
+
+"default": {
+
+
+
+"use_variant_img": false,
+
+
+
+"favicon_enable": true,
+
+
+
+"backtotop_enable": true,
+
+
+
+"main-color": "#dd0115",
+
+
+
+"color_body_text": "#333333",
+
+
+
+"addThis_listSharing": true,
+
+
+
+"addthis_icon1_show": true,
+
+
+
+"subheader_bg": "#ffffff",
+
+
+
+"subheader_color": "#2f4858",
+
+
+
+"logo_use_image": true,
+
+
+
+"logo_width": "182",
+
+
+
+"logo_height": "56",
+
+
+
+"search_placeholder": "Bạn cần tìm gì..;\r\nNhập tên sản phẩm..",
+
+
+
+"policy_header_title_1": "Hướng dẫn bán máy cũ",
+
+
+
+"policy_header_title_3": "Hướng dẫn trả góp",
+
+
+
+"policy_header_link_2": "/huong-dan-mua-hang-online",
+
+
+
+"policy_header_title_2": "Hướng dẫn mua online",
+
+
+
+"policy_header_use_2": true,
+
+
+
+"policy_header_use_1": true,
+
+
+
+"policy_header_use_3": true,
+
+
+
+"main_menu": "main-menu",
+
+
+
+"use_menu_icon_1": true,
+
+
+
+"use_menu_icon_2": true,
+
+
+
+"use_menu_icon_3": true,
+
+
+
+"use_menu_icon_4": true,
+
+
+
+"use_menu_icon_5": true,
+
+
+
+"use_menu_icon_6": true,
+
+
+
+"use_menu_icon_7": true,
+
+
+
+"use_menu_icon_8": true,
+
+
+
+"use_menu_icon_9": true,
+
+
+
+"use_menu_icon_10": true,
+
+
+
+"home_section_1": "section_slider",
+
+
+
+"home_section_2": "section_collections",
+
+
+
+"section_hot_banner_width": "1200",
+
+
+
+"section_hot_banner_height": "108",
+
+
+
+"section_hot_banner": true,
+
+
+
+"header_bg": "#dd0115",
+
+
+
+"header_color": "#ffffff",
+
+
+
+"secondary-color": "#fbd947",
+
+
+
+"slider_1_enable": true,
+
+
+
+"right_banner_1_enable": true,
+
+
+
+"right_banner_2_enable": true,
+
+
+
+"right_banner_2_url": "/collections/all",
+
+
+
+"right_banner_2_width": "355",
+
+
+
+"right_banner_2_height": "172",
+
+
+
+"right_banner_1_width": "355",
+
+
+
+"right_banner_1_height": "172",
+
+
+
+"right_banner_1_url": "/collections/all",
+
+
+
+"bottom_banner_1_enable": true,
+
+
+
+"bottom_banner_2_enable": true,
+
+
+
+"bottom_banner_3_enable": true,
+
+
+
+"bottom_banner_1_width": "355",
+
+
+
+"bottom_banner_1_height": "172",
+
+
+
+"bottom_banner_2_width": "355",
+
+
+
+"bottom_banner_2_height": "172",
+
+
+
+"bottom_banner_3_width": "355",
+
+
+
+"bottom_banner_3_height": "172",
+
+
+
+"home_section_3": "section_coupons",
+
+
+
+"coupon_copy_text": "Sao chép",
+
+
+
+"coupon_copied_text": "Đã chép",
+
+
+
+"coupon_text_color": "#fd545b",
+
+
+
+"coupon_button_color": "#fd545b",
+
+
+
+"coupon_1_home_show": true,
+
+
+
+"coupon_1_text": "NHẬP MÃ: EGA50",
+
+
+
+"coupon_1_desc": "Giảm 50% cho đơn hàng giá trị tối thiểu 500K. Mã giảm tối đa 300K",
+
+
+
+"coupon_1_code": "EGA10",
+
+
+
+"coupon_1_imgshow": true,
+
+
+
+"coupon_2_home_show": true,
+
+
+
+"coupon_2_text": "NHẬP MÃ: EGA15",
+
+
+
+"coupon_2_desc": "Giảm 15% cho đơn hàng giá trị tối thiểu 500k. Mã giảm tối đa 250K",
+
+
+
+"coupon_2_code": "EGA15",
+
+
+
+"coupon_2_imgshow": true,
+
+
+
+"coupon_3_home_show": true,
+
+
+
+"coupon_3_text": "NHẬP MÃ: EGA99K",
+
+
+
+"coupon_3_desc": "Mã giảm 99k cho đơn hàng tối thiểu 1 triệu. Tối đa 1 mã giảm giá/đơn hàng.",
+
+
+
+"coupon_3_imgshow": true,
+
+
+
+"coupon_3_code": "EGA99K",
+
+
+
+"coupon_4_home_show": true,
+
+
+
+"coupon_4_text": "NHẬP MÃ:  FREESHIP",
+
+
+
+"coupon_4_desc": "Miễn phí vận chuyển cho đơn hàng từ 500k. Áp dụng cho khu vực Tp.HCM",
+
+
+
+"coupon_4_imgshow": true,
+
+
+
+"coupon_4_code": "FREESHIP",
+
+
+
+"home_section_4": "section_flashsale",
+
+
+
+"flashsale_coll": "khuyen-mai",
+
+
+
+"flashsale_bg": "#fed100",
+
+
+
+"home_section_5": "section_hot",
+
+
+
+"flashsale_title": "GIẢM SỐC 50%",
+
+
+
+"section_top_title": "PHỤ KIỆN NỔI BẬT NHẤT",
+
+
+
+"section_top_url": "dien-thoai",
+
+
+
+"home_section_6": "section_banner_coll_1",
+
+
+
+"home_section_10": "section_product_top_2",
+
+
+
+"home_section_11": "section_brand",
+
+
+
+"brand_title": "THƯƠNG HIỆU SẢN PHẨM",
+
+
+
+"brand_1_en": true,
+
+
+
+"brand_width": "157",
+
+
+
+"brand_height": "67",
+
+
+
+"brand_2_en": true,
+
+
+
+"brand_3_en": true,
+
+
+
+"brand_4_en": true,
+
+
+
+"brand_5_en": true,
+
+
+
+"brand_6_en": true,
+
+
+
+"brand_7_en": true,
+
+
+
+"brand_8_en": true,
+
+
+
+"brand_9_en": true,
+
+
+
+"brand_10_en": true,
+
+
+
+"home_section_8": "section_banner",
+
+
+
+"banner_coll_1_1_en": true,
+
+
+
+"banner_coll_1_2_en": true,
+
+
+
+"banner_coll_1_3_en": true,
+
+
+
+"banner_coll_2_1_en": true,
+
+
+
+"banner_coll_2_2_en": true,
+
+
+
+"banner_coll_2_3_en": true,
+
+
+
+"home_section_7": "section_product_tag_1",
+
+
+
+"home_section_9": "section_product_top_1",
+
+
+
+"product_top_1_title": "PHỤ KIỆN ĐIỆN THOẠI",
+
+
+
+"product_top_1_url": "phu-kien-dien-thoai",
+
+
+
+"product_top_1_tab_1_show": true,
+
+
+
+"product_top_1_tab_1_title": "Cáp sạc",
+
+
+
+"product_top_1_tab_1_coll": "cap-sac",
+
+
+
+"product_top_1_tab_2_show": true,
+
+
+
+"product_top_1_tab_2_title": "Củ sạc",
+
+
+
+"product_top_1_tab_2_coll": "cu-sac",
+
+
+
+"product_top_1_tab_3_show": true,
+
+
+
+"product_top_1_tab_3_title": "Miếng dán màn hình",
+
+
+
+"product_top_1_tab_3_coll": "mieng-dan-man-hinh",
+
+
+
+"product_top_2_title": "ÂM THANH",
+
+
+
+"product_top_2_mobile_layout": "multi_row",
+
+
+
+"product_top_2_url": "loa-khong-day",
+
+
+
+"product_top_2_tab_1_show": true,
+
+
+
+"product_top_2_tab_1_title": "Tai nghe",
+
+
+
+"product_top_2_tab_1_coll": "tai-nghe",
+
+
+
+"product_top_2_tab_2_show": true,
+
+
+
+"product_top_2_tab_2_title": "Loa không dây",
+
+
+
+"product_top_2_tab_2_coll": "loa-khong-day",
+
+
+
+"product_top_2_tab_3_show": true,
+
+
+
+"product_top_2_tab_3_title": "Thiết bị khác",
+
+
+
+"product_top_2_tab_3_coll": "sac-du-phong",
+
+
+
+"product_top_3_title": "PHỤ KIỆN NỔI BẬT NHẤT",
+
+
+
+"product_top_3_url": "dien-thoai",
+
+
+
+"product_top_3_limit": "10",
+
+
+
+"product_top_3_tab_1_show": true,
+
+
+
+"product_top_3_tab_1_title": "Macbook",
+
+
+
+"product_top_3_tab_1_coll": "dien-thoai",
+
+
+
+"product_top_3_tab_2_show": true,
+
+
+
+"product_top_3_tab_2_title": "Nokia",
+
+
+
+"product_top_3_tab_2_coll": "dien-thoai",
+
+
+
+"product_top_3_tab_3_show": true,
+
+
+
+"product_top_3_tab_3_title": "Samsung",
+
+
+
+"product_top_3_tab_3_coll": "dien-thoai",
+
+
+
+"product_top_1_limit": "5",
+
+
+
+"product_top_2_limit": "5",
+
+
+
+"brand_items_display": "7",
+
+
+
+"brand_display_type": "grid",
+
+
+
+"brand_11_en": true,
+
+
+
+"brand_12_en": true,
+
+
+
+"brand_13_en": true,
+
+
+
+"brand_14_en": true,
+
+
+
+"slider_1_width": "593",
+
+
+
+"slider_1_height": "290",
+
+
+
+"use_menu_icon_11": true,
+
+
+
+"use_menu_icon_12": false,
+
+
+
+"use_menu_icon_13": false,
+
+
+
+"use_menu_icon_14": false,
+
+
+
+"flashsale_countdown_show": true,
+
+
+
+"flashsale_countdown_label": "Kết thúc sau",
+
+
+
+"flashsale_countdown_end_label": "Chương trình đã kết thúc",
+
+
+
+"flashsale_countdown_hour_start": "00:00",
+
+
+
+"flashsale_countdown_hour_finish": "24",
+
+
+
+"flashsale_countdown_date_start": "30/11/2020",
+
+
+
+"flashsale_countdown_date_finish": "1",
+
+
+
+"flashsale_coll_limit": "5",
+
+
+
+"flashsale_news_use": false,
+
+
+
+"flashsale_news_title": "BẢN TIN KHUYẾN MÃI",
+
+
+
+"flashsale_news_title_1": "Giảm 30K cho đơn hàng từ 399K",
+
+
+
+"flashsale_news_link_1": "/",
+
+
+
+"flashsale_news_title_2": "Giảm 8% cho đơn hàng từ 499K",
+
+
+
+"flashsale_news_link_2": "/",
+
+
+
+"flashsale_news_title_3": "Giảm 10% cho đơn hàng từ 800K",
+
+
+
+"flashsale_news_link_3": "/",
+
+
+
+"flashsale_heading_color": "#333333",
+
+
+
+"flashsale_countdown_color": "#ffffff",
+
+
+
+"color_price": "#ed3324",
+
+
+
+"index_blog_layout": "2blog",
+
+
+
+"limit_index_blog": "4",
+
+
+
+"url_index_blog_1": "24h-cong-nghe",
+
+
+
+"url_index_blog_2": "kinh-nghiem-hay-meo-vat",
+
+
+
+"title_index_blog_1": "24h CÔNG NGHỆ",
+
+
+
+"title_index_blog_2": "KINH NGHIỆM HAY - MẸO VẶT",
+
+
+
+"fot_use_logo": true,
+
+
+
+"footer_bg": "#ffffff",
+
+
+
+"footer_color": "#333333",
+
+
+
+"fot_contact": true,
+
+
+
+"footer_bg_overlay": "",
+
+
+
+"fot_c2_title": "Hỗ trợ khách hàng",
+
+
+
+"fot_menu3": "ho-tro-khach-hang",
+
+
+
+"fot_c3_title": "Chính sách",
+
+
+
+"fot_menu4": "chinh-sach",
+
+
+
+"use_trustbadge_fot": true,
+
+
+
+"logo_bct_width": "104",
+
+
+
+"logo_bct_height": "40",
+
+
+
+"use_logo_bct": true,
+
+
+
+"fot_c4_title": "Tổng đài hỗ trợ",
+
+
+
+"fot_c4_content": "Gọi mua hàng:##19006750##(8h-20h)@##@\r\nGọi bảo hành:##19006750 ##(8h-20h)@##@\r\nGọi khiếu nại:##19006750 ## (8h-20h)",
+
+
+
+"promo_tag_1": "tragop",
+
+
+
+"promo_tag_color_1": "#333",
+
+
+
+"promo_tag_2": "dealphatsot",
+
+
+
+"promo_tag_color_2": "",
+
+
+
+"color_bg_label": "#ed3324",
+
+
+
+"color_label": "#ffffff",
+
+
+
+"newsletter_form_action": "https://egany.us5.list-manage.com/subscribe/post?u=30fc9d9e428051fcf936d142c&id=8a0a96cc36",
+
+
+
+"use_newsletter": true,
+
+
+
+"addthis_icon3_show": true,
+
+
+
+"addthis_icon2_show": true,
+
+
+
+"social_facebook_link": "https://bikipweb.site",
+
+
+
+"social_zalo_link": "https://zalo.me/834141234794359440",
+
+
+
+"newsletter_form_title": "Bạn muốn nhận khuyến mãi đặc biệt? Đăng ký ngay.",
+
+
+
+"flashsale_mobile_layout": "one_row",
+
+
+
+"flashsale_countdown_bg": "#000000",
+
+
+
+"quickview_enable": true,
+
+
+
+"add_cart_enable": false,
+
+
+
+"addthis_icon1_tootlip": "Gọi ngay cho chúng tôi",
+
+
+
+"addthis_icon2_tootlip": "Chat với chúng tôi qua zalo",
+
+
+
+"color_addtocart": "#ed3324",
+
+
+
+"color_buynow": "#ed3324",
+
+
+
+"color_checkout": "#ed3324",
+
+
+
+"cro_show": true,
+
+
+
+"cro_add_cart_show": true,
+
+
+
+"cro_cart_show": true,
+
+
+
+"promo_tag_3": "baohanh",
+
+
+
+"promo_tag_color_3": "#8f8f8f",
+
+
+
+"use_product_policy": true,
+
+
+
+"policy_product_title": "Chỉ có tại EGA Techstore",
+
+
+
+"policy_product_use_1": true,
+
+
+
+"policy_product_title_1": "Giao hàng miễn phí trong 24h (chỉ áp dụng khu vực nội thành)",
+
+
+
+"policy_product_use_2": false,
+
+
+
+"policy_product_title_2": "Giảm 50.000 VNĐ nếu khách hàng check-in tại cửa hàng",
+
+
+
+"policy_product_use_3": true,
+
+
+
+"policy_product_title_3": "Trả góp lãi suất 0% qua thẻ tín dụng Visa, Master, JCB",
+
+
+
+"use_product_trustbadge": false,
+
+
+
+"use_product_coupons": true,
+
+
+
+"product_swatch_enable": true,
+
+
+
+"footer_trustbadge_title": "Phương thức thanh toán",
+
+
+
+"use_product_sidebar": true,
+
+
+
+"use_product_sumary": true,
+
+
+
+"header_location_link": "/he-thong-cua-hang",
+
+
+
+"sanphamlienquan_show": true,
+
+
+
+"sanphamlienquan_title": "SẢN PHẨM THƯỜNG MUA CÙNG",
+
+
+
+"limit_sanphamlienquan": "5",
+
+
+
+"type_sanphamlienquan": "tag",
+
+
+
+"tag_sanphamlienquan": "lienquan",
+
+
+
+"use_collection_alternative": true,
+
+
+
+"use_product_promotion": true,
+
+
+
+"product_promotion_heading": "KHUYẾN MÃI - ƯU ĐÃI",
+
+
+
+"use_product_recent": true,
+
+
+
+"product_thumb_enable": true,
+
+
+
+"installment_enable": true,
+
+
+
+"product_installment_content": "MUA TRẢ GÓP<span>Duyệt hồ sơ trong 5 phút</span>",
+
+
+
+"product_addtocart_content": "THÊM VÀO GIỎ",
+
+
+
+"equalprice_show": true,
+
+
+
+"equalprice_heading": "SẢN PHẨM CÙNG PHÂN KHÚC GIÁ",
+
+
+
+"equalprice_limit": "7",
+
+
+
+"equalprice_empty_message": "",
+
+
+
+"section_hot_title": "ĐIỆN THOẠI NỔI BẬT NHẤT",
+
+
+
+"section_hot_url": "dien-thoai",
+
+
+
+"section_hot_limit": "8",
+
+
+
+"section_hot_use_banner": true,
+
+
+
+"section_product_tag_menu": "dien-thoai",
+
+
+
+"section_product_tag_title": "PHỤ KIỆN NỔI BẬT",
+
+
+
+"section_product_tag_url": "dien-thoai",
+
+
+
+"section_product_tag_banner": false,
+
+
+
+"section_product_tag_list": "",
+
+
+
+"section_product_tag_limit": "10",
+
+
+
+"section_product_tag_1_title": "ĐỒNG HỒ THÔNG MINH",
+
+
+
+"section_product_tag_1_menu": " ",
+
+
+
+"section_product_tag_1_url": "dong-ho",
+
+
+
+"section_product_tag_1_limit": "8",
+
+
+
+"section_product_tag_1_layout": "grid",
+
+
+
+"home_section_12": "section_blog",
+
+
+
+"section_product_tag_2_title": "TAI NGHE",
+
+
+
+"section_product_tag_2_menu": "dien-thoai",
+
+
+
+"section_product_tag_2_url": "tai-nghe",
+
+
+
+"section_product_tag_2_limit": "10",
+
+
+
+"section_product_tag_3_title": "PHỤ KIỆN NỔI BẬT",
+
+
+
+"section_product_tag_3_menu": "dien-thoai",
+
+
+
+"section_product_tag_3_url": "dien-thoai",
+
+
+
+"section_product_tag_3_limit": "5",
+
+
+
+"section_product_tag_1_banner": true,
+
+
+
+"section_product_tag_1_list": "Apple watch; Mi watch; Samsung watch",
+
+
+
+"section_product_tag_2_list": "",
+
+
+
+"section_product_tag_3_list": "",
+
+
+
+"footer_logo_height": "50",
+
+
+
+"footer_logo_width": "164",
+
+
+
+"coll_1_en": true,
+
+
+
+"coll_2_en": true,
+
+
+
+"coll_3_en": true,
+
+
+
+"coll_4_en": true,
+
+
+
+"coll_5_en": true,
+
+
+
+"coll_6_en": true,
+
+
+
+"coll_7_en": true,
+
+
+
+"coll_8_en": true,
+
+
+
+"coll_9_en": true,
+
+
+
+"coll_10_en": true,
+
+
+
+"coll_title": "",
+
+
+
+"coll_link": "",
+
+
+
+"coll_1_title": "Nổi bật",
+
+
+
+"coll_2_title": "Điện thoại ",
+
+
+
+"coll_3_title": "Máy tính bảng",
+
+
+
+"coll_4_title": "Tai nghe",
+
+
+
+"coll_5_title": "Smart Watch",
+
+
+
+"coll_6_title": "Sạc dự phòng ",
+
+
+
+"coll_7_title": "Loa bluetooth",
+
+
+
+"coll_8_title": "Ốp lưng",
+
+
+
+"coll_9_title": "Củ sạc ",
+
+
+
+"coll_10_title": "Phụ kiện ",
+
+
+
+"coupon_icon_background": "#fd545b",
+
+
+
+"coupon_1_coll": "",
+
+
+
+"flashsale_show_quantity": true,
+
+
+
+"flashsale_max_stock": "300",
+
+
+
+"flashsale_percent_min": "30",
+
+
+
+"flashsale_percent_max": "90",
+
+
+
+"flashsale_quantity_style": "style2",
+
+
+
+"flashsale_process_background": "#ffaaaf",
+
+
+
+"flashsale_process_color1": "#ff424e",
+
+
+
+"flashsale_process_color2": "#ff424e",
+
+
+
+"flashsale_stock_color": "#ffffff",
+
+
+
+"flashsale_quantity": "tag",
+
+
+
+"coll_width": "100",
+
+
+
+"coll_height": "100",
+
+
+
+"coll_1_link": "/collections/all",
+
+
+
+"coll_2_link": "/collections/all",
+
+
+
+"coll_3_link": "/collections/all",
+
+
+
+"coll_4_link": "/collections/all",
+
+
+
+"coll_5_link": "/collections/all",
+
+
+
+"coll_6_link": "/collections/all",
+
+
+
+"coll_7_link": "/collections/all",
+
+
+
+"coll_8_link": "/collections/all",
+
+
+
+"coll_9_link": "/collections/all",
+
+
+
+"coll_10_link": "/collections/all",
+
+
+
+"use_top_banner": true,
+
+
+
+"use_label_1": false,
+
+
+
+"label_1_tag": "flashsale",
+
+
+
+"use_label_2": false,
+
+
+
+"label_2_tag": "flashsale",
+
+
+
+"promo_tag_type_1": "text-1",
+
+
+
+"promo_tag_type_2": "image",
+
+
+
+"promo_tag_bg_1": "#f0f0f0",
+
+
+
+"promo_tag_type_3": "text-2",
+
+
+
+"promo_tag_border_3": "#ff1010",
+
+
+
+"color_1": "Trắng",
+
+
+
+"color_1_c": "#ffffff",
+
+
+
+"variant_color_type": "code",
+
+
+
+"filter_tag1": true,
+
+
+
+"filter_price": true,
+
+
+
+"filter_vendor": true,
+
+
+
+"filter_vendor_title": "Hãng sản xuất",
+
+
+
+"filter_type": true,
+
+
+
+"filter_type_title": "Loại sản phẩm",
+
+
+
+"aside_category_enable": true,
+
+
+
+"filter_tag1_title": "Màu sắc",
+
+
+
+"filter_tag1_list": "Trắng; Đen; Xám; Xanh dương; Đỏ; Hồng; Tím; Xanh rêu; Kem; Bạc",
+
+
+
+"promo_tag_border_1": "#f0f0f0",
+
+
+
+"product_promotion_bg": "#ed3324",
+
+
+
+"product_promotion_color": "#ffffff",
+
+
+
+"product_promotion_boxbg": "#eeeeee",
+
+
+
+"product_promotion_1_content": "Nhập mã <strong>EGANY</strong> thêm 5% đơn hàng [coupon=\"EGANY\"]",
+
+
+
+"product_promotion_2_content": "Giảm giá 10% khi mua từ 5 sản phẩm",
+
+
+
+"product_promotion_3_content": "Tặng phiếu mua hàng khi mua từ 500k ",
+
+
+
+"product_promotion_copy": "Sao chép",
+
+
+
+"product_promotion_copied": "Đã chép",
+
+
+
+"top_banner_height": "44",
+
+
+
+"slider_2_enable": true,
+
+
+
+"page_id": "168389884826236",
+
+
+
+"product_lightbox_enable": true,
+
+
+
+"use_product_repeated_addcart": true,
+
+
+
+"use_product_review_tab": true,
+
+
+
+"use_video_play_button_pditem": true,
+
+
+
+"color_2": "Xanh dương",
+
+
+
+"color_2_c": "#009cce",
+
+
+
+"color_3": "Xám",
+
+
+
+"color_3_c": "#7e7e7e",
+
+
+
+"color_4": "Đỏ",
+
+
+
+"color_4_c": "#e80000",
+
+
+
+"color_5": "Đen",
+
+
+
+"color_5_c": "#000000",
+
+
+
+"color_6": "Hồng",
+
+
+
+"color_6_c": "#ffd1d1",
+
+
+
+"color_7": "Tím",
+
+
+
+"color_7_c": "#a000bb",
+
+
+
+"color_8": "Xanh rêu",
+
+
+
+"color_8_c": "#008070",
+
+
+
+"color_9": "Kem",
+
+
+
+"color_9_c": "#fff8e2",
+
+
+
+"color_10": "Bạc",
+
+
+
+"color_10_c": "#f0f0f0",
+
+
+
+"use_collection_main_banner": true,
+
+
+
+"collection_banner_width": "1200",
+
+
+
+"collection_banner_height": "200",
+
+
+
+"filter_price_title": "Giá",
+
+
+
+"filter_price_node": "1000000;2000000;3000000;5000000;7000000;10000000",
+
+
+
+"top_banner_color": "#a6040c",
+
+
+
+"collection_number_product": "12",
+
+
+
+"store_locator_form_title": "Tìm cửa hàng",
+
+
+
+"store_locator_dist_label": "Chọn tỉnh thành",
+
+
+
+"store_locator_stores_label": "Chọn cửa hàng",
+
+
+
+"store_locator_address_label": "Địa chỉ",
+
+
+
+"store_locator_spreadsheet": "https://docs.google.com/spreadsheets/d/14ey7WBRMWumyJj0wnyRWZ0Euou6Q7sXuSjGR4NSEqoQ/edit?usp=sharing",
+
+
+
+"use_cart_trustbadge": true,
+
+
+
+"cart_coupon_show": true,
+
+
+
+"use_collection_cart_products": true,
+
+
+
+"collection_cart": "phu-kien-dien-thoai",
+
+
+
+"collection_cart_limit": "10",
+
+
+
+"heading_collection_cart": "Sản phẩm thường mua cùng",
+
+
+
+"contactr_contact_maps": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.904611732553!2d105.81388241542348!3d21.03650239288885!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab1946cc7e23%3A0x87ab3917166a0cd5!2zQ8O0bmcgdHkgY-G7lSBwaOG6p24gY8O0bmcgbmdo4buHIFNBUE8!5e0!3m2!1svi!2s!4v1555900531747!5m2!1svi!2s\" width=\"600\" height=\"450\" style=\"border:0\" allowfullscreen></iframe>",
+
+
+
+"title_page": "Công ty EGANY",
+
+
+
+"policy_header_link_3": "/huong-dan-tra-gop",
+
+
+
+"product_installment_link": "/huong-dan-tra-gop",
+
+
+
+"blogs_number_perpage": "8",
+
+
+
+"blogs_related_enable": true,
+
+
+
+"blogs_related_limit": "5",
+
+
+
+"blogs_aside_enable": true,
+
+
+
+"blogs_aside_url": "tin-tuc",
+
+
+
+"blogs_aside_limit": "5",
+
+
+
+"blogs_related_title": "Bài viết liên quan",
+
+
+
+"blogs_aside_title": "Tin tức nổi bật",
+
+
+
+"aside_category_blog_title": "Danh mục",
+
+
+
+"use_collection_coupons": true,
+
+
+
+"use_recent_view": true,
+
+
+
+"installment_type": "enabled_with_tag",
+
+
+
+"coupon_1_info": "- Giá trị đơn hàng tối thiểu 250k. <br/>\r\n- Mỗi khách hàng được sử dụng tối đa 1 lần.",
+
+
+
+"installment_price": "3000000",
+
+
+
+"coupon_2_info": "- Đơn hàng giá trị tối thiểu 500k. <br/>\r\n- Chỉ áp dụng 1 mã giảm giá trên một đơn hàng.",
+
+
+
+"coupon_3_info": "- Đơn hàng từ 1000K.<br/>\r\n- Chỉ áp dụng 1 mã giảm giá trên một đơn hàng.",
+
+
+
+"coupon_4_info": "- Đơn hàng từ 500K <br/>\r\n- Áp dụng cho khu vực Tp.HCM",
+
+
+
+"equalprice_percent": "100",
+
+
+
+"slider_1_url": "/collections/all",
+
+
+
+"slider_1_alt": "Sản phẩm nổi bật",
+
+
+
+"slider_2_url": "/collections/all",
+
+
+
+"slider_2_alt": "Khuyến mãi lớn chào xuân",
+
+
+
+"right_banner_1_alt": "Củ sạc",
+
+
+
+"right_2_banner_alt": "Máy tính bảng",
+
+
+
+"bottom_banner_1_url": "/collections/all",
+
+
+
+"bottom_banner_1_alt": "Đồng hồ thông minh",
+
+
+
+"bottom_banner_2_url": "/collections/all",
+
+
+
+"bottom_banner_2_alt": "Ốp lưng điện thoại",
+
+
+
+"bottom_banner_3_url": "/collections/all",
+
+
+
+"bottom_banner_3_alt": "Pin sạc dự phòng",
+
+
+
+"buynow_enable": true,
+
+
+
+"product_buynow_content": "MUA NGAY<span>Giao hàng tận nơi hoặc nhận tại cửa hàng</span>",
+
+
+
+"policy_header_link_1": "/huong-dan-ban-may-cu",
+
+
+
+"filter_search_list": "",
+
+
+
+"top_banner_width": "1200",
+
+
+
+"color_buynow_text": "#ffffff",
+
+
+
+"brand_1_link": "/collections/all",
+
+
+
+"brand_1_title": "Sony",
+
+
+
+"brand_2_link": "/collections/all",
+
+
+
+"brand_2_title": "Xiaomi",
+
+
+
+"brand_3_link": "/collections/all",
+
+
+
+"brand_3_title": "Oppo",
+
+
+
+"brand_5_link": "/collections/all",
+
+
+
+"brand_5_title": "JBL",
+
+
+
+"brand_8_title": "Apple",
+
+
+
+"brand_8_link": "/collections/all",
+
+
+
+"brand_9_title": "LG",
+
+
+
+"brand_9_link": "/collections/all",
+
+
+
+"brand_10_title": "Sam sung",
+
+
+
+"brand_10_link": "/collections/all",
+
+
+
+"use_video_product": true,
+
+
+
+"use_video_play_button": true,
+
+
+
+"product_review_heading": "HỎI ĐÁP - BÌNH LUẬN",
+
+
+
+"use_reviews": true,
+
+
+
+"section_product_tag_1_banner_width": "285",
+
+
+
+"section_product_tag_1_banner_height": "371",
+
+
+
+"flashsale_sold_text": "Đã bán [soluong] sản phẩm",
+
+
+
+"banner_popup_show": true,
+
+
+
+"section_product_tag_1_banner_link": "/dong-ho",
+
+
+
+"section_product_tag_1_banner_title": "Đông hồ thông minh",
+
+
+
+"email": "support@sapo.vn",
+
+
+
+"address": " Lầu 3 - Tòa nhà Lữ Gia - Số 70 Lữ Gia - P.15 - Q.11, Tp.HCM",
+
+
+
+"phone": "19006750",
+
+
+
+"section_hot_banner_link": "/phu-kien-dien-thoai",
+
+
+
+"section_hot_banner_alt": "Phụ kiện điện thoại",
+
+
+
+"sanphamlienquan_empty_message": "",
+
+
+
+"banner_coll_2_1_link": "/collections/all",
+
+
+
+"banner_coll_2_1_title": "Phụ kiện chính hãng",
+
+
+
+"banner_coll_2_2_link": "/collections/all",
+
+
+
+"banner_coll_2_2_title": "Điện thoại",
+
+
+
+"banner_coll_2_3_link": "/collections/all",
+
+
+
+"banner_coll_2_3_title": "Loa không dây",
+
+
+
+"banner_coll_1_1_link": "/collections/all",
+
+
+
+"banner_coll_1_1_title": "Phụ kiện chính hãng",
+
+
+
+"banner_coll_1_2_title": "Điện thoại",
+
+
+
+"banner_coll_1_2_link": "/collections/all",
+
+
+
+"banner_coll_1_3_title": "Loa không dây",
+
+
+
+"banner_coll_1_3_link": "/collections/all",
+
+
+
+"equalprice_from": "type",
+
+
+
+"banner_popup_height": "643",
+
+
+
+"top_banner_url": "/collections/all",
+
+
+
+"top_banner_title": "Khuyến mãi",
+
+
+
+"banner_popup_width": "750",
+
+
+
+"use_frame_1": true,
+
+
+
+"frame_1_position": "center-center",
+
+
+
+"frame_1_coll": "Giảm sốc 50%",
+
+
+
+"frame_1_scale": "0.75",
+
+
+
+"brand_6_link": "/collections/all",
+
+
+
+"brand_6_title": "Anker",
+
+
+
+"brand_7_link": "/collections/all",
+
+
+
+"brand_7_title": "Hoco",
+
+
+
+"brand_11_link": "/collections/all",
+
+
+
+"brand_11_title": "Realme",
+
+
+
+"brand_12_link": "/collections/all",
+
+
+
+"brand_12_title": "BackBerry",
+
+
+
+"brand_13_link": "/collections/all",
+
+
+
+"brand_4_link": "/collections/all",
+
+
+
+"brand_4_title": "Asus",
+
+
+
+"brand_13_title": "Huawei",
+
+
+
+"brand_14_link": "/collections/all",
+
+
+
+"brand_14_title": "Lenovo",
+
+
+
+"ega_sm_enable": true,
+
+
+
+"ega_sm_product_limit": "5",
+
+
+
+"ega_sm_product_heading": "Sản phẩm",
+
+
+
+"ega_sm_search_width": "390",
+
+
+
+"ega_sm_search_height": "380",
+
+
+
+"ega_sm_search_header": "Kết quả tìm kiếm cho ",
+
+
+
+"ega_sm_notfound": "Không tìm thấy kết quả nào",
+
+
+
+"ega_sm_show_all": "Xem tất cả sản phẩm có chứa ",
+
+
+
+"ega_sm_color_bg_hover": "",
+
+
+
+"ega_sm_color_header": "#dd0115",
+
+
+
+"ega_sm_color_item_text_price": "#dd0115",
+
+
+
+"section_product_tag_1_bg": "#f2f2f2",
+
+
+
+"section_product_tag_1_color": "#707070",
+
+
+
+"use_product_hotline": true,
+
+
+
+"product_hotline_message": "Gọi đặt mua [1800.0000] (7:30 - 22:00)",
+
+
+
+"cart_empty_title": "Hổng” có gì trong giỏ hết",
+
+
+
+"cart_empty_subtitle": "Về trang cửa hàng để chọn mua sản phẩm bạn nhé!!",
+
+
+
+"cart_empty_cta_link": "/",
+
+
+
+"cart_empty_cta": "Mua sắm ngay",
+
+
+
+"cro_home_show": "3",
+
+
+
+"cro_home_url": "/khuyen-mai",
+
+
+
+"cro_home_title": "Ưu đãi",
+
+
+
+"cro_coll_show": "4",
+
+
+
+"cro_coll_title": "Sản phẩm",
+
+
+
+"cro_coll_url": "/collections/all",
+
+
+
+"cro_blog_show": "5",
+
+
+
+"cro_blog_title": "Cửa hàng",
+
+
+
+"cro_blog_url": "/he-thong-cua-hang",
+
+
+
+"cro_hotline_show": "1",
+
+
+
+"cro_mess_show": "2",
+
+
+
+"banner_popup_alt": "Chào mừng bạn!!",
+
+
+
+"banner_popup_url": "/khuyen-mai",
+
+
+
+"footer_trustbadge_url": "/chinh-sach-bao-mat",
+
+
+
+"delivery_show": true,
+
+
+
+"delivery_heading": "HẸN GIỜ NHẬN HÀNG",
+
+
+
+"delivery_heading_color": "#000000",
+
+
+
+"delivery_date_title": "Ngày nhận hàng",
+
+
+
+"delivery_time_title": "Thời gian nhận hàng",
+
+
+
+"delivery_time_default": "Chọn thời gian",
+
+
+
+"delivery_time": "08h00 - 12h00; 14h00 - 18h00; 19h00 - 21h00",
+
+
+
+"messenger": "https://www.messenger.com/t/388836827817823",
+
+
+
+"zalo": "https://zalo.me/834141234794359440",
+
+
+
+"sale_pop_coll": "sales-pop",
+
+
+
+"sale_pop_desc": "[name] ở [address] vừa mua cách đây [time]",
+
+
+
+"sale_pop_show": true,
+
+
+
+"sale_pop_color": "#e40303",
+
+
+
+"flashsale_opening_text": "Vừa mở bán",
+
+
+
+"flashsale_out_of_stock_soon_text": "Sắp cháy hàng",
+
+
+
+"slider_2_width": "593",
+
+
+
+"slider_2_height": "290",
+
+
+
+"banner_coll_1_1_width": "380",
+
+
+
+"banner_coll_1_1_height": "204",
+
+
+
+"banner_coll_1_2_width": "380",
+
+
+
+"banner_coll_1_2_height": "204",
+
+
+
+"banner_coll_1_3_width": "380",
+
+
+
+"banner_coll_1_3_height": "204",
+
+
+
+"section_hot_width": "472",
+
+
+
+"section_hot_height": "345",
+
+
+
+"policy_product_title_4": "Đổi trả miễn phí trong 30 ngày",
+
+
+
+"policy_product_use_4": true,
+
+
+
+"right_banner_2_alt": "Máy tính bảng",
+
+
+
+"checkout_action": "checkout",
+
+
+
+"use_cart_limit": true,
+
+
+
+"cart_limit": "500000",
+
+
+
+"cart_limit_message": "Đơn hàng của bạn chưa đạt giá trị tối thiểu 500.000đ. \r\nVui lòng chọn mua thêm sản phẩm.",
+
+
+
+"use_cart_vat": true,
+
+
+
+"cart_vat_checkbox_text": "Xuất hóa đơn công ty",
+
+
+
+"cart_vat_company_label": "Tên công ty",
+
+
+
+"cart_vat_company_placeholder": "Tên công ty",
+
+
+
+"cart_vat_tax_code_label": "Mã số thuế",
+
+
+
+"cart_vat_tax_code_placeholder": "Mã số thuế",
+
+
+
+"cart_vat_tax_min": "10",
+
+
+
+"cart_vat_address_label": "Địa chỉ công ty",
+
+
+
+"cart_vat_address_placeholder": "Nhập địa chỉ công ty (bao gồm Phường/Xã, Quận/Huyện, Tỉnh/Thành phố nếu có)",
+
+
+
+"cart_vat_email_label": "Email nhận hoá đơn",
+
+
+
+"cart_vat_email_placeholder": "Email nhận hoá đơn",
+
+
+
+"use_pirce_vat": true,
+
+
+
+"pirce_vat": "(Đã bao gồm VAT nếu có)",
+
+
+
+"cart_vat_checked_title": "Bạn có chắc muốn xuất hóa đơn?",
+
+
+
+"cart_vat_checked_description": "Hãy kiểm tra lại thông tin hóa đơn của mình thật chính xác!",
+
+
+
+"cart_vat_checked_confirm": "Có, tiến hành thanh toán",
+
+
+
+"cart_vat_checked_cancel": "Kiểm tra lại",
+
+
+
+"cart_vat_empty_message": "Bạn không được để trống trường này",
+
+
+
+"cart_vat_tax_min_message": "Mã số thuế phải tối thiểu 10 ký tự nè",
+
+
+
+"cart_vat_email_error_message": "Định dạng email không đúng",
+
+
+
+"blog_image_width_ratio": "400",
+
+
+
+"blog_image_height_ratio": "270",
+
+
+
+"logo_bct_alt": "Logo Bộ Công Thương",
+
+
+
+"top_banner_mb": true,
+
+
+
+"top_banner_mb_width": "828",
+
+
+
+"home_page_keywords": "Giao diện website cho cửa hàng bán thiết bị công nghệ",
+
+
+
+"logo_bct_url": "/",
+
+
+
+"collection_main_banner_alt": "Tất cả sản phẩm",
+
+
+
+"collection_main_banner_url": "/collections/all"
+
+
+}
+
+}
+}

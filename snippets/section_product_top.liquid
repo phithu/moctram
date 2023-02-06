@@ -1,0 +1,100 @@
+{% assign section = settings[enable] | remove: 'section_' -%}
+{% assign show = 0 -%}
+{% capture mobile_settings -%}{{section}}_mobile_layout{% endcapture -%}
+{% capture product_limit -%}{{section}}_limit{% endcapture -%}
+
+{% assign mobileLayout = settings[mobile_settings] -%}
+{% for i in (1..3) -%}
+{% capture home_tab_show -%}{{section}}_tab_{{i-}}_show{% endcapture -%}
+{% if settings[home_tab_show] -%}
+{% assign show = show | plus: 1 -%}
+{% endif -%}
+{% endfor -%}
+{% if show > 0 -%}
+<div class="section_product_top">
+	{% capture section_title -%}{{section}}_title{% endcapture -%}
+	{% capture section_url -%}{{section}}_url{% endcapture -%}
+	{% capture heading_color -%}{{section}}_title_color{% endcapture -%}
+  {% capture heading_bg -%}{{section}}_title_bg{% endcapture -%}
+	<div class="title_module_main heading-bar e-tabs d-flex justify-content-between align-items-center flex-wrap" 
+		 style='background-color: {{settings[heading_bg] | default: 'transparent'}}'>
+		<h2 class="heading-bar__title" style='color: {{settings[heading_color] | default: 'var(--text-color)'}}'>
+			{% assign use_icon = section | append: '_use_icon' -%}
+			{% assign icon = section | append: '-icon.png' -%}
+			{% if settings[use_icon] -%}
+			<img src='{{icon | asset_url}}' alt='{{settings.section_hot_title}}'/>
+			{% endif -%}
+			<a class='link' href="/collections/{{settings[section_url]}}" title="{{settings[section_title]}}">
+				{{settings[section_title]}}
+			</a>
+		</h2>
+		{% capture tab_color -%}{{section}}_active_tab_color{% endcapture -%}
+		{% capture tab_bg -%}{{section}}_active_tab_bg{% endcapture -%}
+		<ul class='tabs tabs-title list-unstyled mt-2 mt-sm-0 mb-0 tabs-group d-flex align-items-center' 
+			style='--active-tab-color: {{ settings[tab_color] | default: '#fff'}};--active-tab-bg: {{ settings[tab_bg] | default: 'var(--primary-color)'}}'
+			>
+			{% assign count = 0 -%}
+			{% for i in (1..3) -%}
+			{% capture home_tab_coll-%}{{section}}_tab_{{i-}}_coll{% endcapture -%}
+			{% capture home_tab_show-%}{{section}}_tab_{{i-}}_show{% endcapture -%}
+			{% capture home_tab_title-%}{{section}}_tab_{{i-}}_title{% endcapture -%}
+			{% assign coll =  settings[home_tab_coll] -%}
+			{% if settings[home_tab_show] -%}
+			{% assign count = count | plus: 1 -%}
+			<li class="ega-small tab-link px-3 py-2 link{% unless count == 1 %} ml-2{% endunless %}{% if count == 1 %} current{% endif %}" 
+				data-tab="{{section}}-tab-{{i}}" >
+				{{settings[home_tab_title]-}}
+			</li>
+			{% endif%}
+			{% endfor -%}
+		</ul>
+	</div>
+	<div class='e-tabs section__products'>
+		{% assign count = 0 -%}
+		{% for i in (1..3) -%}
+		{% capture home_tab_coll -%}{{section}}_tab_{{i}}_coll{% endcapture -%}
+		{% capture home_tab_show -%}{{section}}_tab_{{i}}_show{% endcapture -%}
+		{% assign coll =  settings[home_tab_coll] -%}
+		{% assign product_count = collections[coll]products_count -%}
+
+		{% if settings[home_tab_show] -%}
+		<div id="{{section}}-tab-{{i}}" class="tab-content content_extab{% if i == 1 -%} current {%-endif -%}">
+			{% if product_count >= 1 -%}
+			<div class="row ml-sm-0 mr-sm-0 product-list{% if mobileLayout == 'one_row' %} one-row{% endif %}"
+				 data-section="tab-section">
+				{% assign count = count | plus: 1 -%}
+				{% assign product_html = '' -%}
+				{% for product in collections[coll].products limit: {{settings[product_limit]}} -%}
+				<div class="col-12 col-lg-3 col-md-4 product-col">
+					<div class="item_product_main item_skeleton">
+					</div>
+				</div>
+				{% capture product_block -%}
+				<div class="col-12 col-lg-3 col-md-3 product-col">
+					<div class="item_product_main">
+						{% include 'product_grid_office' -%}
+					</div>
+				</div>
+				{% endcapture -%}
+				{% assign product_html = product_html | append : product_block -%}
+				{% endfor -%}
+				<script type="text/x-custom-template" data-template="tab-section">
+						{{product_html}}
+				</script>
+			</div>
+			<div class="text-center mt-3 col-12">
+				<a href="{{collections[coll].url}}" title="Xem tất cả" class="btn btn-main btn-icon btn-pill">
+					Xem tất cả {% include 'icon-arrow' -%}
+				</a>
+			</div>
+			{% else -%}
+			<div class="col-12">
+				<p class="a-center mt-3">Hiện tại chưa có sản phẩm nào trong danh mục này!...</p>
+			</div>
+			{% endif -%}
+		</div>
+		{% endif -%}
+		{% endfor -%}
+	</div>
+</div>
+{% endif -%}

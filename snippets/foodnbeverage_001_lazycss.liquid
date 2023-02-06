@@ -1,0 +1,36 @@
+<script>
+let observers = [];
+const options = {
+	root: null,
+	rootMargin: '0px',
+	threshold: 0.1
+}
+const callback = function(entries, observer) {
+	entries.forEach(entry => {
+		const { isIntersecting } = entry;
+		let ele = entry.target;
+		let styleId = ele.dataset.style;
+		let linkTag = document.getElementById(styleId);
+		if (isIntersecting && linkTag.getAttribute('rel') !== 'stylesheet') {
+			linkTag.rel='stylesheet'
+		}
+
+	});
+};
+
+const lazyCssStyleSheet = document.getElementsByClassName('ega-lazycss');
+const lazyCssStyleSheetLength = lazyCssStyleSheet.length;
+
+if (lazyCssStyleSheetLength > 0) {
+	for (let i = 0; i < lazyCssStyleSheetLength; i += 1) {
+		let styleSheetId = lazyCssStyleSheet[i].id;
+		const dataStyleDom = document.querySelectorAll(`[data-style=${styleSheetId}]`);
+		if (dataStyleDom) {
+			observers[i] = new IntersectionObserver(callback, options);
+			dataStyleDom.forEach((dom, index) => {
+				observers[i].observe(dom);
+			})
+		}
+	}
+}
+</script>

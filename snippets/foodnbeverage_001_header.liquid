@@ -1,0 +1,66 @@
+<header class="clearfix" data-spy="affix" data-offset-top="0">
+	<div class="main-menu ega-container clearfix ega-hidden ega-block--lg">
+		<ul class="menu" data-setting="menu">
+			{%assign count = 0%}
+			{%assign logo_pos = settings.foodnbeverage_001__menu__logo__logo_pos%}
+			{%for i in (1..4)%}
+				{%capture use_menu_item%}foodnbeverage_001__menu__{{i}}__show{%endcapture%}
+				{%capture menu_item_name%}foodnbeverage_001__menu__{{i}}__title{%endcapture%}
+				{%capture menu_item_content_id%}foodnbeverage_001__menu__{{i}}__target_id{%endcapture%}
+				{%if settings[use_menu_item]%}
+				{%assign count = count | plus: 1%}
+
+				{%if count == logo_pos%}
+					<li><a href="/"><img src="{{ 'foodnbeverage_001_logo.png' | asset_url }}" data-setting="theme__logo__img_url"/></a></li>
+					<li><a href="{{ settings[menu_item_content_id] }}">{{ settings[menu_item_name] }}</a></li>
+				{%else%}
+					<li><a href="{{ settings[menu_item_content_id] }}">{{ settings[menu_item_name] }}</a></li>
+				{%endif%}
+				{%endif%}
+			{%endfor%}
+			<li>
+				<a class="menu__action" href="#section-detail">{{ settings.foodnbeverage_001__theme__buynow__text}}</a>
+			</li>	
+		</ul>
+	</div>
+	<div class="header--mb ega-block ega-hidden--lg">
+		<div class="toggle-nav toggle-nav--open">
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
+		<a href="/"><img src="{{ 'foodnbeverage_001_logo.png' | asset_url }}" alt="logo.png"/></a>
+		<ul class="menu--mb">
+			{%for i in (1..4)%}
+				{%capture use_menu_item%}foodnbeverage_001__menu__{{i}}__show{%endcapture%}
+				{%capture menu_item_name%}foodnbeverage_001__menu__{{i}}__title{%endcapture%}
+				{%capture menu_item_content_id%}foodnbeverage_001__menu__{{i}}__target_id{%endcapture%}
+				{%if settings[use_menu_item]%}
+					<li><a href="{{ settings[menu_item_content_id] }}">{{ settings[menu_item_name] }}</a></li>
+				{%endif%}
+			{%endfor%}
+			<li>
+				<a class="menu__action" href="#section-detail">ĐẶT HÀNG NGAY</a>
+			</li>
+		</ul>
+		<div class="nav-overlay"></div>
+	</div>
+</header>
+
+<style>
+	/* Note: Try to remove the following lines to see the effect of CSS positioning */
+	.affix {
+		position: fixed;
+		top: 0;
+		background: #fff;
+		width: 100%;
+		z-index: 9999 !important;
+	}
+
+	.affix + .container-fluid {
+		padding-top: 70px;
+	}
+</style>
+
+
+

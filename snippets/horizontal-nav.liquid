@@ -1,0 +1,63 @@
+<nav>
+<ul  class="navigation-horizontal list-group list-group-flush scroll">
+	{% assign i = 0 -%}
+	{% for link in linklists[settings.sub_menu].links %}
+	{% assign items_list = settings.megamenu_items | split:"," %}
+	{% assign mega-title = link.title | downcase %}
+	{%capture use_icon -%}use_menu_icon_{{forloop.index}}{%endcapture -%}
+	{%capture menu_icon -%}menu_icon_{{forloop.index}}.png{%endcapture -%}
+	<li class="menu-item list-group-item">
+		<a href="{{ link.url }}" class="menu-item__link" title="{{ link.title }}">
+		<span>{%if settings.use_menu_flashsale and forloop.index == settings.icon_menu_flashsale_pos | plus: 0 -%}
+			<img src="{{'icon_menu_flashsale.png' | asset_url}}" alt="{{link.title }}" />
+			{%endif-%}
+			{{ link.title }}</span>	 {%if linklists[link.handle].links.size > 0 %}
+				<i class='float-right' data-toggle-submenu>
+					{%include 'icon-arrow'%}
+				</i>{%endif %}
+			</a>			
+		{% if settings.display_megamenu and items_list contains mega-title %}
+		{% assign i = i | plus: 1 %}
+		{% endif %}	
+		{%assign isMegamenu = false-%}
+		{%if linklists[link.handle].links.size > 0-%}
+		{% for childlink in linklists[link.handle].links %}
+			{% if linklists[childlink.handle] %}
+				{%assign isMegamenu = true -%}
+				{%break -%}
+			{%endif -%}
+		{%endfor -%}
+		<div class="submenu scroll {%if isMegamenu %} mega-menu {%else%} default {%endif%}">
+			{%if isMobile -%}
+			<div class='toggle-submenu'>
+				<i class='fas fa-chevron-left mr-3'></i>
+				<span>{{ link.title }} </span>
+			</div>
+			{%endif -%}
+			<ul class="submenu__list">
+			{% for childlink in linklists[link.handle].links %}
+			
+			{% if linklists[childlink.handle] %}
+			<li class="submenu__col">
+				<span class="submenu__item submenu__item--main">
+					<a class="link" href="{{ childlink.url }}" title="{{ childlink.title }}">{{ childlink.title }}</a>
+				</span>
+				{% for childlink2 in linklists[childlink.handle].links %}
+				 <span class="submenu__item submenu__item">
+					 <a class="link" href="{{ childlink2.url }}" title="{{ childlink2.title }}">{{ childlink2.title }}</a>
+				 </span>
+				{% endfor %}
+			</li>
+			{% else %}
+			<li class="submenu__item submenu__item--main">
+					<a class="link" href="{{ childlink.url }}" title="{{ childlink.title }}">{{ childlink.title }}</a>
+				</li>
+			{% endif %}
+			{% endfor %}
+		</ul>
+		</div>
+		{%endif-%}
+	</li>
+	{% endfor %}
+</ul>
+	</nav>

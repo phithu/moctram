@@ -1,0 +1,41 @@
+{% assign section = 'section_policies' -%}
+<div class='section_polices' style='background-color: {{settings.section_policies_bg | default: "transparent" }}'>
+	<div class="row justify-content-md-center justify-content-start">
+		{% for i in (1..3) -%}
+		{% capture brandenable -%}{{section}}_{{i}}_en{% endcapture -%}
+		{% capture brandLink -%}{{section}}_{{i}}_link{% endcapture -%}
+		{% capture imagebrand -%}{{section}}_{{i}}.jpg{% endcapture -%}
+		{% capture altbrand -%}{{section}}_{{i}}_title{% endcapture -%}
+		{% capture width -%}{{section}}_{{i}}_width{% endcapture -%}
+		{% capture height -%}{{section}}_{{i}}_height{% endcapture -%}
+		{% capture content -%}{{section}}_{{i}}_content{% endcapture -%}
+		{% if settings[brandenable] -%}
+		{% capture banner_item -%}
+		<picture>
+			<source media="(max-width: 600px)"
+					srcset="{{ imagebrand | asset_url | img_url:'grande' }}">
+			<img loading="lazy" class="img-fluid"
+				 src="{{imagebrand | asset_url}}" alt="{{altbrand}}"
+				 width="{{settings[width]}}"
+				 height="{{settings[height]}}"
+				 />
+		</picture>
+		{% if settings[content] and settings[content] != '' -%}
+		<span class='ml-2'>{{settings[content]}}</span>
+		{% endif -%}
+		{% endcapture -%}
+		<div class="item col-12 col-md-4">
+			{% if settings[brandLink] and settings[brandLink] != '' -%}
+			<a class="banner" href="{{settings[brandLink]}}" title="{{settings[altbrand]}}"> 
+				{{banner_item}}
+			</a>
+			{% else -%}
+			<div class="banner"> 
+				{{banner_item}}
+			</div>
+			{% endif -%}
+		</div>
+		{% endif -%}
+		{% endfor -%}
+	</div>
+</div>

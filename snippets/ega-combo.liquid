@@ -1,0 +1,41 @@
+<div id="popupComboModal" class="modal fade" role="dialog" data-id="{{product.id-}}" data-title="{{product.title-}}">
+	<div class="modal-dialog align-vertical">
+		<div class="modal-content "><button type="button" class="close" data-dismiss="modal" data-backdrop="false" aria-label="Close" style="z-index: 9;"><span aria-hidden="true">×</span></button>
+			<div class="row row-noGutter">
+				<div class="modal-left col-sm-12 col-lg-12 col-md-12">
+					<h3 class="modal-title">
+						<span>Mua thêm sản phẩm từ gói Combo</span></h3>
+					<div class="modal-body">
+						{%for i in (1..2)-%} 
+						<div class="combo-item {%if i == 1%}actived{%endif%}">
+							<div class="combo-name">Mua 1 tặng 1</div>
+							<div class="combo-list">
+								{%for i in (1..2)-%} 
+								<div class="media mt-2">
+									<div class="media-left thumb_img">
+										<div class="thumb-1x1"><img src="//product.hstatic.net/200000411391/product/upload_def60b626f9741289dc4a79c4d2cd9bb_small.jpg" alt="Combo 6 hộp bông tẩy trang Silcot (82 miếng/hộp)"></div>
+									</div>
+									<div class="media-body body_content">
+										<div class="product-title mb-1">Combo 6 hộp bông tẩy trang Silcot (82 miếng/hộp)</div>
+										<div class="variant_title font-weight-light"><span></span></div>
+										<div class="combo-quantity font-weight-light">Số lượng: 2</div>
+										<span class="price">3,116,000₫</span>
+									</div>
+								</div>
+								{%endfor-%}
+							</div>
+						</div>
+						{%endfor-%}
+					</div>
+				</div>
+				<div class="modal-right margin-top-10 col-sm-12 col-lg-12 col-md-12">
+					<div class="cart-action">
+						<div class="addcart-single btn btn-full">Chỉ thêm sản phẩm hiện tại</div>
+						<div class="addcart-combo btn checkout_button btn-full">Thêm tất cả vào giỏ hàng</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+

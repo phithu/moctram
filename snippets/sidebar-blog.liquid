@@ -1,0 +1,77 @@
+{%if linklists[settings.aside_category_blog_menu] -%}
+<aside class="aside-item blog-sidebar sidebar-category collection-category margin-bottom-25">
+	<div class="aside-title">
+		<h2 class="title-head margin-top-0 cate"><span>{{ settings.aside_category_blog_title }}</span></h2>
+	</div>
+	<div class="aside-content">
+		<nav class="nav-category navbar-toggleable-md">
+			<ul class="nav navbar-pills flex-column">
+				{% for link in linklists[settings.aside_category_blog_menu].links %}
+				{% if linklists[link.handle] %}
+				<li class="nav-item ">
+					<a href="{{ link.url }}" class=" nav-link {% if link.active %}active{% endif %}">
+						{{ link.title }}
+					</a>
+					 <i class="fa fa-caret-down"></i>
+					<ul class="dropdown-menu">
+						{% for childlink in linklists[link.handle].links %}
+						{% if linklists[childlink.handle] %}
+						<li class="dropdown-submenu nav-item">
+								<a class="nav-link" href="{{ childlink.url }}">{{ childlink.title }}
+								</a>
+							<i class="fa fa-caret-down"></i>
+							<ul class="dropdown-menu">
+								{% for childlink2 in linklists[childlink.handle].links %}
+								<li class="nav-item lv3">
+									<a class="nav-link" href="{{ childlink2.url }}">{{ childlink2.title }}
+
+									</a>
+								</li>
+
+								{% endfor %}
+							</ul>                      
+						</li>
+						{% else %}
+						<li class="nav-item">
+							<a class="nav-link" href="{{ childlink.url }}">{{ childlink.title }}
+
+							</a>
+						</li>
+						{% endif %}
+						{% endfor %}
+
+					</ul>
+				</li>
+				{% else %}
+				<li class="nav-item"><a class="nav-link" href="{{ link.url }}">{{ link.title }}
+
+					</a>
+
+				</li>
+				{% endif %}
+				{% endfor %}
+			</ul>
+		</nav>
+	</div>
+</aside>
+{%endif-%}
+{{related_article}}
+{% if settings.blogs_aside_enable and template contains 'blog' %}
+<div class="blog-aside aside-item blog-aside-article">
+	<div class="aside-title">
+		<h2 class="title-head"><span><a href="{{blogs[settings.blogs_aside_url].url}}" title="{{ settings.blogs_aside_title }}">{{ settings.blogs_aside_title }}</a></span></h2>
+	</div>
+	<div class="aside-content-article aside-content margin-top-0">
+		<div class="blog-list blog-image-list">
+			{%assign blog_sizes = blogs[settings.blogs_aside_url].articles_count%}
+			{%if blog_sizes >= 1%}
+			{% for article in blogs[settings.blogs_aside_url].articles  limit : settings.blogs_aside_limit %}
+			{%include 'blog_list_media_item'%}
+			{% endfor %}
+			{%else%}
+			<p class="a-center block">Đang cập nhật bài viết</p>
+			{%endif%}
+		</div>
+	</div>
+</div>
+{% endif %}

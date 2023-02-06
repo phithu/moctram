@@ -1,0 +1,163 @@
+{% assign social = settings.fot_social -%}
+{% assign c1_title = settings.fot_c1_title -%}
+{% assign c2_title = settings.fot_c2_title -%}
+{% assign c2_menu = settings.fot_menu2 -%}
+{% assign c3_title = settings.fot_c3_title -%}
+{% assign c3_menu = settings.fot_menu3 -%}
+{% assign c4_title = settings.fot_c4_title -%}
+{% assign c4_menu = settings.fot_menu4 -%}
+{% assign c4_content = settings.fot_c4_content -%}
+{% assign c5_title = settings.fot_c5_title -%}
+{% assign copyright = settings.copyright -%}
+{% assign btt = settings.backtotop_enable -%}
+
+{% include 'footer_top' -%}
+<footer class="footer bg-white" style="--footer-overlay: {{settings.footer_bg_overlay | default: '#fff'}}">
+	<div class="mid-footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12 col-md-6 col-lg-3 footer-click footer-1">
+					{% if c1_title && c1_title != '' -%}
+					<h4 class="title-menu clicked">
+						{{c1_title}} 
+					</h4>
+					{% endif -%}
+					{% if settings.fot_use_logo -%}
+					<a href="/" class="logo-wrapper mb-3 d-block ">	
+						<img loading="lazy"
+							 src="{{ 'logo-footer.png'  | asset_url}}" 
+							 alt="logo {{ shop.name }}"
+							 width="{{settings.footer_logo_width}}" 
+							 height="{{settings.footer_logo_height}}">
+					</a>
+					{% endif -%}
+					{% if settings.fot_about != null or settings.fot_about !='' -%}
+					<p>
+						{{settings.fot_about}}
+					</p>
+					{% endif -%}
+					{% if settings.fot_contact -%}
+					<div class="single-contact">
+						<i class="fa fa-map-marker-alt"></i>
+						<div class="content"><strong>Địa chỉ: </strong>
+							{% if settings.address and settings.address != '' -%}
+							<span>{{settings.address}}</span>
+							{% else -%}
+							<span>{{ shop.address }}, {{shop.province}}, {{shop.country}}</span>
+							{% endif -%}
+						</div>
+					</div>
+					<div class="single-contact">
+						<i class="fa fa-mobile-alt"></i>
+						<div class="content">
+							<strong>Số điện thoại: </strong>
+							<a class="link" title="{{settings.phone | default: shop.phone_number | remove: ' '}}" href="tel:{{settings.phone | default: shop.phone_number | remove: ' '}}">{{settings.phone | default: shop.phone_number}}</a>
+						</div>
+					</div>
+					<div class="single-contact">
+						<i class="fa fa-envelope"></i>
+						<div class="content">
+							<strong>Email: </strong><a title="{{settings.email | default:shop.customer_email }}" class="link" href="mailto:{{settings.email | default:shop.customer_email }}">{{settings.email | default:shop.customer_email }}</a>
+						</div>
+					</div>
+					{% endif -%}
+					{% if settings.use_logo_bct -%}
+					<a target="_blank" href="{{settings.logo_bct_url}}" title="{{settings.logo_bct_alt}}"  >
+						<img loading="lazy" 
+							 src="{{'logo_bct.png'|asset_url}}" 
+							 width="{{settings.logo_bct_width}}"
+							 height="{{settings.logo_bct_height}}"
+							 alt="{{settings.logo_bct_alt}}" />
+					</a>
+					{% endif -%}
+				</div>
+				<div class="col-xs-12 col-md-6 col-lg-3 footer-click">
+					<h4 class="title-menu clicked">
+						{{c2_title}} <i class="fa fa-angle-down d-md-none d-inline-block"></i>
+					</h4>
+					<ul class="list-menu toggle-mn" >
+						{% for link in linklists[c3_menu].links -%}
+						<li class="li_menu">
+							<a class="link"  href="{{ link.url }}" title="{{link.title}}">{{ link.title }}</a>
+						</li>
+						{% endfor -%}
+					</ul>
+				</div>
+				<div class="col-xs-12 col-md-6 col-lg-3 footer-click">
+					<h4 class="title-menu clicked">
+						{{c3_title}} <i class="fa fa-angle-down d-md-none d-inline-block"></i>
+					</h4>
+					<ul class="list-menu toggle-mn">
+						{% for link in linklists[c4_menu].links -%}
+						<li class="li_menu">
+							<a class="link" href="{{ link.url }}" title="{{link.title}}">{{ link.title }}</a>
+						</li>
+						{% endfor -%}
+					</ul>
+				</div>
+				<div class="col-xs-12 col-md-6 col-lg-3">
+					<h4 class="title-menu">
+						{{c4_title}}
+					</h4>
+						{% if c4_content != '' -%}
+						{% assign c4_content_arr = c4_content | split: '@##@' -%}
+						{% for row in c4_content_arr -%}
+						{% assign cell = row | split: '##' -%}
+						<p>
+							{% if cell[0] -%}
+							<span>{{cell[0]}}</span>
+							{% endif -%}
+							{% if cell[1] -%}
+							<a class='text-primary font-weight-bold' href='tel:{{cell[1]}}'>{{cell[1]}}</a>
+							{% endif -%}
+							{% if cell[2] -%}
+							<span>{{cell[2]}}</span>
+							{% endif -%}
+						</p>
+						{% endfor -%}
+						{% endif -%}
+
+						{% if settings.use_trustbadge_fot -%}
+						{% include 'trust-badge' -%}
+						{% endif -%}
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="bg-footer-bottom copyright clearfix py-2">
+		<div class="container">
+			<div class="row">
+				<div id="copyright" class="col-12 fot_copyright text-center">
+					<span class="wsp">
+						© Bản quyền thuộc về moctramagarwood.com 
+					</span>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</footer>
+
+{% if settings.banner_popup_show -%} 
+<div class="modal fade" id="ega-modal-banner" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog modal-xl align-vertical" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<a href="{{settings.banner_popup_url-}}" title='{{settings.banner_popup_alt-}}'>
+					<img loading="lazy" class="img-fluid" src="{{ 'banner-popup-img.png' | asset_url -}}" 
+						 alt="{{settings.banner_popup_alt}}" width="{{settings.banner_popup_height}}" height="{{settings.banner_popup_height}}"/>
+				</a>
+				<button class="btn-form-close close" type="button" data-dismiss="modal" aria-label="Close"><i class="fa fa-times"></i></button>
+			</div>
+		</div>
+	</div>
+</div>
+{% endif -%}
+
+<script type="text/x-custom-template" data-template="navigation">
+	{% include 'main-nav-template' -%} 
+</script>
+
+<script type="text/x-custom-template" data-template="menuMobile">
+	{% include 'mobile-menu' -%}
+</script>

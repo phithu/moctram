@@ -1,0 +1,359 @@
+body {
+	background-color: var(--body-background);
+}
+.sort-cate ul {
+	padding-left: 0;
+	list-style: none;
+	margin: 0px;
+}
+.section.wrap_background {
+	margin-bottom: 5px;
+}
+@media (max-width: 1023px) {
+	.sort-cate {
+		--border-color: #eee;
+		font-size: 12px;
+	}
+	.sort-cate li {
+		margin: 0 auto;
+		outline: none;
+		position: relative;
+		width: 120px;
+		padding: 0 10px;
+		color: var(--text-color);
+		font-size: 12px;
+		cursor: pointer;
+		border: 1px solid var(--border-color);
+		border-radius: 6px;
+	}
+	.sort-cate #sort-by {
+		/*background: #fff;*/
+		padding-bottom: 0;
+		margin-right: 5px;
+	}
+	.sort-cate #sort-by > ul > li {
+		line-height: 34px;
+	}
+	.sort-cate #sort-by > ul > li .fas {
+		position: absolute;
+		top: 10px;
+		right: 10px;
+	}
+	.sort-cate #sort-by > ul > li:hover {
+		border-bottom-right-radius: 0;
+		border-bottom-left-radius: 0;
+		box-shadow: 0 15px 35px rgba(50, 50, 93, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07);
+	}
+	.sort-cate #sort-by > ul > li:hover > ul {
+		visibility: visible;
+	}
+	.sort-cate #sort-by li > ul {
+		position: absolute;
+		visibility: hidden;
+		width: 120px;
+		left: -1px;
+		top: 34px;
+		z-index: 9999;
+		border: 1px solid var(--border-color);
+		border-radius: 0px 0px 6px 6px;
+		overflow: hidden;
+		background: #fff;
+	}
+	.sort-cate #sort-by li > ul li {
+		border-top: none;
+		border-right: none;
+		border-left: none;
+		border-radius: 0px;
+	}
+	.sort-cate #sort-by li > ul li:hover a {
+		color: var(--primary-color);
+	}
+	#open-filters {
+		font-size: 12px;
+	}
+	#open-filters .fa {
+		font-size: 16px;
+	}
+}
+@media (min-width: 1024px) {
+	#recent-view-coll {
+		margin-bottom: 112px;
+	}
+	.sort-cate .fas {
+		display: none;
+	}
+	.sort-cate .content_ul li {
+		display: inline-block;
+	}
+	.sort-cate .content_ul li a {
+		font-weight: 400;
+		color: #898989;
+		padding: 9px 10px 11px;
+		display: inline-block;
+	}
+	.sort-cate .content_ul li:hover, .sort-cate .content_ul li.active {
+		border-bottom: 2px solid var(--primary-color);
+		margin-bottom: -2px;
+	}
+	.sort-cate .content_ul li:hover a, .sort-cate .content_ul li.active a {
+		color: var(--primary-color);
+	}
+}
+.card {
+	border-radius: 0px;
+	border: none;
+}
+.sidebar.openf {
+	top: 0 !important;
+	right: 0;
+	height: 100%;
+	overflow: auto;
+	z-index: 9999;
+	visibility: visible;
+	opacity: 1;
+	width: 300px;
+}
+.pagenav {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+.overflow-item:not(.show) {
+	display: none;
+}
+.filter-item-toggle .fas {
+	transitions: all 0.3s ease-out;
+}
+.filter-item-toggle.show {
+	display: inline-block;
+}
+.filter-item-toggle.show .fas {
+	transform: rotate(180deg);
+}
+
+.coll-head{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+.content-col{
+	margin-top: -5px;
+}
+
+.coll-sortby{
+    padding: 10px 5px;
+    align-items: center;
+}
+.coll-sortby select{
+	-webkit-appearance: none;
+    margin-left: 5px;
+    height: 30px;
+    padding: 0 5px;
+	padding-right: 20px;
+}
+
+@media(min-width: 1200px){
+	.coll-head{
+		padding-right: 5px;
+	}
+}
+
+@media(max-width: 767px){
+	.coll-sortby{
+		width: 100%;
+	}
+	.coll-sortby .sort-cate #sort-by{
+		padding: 0;
+	}
+}
+
+
+#sort-by{
+    position: relative;
+}
+
+#sort-by:after{
+	position: absolute;
+	content: "";
+	width: 0;
+	height: 0;
+	top: 12px;
+	right: 4px;
+	border-top: 6px solid;
+	border-left: 5px solid transparent;
+	border-right: 5px solid transparent;
+}
+
+/* Flash sale Collection */
+.ega-badge-ctd {
+	display: flex;
+	align-items: center
+}
+
+.ega-badge-ctd__item {
+	border-radius: 3px;
+	margin: auto 6px;
+	color: var(--countdown-color);
+	background-color: var(--countdown-background);
+	text-align: center;
+	display: flex;
+	place-items: center;
+	place-content: center;
+	width: 44px;
+	height: 40px;
+	font-size: 18px;
+	font-weight: 500;
+	line-height: 20px
+}
+
+.ega-badge-ctd__colon {
+	font-weight: bold;
+	font-size: 14px;
+	color: var(--countdown-background)
+}
+
+.ega-badge-ctd__s {
+	margin-right: 0px
+}
+.flashsale {
+	--background-color: #f4ebc1;
+	--countdown-background: #d3232a;
+	--countdown-color: #fff;
+	background: var(--background-color, transparent);
+	padding: 10px;
+	margin-bottom: 20px;
+	border-radius: 10px
+}
+
+@media (max-width:575px) {
+	.flashsale {
+		padding: 0px
+	}
+
+}
+
+.flashsale__title {
+	display: flex;
+	align-items: center
+}
+
+.flashsale__header {
+	flex-direction: column;
+	justify-content: center;
+	margin: auto
+}
+
+.flashsale__countdown-wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	margin: auto
+}
+
+.flashsale__countdown-label {
+	color: var(--text-color);
+	font-size: 1rem;
+	margin-bottom: 10px
+}
+
+.promo-box-wrapper .slick-list {
+	margin: auto
+}
+
+.promo-box-wrapper::-webkit-scrollbar {
+	display: none
+}
+
+.promo-box-wrapper .slick-slide {
+	margin: 0 10px
+}
+
+.promo-box-wrapper .slick-list {
+	margin: 0 -10px
+}
+
+.promo-box-wrapper:not(.slick-slider) {
+	overflow: auto;
+	display: flex;
+	flex-wrap: no-wrap
+}
+
+.flashsale-coupon {
+	margin: 1rem auto;
+	border-radius: 0.25rem !important;
+	box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.1);
+	background: #fff;
+	margin: 10px auto
+}
+
+.flashsale-coupon .coupon-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 8px 16px;
+	color: #000;
+	border-top-left-radius: .25rem;
+	border-top-right-radius: .25rem;
+	border-bottom: 1px solid #eee
+}
+
+.flashsale-coupon .coupon-footer {
+	border-top: 1px dashed #bbb;
+	padding-top: 8px
+}
+
+.flashsale-coupon .coupon-content {
+	line-height: 1.5;
+	margin-bottom: .75rem
+}
+
+.flashsale-coupon .text-blue {
+	color: #06748a
+}
+
+.flashsale-coupon .code {
+	text-transform: uppercase;
+	font-size: 1.7rem;
+	margin-bottom: 0 !important;
+	font-weight: 500;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	width: 60%;
+	color: #f44336
+}
+
+.flashsale-coupon .copy-btn {
+	--primary-color: #ff5722;
+	font-size: .68rem;
+	border-radius: 1rem;
+	display: inline-block;
+	padding: .35rem .6rem;
+	font-weight: 500;
+	text-transform: capitalize
+}
+
+.flashsale-coupon .coupon-body {
+	padding: .5rem
+}
+
+.flashsale-coupon .coupon-body p {
+	line-height: 1.5;
+	font-size: 14px;
+	padding: 10px
+}
+
+@media (max-width:767px) {
+	.flashsale-coupon {
+		flex: 0 0 300px;
+		max-width: 300px
+	}
+
+	.flashsale-coupon+.flashsale-coupon {
+		margin-left: 10px
+	}
+
+}
+/* End Flash sale Collection */

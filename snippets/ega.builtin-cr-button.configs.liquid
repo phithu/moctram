@@ -1,0 +1,204 @@
+{%if settings.cro_show -%}
+<script>
+	var cro_show = {{settings.cro_show-}},
+		cro_addcart_show = {{settings.cro_add_cart_show | default: false }},
+		cro_cart_show = {{settings.cro_cart_show | default: false}},
+		cro_addcart_title = "Thêm vào giỏ",
+		cro_addcart_bg_1 = "{{settings.color_addtocart}}",
+		cro_addcart_bg_2 = "{{settings.color_addtocart}}",
+		cro_addcart_color = "#fff",
+		cro_price_color = "{{settings.color_price}}",
+		cro_variant_color = "{{settings.main-color-}}",
+		cro_cta_bg = "{{settings.color_addtocart-}}",
+		cro_cta_color = "{{settings.cro_cta_color-}}",
+		cro_addcart_modal_mess = "Tiến hành thanh toán",
+		cro_addcart_modal_redirect = "{{settings.cro_addcart_modal_redirect-}}",
+		cro_modal_btn_text = "{{settings.cro_modal_btn_text-}}",
+		cro_modal_btn_bg = "{{settings.cro_modal_btn_bg-}}",
+		cro_modal_btn_color = "{{settings.cro_modal_btn_color-}}",
+		cro_hotline_show =  {%if settings.cro_hotline_show and settings.cro_hotline_show != '0'%}true{%else%}false{%endif-%},
+		cro_hotline_number = "{{settings.phone | default: shop.phone_number | remove: ' '}}",
+		cro_mess_show = {%if settings.cro_mess_show and settings.cro_mess_show != '0'%}true{%else -%}false{%endif-%},
+		cro_mess_url = "{{settings.messenger-}}",
+		cro_home_show = {{ settings.cro_home_show | default: false }},
+		cro_home_title = "{{settings.cro_home_title-}}",
+		cro_home_url = "{{settings.cro_home_url-}}",
+		cro_coll_title = "{{settings.cro_coll_title-}}",
+		cro_coll_url = "{{settings.cro_coll_url-}}",
+		cro_blog_title = "{{settings.cro_blog_title-}}",
+		cro_blog_url = "{{settings.cro_blog_url-}}",
+		cro_general_color = "{{settings.main-color-}}",
+		cro_product_color = "{{settings.main-color-}}",
+		cro_background_color = "#fff"
+		
+	window.EGACRAddonSettings = {
+		general: {
+			enabled: cro_show,
+			iconWidth: 20,
+			background: cro_background_color,
+			color: cro_general_color,
+			activeColor: cro_general_color,
+			activeBackground: cro_background_color,
+			screenSize: [{ name: "mobile" }],
+			styleAddon: "shopee",
+			productBackground: "#ffffff",
+			productColor: cro_product_color,
+			ignorePages: [],
+			bodyOffset: 54,
+			conflictEl: "#ega-hotline,.fb_dialog.fb_dialog_advanced",
+			skipEl: ".button-popup-loyalty",
+			desktop: { x: "right", y: 50 }
+		},
+		products: {
+			enabled: cro_cart_show || cro_addcart_show ,
+			cart: {
+				enabled: cro_cart_show,
+				icon: "{{'cro-cart-icon.png'|asset_url}}",
+				title: "Giỏ hàng",
+				url: "/cart"
+			},
+			buyNowBtn: {
+				enabled: false,
+				title: "Mua ngay",
+				color: "#ffffff",
+				background: "#ffd001",
+				backgroundEnd: "#ff9b30"
+			},
+			addToCartBtn: {
+				enabled: cro_addcart_show,
+				title: cro_addcart_title,
+				color: "#ffffff",
+				background: cro_addcart_bg_1,
+				loadingColor: "",
+				icon: "",
+				backgroundEnd: cro_addcart_bg_2,
+				cartQuery: ".count_item_pr,.count-holder .count"
+			},
+			modal: {
+				enabled: false,
+				headerText: "Sản phẩm vừa được thêm vào giỏ hàng",
+				ctaLink: "checkout",
+				ctaText: cro_addcart_modal_mess,
+				ctaBg: "#ff5722",
+				ctaColor: "#fff"
+			},
+			qvProduct: {
+				priceColor: cro_price_color,
+				variantColor: cro_variant_color,
+				ctaBg: cro_addcart_bg_1,
+				ctaColor: "#fff",
+				useQty: true
+			}
+		},
+		pages: {
+			enabled: true,
+			links: [
+				{%if settings.cro_coll_show and  settings.cro_coll_show != '0'-%} 
+				{
+					url: cro_coll_url,
+					title: cro_coll_title,
+					icon:"{{'icon-cro-coll.png' | asset_url}}",
+					order: "{{settings.cro_coll_show}}"
+				},
+				{%endif-%}
+				{%if settings.cro_blog_show and settings.cro_blog_show != '0' -%}
+				{
+					url: cro_blog_url,
+					title: cro_blog_title,
+					icon:"{{'icon-cro-blog.png' | asset_url}}",
+					order: "{{settings.cro_blog_show}}"
+
+				},
+				{%endif-%}
+				{%if settings.cro_home_show and settings.cro_home_show != '0' -%} 
+				{
+					url: cro_home_url,
+					title: cro_home_title,
+					icon:"{{'cro-home-icon.png' | asset_url}}",
+					order: "{{settings.cro_home_show}}"
+
+				}
+				{%endif-%}
+			]
+		},
+		messenger: {
+			enabled: cro_mess_show,
+			icon:"{{'cro-mess-icon.png' | asset_url}}",
+			title: "Nhắn tin",
+			url: cro_mess_url,
+			{%unless template contains 'product'%}
+			order: "{{settings.cro_mess_show}}"
+			{%endunless%}
+
+		},
+		phone: {
+			enabled: cro_hotline_show,
+			icon: "{{'cro-phone-icon.png' | asset_url}}",
+			title: "Gọi điện",
+			number: cro_hotline_number,
+			{%unless template contains 'product'%}
+			order: "{{settings.cro_hotline_show}}"
+						{%endunless%}
+
+		},
+		form: {
+	enabled: false,
+		}
+	};
+	let crAddonScript= "{{ 'ega-addon-cr-button-min.js' | asset_url }}"
+	{%if template contains 'product' and product -%}
+	crAddonScript = "{{ 'ega-addon-cr-button-product.js' | asset_url }}"
+	window.egaProduct = {
+		"id":"{{product.id-}}"
+		,"title":"{{product.title -}}"
+		,"featured_image":"{{product.featured_image.src-}}"
+		,"handle":"{{product.handle-}}"
+		,"price": {{product.price_min-}}
+		,"compareAtPrice":"{{product.compare_at_price-}}"
+		,"available":{{product.available-}}
+		,"numberVariants": {{product.variants | size}}
+	}
+	EGACRAddonSettings.general.variantId = '{{product.variants[0].id}}'
+	{%endif -%}
+	EGACRAddonSettings.general.currentTemplate = '{{template}}';
+	EGACRAddonSettings.general.platform  = Haravan;
+	window.EGACRAddonSettings.general.moneyFormat = '{{shop.money_format}}'
+	const platform = window.EGACRAddonSettings.general.platform
+	platform.addItem = function(variantId, quantity,callback,errHandle){
+		var quantity = quantity || 1
+		, n = {
+			type: "POST",
+			url: "/cart/add.js",
+			data: "quantity=" + quantity + "&id=" + variantId,
+			dataType: "json",
+			success: function(jqXHR, textStatus, errorThrown) {
+				$('#crQVModal').trigger('click')
+				$('#cr-addon-addtocart').removeClass('loading').removeAttr("disabled")
+				addToCartSuccess(jqXHR, textStatus, errorThrown)
+			},
+			error: function(a, r) {
+				errHandle(a, r)
+			}
+		};
+		jQuery.ajax(n)
+
+	}
+	if(typeof EGA === 'undefined'){
+		EGA = {}
+	}
+	window.egaCRAddonValid = window.EGACRAddonSettings.general.enabled;
+	
+	$(document).ready(function ($) {
+		if(window.innerWidth <= 600){
+		var isInit = false
+		$(window).on('scroll click mousemove touchstart',()=>{
+			if(!isInit){
+				isInit = true
+				$("body").append(`<script src="${crAddonScript}" defer ><\/script>`);
+			}
+		})
+		}
+	});
+	
+</script>
+{%endif-%}

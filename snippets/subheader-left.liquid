@@ -1,0 +1,32 @@
+<ul class="shop-policises list-unstyled mb-0 pr-0">
+	{%for i in (1..3) -%}
+	{%capture policy_header_use -%}policy_header_use_{{i}}{%endcapture -%}
+	{%capture policy_header_title -%}policy_header_title_{{i}}{%endcapture -%}
+	{%capture policy_header_link -%}policy_header_link_{{i}}{%endcapture -%}
+	{%capture policy_header_image -%}policy_header_image_{{i}}.png{%endcapture -%}
+	{%if settings[policy_header_use] -%}
+	<li>
+		<img class="img-fluid" 
+			 src="{{ policy_header_image | asset_url}}" 
+			 loading="lazy"
+			 width="24"
+			 height="24"
+			 alt="{{settings[policy_header_title]}}">
+		<a class="link" href="{{settings[policy_header_link]}}" title="{{settings[policy_header_title]}}">{{settings[policy_header_title]}}</a>
+	</li>
+	{%endif -%}
+	{%endfor -%}
+<li class='hotline'>
+		<img loading="lazy"
+			 src="{{'phone-icon.png' |asset_url}}" 
+			 width="24" height="24" class="align-self-center" 
+			 alt="phone-icon"/>
+		<a class="media-body d-md-flex flex-column d-none" href="tel:{{settings.hotline_number | default: settings.phone | remove: ' '}}" 
+		   title="{{settings.hotline_number | default: settings.phone}}">
+			<strong>
+				{{settings.hotline_content}}
+			</strong>
+			<span>{{settings.hotline_sub_content}}</span>
+		</a>
+	</li>
+</ul>

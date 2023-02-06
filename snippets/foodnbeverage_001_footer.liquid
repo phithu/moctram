@@ -1,0 +1,58 @@
+<footer class="footer" data-setting="footer">
+	<div class="ega-container clearfix">
+		<div class="footer__left">
+			<div class="footer__blank"></div>
+			<ul class="footer__nav clearfix" data-setting="footer__linklist">
+				{%-assign footer_menu = settings.foodnbeverage_001__footer__linklist-%}
+				{%-for link in linklists[footer_menu].links-%}
+				<li {%-if link.active-%}class="active"{%-endif-%}>
+					<a href="{{ link.url }}">{{ link.title }}</a>
+				</li>
+				{%-endfor-%}
+			</ul>
+			<p class="footer__copyright ega-hidden ega-block--lg" data-setting="footer__copyright">{{ settings.foodnbeverage_001__footer__copyright }}</p>
+		</div>
+		<div class="footer__right">
+			<div class="footer__contact" data-setting="footer__contact">
+				{%-if settings.foodnbeverage_001__footer__contact__show-%}
+				<a class="footer__link" href="{{ settings.foodnbeverage_001__footer__contact__url }}">{{ settings.foodnbeverage_001__footer__contact__title }}</a>
+				{%-endif-%}
+			</div>
+
+			{%-if settings.foodnbeverage_001__footer__social__show-%}
+			<div class="social" data-setting="footer__social">
+				<span class="social__title">{{ settings.foodnbeverage_001__footer__social__title }}</span>
+				<div class="social__list">
+					{%if settings.foodnbeverage_001__footer__social__facebook__show%}
+						<a href="{{ settings.foodnbeverage_001__footer__social__facebook__url }}">
+							<svg class="ega-ic-facebook"><use xlink:href="#ega-ic-facebook"></use></svg>
+						</a>
+					{%endif%}
+					{%if settings.foodnbeverage_001__footer__social__instagram__show%}
+						<a href="{{ settings.foodnbeverage_001__footer__social__instagram__url }}">
+							<svg class="ega-ic-instagram"><use xlink:href="#ega-ic-instagram"></use></svg>
+						</a>
+					{%endif%}
+					{%if settings.foodnbeverage_001__footer__social__youtube__show%}
+						<a href="{{ settings.foodnbeverage_001__footer__social__youtube__url }}">
+							<svg class="ega-ic-youtube"><use xlink:href="#ega-ic-youtube"></use></svg>
+						</a>
+					{%endif%}
+					{%if settings.foodnbeverage_001__footer__social__twitter__show%}
+						<a href="{{ settings.foodnbeverage_001__footer__social__twitter__url }}">
+							<svg class="ega-ic-twitter"><use xlink:href="#ega-ic-twitter"></use></svg>
+						</a>
+					{%endif%}
+					{%if settings.foodnbeverage_001__footer__social__googleplus__show%}
+						<a href="{{ settings.foodnbeverage_001__footer__social__googleplus__url }}">
+							<svg class="ega-ic-google-plus"><use xlink:href="#ega-ic-google-plus"></use></svg>
+						</a>
+					{%endif%}
+				</div>
+			</div>
+			{%-endif-%}
+
+			<p class="footer__copyright ega-block ega-hidden--lg">{{ settings.foodnbeverage_001__footer__copyright }}</p>
+		</div>
+	</div>
+</footer>

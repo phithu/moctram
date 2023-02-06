@@ -1,0 +1,8 @@
+{%unless template contains 'product' -%}
+<script>
+    //:generate:app_settings
+var cro_mb_general_settings = {"scripts":[]};
+    //:endgenerate
+    window.loadCroScript && window.loadCroScript(cro_mb_general_settings.scripts[0].url)
+</script>
+{%endunless -%}

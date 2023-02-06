@@ -1,0 +1,35 @@
+<div class="product-page-options {%if product.variants.size <= 1 and product.variants.first.option1 contains 'Default' %}ega-hidden{%endif%}">
+	{% assign options_size = product.options.size | minus:1 %}									
+	{% for i in (0..options_size) %}
+	<div class="sizePicker" id = 'option-{{i}}' data-option-index='{{ forloop.index0 }}'>
+		<label class="control-label options-title">{{ product.options[i] }}:</label>
+		<div class='options-selection'>
+			<select class="input-sm">
+				{% assign str_sizeSS = '' %}
+				{% for variant in product.variants %}
+				{%assign bo_found = false %}     
+				{%assign arrShapes = str_sizeSS | split: '_' | uniq %}     
+				{% for sh in arrShapes %}
+				{% capture option2 %}option{{ i|plus:1 }}{% endcapture%}
+				{% if sh == variant[option2]  %}   
+				{%assign bo_found = true %}   
+				{% endif %}  
+				{% endfor %}  
+
+				{% if bo_found == false %}
+				<option data_size_code="{{ variant[option2] | remove:' ' | handleize }}" data_color_code="{{ variant[option2] | remove: ' ' | handleize }}"  class="" value="{{ variant[option2] }}" >
+					{{ variant.[option2] }}
+				</option> 
+				{% endif %}
+
+				{%assign str_sizeSS = str_sizeSS | append: '_' | append: variant[option2] %}   
+				{% endfor %}
+
+			</select>
+		</div>
+	</div>
+	{%endfor%}
+</div>
+
+
+

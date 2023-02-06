@@ -1,0 +1,44 @@
+<div id="section-benefit" class="home-product" data-setting="benefit">
+	<div class="ega-container">
+		<div class="block__heading way-up">
+			<h2 class="block__title">{{ settings.foodnbeverage_001__benefit__title }}</h2>
+			<span>{{ settings.foodnbeverage_001__benefit__desc }}</span>
+		</div>
+		<div class="category">
+			{%-assign count = 0-%}
+			{%-for i in (1..5)-%}
+			{%-capture use_category-%}foodnbeverage_001__benefit__{{i}}__show{%-endcapture-%}
+			{%-capture use_category0-%}foodnbeverage_001__benefit0__{{i}}__show{%-endcapture-%}
+			{%-capture category_item_title-%}foodnbeverage_001__benefit__{{i}}__title{%-endcapture-%}
+			{%-capture category_item_desc-%}foodnbeverage_001__benefit__{{i}}__desc{%-endcapture-%}
+			{%-capture category_item_link-%}foodnbeverage_001__benefit__{{i}}__target_id{%-endcapture-%}
+			{%-capture category_item_image-%}foodnbeverage_001_benefit_img_{{i}}.jpg{%-endcapture-%}
+
+			{%-if settings[use_category]-%}
+			{%-assign count = count | plus:1-%}
+			{%-assign modulo = count | modulo:2-%}
+			<div id="benefit-{{i}}" class="category__item {%if modulo == 0%}category__item--order{%endif%}" data-setting="benefit__{{i}}">
+				<div class="category__info way-prev">
+					<div class="category__contain">
+						<h3 class="category__title">{{ settings[category_item_title] }}</h3>
+						<p class="category__desc">{{ settings[category_item_desc] }}</p>
+						<a href="{{ settings[category_item_link] }}" class="line-link">
+							<strong>XEM THÊM</strong>	
+							<span class="line-1"><b></b></span>
+          		<span class="line-2"><b></b></span>
+						</a>
+					</div>
+				</div>
+				<div class="category__img way-next">
+					{%-if settings[use_category0]-%}
+					<img src="{{ category_item_image | asset_url }}" data-setting="benefit__{{i}}__img_url"/>
+					{%else-%}
+					<img src="https://mixcdn.egany.com/salespage/ega-techstore/{{category_item_image-}}" alt="{{ category_item_image }}"/>
+					{%endif-%}</div>
+			</div>
+			{%-endif-%}
+
+			{%-endfor-%}
+		</div>
+	</div>
+</div>

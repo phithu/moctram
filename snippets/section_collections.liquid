@@ -1,0 +1,48 @@
+<div class="section_collections">
+		{% if settings.coll_title and settings.coll_title != '' -%}
+		<div class="title_module_main heading-bar">
+			<h2 class="heading-bar__title">
+				<a class='link' href="{{settings.coll_link}}" title="{{settings.coll_title}}">{{settings.coll_title}}</a>
+			</h2>
+		</div>
+		{% endif -%}
+		<div class="mt-2 text-center row flex-nowrap collections-slide" style='--item-per-row: {{settings.coll_per_row | default: 7}}'>
+			{% capture width -%}coll_width{% endcapture -%}
+			{% capture height -%}coll_height{% endcapture -%}
+			{% for i in (1..14) -%}
+			{% capture brandenable -%}coll_{{i}}_en{% endcapture -%}
+			{% capture brandLink -%}coll_{{i}}_link{% endcapture -%}
+			{% capture imagebrand -%}coll_{{i}}.jpg{% endcapture -%}
+			{% capture altbrand -%}coll_{{i}}_title{% endcapture -%}
+
+			{% if settings[brandenable] -%}
+			<div class="item">
+				<a  href="{{settings[brandLink]}}" 
+				   title="{{settings[altbrand]}}"
+				   class="pos-relative d-flex align-items-center "
+				   {% comment -%}
+				   style="aspect-ratio:{{settings[width]}}/ {{settings[height]}}"
+				   {% endcomment -%}
+				   >
+					<img 
+						 class="img-fluid m-auto object-contain mh-100" 
+						 loading="lazy"
+						 src="{{imagebrand | asset_url | img_url: 'small'}}"
+						 width="{{settings[width]}}"
+						 height="{{settings[height]}}"
+						 alt="{{altbrand}}"/>
+				</a>
+				{%if settings[altbrand] and settings[altbrand] != '' -%}
+				<h3 class="mb-0">
+					<a  href="{{settings[brandLink]}}"
+					   title="{{settings[altbrand]}}">
+						{{settings[altbrand]}}		
+					</a>
+				</h3>
+				{% endif -%}
+			</div>
+			{% endif -%}
+			{% endfor -%}
+		</div>
+
+</div>

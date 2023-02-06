@@ -1,0 +1,57 @@
+{%if settings.use_reviews == 'easy review' -%}
+<div style="clear:both"></div>
+
+<div id="startbap_product_reviews" class="starbap-widget starbap-review-widget" data-product-title="{{product.title}}" data-url="{{product.url}}" data-img="{{product.featured_image}}" data-id="{{product.id}}" data-customer="{{customer.email}} ">
+
+{{product.metafields.starbap["starbaprv.widget"]}}
+
+<div style="clear:both"></div>
+
+</div>
+{%endif-%}
+{%if settings.use_reviews == 'product review' -%}
+<div id="hrv-product-reviews" class="hrv-product-reviews" data-id="{{ product.id }}"> 
+
+  <div class="title-bl"> 
+
+   <h2>ĐÁNH GIÁ SẢN PHẨM</h2> 
+
+  </div>
+
+  <div id="hrv-product-reviews-sub" style="width:100%">
+
+   <div class="hrv-product-reviews-summary" id="hrv-product-reviews-summary">
+
+{{ product.metafields.src.productreviews }} 
+
+   </div> 
+
+   <div class="hrv-product-reviews-list" id="hrv-product-reviews-list">
+
+{{ product.metafields.src.reviewlist_0 }}
+
+{{ product.metafields.src.reviewlist_1 }}
+
+{{ product.metafields.src.reviewlist_2 }}
+
+{{ product.metafields.src.reviewlist_3 }}
+
+{{ product.metafields.src.reviewlist_4 }}
+
+{{ product.metafields.src.reviewlist_5 }}
+
+{{ product.metafields.src.reviewlist_6 }}
+
+{{ product.metafields.src.reviewlist_7 }}
+
+{{ product.metafields.src.reviewlist_8 }}
+
+{{ product.metafields.src.reviewlist_9 }}        
+
+   </div>
+
+  </div>
+
+ </div>
+
+{%endif-%}

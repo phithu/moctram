@@ -1,0 +1,36 @@
+{%- layout none -%}
+{%- if search.performed and search.terms != blank and search.results_count != 0 -%}
+{%- paginate search.results by settings.ega_sm_result_limit -%}
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-bottom-15 mt-3">
+	<h1 class="title-head">Có {{ search.results_count }} kết quả tìm kiếm phù hợp</h1>
+</div>
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-bottom-30">
+	<div class="products-view-grid products cls_search list_hover_pro">
+		<div class="row content-col">
+			{% for result in search.results limit: settings.ega_sm_result_limit %}
+			<div class="col-xl-15 col-lg-3 col-md-4 col-sm-6 col-6 product-col">
+				<div class="item_product_main">
+					<div class="item">
+						{%- if result.object_type == 'product' -%}
+						{%- include 'product_grid_office' product: result %}
+						{%- else -%}
+						{%- include 'blog_list_item' article: result -%}
+						{%- endif -%}
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+	{% if paginate.pages > 1 %}
+	<div class="col-12 text-center">
+		{% include 'paginate-pages' %}
+	</div>
+	{% endif %}
+</div>
+{%- endpaginate -%}
+{%- else -%}
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+	<h2 class="title-head text-center mt-3">Không tìm thấy bất kỳ kết quả nào với từ khóa trên.</h2>				
+</div>
+{%- endif -%}

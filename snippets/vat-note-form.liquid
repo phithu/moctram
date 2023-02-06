@@ -1,0 +1,47 @@
+{% if settings.use_cart_vat %}
+{% assign invoice = 'Xuất hóa đơn' %}
+{% assign company_name = 'Tên công ty' %}
+{% assign company_address = 'Địa chỉ công ty' %}
+{% assign tax_code = 'Mã số thuế' %}
+{% assign invoice_email = 'Email nhận hóa đơn' %}
+<div class="r-bill">
+	<div class="checkbox">
+		<input type="hidden" name="attributes[invoice]" id="re-checkbox-bill" value='{% if cart.attributes[invoice] == "có" %}có{%else%}không{% endif %}'>
+		<input type="checkbox" id="checkbox-bill" value="có" {% if cart.attributes[invoice] == 'có' %} checked{% endif %} class="regular-checkbox" />
+		<label for="checkbox-bill" class="box"></label>
+		<label for="checkbox-bill" class="title">{{settings.cart_vat_checkbox_text}}</label>
+	</div>
+	<div class="bill-field">
+		<div class="form-group">
+			<label>{{settings.cart_vat_company_label}}</label>
+			<input type="text" class="form-control val-f" 
+				   name="attributes[company_name]" 
+				   value="{{ cart.attributes[company_name] }}"
+				   placeholder="{{settings.cart_vat_company_placeholder}}" >
+		</div>	
+		<div class="form-group">
+			<label>{{settings.cart_vat_tax_code_label}}</label>
+			<input type="number" pattern=".{10,}" onkeydown="return FilterInput(event)" 
+				   onpaste="handlePaste(event)" 
+				   class="form-control val-f val-n" 
+				   name="attributes[tax_code]" 
+				   value="{{ cart.attributes[tax_code] }}" 
+				   placeholder="{{settings.cart_vat_tax_code_placeholder}}">
+		</div>
+		<div class="form-group">
+			<label>{{settings.cart_vat_address_label}}</label>
+			<textarea type="text" class="form-control val-f" 
+					  name="attributes[company_address]" 
+					  value="{{ cart.attributes[company_address] }}" 
+					  placeholder="{{settings.cart_vat_address_placeholder}}"></textarea>
+		</div>
+		<div class="form-group">
+			<label>{{settings.cart_vat_email_label}}</label>
+			<input type="email" class="form-control val-f val-email" 
+				   name="attributes[invoice_email]" 
+				   value="{{ cart.attributes[invoice_email] }}" 
+				   placeholder="{{settings.cart_vat_email_placeholder}}">
+		</div>
+	</div>
+</div>
+{% endif %}

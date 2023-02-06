@@ -1,0 +1,110 @@
+.aside-filter ul {
+	padding-left: 0;
+	list-style: none;
+	margin: 0px;
+}
+aside.aside-item {
+	padding-top: 15px;
+}
+@media (max-width: 991px) {
+	.aside-content {
+		overflow: auto;
+ }
+	.aside-content::-webkit-scrollbar {
+		width: 3px;
+ }
+	.aside-content::-webkit-scrollbar-thumb {
+		background-color: var(--primary-color);
+		outline: 1px solid var(--primary-color);
+ }
+}
+aside.aside-item + .aside-item {
+	border-top: 1px dashed #eee;
+	margin-top: 15px;
+}
+.aside-content .filter-item {
+	position: relative;
+	clear: left;
+	font-size: 14px;
+	padding: 0;
+}
+.aside-content .filter-item:last-child {
+	border-bottom: none;
+}
+.aside-content .filter-item a {
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 1.7;
+	padding: 5px 20px 2px 0px;
+}
+.aside-content .filter-item .fa {
+	cursor: pointer;
+	display: inline;
+}
+.aside-content .filter-item .fa.fa-caret-right {
+	right: auto;
+	left: 0;
+	top: 16px;
+	text-align: left;
+}
+.aside-content .filter-item .dropdown-menu {
+	width: 100%;
+	border: 0;
+	padding-left: 0px;
+	box-shadow: none;
+	margin-top: 0px;
+	padding: 0px;
+	position: static;
+	background: none;
+}
+.aside-content .filter-item.active > .dropdown-menu {
+	display: block;
+}
+.aside-content .filter-item:hover > a {
+	color: #333;
+	background-color: transparent;
+}
+.aside-content .filter-item ul > li:before {
+	top: 17px;
+	left: 15px;
+}
+.filter-container__selected-filter-item {
+	background: transparent;
+	padding: 6px 8px;
+	margin-right: 4px;
+	margin-top: 4px;
+	border: 1px solid var(--primary-color);
+	position: relative;
+	overflow: hidden;
+}
+.filter-container__selected-filter-item a {
+	color: #e85933;
+	z-index: 1;
+	position: relative;
+	font-weight: 400;
+}
+.filter-container__selected-filter-item a:hover {
+	text-decoration: none;
+}
+.filter-container__selected-filter-item a .fa {
+	margin-left: 5px;
+}
+.filter-container__selected-filter-item:after {
+	content: '';
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	z-index: 0;
+	background: var(--primary-color);
+	opacity: 0.1;
+}
+@media (max-width: 991px) {
+	.sidebar {
+		position: fixed;
+		visibility: hidden;
+		opacity: 0;
+		z-index: -1;
+ }
+}

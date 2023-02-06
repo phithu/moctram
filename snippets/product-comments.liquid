@@ -1,0 +1,32 @@
+<section class="section" id="section-comments">
+	<div class="container">
+		<div class="card">
+			<div class="title_module mb-3 heading-bar d-flex justify-content-between align-items-center p-0">
+				<h2 class="bf_flower heading-bar__title">
+					{{settings.product_comments_heading}}
+				</h2>
+			</div>
+			<div id="fb-root"></div>					
+			<div class="fb-comments" data-href="https:{{shop.url}}{{product.url}}" data-numposts="5" width="100%" data-colorscheme="light"></div>
+		</div>
+	</div>
+</section>
+
+<script type="text/javascript">
+	const showAddThisIcon3 = {{settings.addthis_icon3_show | default: false}};
+	if (!showAddThisIcon3 || window.innerWidth  <= 600) {
+	  $(document).ready(function ($) {
+		  $(window).one(' mousemove touchstart scroll', function() {
+				// fb SDK v2.0
+					const d = document;
+					const s = 'script';
+					const id = 'facebook-jssdk'
+					var js, fjs = d.getElementsByTagName(s)[0];
+					if (d.getElementById(id)) return;
+					js = d.createElement(s); js.id = id;
+					js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.0";
+					fjs.parentNode.insertBefore(js, fjs);
+			})
+		})
+	}
+</script>

@@ -1,0 +1,25 @@
+{% include 'breadcrumb' %} 
+<section class="page section">
+	<div class="container card py-2">
+		<div class="wrap_background_aside margin-bottom-40">
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-12">
+					<div class="heading-bar">
+							<h1 class="title_page"><a href="#">{{ page_title }}</a></h1>
+					</div>
+
+					<div class="content-page rte py-3">
+						
+						{%if page.content and page.content != null and page.content != '' -%}
+						{{page.content}}
+						{%else-%}
+						<p class="ega-color--secondary">
+							Nội dung "{{page.title}}" đang được cập nhật
+						</p>
+						{%endif -%}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

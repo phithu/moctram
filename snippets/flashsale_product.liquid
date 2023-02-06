@@ -1,0 +1,121 @@
+{%if settings.flashsale_countdown_show and product.available -%}
+
+<link rel="stylesheet" href="{{ 'flashsale.css' | asset_url }}" media="print" onload="this.media='all'">
+
+<noscript>{{ 'flashsale.css' | asset_url | stylesheet_tag }}</noscript>	
+{%capture flashSaleStyle -%}
+--countdown-background: {{settings.flashsale_product_countdown_bg | default: '#000'}};
+--countdown-color: {{settings.flashsale_product_countdown_color | default: '#fff'}};
+--process-background: {{settings.flashsale_process_background | default: '#fedfe2'}};
+--process-color1: {{settings.flashsale_process_color1| default: '#fabad3'}};
+--process-color2: {{settings.flashsale_process_color2 | default: '#eb395f'}};
+--stock-color: {{settings.flashsale_stock_color | default: '#fff'}};
+--flashsale-bg: {{settings.flashsale_product_bg | default: '#FFF6DD'}};
+--flashsale-heading-color: {{settings.flashsale_product_heading_color}};
+display:none;
+background: {{settings.flashsale_product_heading_bg | default: '#FFDE81'}};
+{%endcapture-%}
+<div class="flashsale" style="{{flashSaleStyle}}">
+	<div class="flashsale__header d-flex justify-content-between">
+		<div class="flashsale__title text-center text-md-left ">
+			<h5 >{{settings.flashsale_title-}}</h5>
+		</div>
+		<div class="flashsale__countdown-wrapper">
+			<span class="flashsale__countdown-label mr-2 d-none" >{{settings.flashsale_countdown_label}}</span>
+			<div class="flashsale__countdown" data-countdown-type="{{settings.flashsale_countdown_type}}" data-countdown="{{settings.flashsale_countdown_duedate}}"></div>
+		</div>
+	</div>
+	<div class="flashsale__product ">
+		{%assign quantityType =  settings.flashsale_quantity | default: 'random' -%}
+
+		{% assign maxStock = settings.flashsale_max_stock | plus: 0 -%}
+		{%if quantityType == 'tag'-%}	
+		{%for tag in product.tags -%}
+		{%if tag contains 'soluong'-%}
+		{%assign maxStock = tag | split: '_' | last %}
+		{%break-%}
+		{%endif-%}
+		{%endfor -%}
+		{% assign inventoryQty = 0 -%}
+		{% assign available = product.available -%}
+		{% assign countManagement = 0 -%}
+		{% assign invM = false -%}
+		{% for variant in product.variants -%}
+		{% if 	variant.inventory_management != '' -%}
+		{% assign countManagement = countManagement | plus: 1 -%}
+		{% endif -%}
+		{% if variant.inventory_quantity  and variant.inventory_management != '' -%}
+		{% assign inventoryQty = inventoryQty | plus: variant.inventory_quantity -%}
+		{% endif -%}
+		{% endfor -%}
+		{% if countManagement == 0-%}
+		{% if inventoryQty > maxStock -%}
+		{% assign inventoryQty = inventoryQty  -%}
+		{% else -%}
+		{% assign inventoryQty = maxStock -%}
+		{% endif -%}
+		{% else -%}
+		{% assign invM = true -%}
+		{% endif -%}
+		{% endif -%}
+		<div class="flashsale__item pb-1" 
+			 data-pd-id="{{product.id}}"
+			 data-inventory-quantity="{{inventoryQty}}"
+			 {%if invM %}
+			 data-management="{{invM}}"
+			 {%endif%}
+			 {%if product.available %}
+			 data-available="{{product.available}}"
+			 {%endif %} 
+			 data-max-stock="{{maxStock}}"
+			 >
+			{%if settings.flashsale_show_quantity -%}
+			{%capture quantity -%}
+			<div class="flashsale__label">
+				<img src='{{'fire-icon.svg' | asset_url}}' alt='fire-icon' /> {{ settings.flashsale_sold_text | replace: "[soluong]", '<b class="flashsale__sold-qty"></b>' }}
+			</div>
+			{%endcapture -%}
+			<div class="flashsale__bottom px-0" style="display:none;{% if settings.flashsale_quantity_style == 'style1' %}--stock-color: var(--text-color);{% endif %}">
+				{%if settings.flashsale_quantity_style == 'style1' -%}
+				{{quantity}}
+				{%endif-%}
+				<div class="flashsale__progressbar  {%if settings.flashsale_quantity_style == 'style2' %}style2{%endif%} ">
+					{%if settings.flashsale_quantity_style == 'style2' -%}
+					{{quantity}}
+					{%endif-%}
+
+					<div class="flashsale___percent">
+
+					</div>
+				</div>
+			</div>
+			{%endif-%}
+		</div>
+	</div>
+</div>
+
+<script>
+	window.flashSale = {
+		flashSaleColl: "{{settings.flashsale_coll}}",
+		type:"{{settings.flashsale_countdown_type}}",
+		dateStart: "{{settings.flashsale_countdown_date_start}}",
+		dateFinish: "{{settings.flashsale_countdown_date_finish}}",
+		hourStart: "{{settings.flashsale_countdown_hour_start}}",
+		hourFinish:  "{{settings.flashsale_countdown_hour_finish}}",
+		activeDay: "{{ settings.flashsale_countdown_week_loop }}",
+		finishAction: "{{ settings.flashsale_finish_action }}",
+		finishLabel :"{{settings.flashsale_countdown_end_label}}",
+		percentMin: "{{settings.flashsale_percent_min}}",
+		percentMax: "{{settings.flashsale_percent_max}}",
+		maxInStock: "{{settings.flashsale_max_stock}}",
+		useSoldQuantity: {% if quantityType == 'random' -%}false{% else -%}true{% endif -%},
+		useTags: {%if quantityType == 'tag'%}true{%else%} false{%endif%},
+		timestamp: new Date().getTime(),
+		openingText: "{{settings.flashsale_opening_text | default: 'Vừa mở bán'}}",
+		soldText: "{{settings.flashsale_sold_text | default: 'Đã bán [soluong]'}}",
+		outOfStockSoonText: "<img src='{{'fire-icon.svg' | asset_url}}' /> {{settings.flashsale_out_of_stock_soon_text | default: 'Sắp bán hết'}}"
+	}
+</script>
+<script src="{{'flashsale.js' |  asset_url }}" defer ></script>
+
+{%endif-%}

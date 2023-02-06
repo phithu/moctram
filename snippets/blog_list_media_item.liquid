@@ -1,0 +1,35 @@
+<div class="blogwp clearfix media  ">
+	{% if article.image != null %}
+	<a  class="image-blog  text-center mr-3" href="{{ article.url }}" title="{{ article.title }}">
+		<img class=" img-fluid" loading="lazy"  src="{{ article.image.src}}"  alt="{{ article.title }}">
+	</a>
+	{%else%}
+	<a class="image-blog  mr-3 text-center" href="{{ article.url }}">
+		<img class=" img-fluid" data-src="{{ '555x350.png' | asset_url}}" alt="{{ article.title }}" title="{{ article.title }}"/>
+	</a>
+	{% endif %}
+	<div class="content_blog clearfix media-body ">
+		<h3 class='mt-0'>
+			<a class='link' href="{{ article.url }}" title="{{ article.title }}">{{ article.title }}</a>
+		</h3>
+		{%if template contains 'index'%}
+			<div class="media">
+			<div class="media-body d-flex flex--wrap align-items-center">
+				<div class='mt-0 mr-3'>{{article.author}}</div>
+				
+				<small class='text-muted font-weight-light'>
+					{{ article.published_at | date:'%a %d/%m/%Y' }}  
+				</small>  
+				
+			</div>
+		</div>
+		<p class="justify lead d-none d-md-block ">{{ article.content | strip_html | truncatewords: 25 }}
+			{%if article.content != null and article.content != ""%}
+			<a class="button_custome_35 link" href="{{ article.url }}" title="Đọc tiếp">Đọc tiếp</a>
+			{%endif%}
+		</p>
+		{%endif -%}
+
+	
+	</div>
+</div>

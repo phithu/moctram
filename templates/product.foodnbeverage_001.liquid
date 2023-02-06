@@ -1,0 +1,236 @@
+{% layout none %}
+
+{% assign sold_out = true %}
+{% if product.available  %}
+    {% assign sold_out = false %}
+    {% assign awe-price = product.selected_or_first_available_variant.price %}
+    {% assign awe-compare-price = product.selected_or_first_available_variant.compare_at_price %}
+{%else%}
+    {% assign awe-price = product.variants[0].price %}
+    {% assign awe-compare-price = product.variants[0].compare_at_price %}
+{% endif %}
+{%assign contact = false%}
+{%if awe-price == 0 %}
+    {%assign contact = true%}
+{%endif%}
+{% assign on_sale = false %}
+{% if awe-compare-price > awe-price and awe-price > 0 %}
+    {% assign on_sale = true %}
+{% endif %}
+{% assign oldPricePercent = 0 %}
+{% if awe-compare-price > awe-price %}
+    {% assign oldPricePercent = awe-price | times: 100 | divided_by: awe-compare-price  %}
+    {% assign oldPricePercent = 100 | minus: oldPricePercent %}
+    {% assign oldPricePercent = oldPricePercent | ceil %}
+{% endif %}
+
+{% assign variantCount = product.variants | size %}
+{% assign on_var = false %}
+{% if variantCount > 1 %}
+    {% assign on_var = true %}
+{% endif %}
+
+{%if product.featured_image.alt ==""%}
+    {% assign featured_image_alt = product.title %}
+{%else%}
+    {% assign featured_image_alt = product.featured_image.alt%}
+{%endif%}
+
+
+{%assign imgUrl = imgUrl %} 
+
+<div class="ega-container">
+		<div class="block__heading way-up">
+			<h2 class="block__title" data-setting="product__title">{{ settings.foodnbeverage_001__product__title }}</h2>
+		</div>
+		<div class="ega-row">
+			<div class="ega-col-12 ega-col-lg-7">
+				<div class="product__img">
+					<ul class="product__img--thumb ega-hidden ega-block--sm">
+						{%for image in product.images%}
+						{%if image.src contains "video" and settings.use_video_product-%} 
+							<li class="thumbnail_video">
+								<img src="{{ image.src }}" alt="{{ product.title }}"/>
+								{%if settings.use_video_play_button-%} 
+								<img class="icon-button-play" src="{{ "icon-button-play.png" | asset_url -}}" alt="video-play-button"/>
+								{%endif-%}
+							</li>
+						{%else-%}
+							<li><img src="{{ image.src }}" alt="{{ product.title }}"/></li>
+						{%endif-%}
+						{%endfor%}
+					</ul>
+					<div class="product__img--main">
+						<img src="{{ product.featured_image.src }}" alt="{{ product.title }}"/>
+					</div>
+				</div>
+			</div>
+			<div class="ega-col-12 ega-col-lg-5">
+				<form action="/cart/add" method="post" enctype="multipart/form-data" id="ProductDetailsForm">
+					<h2 class="product__title">{{ product.title }}</h2>
+					<div class="product__price">
+						{%if contact %}
+						<ins>Liên hệ</ins>
+						{%else%}
+						<ins>{{ product.variants[0].price | money }}</ins>
+						{%endif%}
+						{%if on_sale%}
+						<del>{{ awe-compare-price | money }}</del>
+						{%assign saved = product.compare_at_price | minus:product.variants[0].price%}
+						<div class="product__saved">Tiết kiệm: <span>{{ saved | money }} (-{{ oldPricePercent| append: '%' }})</span></div>
+						{%endif%}
+					</div>
+					<div class="ega-hidden">
+						<select id="product-select" class="option_variant" name="variantid"> 
+							{%include 'foodnbeverage_001_option_variant_id'%} 
+						</select>
+					</div>
+					<div class="product-page-options product__options">
+						{%include 'foodnbeverage_001_option_view'%} 
+					</div>
+					<div class="line-break"></div>
+					<ul class="product__detail">
+						{%for i in (1..5)%}
+						{%capture use_product_detail%}foodnbeverage_001__product__{{i}}__show{%endcapture%}
+						{%capture product_detail%}foodnbeverage_001__product__{{i}}__content{%endcapture%}
+						{%if settings[use_product_detail]%}
+						<li data-setting="product__{{i}}">{{ settings[product_detail] }}</li>
+						{%endif%}
+						{%endfor%}
+					</ul>
+					<div class="line-break"></div>
+					<div class="soluong">
+						<label>Số lượng:</label>
+						<div class="custom input_number_product">									
+							<button class="btn btn_num button button_qty" onClick="var result = document.getElementById('qtym'); var qtypro = result.value; if( !isNaN( qtypro ) &amp;&amp; qtypro &gt; 1 ) result.value--;return false;" type="button">-</button>
+							<input type="text" id="qtym" name="quantity" value="1" maxlength="3" class="form-control prd_quantity " onkeypress="if ( isNaN(this.value + String.fromCharCode(event.keyCode) )) return false;" onchange="if(this.value == 0)this.value=1;">
+							<button class="btn btn_num button button_qty" onClick="var result = document.getElementById('qtym'); var qtypro = result.value; if( !isNaN( qtypro )) result.value++;return false;" type="button">+</button>
+						</div>
+					</div>
+					<a class="product__action" href="/products/{{ settings.foodnbeverage_001__product__handle }}">
+						<span>{{ settings.foodnbeverage_001__theme__buynow__text }}</span>
+						<div class="pointer__effect"></div>
+						<div class="pointer__fill"></div>
+						<div class="pointer__img"></div>
+					</a>
+					{%if settings.foodnbeverage_001__clock__show%}
+					<div class="product__countdown clearfix">
+						<span>{{settings.foodnbeverage_001__clock__desc-}}</span>
+						<div class="countdown-clock clearfix" data-setting="clock">
+							<ul>
+								<li><div class="time-part">00<span>Ngày</span></div></li>
+								<li><div class="time-part">00<span>Giờ</span></div></li>
+								<li><div class="time-part">00<span>Phút</span></div></li>
+								<li><div class="time-part">00<span>Giây</span></div></li>
+							</ul>
+						</div>
+					</div>
+					{%endif%}
+				</form>
+			</div>
+		</div>
+	</div>
+
+<script>
+	$(document).ready(function(){
+		function EGAformatMoney(money){
+			return Haravan.formatMoney(money , "{{ shop.money_format }}");
+		} 		
+
+		new Haravan.OptionSelectors("product-select", { 
+			product: {{ product | json }},
+			onVariantSelected: function(variant, selector){
+				var $form = $('#' + selector.domIdPrefix).closest('form'),
+						$tagPrice = $form.find('.product__price ins'),
+						$tagComparePrice = $form.find('.product__price del'),
+						$tagSaved = $form.find('.product__saved'),
+						price = variant.price,
+						price_compare = variant.compare_at_price,
+						saved = price_compare - price;
+
+				$tagPrice.html(EGAformatMoney(variant.price));
+
+				if(variant.compare_at_price > variant.price){
+					$tagComparePrice.show();
+					$tagSaved.show();
+					var percent = Math.round(100*(price_compare - price)/price_compare);
+					$tagComparePrice.html(EGAformatMoney(price_compare));
+					$tagSaved.find('span').html(EGAformatMoney(saved) + ' (-' + percent + '%)');
+				} else {
+					$tagComparePrice.hide();
+					$tagSaved.hide();
+				}
+
+				if(variant!=null && variant.featured_image!=null) {
+					//$('.product__img--main').find('img').attr('src',variant.featured_image.src);					
+					var variantImg = `<img src="${variant.featured_image.src}" alt="{{ product.title }}"/>`;
+				  $('.product__img--main').html(variantImg);
+				}
+			}
+		});
+
+		$('.product__img--thumb li').click(function(){
+			if($(this).hasClass("thumbnail_video")){
+				{%for tag in product.tags-%}
+				{%if tag contains "video"-%}
+					var videoHtml = `<div class="embed-responsive embed-responsive-1by1">
+							<iframe width="560" height="315" src="https://www.youtube.com/embed/{{tag | split:"video_" | last-}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+							</div>`;
+				 {%break-%}
+				{%endif-%}
+				{%endfor-%}
+				$('.product__img--main').html(videoHtml);
+			}else{
+				var img_src = $(this).find('img').attr('src');
+				var imgHtml = `<img src="${img_src}" alt="{{ product.title }}"/>`;
+				//$('.product__img--main').find('img').attr('src',img_src);
+				$('.product__img--main').html(imgHtml);
+			}
+		})
+
+		$('.product-page-options .sizePicker').on('change', function(){
+			var optionIndex = $(this).attr('data-option-index');
+			var optionValue = $(this).find('select').val();
+			$(this)
+			.closest('form')
+			.find('.single-option-selector')
+			.eq(optionIndex)
+			.val(optionValue)
+			.trigger('change');
+		});
+
+		{%if settings.foodnbeverage_001__theme__buynow__action == 0%}
+		$('.product__action').click(function(e){
+			e.preventDefault();
+			var formid = $(this).closest('form').attr('id');
+			var callback = function() {
+				window.location = '/checkout';
+			}
+			addItem(formid, callback);
+		})
+		{%endif%}
+
+		addItem = function(form_id, callback) {
+			var params = {
+				type: 'POST',
+				url: '/cart/add.js',
+				data: jQuery('#' + form_id).serialize(),
+				dataType: 'json',
+				success: function(line_item) { 
+					if ((typeof callback) === 'function') {
+						callback(line_item);
+					}
+					else {
+						Haravan.onItemAdded(line_item);
+					}
+				},
+				error: function(XMLHttpRequest, textStatus) {
+					var pdname = $('.product__title').text() + " - " + $('.product-page-options select').val();
+					var mess = 'Sản phẩm "' + pdname + '" hiện đã có người đặt mua. Bạn vui lòng chọn mua sản phẩm khác. Xin cảm ơn!!!';
+					alert(mess)
+				}
+			};
+			jQuery.ajax(params);
+		};
+	})
+</script>

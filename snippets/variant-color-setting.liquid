@@ -1,0 +1,14 @@
+
+{%if co == true-%}
+	{%if settings.variant_color_type == 'image'-%}
+		<label for="swatch-{{ option_index }}-{{ value }}" style="background: url({{ image1 | asset_url }}) no-repeat center center; background-size: cover"></label>			
+	{%else-%}
+		<label for="swatch-{{ option_index }}-{{ value }}" style="background-color: {{ color1}};"></label>
+	{%endif-%}			
+	<span></span>
+{%else-%}
+	<label for="swatch-{{ option_index }}-{{ value }}" style="background-color: {{ value | split: ' ' | last | handle }};">
+	</label>
+	<span></span>
+{%endif-%}
+

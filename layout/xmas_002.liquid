@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="vi">
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>
+         {% if page_title == 'All' %}
+         {{ 'Tất cả sản phẩm' }}
+         {% else %}
+         {{ page_title }}
+         {% endif %}
+         {% if currrent_tags %}
+         {{ "tagged " }}
+         {{ currrent_tags | json: ", "  }}
+         {% endif %}
+         {% if current_page != 1 %}
+         {{ " - Trang " }}
+         {{ current_page }}
+         {% endif %}
+         {% unless page_title contains shop.name %}
+         {{ shop.name }}
+         {% endunless %}
+      </title>
+      <!-- description -->
+      {% if page_description != ""%}
+      <meta name="description" content="{{ page_description | escape }}">
+      {% endif %}
+      <!-- meta -->
+      {%if template contains 'index'%}
+      <meta name="keywords" content="{{shop.name}}, {{shop.domain}}"/>
+      {%elsif template contains 'product'%}
+      <meta name="keywords" content="{{product.title}}, {%for collection in product.collections%}{{collection.name}}, {%endfor%}{%if product.tags.size > 0%}{% for tag in product.tags %}{{tag}}, {%endfor%}{%endif%}{{shop.name}}, {{shop.domain}}"/>
+      {%elsif template contains 'collection'%}
+      <meta name="keywords" content="{{collection.name }}, {{shop.name}}, {{shop.domain}}"/>
+      {%elsif template contains 'blog'%}
+      <meta name="keywords" content="{{blog.title }}, {{shop.name}}, {{shop.domain}}"/>
+      {%elsif template contains 'article'%}
+      <meta name="keywords" content="{{article.title}}, {{blog.title}}, {%if article.tags.size > 0%}{% for tag in article.tags %}{{tag}}, {%endfor%}{%endif%} {{shop.name}}, {{shop.domain}}"/>
+      {%else%}
+      <meta name="keywords" content="{{page_title}}, {{shop.name}}, {{shop.domain}}"/>
+      {%endif%}
+      <link rel="canonical" href="{{ canonical_url }}"/>
+      <meta name='revisit-after' content='1 days' />
+      <meta name="robots" content="noodp,index,follow" />
+      <meta name="theme-color" content="{{ settings.xmas_002__theme__main_color }}">
+      <meta name="msapplication-TileColor" content="{{ settings.xmas_002__theme__main_color }}">
+      <!--favicon-->
+      <link rel="icon" href="{{ 'xmas_002_favicon.png' | asset_url }}" type="image/x-icon" data-setting="theme__favicon"/>
+      <!--css-->
+
+      <!-- ================= Google Fonts ================== -->
+      {% if settings.xmas_002__theme__font contains 'Google' %}
+      <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family={{ settings.xmas_002__theme__font | remove: 'Google+' }}:300,400,500,600,700&amp;subset=vietnamese">
+      {% endif %}
+
+     {% if settings.xmas_002__theme__title__font contains 'Google' %}
+     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family={{ settings.xmas_002__theme__title__font | remove: 'Google+' }}:300,400,500,600,700&amp;subset=vietnamese">
+     {% endif %}
+
+     <!-- Font awesome -->
+     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+     <!-- End Font awesome -->
+
+      {{ 'xmas-002.scss.css' | asset_url | stylesheet_tag }}
+
+     <!-- START CONTENT HEADER -->
+     {{ content_for_header }}
+     <!-- END CONTENT HEADER -->
+
+     	 <script src="https://mixcdn.egany.com/themes/assets/jquery.2.1.4.min.js" type="text/javascript"></script>
+	 <script src="https://mixcdn.egany.com/themes/assets/flipclock.min.js" type="text/javascript"></script>
+		 {{ 'api.jquery.js' | haravan_asset_url | script_tag }}
+  </head>
+   <body>
+     {{ content_for_layout }}
+     {%- capture settings_arr -%}{{ settings }}{%- endcapture -%}
+     {%- assign settings_arr = settings_arr | split: '][' -%}
+     {%- capture result -%}
+     {
+     {%- for setting in settings_arr -%}
+     {%- assign setting_json = setting | split: ',' -%}
+     {%- if setting_json[0] contains 'xmas_002'-%}
+     ,"{{setting_json[0] | remove: '['}}" : {{ setting | remove: ']' | remove: setting_json[0] | json | remove_first: ', ' }}
+     {%- endif -%}
+     {%- endfor -%}
+     }
+     {%- endcapture -%}
+     <input type="hidden" id="ega_layout_setting" value='{{ result | remove_first: "," }}'>
+     <input type="hidden" id="ega_layout_prefix" value="xmas_002">
+   </body>
+</html>

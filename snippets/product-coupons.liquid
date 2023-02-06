@@ -1,0 +1,141 @@
+<link rel="preload" as='style' type="text/css" href="{{ 'coupon.css' | asset_url }}">
+<link rel="stylesheet" href="{{ 'coupon.css' | asset_url }}" >
+
+<div class='product-coupon__wrapper my-3'>
+	<strong class='d-block mb-2'>Mã giảm giá</strong>
+	<div class='product-coupons coupon-toggle-btn'>
+		{% assign count = 0 -%}
+		
+		{%assign couponMetafieldHtml = ""-%}
+		
+		{%for i in (1..4)-%}
+			{%assign title = ""-%}
+			{%assign code = ""-%}
+			{%assign desc = ""-%}
+			{%assign info = ""-%}
+			{%assign iconMetafield = ""-%}
+			{%capture coupon -%}coupon_{{i-}}{%endcapture%}
+			{%capture couponMetafield-%}{{product.metafields.egany[coupon]}}{%endcapture%}
+			{%if couponMetafield contains '[code]' -%}
+			{%- assign get = couponMetafield | split:'[/code]' | first-%}   
+			{%- assign code = get | split:'[code]' | last-%} 
+			{%endif-%}
+			{%if couponMetafield contains '[title]' -%}
+			{%- assign get = couponMetafield | split:'[/title]' | first-%}   
+			{%- assign title = get | split:'[title]' | last-%} 
+			{%endif-%}
+			{%if couponMetafield contains '[desc]' -%}
+			{%- assign get = couponMetafield | split:'[/desc]' | first-%}   
+			{%- assign desc = get | split:'[desc]' | last-%} 
+			{%endif-%}
+			{%if couponMetafield contains '[info]' -%}
+			{%- assign get = couponMetafield | split:'[/info]' | first-%}   
+			{%- assign info = get | split:'[info]' | last-%} 
+			{%endif-%}
+			{%if couponMetafield contains '[icon]' -%}
+			{%- assign get = couponMetafield | split:'[/icon]' | first-%}   
+			{%- assign iconMetafield = get | split:'[icon]' | last-%} 
+			{%endif-%}
+			{%if  couponMetafield contains '[code]' -%}
+			{%assign count = count | plus : 1%}
+
+				{%capture couponMetafieldItem-%}
+					<div class=" col-12 mt-3">
+						{%include 'coupon-item'-%}
+					</div>
+				{%endcapture-%}
+		
+				{%assign couponMetafieldHtml = couponMetafieldHtml | append:couponMetafieldItem-%}
+		
+				{%include 'coupon-item' with type: 'lite'-%}
+			
+			{%endif-%}
+		{%endfor -%}
+		{%assign iconMetafield = ""-%}
+		{%assign collCount = 0 -%}
+		
+		{% for i in (1..8)-%}
+		{% capture coupon_coll -%}coupon_{{i-}}_coll{%endcapture-%}
+		{% capture coupon_link -%}coupon_{{i-}}_link{%endcapture-%}
+		{% capture coupon_text -%}coupon_{{i-}}_text{%endcapture-%}
+		{% capture coupon_desc -%}coupon_{{i-}}_desc{%endcapture-%}
+		{% capture coupon_info -%}coupon_{{i-}}_info{%endcapture-%}
+		{% capture coupon_code -%}coupon_{{i-}}_code{%endcapture-%}
+		{% capture coupon_img -%}coupon_{{i-}}_img.png{%endcapture-%}
+		{% capture coupon_text_short -%}coupon_{{i-}}_text_short{%endcapture-%}
+		{% assign isColl = false -%}
+		{% if  settings[coupon_coll]  and settings[coupon_coll] != ''  and settings[coupon_coll] !=  blank -%}
+		{% for coll in product.collections -%}
+		{% if settings[coupon_coll] contains coll.handle -%}
+		{% assign isColl = true -%}
+		{% break -%}
+		{% endif-%}
+		{% endfor -%}
+		{% endif -%}
+		{% if isColl -%} 
+		{% assign showImage = settings[coupon_imgshow] -%}
+		{% assign title = settings[coupon_text] -%}
+		{% assign desc =  settings[coupon_desc] -%}
+		{% assign info =  settings[coupon_info] -%}
+		{% assign code =  settings[coupon_code] -%}
+		{% assign title_short = settings[coupon_text_short] -%}
+		
+		{% if count <= 4 -%}
+		{% assign count = count | plus: 1 -%}
+		{% include 'coupon-item' with type: 'lite' -%}
+		{% else -%}
+		{% break -%}
+		{% endif -%}
+		
+		{% endif -%}
+		{% endfor -%}
+		
+		{% for i in (1..8) -%}
+		{% capture coupon_show-%}coupon_{{i-}}_home_show{%endcapture -%}
+		{% capture coupon_coll-%}coupon_{{i-}}_coll{%endcapture -%}
+		{% capture coupon_link-%}coupon_{{i-}}_link{%endcapture -%}
+		{% capture coupon_text-%}coupon_{{i-}}_text{%endcapture -%}
+		{% capture coupon_desc-%}coupon_{{i-}}_desc{%endcapture -%}
+		{% capture coupon_info-%}coupon_{{i-}}_info{%endcapture -%}
+		{% capture coupon_code-%}coupon_{{i-}}_code{%endcapture -%}
+		{% capture coupon_img-%}coupon_{{i-}}_img.png{%endcapture -%}
+		{% capture coupon_text_short -%}coupon_{{i-}}_text_short{%endcapture-%}
+		{% if  settings[coupon_show] and (settings[coupon_coll] == blank or settings[coupon_coll] == '') -%} 
+		{% assign showImage = settings[coupon_imgshow] -%}
+		{% assign title = settings[coupon_text] -%}
+		{% assign desc =  settings[coupon_desc] -%}
+		{% assign info =  settings[coupon_info] -%}
+		{% assign code =  settings[coupon_code] -%}
+		{% assign title_short = settings[coupon_text_short] -%}
+		
+		{% if count <= 4 -%}
+		{% assign count = count | plus: 1 -%}
+		{% include 'coupon-item' with type: 'lite' -%}
+		{% else -%}
+		{% break -%}
+		{% endif -%}
+		
+		{% endif -%}
+		{% endfor -%}
+		
+		{% include 'icon-arrow' -%}
+	</div>
+</div>
+
+<div class="cart-coupon my-4">
+	<div class="cart-coupon-header">
+		<span class="coupon-toggle-btn">
+			<i class="fa fa-arrow-left "> </i>
+		</span>
+		<span>Mã giảm giá</span>
+	</div>
+	{% include 'section_coupons' -%}
+</div>
+<div class="cart-coupon-overlay coupon-toggle-btn"></div>
+
+<script>
+	$(document).on('click', '.coupon-toggle-btn', ()=>{
+		$('.cart-coupon').toggleClass('active')
+		$('body').toggleClass('overflow-hidden')
+	})
+</script>

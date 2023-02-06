@@ -1,0 +1,105 @@
+{% assign blog_size_1 = blogs[settings.url_index_blog_1].articles_count -%}
+{% assign blog_size_2 = blogs[settings.url_index_blog_2].articles_count -%}
+<div class="section_blog">
+	{% if settings.index_blog_layout == '2blog' %}
+	<div class='row'>
+		<div class='col-12 col-lg-6'>
+			<div class="title_module_main" style='background-color: {{settings.index_blog_title_bg | default: 'transparent' }}'>
+				<h2 class="heading-bar__title" style='color: {{settings.index_blog_title_color | default: 'var(--text-color)'}}'>
+					{% if settings.title_index_blog_1_use_icon -%}
+					<img src='{{"index-blog-1-icon.png" | asset_url }}' alt='{{settings.title_index_blog_1}}' />
+					{% endif -%}
+					<a class='link' href="{{blogs[settings.url_index_blog_1].url-}}" title="{{settings.title_index_blog_1}}">
+						{{settings.title_index_blog_1}}</a>
+				</h2>
+			</div>
+			<div class='section__blogs'>
+				{% if blog_size_1 > 0 -%}
+				<div class="blog-list">
+					{% for article in blogs[settings.url_index_blog_1].articles limit: {{settings.limit_index_blog}} -%}
+					{% include 'blog_list_media_item' -%}
+					{% endfor -%}
+				</div>
+				<div class="text-center mt-3">
+					<a href="{{blogs[settings.url_index_blog_1].url-}}" title="Xem tất cả" 
+					   class="btn btn-main btn-icon btn-pill">
+						Xem tất cả {%include 'icon-arrow'%}
+					</a>
+				</div>
+				{% else -%}
+				<div class="section mt-3">
+					<p class="block a-center">Danh mục đang cập nhật bài viết</p>
+				</div>
+				{% endif -%}
+			</div>
+		</div>
+		<div class='col-12 col-lg-6'>
+			<div class="title_module_main" style='background-color: {{settings.index_blog_title_bg | default: 'transparent' }}'>
+				<h2 class="heading-bar__title" style='color: {{settings.index_blog_title_color | default: 'var(--text-color)'}}'>
+					{% if settings.title_index_blog_2_use_icon -%}
+					<img src='{{"index-blog-2-icon.png" | asset_url }}' alt='{{settings.title_index_blog_1}}' />
+					{% endif -%}
+					<a class='link' href="{{blogs[settings.url_index_blog_2].url-}}" title="{{settings.title_index_blog_2}}">{{settings.title_index_blog_2}}</a>
+				</h2>
+			</div>
+			<div class='section__blogs'>
+				{% if blog_size_2 > 0 -%}
+				<div class="blog-list">
+					{% for article in blogs[settings.url_index_blog_2].articles limit: {{settings.limit_index_blog}} -%}
+					{% include 'blog_list_media_item' -%}
+					{% endfor -%}
+				</div>
+				<div class="text-center mt-3">
+					<a href="{{blogs[settings.url_index_blog_2].url-}}" title="Xem tất cả" 
+					   class="btn btn-main btn-icon btn-pill">
+						Xem tất cả {%include 'icon-arrow'%}
+					</a>
+				</div>
+				{% else -%}
+				<div class="section mt-3 ">
+					<p class="block a-center">Danh mục đang cập nhật bài viết</p>
+				</div>
+				{% endif -%}
+			</div>
+		</div>
+	</div>
+	{% else -%}
+	<div class="title_module_main" style='background-color: {{settings.index_blog_title_bg | default: 'transparent'}}'>
+		<h2 class="heading-bar__title" style='color: {{settings.index_blog_title_color | default: 'var(--text-color)'}}'>
+			{% if settings.title_index_blog_1_use_icon -%}
+			<img src='{{"index-blog-1-icon.png" | asset_url }}' alt='{{settings.title_index_blog_1}}' />
+			{% endif -%}
+			<a class='link' href="{{blogs[settings.url_index_blog_1].url-}}" title="{{settings.title_index_blog_1}}">{{settings.title_index_blog_1}}</a>
+		</h2>
+	</div>
+	<div class='section__blogs'>
+		{% if blog_size_1 > 0 -%}
+		<div class="row blog-list">
+			<div class="col-12 col-md-6 section_blog_left">
+				{% for article in blogs[settings.url_index_blog_1].articles limit: 1 -%}
+				{% include 'blog_list_item' -%}
+				{% endfor -%}
+			</div>
+			<div class="col-md-6 col-12 pos-relative pl-sm-0">
+				<div class='section_blog_right pl-0'>
+					{% for article in blogs[settings.url_index_blog_1].articles limit: {{settings.limit_index_blog}} -%}
+					{% unless forloop.first -%}
+					{% include 'blog_list_media_item' -%}
+					{% endunless -%}
+					{% endfor -%}
+				</div>
+			</div>
+		</div>
+		<div class="text-center mt-3">
+			<a href="{{blogs[settings.url_index_blog_1].url-}}" title="Xem tất cả" class="btn btn-main btn-icon btn-pill">
+				Xem tất cả {%include 'icon-arrow'%}
+			</a>
+		</div>
+		{% else -%}
+		<div class="section mt-3 ">
+			<p class="block a-center">Danh mục đang cập nhật bài viết</p>
+		</div>
+		{% endif -%}
+	</div>
+	{% endif -%}
+</div>

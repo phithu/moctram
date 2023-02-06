@@ -1,0 +1,182 @@
+{%if settings.aside_category_enable%}
+<aside class="aside-item sidebar-category collection-category">
+	<div class="aside-title">
+	{%comment -%}	<h2 class="title-head margin-top-0 cate"><span>{{ settings.aside_category_title }}</span></h2>
+	{%endcomment -%}
+	<h2 class="title-head margin-top-0 cate d-block d-lg-none">Tìm theo</h2>
+
+	</div>
+	<div class="aside-content">
+		{%comment -%}
+		<nav class="nav-category navbar-toggleable-md">
+			<ul class="nav navbar-pills">
+				{% for link in linklists[settings.aside_category_menu].links %}
+				{% if linklists[link.handle] %}
+				<li class="nav-item">
+					<a href="{{ link.url }}" class="nav-link  {% if link.active %}active{% endif %}">{{ link.title }}
+					</a>
+					<i class="fa fa-caret-down"></i>
+					<ul class="dropdown-menu">
+						{% for childlink in linklists[link.handle].links %}
+						{% if linklists[childlink.handle] %}
+						<li class="dropdown-submenu nav-item">
+							<a class="nav-link" href="{{ childlink.url }}">{{ childlink.title }}
+							</a>
+							<i class="fa fa-caret-down"></i>
+							<ul class="dropdown-menu">
+								{% for childlink2 in linklists[childlink.handle].links %}
+								<li class="nav-item lv3">
+									<a class="nav-link" href="{{ childlink2.url }}">{{ childlink2.title }}
+
+									</a>
+								</li>
+								{% endfor %}
+							</ul>                      
+						</li>
+						{% else %}
+						<li class="nav-item">
+							<a class="nav-link" href="{{ childlink.url }}">{{ childlink.title }}
+							</a>
+						</li>
+						{% endif %}
+						{% endfor %}
+
+					</ul>
+				</li>
+				{% else %}
+				<li class="nav-item "><a class="nav-link" href="{{ link.url }}">{{ link.title }}
+					</a>
+				</li>
+				{% endif %}
+				{% endfor %}
+			</ul>
+		</nav>
+		{%endcomment -%}
+		{%if settings.use_price_filter %}
+		<nav class="nav-category navbar-toggleable-md">
+			<ul class="nav navbar-pills">
+				<li class="nav-item active">
+					<a href="#" class="nav-link ">
+					{{ settings.price_title }} 	
+					</a>
+					<i class="fa fa-caret-down"></i>
+					{%include 'price_filter' -%}
+				</li>
+			
+			</ul>
+		</nav>
+		{%endif -%}
+		{%if settings.use_type_filter%}
+		{%assign typers = collection.all_types.size%}
+		{%if typers > 1%}
+		<nav class="nav-category navbar-toggleable-md">
+			<ul class="nav navbar-pills">
+				<li class="nav-item active">
+					<a href="#" class="nav-link ">
+					{{ settings.type_title }} 	
+					</a>
+					<i class="fa fa-caret-down"></i>
+					{%include 'type_filter' -%}
+				</li>
+			
+			</ul>
+		</nav>
+		{%endif-%}
+		{%endif -%}
+		{%if settings.use_vendor_filter %}
+		{%assign vendors = collection.all_vendors.size%}
+		{%if vendors > 1%}
+			<nav class="nav-category navbar-toggleable-md">
+			<ul class="nav navbar-pills">
+				<li class="nav-item active">
+					<a href="#" class="nav-link ">
+					{{ settings.vendor_filter_title }} 	
+					</a>
+					<i class="fa fa-caret-down"></i>
+					{%include 'vendor_filter' -%}
+				</li>
+			
+			</ul>
+		</nav>
+		{%endif-%}
+		{%endif -%}
+		{%if settings.use_size_filter %}
+			<nav class="nav-category navbar-toggleable-md">
+			<ul class="nav navbar-pills">
+				<li class="nav-item active">
+					<a href="#" class="nav-link ">
+					{{ settings.size_filter_title }} 	
+					</a>
+					<i class="fa fa-caret-down"></i>
+					{%include 'size_filter' -%}
+				</li>
+			
+			</ul>
+		</nav>
+		{%endif -%}
+	</div>
+		<!-- Lọc theo Tag (Màu sắc)-->
+		{%- if settings.filter_tag1 -%}
+		{%-if settings.filter_tag1_style == 'input'-%}
+		<aside class="aside-item filter-tag-style-1">
+			<div class="aside-title">
+				<h2 class="title-head margin-top-0"><span>{{settings.filter_tag1_title}}</span></h2>
+			</div>
+			<div class="aside-content filter-group">
+				<ul>
+					{%- assign tags = settings.filter_tag1_list | split: ';' -%} 
+					{%- for t in tags -%}
+					{%- assign tag = t | strip -%}
+					{%- assign tag_value = tag | handleize -%}
+					<li class="filter-item filter-item--check-box filter-item--green">
+						<span>
+							<label for="filter-{{ tag | handleize }}">
+								<input type="checkbox" id="filter-{{ tag | handleize }}" data-group="tag1" data-field="tags" data-text="{{tag}}" value="({{tag}})" data-operator="OR">
+								<i class="fa"></i>
+								{{tag}}
+							</label>
+						</span>
+					</li>	
+					{%-endfor-%}
+
+				</ul>
+			</div>
+		</aside>
+		{%-else-%}
+		<aside class="aside-item filter-tag-style-1">
+			<div class="aside-title">
+				<h2 class="title-head margin-top-0"><span>{{settings.filter_tag1_title}}</span></h2>
+			</div>
+			<div class="aside-content filter-group clearfix">
+				<ul style="overflow: visible;">
+					{%- assign tags = settings.filter_tag1_list | split: ';' -%} 
+					{%- assign color_list = settings.filter_tag1_list_color | split:";" -%}
+
+					{%- for t in tags -%}
+					{%-assign fl1 = forloop.index-%}
+					{%-for color in color_list-%}
+					{%-if forloop.index == fl1-%}
+					{%-assign cl = color-%}
+					{%-endif-%}
+					{%-endfor-%}
+					{%- assign tag = t | strip -%}
+					{%- assign tag_value = tag | handleize -%}
+					<li class="filter-item color filter-item--check-box filter-item--green">
+						<span>
+							<label for="filter-{{ tag | handleize }}">
+								<input type="checkbox" id="filter-{{ tag | handleize }}"  data-group="tag1" data-field="tags" data-text="{{tag}}" value="({{tag}})" data-operator="OR">
+								<i class="fa {{ tag | handleize }}" style="background-color:{{cl}};{%-if tag_value == 'trang'-%}border:1px solid #ebebeb;{%-endif-%}"></i>
+								{{tag}}
+							</label>
+						</span>
+					</li>	
+					{%-endfor-%}
+
+				</ul>
+			</div>
+		</aside>
+		{%-endif-%}
+		{%-endif-%}
+		<!-- End Lọc theo Tag (Màu sắc)-->
+</aside>
+{%endif%}

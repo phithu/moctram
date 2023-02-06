@@ -1,0 +1,16 @@
+{%layout none %}
+
+	{% assign product_count = collection.products.size %}
+{%if product_count  >= 1 -%}
+{% for product in collection.products limit: {{settings.section_top_limit}}%}
+<div class="col-12 col-md-15">
+	<div class="item_product_main">
+		{% include 'product_grid_office' %}
+	</div>
+</div>
+{%endfor%}
+{%else%}
+	<div class="col-12">
+					<p class="a-center mt-3">Hiện tại chưa có sản phẩm nào trong danh mục này!...</p>
+				</div>
+{%endif%}

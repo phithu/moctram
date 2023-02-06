@@ -1,0 +1,14 @@
+<form action="/search" method="get" class="input-group search-bar custom-input-group " role="search">
+	<input type="text" name="q" value="" autocomplete="off" 
+		   class="input-group-field auto-search form-control " required="" 
+		   data-placeholder="{{settings.search_placeholder}}">
+	<input type="hidden" name="type" value="product">
+	<span class="input-group-btn btn-action">
+		<button type="submit"  aria-label="search" class="btn text-white icon-fallback-text h-100">
+			{% include 'icon-search' -%}
+		</button>
+	</span>
+</form>
+{% if settings.ega_sm_enable -%} 
+<div class="search-overlay"></div>
+{%endif-%}

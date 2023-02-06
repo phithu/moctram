@@ -1,0 +1,35 @@
+<section class="section_brand section" style='--item-display: {{settings.brand_items_display}}'>
+	<div class="container card border-0">
+		<div class="title_module_main heading-bar ">
+			<h2 class="heading-bar__title ">
+				<a class='link' href="{{settings.brand_link}}" title="{{settings.brand_title}}">{{settings.brand_title}}</a>
+			</h2>
+		</div>
+		<div class="row mx-0 hrz-scroll text-center flex-nowrap js-slider justify-content-around ">
+			{%capture width%}brand_width{%endcapture%}
+			{%capture height%}brand_height{%endcapture%}
+			{%for i in (1..14)%}
+			{%capture brandenable%}brand_{{i}}_en{%endcapture%}
+			{%capture brandLink%}brand_{{i}}_link{%endcapture%}
+			{%capture imagebrand%}brand_{{i}}.jpg{%endcapture%}
+			{%capture altbrand%}brand_{{i}}_title{%endcapture%}
+
+			{%if settings[brandenable]%}
+			<div class="item ">
+				<a href="{{settings[brandLink]}}" 
+				   class="brand-item pos-relative d-flex align-items-center aspect-ratio " 
+				   title="{{settings[altbrand]}}"
+				   style="--width:{{settings[width]}}; --height:{{settings[height]}}"> 					
+					<img loading="lazy" 
+						 class="img-fluid m-auto object-contain mh-100 w-auto" 
+						 src="{{imagebrand | asset_url }}"
+						 alt="{{altbrand}}"
+						 width="{{settings[width]}}" 
+						 height="{{settings[height]}}"/>
+				</a>
+			</div>
+			{%endif%}
+			{%endfor%}
+		</div>
+	</div>
+</section>

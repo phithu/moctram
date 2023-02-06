@@ -1,0 +1,18 @@
+{%if settings.foodnbeverage_001__banner0__show-%}
+	{%assign fnb_banner = 'foodnbeverage_001_banner_img.jpg' | asset_url-%}
+{%else-%}
+	{%assign fnb_banner = "https://mixcdn.egany.com/salespage/ega-cake/foodnbeverage_001_banner_img.jpg"-%}
+{%endif-%}
+
+
+<div class="home-banner" data-setting="banner">
+	<div class="item" style="background-image: url({{fnb_banner-}})" data-setting="banner__img_url">
+		<div class="caption">
+			<div class="text">
+				<h2 data-setting="banner__title">{{ settings.foodnbeverage_001__banner__title }}</h2>
+				<p data-setting="banner__content">{{ settings.foodnbeverage_001__banner__content }}</p>
+				<a href="#section-about" class="target-link">{{ settings.foodnbeverage_001__banner__link_text }}</a>
+			</div>
+		</div>
+	</div>
+</div>

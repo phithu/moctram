@@ -1,0 +1,53 @@
+{%comment-%}
+<div class=" d-flex justify-content-between align-items-baseline">
+	<div class="sortPagiBar">
+		<div class="sort-cate clearfix">
+			<div id="sort-by" class="d-flex align-items-baseline">
+				<label class="left">
+					<span class=''>Sắp xếp: </span></label>
+				<ul class="ul_col ml-2 mb-0">
+					<li><span class="d-flex d-lg-none align-items-center justify-content-between">Thứ tự </span>
+						<i class='fas fa-chevron-down float-right' ></i>
+						<ul class="content_ul">                    
+							<li data-sort="title:product=asc"><a class="link" href="javascript:;" onclick="sortby('alpha-asc')">Tên A &rarr; Z</a></li>
+							<li data-sort="title:product=desc"><a class="link" href="javascript:;" onclick="sortby('alpha-desc')">Tên Z &rarr; A</a></li>
+							<li data-sort="price:product=asc"><a class="link" href="javascript:;" onclick="sortby('price-asc')">Giá tăng dần</a></li>
+							<li data-sort="price:product=desc"><a class="link" href="javascript:;" onclick="sortby('price-desc')">Giá giảm dần</a></li>
+							<li data-sort="created_at:product=desc"><a class="link" href="javascript:;" onclick="sortby('created-desc')">Hàng mới </a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+<div id="open-filters" class="btn open-filters d-xl-none d-block p-0">
+		<i class="fa fa-filter"></i>
+		<span>Lọc</span>
+	</div>
+</div>
+{%endcomment-%}
+
+
+
+<div class="coll-sortby d-flex justify-content-between align-items-center">
+	<div class="sortPagiBar">
+		<div class="sort-cate clearfix">
+			<div id="sort-by" class="d-flex align-items-baseline">
+				<label class="left">
+					<span class=''>Sắp xếp: </span>
+				</label>
+				<select class="content_ul" onchange="sortby(this)">     
+					<option data-sort="name:asc" value="alpha-asc">Tên A &rarr; Z</option>
+					<option data-sort="name:desc" value="alpha-desc">Tên Z &rarr; A</option>
+					<option data-sort="price_min:asc" value="price-asc">Giá tăng dần</option>
+					<option data-sort="price_min:desc" value="price-desc">Giá giảm dần</option>
+					<option data-sort="created_on:desc" value="created-desc">Hàng mới</option>
+				</select>			
+			</div>
+		</div>
+	</div>
+	<div id="open-filters" class="btn open-filters d-lg-none d-block p-0">
+		<i class="fa fa-filter"></i>
+		<span>Lọc</span>
+	</div>
+</div>

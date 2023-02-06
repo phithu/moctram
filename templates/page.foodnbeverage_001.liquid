@@ -1,0 +1,31 @@
+{%-layout 'foodnbeverage_001'-%}
+
+{%-if settings.foodnbeverage_001__menu__show-%}
+{%-include 'foodnbeverage_001_header'-%}
+{%-endif-%}
+
+{%-if settings.foodnbeverage_001__banner__show-%}
+	{%-include 'foodnbeverage_001_banner'-%}
+{%-endif-%}
+
+{%-if settings.foodnbeverage_001__intro__show-%}
+	{%-include 'foodnbeverage_001_about'-%}
+{%-endif-%}
+
+{%-if settings.foodnbeverage_001__benefit__show-%}
+	{%-include 'foodnbeverage_001_benefit'-%}
+{%-endif-%}
+
+<section id="section-detail" data-setting="product"></section>
+
+{%-if settings.foodnbeverage_001__reviews__show-%}
+	{%-include 'foodnbeverage_001_reviews'-%}
+{%-endif-%}
+
+{%-if settings.foodnbeverage_001__facebook_comment__show-%}
+	{%-include 'foodnbeverage_001_facebook'-%}
+{%-endif-%}
+
+{%-if settings.foodnbeverage_001__footer__show-%}
+	{%-include 'foodnbeverage_001_footer'-%}
+{%-endif-%}

@@ -1,0 +1,42 @@
+{% assign use_section = false -%}
+{% for i in (1..4) -%}
+{% capture policies_use -%}policies_use_{{i-}}{% endcapture -%}
+{% if settings[policies_use] -%}
+{% assign use_section = true -%}
+{% break -%}
+{% endif -%}
+{% endfor -%}
+{% if use_section -%}
+<div class="policies">
+	<div class="container">
+		<div class="row justify-content-around">
+			{% for i in (1..4) -%}
+			{% capture policies_use -%}policies_use_{{i-}}{% endcapture -%}
+			{% capture policies_icon -%}policies_icon_{{i-}}.png{% endcapture -%}
+			{% capture policies_title -%}policies_title_{{i-}}{% endcapture -%}
+			{% capture policies_text -%}policies_text_{{i-}}{% endcapture -%}
+			{% capture width -%}policies_icon_{{i-}}_width{% endcapture -%}
+			{% capture height -%}policies_icon_{{i-}}_height{% endcapture -%}
+
+			{% if settings[policies_use] -%}
+			<div class="col-md-6 col-lg-3 col-12">
+				<div class="media ega-media--sm policies-item mt-lg-0 mt-xl-0 mt-2 ">
+					<img class='mr-3' 
+						 src='{{policies_icon | asset_url -}}'
+						 alt="{{policies_icon-}}" 
+						 width="{{settings[width]}}"
+						 height="{{settings[height]}}"
+						 loading="lazy"
+						 >
+					<div class="media-body">
+						<strong class="d-block">{{settings[policies_title]-}}</strong>
+						<span class="text-secondary">{{settings[policies_text]-}}</span>
+					</div>
+				</div>
+			</div>
+			{% endif -%}
+			{% endfor -%}
+		</div>
+	</div>	
+</div>
+{% endif -%}

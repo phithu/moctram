@@ -1,0 +1,72 @@
+{% assign image_scale = 1 -%}
+{% assign hasFrame = false -%}
+{% assign img_position = '' -%}
+{% for i in (1..3) -%}
+{% capture use_frame -%}use_frame_{{i}}{% endcapture -%}
+{% capture frame%}frame_{{i}}.png{% endcapture -%}
+{% capture frame_coll -%}frame_{{i}}_coll{% endcapture -%}
+{% capture frame_scale -%}frame_{{i}}_scale{%endcapture -%}
+{% capture frame_positon -%}frame_{{i}}_position{%endcapture -%}
+{% if settings[use_frame] -%}
+{% for tag in product.tags -%}
+{% if tag == settings[frame_coll] -%}
+{% assign hasFrame = true %}
+{% assign image_scale = settings[frame_scale] | plus: 0 %}
+{% if image_scale > 1 or image_scale  < 0.5%}
+{% assign image_scale = 1 %}
+{% endif%}
+
+{% capture img_position -%}
+{% case settings[frame_positon] -%}
+{% when 'top-left' -%}
+top: 0;left: 0;
+transform:scale(var(--image-scale));
+transform-origin:  left top;			
+{% when 'top-right' -%}
+top: 0;left: auto;right: 0;
+transform:scale(var(--image-scale));
+transform-origin:  right top;
+{% when 'top-center' -%}
+top: 0;
+transform: translate(-50%,0) scale(var(--image-scale));
+transform-origin:  center top; 
+{% when 'center-left' -%}
+--img-left: 0;
+transform: translate(0,-50%) scale(var(--image-scale));
+transform-origin: left center;
+{% when 'center-right' -%}
+left:  auto;right: 0;
+transform: translate(0,-50%) scale(var(--image-scale));
+transform-origin: right center;
+{% when 'bottom-left' -%}
+top:  auto;bottom: 0;left: 0;
+transform: scale(var(--image-scale));
+transform-origin: left bottom;
+{% when 'bottom-right' -%}
+top:  auto;bottom: 0;left: auto;right: 0%;
+transform: scale(var(--image-scale));
+transform-origin: right bottom;
+{% when 'bottom-center' -%}
+top:  auto;bottom: 0;
+transform: translate(-50%, 0) scale(var(--image-scale));
+transform-origin: center bottom;
+
+{% endcase %}
+{% endcapture -%}
+
+<img class="product-frame " 
+	 src="{{frame | asset_url}}" alt="{{product.title}}"
+	 data-image-scale="--image-scale: {{image_scale}};{{img_position-}}"
+	 loading="lazy"
+	 />
+{%if hasFrame -%}{%break%}{%endif-%}
+
+{%endif -%}
+{%if hasFrame -%}{%break%}{%endif-%}
+
+{%endfor%}
+
+
+{%endif-%}
+{%if hasFrame -%}{%break%}{%endif-%}
+{%endfor -%}

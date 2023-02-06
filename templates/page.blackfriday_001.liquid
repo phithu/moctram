@@ -1,0 +1,431 @@
+{%layout 'blackfriday_001'%}
+{%assign themeName = 'ega-cake'-%}
+<header>
+   <a id="back-to-home" title="Trở về trang chủ" href="/"><i class="fa fa-reply"></i></a>
+   <a id="logo" href="/"><img src='{{ "blackfriday_001_logo.png" | asset_url }}' data-setting="theme__logo__img_url"/></a>
+</header>    
+<body>
+   {%if settings.blackfriday_001__banner__show%}
+   <div class="home-banner" data-setting="banner">
+	   {%if settings.blackfriday_001__banner0__show-%} 
+	   		<img src="{{ 'blackfriday_001_banner_img.jpg' | asset_url }}" alt="blackfriday_001_banner_img" data-setting="banner__img_url"/>
+	   {%else-%}
+	   		<img src="https://mixcdn.egany.com/themes/assets/blackfriday_001_banner_img.jpg" alt="blackfriday_001_banner_img"/>
+	   {%endif-%}
+	   <div id="countdown" data-setting="clock"></div>
+
+      <a href="#banner-top" class="next-section scroll-to fa fa-angle-down ega-hidden ega-block--sm"></a>
+   </div>
+   {%endif%}
+
+   {%if settings.blackfriday_001__sub_banner__show%}
+   <div id="banner-top" class="block--top" data-setting="sub_banner">
+      <div class="ega-row">
+         {%for i in (1..3)%}
+         {%capture use_banner_top%}blackfriday_001__sub_banner__{{i}}__show{%endcapture%}
+		 {%capture use_banner0_top%}blackfriday_001__sub_banner0__{{i}}__show{%endcapture%}
+         {%capture banner_top_img%}blackfriday_001_banner_top_img_{{i}}.jpg{%endcapture%}
+         {%capture banner_top_desc%}blackfriday_001__sub_banner__{{i}}__desc{%endcapture%}
+         {%capture banner_top_link%}blackfriday_001__sub_banner__{{i}}__url{%endcapture%}
+         {%if settings[use_banner_top]%}
+         <div class="ega-col-12 ega-col-md-4" data-setting="sub_banner__{{i}}">
+            <a class="block--top__item scroll-to" href="{{ settings[banner_top_link] }}">
+               <div class="block--top__img">
+				  {%if settings[use_banner0_top]%}
+                  <img src="{{ banner_top_img | asset_url }}" alt="{{ banner_top_img }}" data-setting="sub_banner__{{i}}__img_url"/>
+               	  {%else-%}
+				  <img src="https://mixcdn.egany.com/salespage/{{themeName-}}/{{banner_top_img-}}" alt="{{ banner_top_img }}"/>
+				  {%endif-%}
+				</div>
+               <div class="block--top__caption">
+                  <h3>{{ settings[banner_top_desc] }}</h3>
+                  <span class="button__action">XEM NGAY</span>
+               </div>
+            </a>
+         </div>
+         {%endif%}
+         {%endfor%}
+      </div>
+   </div>
+   {%endif%}
+
+   {%for i in (1..8)%}
+{%capture use_coll%}blackfriday_001__collection__{{i}}__show{%endcapture%}
+{%capture coll_title%}blackfriday_001__collection__{{i}}__title{%endcapture%}
+{%capture use_coll_title_icon%}blackfriday_001__collection__{{i}}__title_icon__show{%endcapture%}
+{%capture coll_title_icon_img%}blackfriday_001_coll_title_icon_img_{{i}}.png{%endcapture%}
+{%capture coll_handle%}blackfriday_001__collection__{{i}}__coll{%endcapture%}
+{%capture coll_limit%}blackfriday_001__collection__{{i}}__limit{%endcapture%}
+{%capture coll_banner_pos%}blackfriday_001__collection__{{i}}__banner__banner_pos{%endcapture%}
+{%capture coll_banner_img%}blackfriday_001_coll_banner_img_{{i}}.jpg{%endcapture%}
+{%capture coll_banner0_img_show-%}blackfriday_001_coll_banner0_img_{{i-}}_show{%endcapture-%}
+{%capture banner_link%}blackfriday_001__collection__{{i}}__banner__url{%endcapture%}
+
+   {%if settings[use_coll]%}
+{%assign banner_pos = settings[coll_banner_pos]%}
+{%assign coll_handel = settings[coll_handle]%}
+{%assign coll_limit = settings[coll_limit]%}
+   <div id="block-{{i}}" class="block block--deals-{{i}}" data-setting="collection__{{i}}">
+      <h2 class="block__title">
+        {%if settings[use_coll_title_icon]%}
+          <img src="{{ coll_title_icon_img | asset_url }}" alt="{{ coll_title_icon_img }}" data-setting="collection__{{i}}__title_icon__img_url"/>
+        {%endif%}
+        <span>{{ settings[coll_title] }}</span>
+      </h2>
+      <div class="block__viewall">
+         <a class="fa fa-external-link" href="{{ collections[coll_handel].url }}">Xem tất cả</a>
+      </div>
+      <div class="block__content">
+         <div class="ega-row">
+            {%if banner_pos > 0%}
+            <div class="ega-hidden ega-block--lg ega-col-sm-3 {%if banner_pos == 2%}block__content--order{%endif%}">
+               <a href="{{ settings[banner_link] }}" class="block__banner flash-hover">
+				  {%if settings[coll_banner0_img_show]-%} 
+                  <img src="{{ coll_banner_img | asset_url }}" alt="{{ coll_banner_img }}" data-setting="collection__{{i}}__banner__img_url"/>
+               	  {%else-%}
+				  <img src="https://mixcdn.egany.com/salespage/{{themeName-}}/{{coll_banner_img-}}" alt="{{ coll_banner_img }}"/>				
+				  {%endif-%}
+			   </a>
+            </div>
+            {%endif%}
+            <div class="{%if banner_pos == 0%}ega-col-12{%else%}ega-col-lg-9 ega-col-sm-12 ega-col-12{%endif%}">
+               <div class="ega-row">      
+									{%if collections[coll_handel].products_count > 0%}
+										{%for product in collections[coll_handel].products limit:coll_limit%}
+										<div class="ega-col-6 ega-col-lg-3">
+											 {%include 'blackfriday_001_product_item'%}
+										</div>
+										{%endfor%}
+									{%else%}
+									 {%for i in (1..coll_limit)%}
+										 <div class="ega-col-6 ega-col-lg-3">
+											 <a class="product" href="#">
+												 <div class="product__img">
+													 <img src="{{ 'product_demo.jpg' | asset_url }}" alt="img_demo_{{i}}"/>
+												 </div>
+												 <div class="product__info">
+													 <h3 class="product__title">Tên sản phẩm {{i}}</h3>
+													 <div class="product__price">
+														 <ins>{{ 10000000 | money }}</ins>
+														 <del>{{ 20000000  | money }}</del>
+													 </div>
+													 <span class="button__action">XEM NGAY</span>
+												 </div>
+											 </a>
+										 </div>
+									 {%endfor%}
+									{%endif%}
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+{%endif%}
+{%endfor%}
+
+
+  {%if settings.blackfriday_001__carousel__show%}
+  {%assign trend_coll = settings.blackfriday_001__carousel__coll%}
+  {%assign trend_coll_limit = settings.blackfriday_001__carousel__limit%}
+  <div class="block block--offers" data-setting="carousel">
+    <h2 class="block__title">
+      {%if settings.blackfriday_001__carousel__icon_title__show%}
+      <img src="{{ 'blackfriday_001_trend_icon_img.png' | asset_url }}" alt="blackfriday_001_trend_icon_img.png" data-setting="carousel__icon_title__img_url"/>
+      {%endif%}
+      <span>{{ settings.blackfriday_001__carousel__title }}</span>
+    </h2>
+		<div class="block__content">
+			<div class="offer__slider owl-carousel owl-theme">
+				{%if collections[trend_coll].products_count > 0%}
+				{%for product in collections[trend_coll].products limit:trend_coll_limit%}
+				<div class="offer__item">
+					{%include 'blackfriday_001_product_item'%}
+				</div>
+				{%endfor%}
+				{%else%}
+				{%for i in (1..trend_coll_limit)%}
+				<div class="offer__item">
+					<a class="product" href="#">
+						<div class="product__img">
+							<img src="{{ 'product_demo.jpg' | asset_url }}" alt="img_demo_{{i}}"/>
+						</div>
+						<div class="product__info">
+							<h3 class="product__title">Tên sản phẩm {{i}}</h3>
+							<div class="product__price">
+								<ins>{{ 10000000 | money }}</ins>
+								<del>{{ 20000000  | money }}</del>
+							</div>
+							<span class="button__action">XEM NGAY</span>
+						</div>
+					</a>
+				</div>
+				{%endfor%}
+				{%endif%}
+      </div>
+    </div>
+  </div>
+  {%endif%}
+
+  {%if settings.blackfriday_001__partner__show%}
+  <div class="block block--partners" data-setting="partner">
+    <h2 class="block__title">
+      {%if settings.blackfriday_001__partner__icon_title__show%}
+      <img src="{{ 'blackfriday_001_partner_icon_img.png' | asset_url }}" alt="blackfriday_001_partner_icon_img.png" data-setting="partner__icon_title__img_url"/>
+      {%endif%}
+      <span>{{ settings.blackfriday_001__partner__title }}</span>
+    </h2>
+    <div class="block__content">
+      <div class="partner__slider owl-carousel owl-theme">
+        {%for i in (1..10)%}
+        {%capture use_partner%}blackfriday_001__partner__{{i}}__show{%endcapture%}
+        {%capture partner_logo%}blackfriday_001_partner_logo_{{i}}.jpg{%endcapture%}
+        {%if settings[use_partner]%}
+        <div class="partner__item">
+          <div class="partner__img">
+            <img src="{{ partner_logo | asset_url }}" alt="{{ partner_logo }}" data-setting="partner__{{i}}__img_url"/>
+          </div>
+        </div>
+        {%endif%}
+        {%endfor%}
+      </div>
+    </div>
+  </div>
+  {%endif%}
+</body>
+
+{%if settings.blackfriday_001__footer__show%}
+<footer data-setting="footer">
+   {{ settings.blackfriday_001__footer__copyright }}
+</footer>
+{%endif%}
+
+
+<script>
+   $(window).scroll(function(){
+      if($(this).scrollTop() == 0){
+         $('header').removeClass('fixed_header');
+      } else {
+         $('header').addClass('fixed_header');
+      }
+   })
+
+   $('.offer__slider').owlCarousel({
+      items:4,
+      loop:true,
+      nav: true,
+      navText: ["<span class='fa fa-angle-left'></span>","<span class='fa fa-angle-right'></span>"],
+      dots:false,
+      responsive:{
+         0:{
+            items: 2
+         },
+         768:{
+            items: 3
+         },
+         992:{
+            items: 4
+         }
+      }
+   });
+
+   $('.partner__slider').owlCarousel({
+      items:6,
+      loop:true,
+      nav: true,
+      navText: ["<span class='fa fa-angle-left'></span>","<span class='fa fa-angle-right'></span>"],
+      dots:false,
+      responsive:{
+         0:{
+            items: 2
+         },
+         768:{
+            items: 6
+         }
+      }
+   });
+
+   // scroll to block
+   var $root = $('html, body');
+
+   $('.scroll-to').click(function() {
+		 if($.attr(this, 'href').indexOf("#") == 0){
+				var padding = 50;
+				if ($('header.fixed_header').length == 0) {
+					 padding = 100;
+				}
+
+				var location = $($.attr(this, 'href')).offset().top - padding;
+
+				$root.animate({
+					 scrollTop: location
+				}, 500);
+				return false;
+	 		}
+   });
+
+
+	{%if settings.blackfriday_001__clock__show%}
+		 /**
+			* FlipClock English Language Pack
+			*
+			* This class will used to translate tokens into the English language.
+			*
+			*/
+
+		 FlipClock.Lang.Vietnamese = {
+				'years': 'Năm',
+				'months': 'Tháng',
+				'days': 'Ngày',
+				'hours': 'Giờ',
+				'minutes': 'Phút',
+				'seconds': 'Giây'
+		 };
+
+		 /* Create various aliases for convenience */
+
+		 FlipClock.Lang['vi']      = FlipClock.Lang.Vietnamese;
+		 FlipClock.Lang['vi-vi']   = FlipClock.Lang.Vietnamese;
+		 FlipClock.Lang['vietnamese']  = FlipClock.Lang.Vietnamese;
+
+
+
+		 var targetMonth = {{ settings.blackfriday_001__clock__month }}, 
+					 targetDay = {{ settings.blackfriday_001__clock__day }}, 
+					 targetYear = {{ settings.blackfriday_001__clock__year }}, 
+					 targetTime = "{{ settings.blackfriday_001__clock__time }}";
+
+		 var target = targetMonth + '/' + targetDay + '/' + targetYear + ' ' + targetTime;
+
+		 let expDate = new Date(target),
+					 today = new Date();
+		 let countdown = (expDate - today) / 1000;
+
+		 if(countdown < 0){
+			 countdown = 0;
+		 }
+
+		 let clock = $('#countdown').FlipClock(countdown, {
+			 clockFace: 'DailyCounter',
+			 countdown: true,
+			 language:'vi-vi',
+			 callbacks: {
+				 stop: function() {
+					 setTimeout(function(){
+						 clock.reset();
+						 clock.setTime(10);
+						 clock.start();
+					 },1000)
+				 },
+				 destroy: function() {
+					 debugger;
+				 }
+			 }
+		 }); 
+	{%endif%}
+
+	//EGA Modal
+	if ((typeof EGA) === 'undefined') {
+		EGA = {};
+	}
+
+	EGA.moneyFormat = '{{shop.money_format-}}';
+
+	EGA.modal = {
+			body: document.getElementsByTagName('body')[0],
+			bodyShowClass: 'ega-modal-showed',
+			modalClass: 'ega-modal',
+			modalShowClass: 'show',
+			openBtnClass: 'ega-modal__open',
+			closeBtnClass: 'ega-modal__close',
+
+			/**
+			 * Open modal by id
+			 * @param {String} id
+			 */
+			openModalById: (id) => {
+				const modal = document.getElementById(id);
+				if (modal) {
+					modal.classList.add(EGA.modal.modalShowClass);
+					EGA.modal.body.classList.add(EGA.modal.bodyShowClass);
+				}
+			},
+
+			/**
+			 * Close modal by click on close button
+			 */
+			close: () => {
+				const modals = document.querySelectorAll('.' + EGA.modal.modalClass);
+				const closeBtns = document.querySelectorAll('.' + EGA.modal.closeBtnClass);
+
+				const closeModal = (modal) => {
+					modal.classList.remove(EGA.modal.modalShowClass);
+					EGA.modal.body.classList.remove(EGA.modal.bodyShowClass);
+				}
+
+				modals.forEach(modal => {
+					modal.addEventListener('click', function(e) {
+						//e.preventDefault();
+						if (e.target.classList.contains(EGA.modal.modalClass)) {
+							closeModal(modal);
+						}
+					})
+				})
+
+				if (closeBtns) {
+					closeBtns.forEach(btn => {
+						btn.addEventListener('click', function(e) {
+							e.preventDefault();
+							const closeBtn = e.target;
+							const modal = closeBtn.closest('.' + EGA.modal.modalClass);
+							closeModal(modal);
+						})
+					})
+				}
+			}
+	}	
+
+	window.onload = function() {
+		EGA.modal.close();
+	}
+
+	$('[data-ega-role="btn_action"]').click(function(e) {
+		var action = 0;
+		{%if settings.blackfriday_001__theme__buynow__action%}
+			action = {{ settings.blackfriday_001__theme__buynow__action }};
+		{%endif%}
+
+    var checkout = function() { window.location = '/checkout'; },
+        addtocart = function() {
+            Haravan.getCart(function(cart) {
+                var total_price = Haravan.formatMoney(cart.total_price, EGA.moneyFormat);
+                $('.ega-top-cart__qty').text(cart.item_count);
+                $('.ega-top-cart__checkout-price').text(total_price);
+            });
+
+            EGA.modal.openModalById('cart-popup-desktop');
+        }
+
+    if (action != 0) {
+        e.preventDefault();
+        var variant_id = $(this).siblings('input[name="id"]').val(),
+            callback = (action == 1) ? checkout : addtocart;
+        Haravan.addItem(variant_id, 1, callback);
+    }
+})
+</script>
+
+
+<div id='cart-popup-desktop' class='ega-modal toast right top'>
+    <div class='ega-modal__content'>
+        <a class='ega-modal__close'>X</a>
+        <div class="ega-modal__body">
+            <span>Bạn đã thêm:</span>
+            <strong><span class="ega-top-cart__qty">2</span> sản phẩm</strong>
+            <span>Tổng thanh toán: </span>
+            <strong class="ega-top-cart__checkout-price">11,647,000₫</strong>
+            <a href="/cart" class="ega-btn ega-btn-color--outline">
+                Xem giỏ hàng </a>
+            <a href="/checkout" class="ega-btn ega-btn-color">Thanh toán</a>
+        </div>
+    </div>
+</div>

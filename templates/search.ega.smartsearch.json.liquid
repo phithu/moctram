@@ -1,0 +1,69 @@
+{%- layout none -%}
+{%- if search.results == empty -%}
+{
+  "results": [
+    
+  ]
+}
+{%- else -%}
+
+{%- for item in search.results limit: 10 -%}
+{%- if item.object_type == 'product' -%}
+{%- capture results -%}
+{%- for product in search.results -%}
+{%- unless forloop.first -%},{%- endunless -%}{
+"title": {{- product.title | json -}}
+,"url": {{- product.url | json -}}
+,"thumbnail": "{{- product.featured_image.src | img_url: 'small' -}}"
+{%- if product.price_varies -%}
+{% if product.price_min == 0 %}
+,"price": "Liên hệ"
+{% else -%}
+,"price_from": "{{- product.price_min | money | strip_html -}}"
+{% endif %}
+{% else -%}
+{% if product.price == 0 -%}
+,"price": "Liên hệ"
+{% else %}
+,"price": "{{- product.price | money | strip_html -}}"
+{% endif %}
+{% endif -%}
+{%- if product.compare_at_price_min > product.price and  product.price != 0-%}
+,"compare_at_price": "{{- product.compare_at_price_min | money | strip_html -}}"
+{%- endif -%}
+{%- assign ega_sm_display_product_description_limit = 100 -%}
+{%- if settings.ega_sm_display_product_description_limit -%}
+{%- assign ega_sm_display_product_description_limit = settings.ega_sm_display_product_description_limit | plus: 0 -%}
+{%- endif -%}
+,"description": {%- if product.description -%}
+{%assign pd_desc_arr = product.description-%}
+{%if product.description contains '#####' -%}
+{%assign pd_desc_arr = product.description | split:"#####" | join: ' '-%}	
+{%endif -%}
+{{- pd_desc_arr | strip_html | truncate: ega_sm_display_product_description_limit | json -}}{%- else -%}""{%- endif -%}
+}
+{%- endfor -%}
+{%- endcapture -%}
+
+{%- elsif item.object_type == 'article' -%}
+{%- capture results -%}
+{%- for article in search.results -%}
+{%- unless forloop.first -%},{%- endunless -%}{
+"title": {{- article.title | json -}}
+,"url": {{- article.url | json -}}
+,"thumbnail": "{{- article.image.src | img_url: 'small' -}}"
+
+{%- assign ega_sm_display_article_description_limit = 100 -%}
+{%- if settings.ega_sm_display_article_description_limit -%}
+{%- assign ega_sm_display_article_description_limit = settings.ega_sm_display_article_description_limit | plus: 0 -%}
+{%- endif -%}
+,"content": {%- if article.content -%}{{- article.content | strip_html | truncate: ega_sm_display_article_description_limit | json -}}{%- else -%}""{%- endif -%}
+}
+{%- endfor -%}
+{%- endcapture -%}
+{%- endif -%}
+{%- endfor -%}
+{
+"results": [{{- results -}}]
+}
+{%- endif -%}

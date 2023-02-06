@@ -1,0 +1,107 @@
+{%include 'top-banner' -%}
+<header class="header header_menu">
+	<div class="mid-header wid_100 d-flex align-items-center">
+		<div class="container">
+			<div class="row align-items-center position-relative">
+				{%comment -%}
+			
+				<div class="col-6 col-lg-2 col-xl-3 header-left  ">
+					{%include 'subheader'%}
+				</div>
+				{%endcomment-%}
+				<div class=' col-12 header-main'>
+					<div class='row align-items-center'>
+							<div class="col-4 d-lg-none menu-mobile" >
+					<div class="toggle-nav btn menu-bar mr-4 ml-0 p-0 d-lg-none d-flex text-white">
+						<span class="bar"></span>
+						<span class="bar"></span>
+						<span class="bar"></span>
+					</div>
+				</div>
+							
+						<div class='col-lg-3 col-4 logo-col'>
+							{%unless template contains 'index' -%}
+							
+				<div class=" header-left  ">
+					{%include 'subheader'%}
+				</div>
+							{%endunless-%}
+							{% if settings.logo_use_image %}
+							<a href="/" class="logo-wrapper" title='{{shop.name}}'>
+								<img loading="lazy" class="img-fluid"
+									 src="{{ 'logo.png' | asset_url }}" 
+									 alt="logo {{ shop.name }}"
+									 width="{{settings.logo_width}}"
+									 height="{{settings.logo_height}}"
+									 >
+							</a>
+							{% else %}
+							<a class="logo-wrapper" href="/" title='{{shop.name}}'>{{ shop.name }}</a>
+							{% endif %}
+						</div>
+						<div class="col-lg-5 col-12 header-center px-lg-0" id="search-header">
+							{%include 'search-bar'%}
+							{% assign keys = settings.filter_search_list | strip-%} 
+							{% if keys  and keys != ''-%}
+							{% assign keys = keys | split: ';' -%} 
+							{%if keys.size > 0 -%}
+							<div class="search-dropdow">
+								<ul class="search__list pl-0 d-flex list-unstyled mb-0 flex-wrap">
+									{%- for key in keys -%}
+									<li class="mr-2" >
+										<a id="filter-search-{{ key | handleize }}" href="/search?q=tags:({{key | url_encode }})&type=product">{{key}}</a>
+									</li>	
+									{%-endfor-%}
+								</ul>
+							</div>
+							{%endif-%}
+							{% endif -%}
+						</div>
+						<div class="col-4 col-lg-4 menu-cart">
+							{%include 'header-right'%}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</header>
+{%if settings.sub_menu and settings.use_sub_menu -%}
+<div class="sub-header d-lg-block d-none" style="--header-background: {{settings.sub_menu_bg}}; --header-color: {{settings.sub_menu_color}}">
+	<div class="container">
+	<div class="navigation--horizontal d-md-flex align-items-center d-none">
+			<div class=" navigation-horizontal-wrapper ">
+						{%include 'horizontal-nav' %}
+			</div>
+			<div class=" navigation-arrows ">
+				<i class=" prev disabled">
+				{%include 'icon-arrow'  , dir: 'left'%}
+				</i>
+				<i class=" next">
+				{%include 'icon-arrow'%}
+				</i>
+			</div>
+		</div>
+</div>
+</div>
+{%endif-%}
+
+{% comment -%}
+<!-- subheader == mobile nav -->
+<script type="text/x-custom-template" data-template="sticky-nav">
+	<div class="toogle-nav-wrapper w-100 " >
+	  <div class=" d-flex align-items-center" style="height: 52px; font-size: 1rem; font-weight: 500">
+	    <div class="icon-bar btn menu-bar mr-3 ml-0 p-0 d-inline-flex">
+		  <span class="bar"></span>
+		  <span class="bar"></span>
+		  <span class="bar"></span>
+	</div>Danh mục sản phẩm
+	</div>
+	  <div class="navigation-wrapper">
+	    {%include 'main-nav' %}
+	</div>
+	</div>
+	<div class="sticky-overlay"></div>
+</script>
+{% endcomment -%}

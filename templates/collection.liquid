@@ -1,0 +1,93 @@
+{% include 'breadcrumb' -%}
+{% assign showSidebar = settings.aside_category_enable -%}
+{% if showSidebar -%}
+{% if settings.filter_price == false and settings.filter_vendor == false and settings.filter_type == false and settings.filter_tag1 == false and settings.filter_tag2 == false -%}
+{% assign showSidebar = false -%}
+{% endif -%}
+{% endif -%}
+{% unless showSidebar -%}
+<style>
+	#open-filters{
+		display: none!important
+	}
+</style>
+{% endunless -%}
+{% include "collection-banner" -%}
+{% if settings.use_collection_coupons -%}
+<div class="section mb-3">
+	<div class='container'>
+		{% include "section_coupons" -%}
+	</div>
+</div>
+{% endif -%}
+
+<section class="section wrap_background">
+	<div class="container">
+		<div class="bg_collection section">
+			<div class="coll-head">
+				<h1 class="title_page collection-title mb-0 pb-3">
+					{%if page_title-%}{{page_title-}}{%else-%}{{collection.title-}}{%endif-%}
+				</h1>
+				{% if collection.products.size > 0 -%}
+				{% include 'collection-sortby' -%}
+				{% endif -%}
+			</div>
+			<div class="row">
+				{% if showSidebar -%}
+				<div class='col-lg-3 col-md-12 col-sm-12'>
+					<aside class=" scroll card py-2 dqdt-sidebar sidebar left-content">
+						<div class="wrap_background_aside asidecollection">
+							{% include 'aside-filter' -%}
+						</div>
+					</aside>
+				</div>
+				{% endif -%}
+				<div class="main_container collection{% if showSidebar %} col-lg-9{% endif %} col-12 pl-lg-0">
+					<div class="filter-content aside-filter">
+						<div class="filter-container">	
+							<div class="filter-container__selected-filter" style="display: none;">
+								<div class="filter-container__selected-filter-list mb-2 ">
+									<ul></ul>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="category-products products">
+						{% paginate collection.products by settings.collection_number_product -%}
+						{% if collection.products.size > 0 -%}
+						{% include 'products-grid-item' -%}
+						{% else -%}
+						<div class="section pt-3">
+							<div class="alert alert-warning alert-dismissible margin-top-15 section" role="alert">
+								Sản phẩm đang được cập nhật.
+							</div>
+						</div>
+						{% endif -%}
+						{% endpaginate -%}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+{% if settings.use_recent_view -%}
+<section class="section container" id="recent-view-coll">
+	<div class="title_module section heading-bar d-flex justify-content-between align-items-center"
+		 style='background-color: {{settings.section_heading_bg}}'>
+		<h2 class="bf_flower heading-bar__title" style='color: {{settings.section_heading_color}};'>
+			{{ settings.recent_products_title }}
+		</h2>
+	</div>
+	{% include 'recent-view' -%}
+</section>
+{% endif -%}
+<script>
+	var colName = "{%if page_title == 'All'%}Tất cả sản phẩm{%else%}{{ page_title }}{%endif%}";
+	{% if collection.id > 0 -%}
+	var colId = {{collection.id}};
+	{% else %}
+	var colId = 0;
+	{% endif -%}
+	var selectedViewData = "{% if template contains '.list' %}data_list{% else %}data{% endif %}";
+</script>

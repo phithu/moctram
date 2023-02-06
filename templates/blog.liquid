@@ -1,0 +1,58 @@
+{% include 'breadcrumb' %} 
+<section class="blogpage section">
+	<div class="containers">
+		<div class="wrap_background_aside margin-bottom-0">
+			{%if linklists[settings.aside_category_blog_menu] or settings.blogs_aside_enable -%}
+				{%assign showSidebar = true -%}
+			{%endif-%}
+			{% paginate blog.articles by settings.blogs_number_perpage %}
+			
+				<div class="container card py2">
+					<div class="row">
+						
+						<div class="{%if showSidebar %}col-lg-9{%endif%} col-12 py-3 content-blog">
+
+							<h1 class="title_page mb-3">{{ page_title }}</h1>
+							<div class="row">
+								{%assign page_active = false%}
+
+							{% for part in paginate.parts %}
+							{% if part.title == paginate.current_page and part.title == '1' %}
+							{%assign page_active = true%}
+							{%endif%}
+							{%endfor%}
+							{% if blog.articles_count > 0 %}
+								{% for article in blog.articles %}
+								<div class="{%unless showSidebar %} col-lg-3 {%endunless%} col-md-4  col-6 product-col">
+																			{%include 'blog_list_item'%}
+
+								</div>
+								{%endfor%}
+
+							<div class="text-center pageinate-page-blog col-12">
+								{% if paginate.pages > 1 %}
+								{% include 'paginate-pages' %}
+								{% endif %}
+							</div>
+							{%else%}
+							<div class="section col-12">
+								<p>Danh mục này đang cập nhật bài viết</p>
+							</div>
+							{%endif%}
+							</div>
+							
+						</div>
+						{%if showSidebar %}
+						<div class="col-lg-3 col-12 left-content sidebar">
+							{% include 'sidebar-blog' %}
+						</div>
+						{%endif%}
+					</div>
+				</div>
+
+			{% endpaginate %}
+		</div>
+
+	</div>
+</section>
+<div class="ab-module-article-mostview"></div>

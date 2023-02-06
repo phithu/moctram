@@ -1,0 +1,279 @@
+{% assign sold_out = true -%}
+{% if product.available  -%}
+{% assign sold_out = false -%}
+{% assign awe-price = product.selected_or_first_available_variant.price -%}
+{% assign awe-variant = product.selected_or_first_available_variant.title -%}
+{% assign awe-compare-price = product.selected_or_first_available_variant.compare_at_price -%}
+{% else -%}
+{% assign awe-price = product.variants[0].price -%}
+{% assign awe-variant = product.variants[0].title -%}
+{% assign awe-compare-price = product.variants[0].compare_at_price -%}
+{% endif -%} 
+{% assign contact_item = false -%}
+{% if awe-price == 0 -%}
+{% assign contact_item = true -%}
+{% endif -%}
+{% assign on_sale = false -%}
+{% if awe-compare-price > awe-price -%}
+{% assign on_sale = true -%}
+{% endif -%}
+{% assign variantCount = product.variants | size -%}
+{% assign on_var = false -%}
+{% if variantCount > 1 -%}
+{% assign on_var = true -%}
+{% endif -%}
+
+{% if awe-compare-price > awe-price -%}
+{% capture discount -%} 
+{{awe-compare-price | minus:awe-price | times:100 | divided_by:awe-compare-price | round }}% 
+{% endcapture -%}
+{% assign pt = awe-compare-price | minus:awe-price | times:100 | divided_by:awe-compare-price -%}
+{% if pt > 99 -%}
+{% capture discount -%}
+99%
+{% endcapture -%}
+{% endif%}
+{% if pt < 1 -%}
+{% capture discount -%}
+1%
+{% endcapture -%}
+{% endif -%}
+{% assign on_sale = true -%}
+{% endif -%}
+{% assign variantCount = product.variants | size -%}
+{% assign on_var = false -%}
+{% if variantCount > 1 -%}
+{% assign on_var = true -%}
+{% endif -%}
+
+{% if awe-compare-price > awe-price -%}
+{% capture discount -%} 
+-{{awe-compare-price | minus:awe-price | times:100 | divided_by:awe-compare-price | round }}% 
+{% endcapture -%}
+{% assign pt = awe-compare-price | minus:awe-price | times:100 | divided_by:awe-compare-price -%}
+{% if pt > 99 %}
+{% capture discount -%}
+-99%
+{% endcapture -%}
+{% endif -%}
+{% if pt < 1 -%}
+{% capture discount -%}
+1%
+{% endcapture -%}
+{% endif -%}
+{% assign on_sale = true -%}
+{% endif -%}
+{% assign variantCount = product.variants | size -%}
+{% assign on_var = false -%}
+{% if variantCount > 1 -%}
+{% assign on_var = true -%}
+{% endif -%}
+{% assign featured_image_alt = product.featured_image.alt | default: product.title -%}
+
+{% assign boolVideo = false -%}
+{% if  settings.use_video_product -%}
+{% for tag in product.tags -%}
+{% if tag contains "video" -%}
+{% assign boolVideo = true -%}
+{% break -%}
+{% endif -%}
+{% endfor -%}
+{% endif -%}
+
+{% assign promotion_divider = settings.product_promotion_heading | handleize -%}
+{% assign promotion = '' -%}
+{% assign promotion_content = '' -%}
+
+{% assign product_content_arr = product.description | split: '<h6>' -%}
+
+{% for content_item in product_content_arr -%}
+{% if forloop.index > 0 -%}
+{% if content_item contains '</h6>' -%}
+{% assign content_item_title = content_item | split: '</h6>' | first -%}
+{% assign content_item_title_handleize = content_item_title | handleize -%}
+
+{% if content_item_title_handleize contains promotion_divider -%}
+{% assign promotion = content_item | split: '</h6>' | last -%}
+{% assign promotion_content = '<h6>' | append: content_item_title | append: '</h6>' | append: promotion -%}
+{% endif -%}
+
+{% endif -%}
+{% endif -%}
+{% endfor -%}
+
+<form action="/cart/add" method="post" class="variants product-action" enctype="multipart/form-data"
+	  data-tags='{{product.tags | json}}'>
+	<div class="product-thumbnail pos-relative">
+		{% include 'product-tag-promo', promo_index: 1 -%}
+		<a class="image_thumb pos-relative embed-responsive embed-responsive-1by1" href="{{ product.url }}" title="{{ product.title }}">
+			{%include 'product-frame'%}
+			<img loading="lazy"
+				 class='product-thumbnail__img{% if product.images.size > 1 and settings.use_hover_change_image %} product-thumbnail__img--primary{% endif %}'
+				 width="480"
+				 height="480"
+				 style="--image-scale: {{image_scale}};{{img_position}}"
+				 src="{{ product.featured_image.src | img_url:'medium' }}" alt="{{ product.title }}">
+			{% if product.images.size > 1 and settings.use_hover_change_image -%}
+			<img loading="lazy"
+				 class='product-thumbnail__img product-thumbnail__img--secondary'
+				 width="480"
+				 height="480"
+				 style="--image-scale: {{image_scale}};{{img_position}}"
+				 src="{{ product.images[1].src | img_url:'medium' }}" alt="{{ product.title }}">
+			{% endif -%}
+		</a>
+		{% if boolVideo and settings.use_video_play_button_pditem -%}
+		<img src="{{ "icon-button-play.png" | asset_url -}}" 
+			 loading="lazy"
+			 class="video-icon"
+			 alt="video-play-button"/>
+		{% endif -%}
+		{% unless contact_item -%}
+		{% if on_sale -%}
+		<div class="label_product d-none">
+			<div class="label_wrapper">{{discount -}}
+			</div>
+		</div>
+		{% endif -%}
+		{% endunless -%}
+		
+		{%assign promotion_app_name = settings.promotion_app_name-%}
+		{%if promotion_app_name != "no_app"-%}
+		<div class="label_product product_gift_label hidden" data-id="{{product.id-}}">
+			<img src="{{'ega-product-gift.png' | asset_url-}}" loading='lazy' width='20' height='20' alt="product gift">
+		</div>
+		{%endif-%}
+		
+		<div class="product-action">
+			{% if settings.add_cart_enable or settings.quickview_enable -%}
+			<div class="group_action" data-url="{{product.url}}">
+				{% if settings.quickview_enable -%}
+				<a title="Xem nhanh" href="{{ product.url }}" data-handle="{{ product.handle }}" class="xem_nhanh btn-circle btn-views btn_view btn right-to quick-view">
+					<i class="fas fa-search"></i>
+				</a>
+				{% endif -%}
+			</div>
+			{% endif -%}
+		</div>
+	</div>
+	<div class="product-info">
+		{% comment -%}
+		{% for option in product.options -%}
+		{% include 'swatch_item' with option -%}
+		{% endfor -%}
+		{% endcomment -%}
+		<h3 class="product-name"><a href="{{ product.url }}" title="{{ product.title }}">{{ product.title }}</a></h3>
+		<div class="product-item-cta position-relative" >
+			<div class="price-box">
+				{% if contact_item -%}
+				<span class="price-contact">
+					Liên hệ
+				</span>
+				{% else -%}
+				{% if on_sale -%}
+				<span class="price">{{  awe-price | money }}</span>
+				{% if awe-compare-price > awe-price -%}
+				<span class="compare-price">{{ awe-compare-price | money }}</span>
+				{% unless contact_item %}{% if on_sale -%}
+				<div class="label_product d-inline-block">
+					<div class="label_wrapper">{{discount -}}</div>
+				</div>
+				{% endif -%}
+				{% endunless -%}
+				{% endif -%}
+				{% else -%}
+				<span class="price">{{ awe-price | money }}</span>
+				{% endif -%}
+				{% endif -%}
+
+			</div>
+			{% if sold_out -%}
+			<span class="label_soldout product-item-btn btn sold_out">
+				Hết hàng
+			</span>
+			{% else -%}
+			
+			{% if settings.add_cart_enable -%}
+			{% if variantCount > 1  -%}
+			<input class="hidden" type="hidden" name="id" value="{{ product.variants[0].id }}" />
+			{% if settings.add_cart_variants == 'detail' -%}
+			{%if settings.add_cart_style == "style1"-%}
+			<button data-href="{{ product.url }}" class="product-item-btn btn left-to" title="Tùy chọn" type="button" 
+					onclick="window.location.href='{{product.url}}'" >
+				{% include 'icon-options' -%}
+				CHỌN
+			</button>
+			{%else%}
+			<button data-href="{{ product.url }}" class="product-item-btn btn-style2 btn left-to" title="Tùy chọn" type="button" 
+					onclick="window.location.href='{{product.url}}'" >
+				{% include 'cart-icon' -%}
+			</button>
+			{%endif%}
+			{% else -%}
+			{%if settings.add_cart_style == "style1"-%}
+			<button data-href="{{ product.url }}" data-handle="{{ product.handle }}" 
+					class="product-item-btn btn left-to quick-view" title="Tùy chọn" type="button" >
+				{% include 'icon-options' -%}
+				CHỌN
+			</button>
+			{%else%}
+			<button data-href="{{ product.url }}" data-handle="{{ product.handle }}" 
+					class="product-item-btn btn-style2 btn left-to quick-view" title="Tùy chọn" type="button" >
+				{% include 'cart-icon' -%}
+			</button>
+			{%endif%}
+			
+			{% endif -%}
+
+			{% elsif contact_item -%}
+			{% else -%}
+			<input type="hidden" name="id" value="{{ product.variants[0].id }}" />
+			{%if settings.add_cart_style == "style1"-%}
+			<button class="product-item-btn btn add_to_cart active{%if contact_item and variantCount == 1%} hidden{%endif%}" title="Thêm vào giỏ hàng">
+				{% include 'icon-shopping-cart' -%}
+				MUA
+			</button>
+			{%else-%}
+			<button class="product-item-btn btn-style2 btn add_to_cart active{%if contact_item and variantCount == 1%} hidden{%endif%}" title="Thêm vào giỏ hàng">
+				{%include 'icon-plus'%}
+			</button>
+			{%endif-%}
+			{% endif -%}
+			{% endif -%}
+			{% endif -%}
+		</div>
+		{% include 'product-tag-promo', promo_index: 2 -%}
+		{% include 'product-tag-promo', promo_index: 3 -%}
+
+		{% if template == "index" -%}
+		{% unless settings.flashsale_show_quantity -%}
+		{% include 'product-badge' -%}
+		{% endunless -%}
+		{% else -%}
+		{% include 'product-badge' -%}
+		{% endif -%}
+
+		{% if settings.use_product_promotion-%}
+		<div class='product-promotion hidden' id='ega-salebox-{{product.id}}'>
+			<h3 class='product-promotion__heading rounded-sm d-inline-flex align-items-center'>
+				<img alt="{{settings.product_promotion_heading}}" src='{{"icon-product-promotion.png" | asset_url}}' width='16' height='16' class='mr-2'/>
+				{{settings.product_promotion_heading}}
+			</h3>
+			{%if promotion == ''-%} 
+			<ul class="promotion-box">
+				{%for i in (1..5)-%} 
+				{%capture promotion_content-%}product_promotion_{{i-}}_content{%endcapture-%}
+				{%assign promotion_content = settings[promotion_content]-%}
+
+				{%if promotion_content != _blank-%} 
+				<li>{{promotion_content-}}</li>
+				{%endif-%}
+				{%endfor-%}
+			</ul>
+			{%else-%}
+			{{promotion}}
+			{%endif-%}
+		</div>
+		{% endif -%}
+	</div>
+</form>

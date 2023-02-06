@@ -1,0 +1,36 @@
+<div id="stock-notify" class="{%if product.available or product.selected_or_first_available_variant.available %}
+							  hidden
+							  {%endif%}
+							  ">
+	<div class="stock-notify">
+		<span class="stock-notify-title">{{settings.stock_notify_title}}</span>
+		<div class="form_register ">
+			<label>Email nhận thông báo</label>
+			<form id="stock-notify-form" class="stock-notify-form custom-input-group mb-3"
+				  data-toggle="validator" novalidate="true"
+				   style="--secondary-color:{{settings.stock_notify_btn_color}}; --primary-color: #000"
+				  >
+				<fieldset class="form-group d-none">
+					<textarea placeholder="Nhập nội dung*" name="THONGTIN" id="comment" 
+							  class="form-control content-area form-control-lg" rows="5" 
+							  value="Đăng ký nhận thông báo khi có hàng. Sản phảm: {{product.title}}. SKU: {{product.selected_or_first_available_variant.sku}}"
+							  ></textarea>
+				</fieldset>
+				<input class="form-control input-group-field  " aria-label="Địa chỉ Email" 
+					   type="email" placeholder="Nhập địa chỉ email" 
+					   name="EMAIL" required="" autocomplete="off">
+				<div class="input-group-btn btn-action">
+					<button class="h-100 btn text-white button_subscribe subscribe " style="font-weight: 500" type="submit" aria-label="Đăng ký nhận tin" name="subscribe">
+						Nhận thông báo</button>
+				</div>
+			</form>
+			<div class="mailchimp-alerts ">
+				<div class="mailchimp-submitting"></div><!-- mailchimp-submitting end -->
+				<div class="mailchimp-success"></div><!-- mailchimp-success end -->
+				<div class="mailchimp-error mb-2"></div><!-- mailchimp-error end -->
+			</div>
+		</div>
+	</div>
+
+
+</div>

@@ -1,0 +1,13 @@
+.recent-view-list{
+	overflow-x: auto;
+	flex-wrap: nowrap;
+	-ms-overflow-style: none;  /* IE and Edge */
+	scrollbar-width: none;  /* Firefox */
+}
+
+.recent-view-list::-webkit-scrollbar {
+	display: none;
+}
+.recent-view-list .slick-track {
+	display: flex;
+}

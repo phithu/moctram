@@ -1,0 +1,118 @@
+{% assign section = settings[enable] -%}
+
+{% capture url -%}{{section}}_url{% endcapture -%}
+{% assign section_collection = settings[url] -%}
+{% capture title -%}{{section}}_title{% endcapture -%}
+{% capture menu -%}{{section}}_menu{% endcapture -%}
+{% capture list -%}{{section}}_list{% endcapture -%}
+{% capture banner -%}{{section}}_banner{% endcapture -%}
+{% capture banner_img -%}{{section}}_banner.jpg{% endcapture -%}
+{% capture banner_link -%}{{section}}_banner_link{% endcapture -%}
+{% capture banner_title -%}{{section}}_banner_title{% endcapture -%}
+{% capture banner_width -%}{{section}}_banner_width{% endcapture -%}
+{% capture banner_height -%}{{section}}_banner_height{% endcapture -%}
+{% capture use_icon -%}{{section}}_use_icon{% endcapture -%}
+{% capture icon -%}{{section}}-icon.png{% endcapture -%}
+{% capture heading_color -%}{{section}}_title_color{% endcapture -%}
+{% capture heading_bg -%}{{section}}_title_bg{% endcapture -%}
+
+{% capture tag_color -%}{{section}}_color{% endcapture -%}
+{% capture tag_bg -%}{{section}}_bg{% endcapture -%}
+{% capture limit -%}{{section}}_limit{% endcapture -%}
+{% capture layout -%}{{section}}_layout{% endcapture -%}
+
+{% assign product_count = collections[section_collection].products_count -%}
+
+<div class="section_product_tag">
+	<div class="title_module_main heading-bar e-tabs not-dqtab d-flex justify-content-between align-items-center flex-wrap"
+		 style='background-color: {{settings[heading_bg] | default: 'transparent'}}'>
+		<h2 class="heading-bar__title" style='color: {{settings[heading_color] | default: 'var(--text-color)'}}'>
+			{% if settings[use_icon] -%}
+			<img src='{{icon | asset_url}}' alt='{{settings.section_hot_title}}'/>
+			{% endif -%}
+			<a class='link' href="/collections/{{section_collection}}" title="{{settings[title]}}">
+				{{settings[title]}}
+			</a>
+		</h2>
+		{% assign menu = settings[menu] -%}
+		{% if linklists[menu].links.size > 0 -%}
+		<ul class='mt-2 mt-sm-0 tabs tabs-title list-unstyled mb-0 tabs-group d-flex align-items-center'>
+			{% for link in linklists[menu].links -%}
+			<li class="ega-small tab-link px-3 py-2 link mr-2">
+				<a href='{{link.url}}' title="{{link.title}}">{{link.title-}}</a>	
+			</li>
+			{% endfor -%}
+			<li class="ega-small tab-link px-3 py-2 link d-none d-sm-block">
+				<a href="/collections/{{section_collection}}" title="Xem tất cả" class="text-primary">
+					Xem tất cả {% include 'icon-arrow' -%}
+				</a>
+			</li>
+		</ul>
+		{% endif -%}
+	</div>
+	<div class='section__products'>
+		<div class="row mx-sm-0">
+			{% assign has_tag_list = false -%}
+			{% if (settings[list] and settings[list] != '') or settings[banner] -%}
+			{% assign has_tag_list = true -%}
+			<div class="d-lg-block d-none col-lg-3 col-12 pl-0">
+				{% if settings[banner] -%}
+				<div class="pb-3">
+					<a class="banner" href="{{settings[banner_link]}}" title="{{settings[banner_title]}}">
+						<img loading="lazy"
+							 class="img-fluid"
+							 src="{{ banner_img |asset_url }}" 
+							 width="{{settings[banner_width]}}"
+							 height="{{settings[banner_height]}}"
+							 alt="{{settings[banner_title]}}"/>
+					</a>
+				</div>
+				{% endif -%}
+				<div class="tag-list pb-3 " style="--tag-bg: {{settings[tag_bg]}};--tag-color: {{settings[tag_color]}}">
+					{% assign tag_list = settings[list] | strip | split: ';' -%}
+					{% for tag in tag_list  -%}
+					{% if tag != blank -%}
+					<a class="tag-item" href="/search?q=tags:({{tag | url_encode }})" title="{{tag}}">{{tag}}</a>
+					{% endif -%}
+					{% endfor -%}
+				</div>
+
+			</div>
+			{% endif -%}
+
+			<div class="{%if has_tag_list%}col-lg-9 {%endif%}col-12">
+				{% if product_count >= 1 -%}
+				{% assign product_html = '' -%}
+				<div class="row product-list{% if settings[layout] == 'carousel' %} carousel{% endif %}"
+					 style="--limit-column: {{settings[limit]}}; --percent: 65%"
+					 {% if settings[layout] == 'carousel' -%}data-slick='{"slidesToShow": 5, "slidesToScroll": 5}'{% endif -%}
+					 data-section="product-tag-section">
+					{% for product in collections[section_collection].products limit: {{settings[limit]}} -%}
+					<div class="product-col{% unless settings[layout] == 'carousel' %} col-6{%if has_tag_list%} col-md-4{%else%} col-md-3{%endif%}{% endunless %}">
+						<div class="item_product_main product-col item_skeleton"></div>
+					</div>
+					{% capture product_block -%}
+					<div class="product-col{% unless settings[layout] == 'carousel' %} col-6{%if has_tag_list%} col-md-4{%else%} col-md-3{%endif%}{% endunless %}">
+						<div class="item_product_main">
+							{% include 'product_grid_office' -%}
+						</div>
+					</div>
+					{% endcapture -%}
+					{% assign product_html = product_html | append : product_block -%}
+					{% endfor -%}
+					<script  type="text/x-custom-template" data-template="product-tag-section">
+					{{product_html | join: ''}}
+					</script>
+				</div>
+				<div class="text-center d-sm-none mt-3">
+					<a href="/collections/{{section_collection}}" title="Xem tất cả" class="btn btn-main btn-icon">
+						Xem tất cả {%- include 'icon-arrow' -%}
+					</a>
+				</div>
+				{% else -%}
+				<p class="a-center margin-top-15">Hiện tại chưa có sản phẩm nào trong danh mục này!...</p>
+				{% endif -%}
+			</div>
+		</div>
+	</div>
+</div>

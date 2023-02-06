@@ -1,0 +1,26 @@
+.form-control {
+	font-size: 1rem;
+}
+.single-contact {
+	display: flex;
+	align-items: baseline;
+	font-size: 14px;
+	margin-bottom: 5px;
+}
+.single-contact .fa, .single-contact .fas {
+	color: var(--primary-color);
+	margin-right: 5px;
+}
+.iFrameMap, #contact_map {
+	height: 100%;
+}
+.iFrameMap iframe {
+	width: 100% !important;
+	height: 100%;
+	display: block;
+}
+@media (max-width: 991px) {
+	.iFrameMap iframe {
+		height: 457px;
+	}
+}

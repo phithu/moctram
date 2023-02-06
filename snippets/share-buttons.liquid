@@ -1,0 +1,26 @@
+{% capture share_url -%}{{shop.url}}{{product.url}}{% endcapture -%}
+<div class='share-group d-flex justify-content-center align-items-center mt-5'>
+	<strong class='share-group__heading mr-3'>Chia sẻ</strong>
+	<div class='share-group__list'>
+		{% if settings.use_product_share_facebook -%}
+		<a class='share-group__item facebook' target="_blank" href='http://www.facebook.com/sharer.php?u={{share_url}}'>
+			<i class="fab fa-facebook-f"></i>
+		</a>
+		{% endif -%}
+		{% if settings.use_product_share_messenger -%}
+		<a class='share-group__item messenger d-lg-none' target="_blank" href='fb-messenger://share/?link={{share_url}}'>
+			<i class="fab fa-facebook-messenger"></i>
+		</a>
+		{% endif -%}
+		{% if settings.use_product_share_pinterest -%}
+		<a class='share-group__item pinterest' target="_blank" href='http://pinterest.com/pin/create/button/?url={{share_url}}'>
+			<i class="fab fa-pinterest-p"></i>
+		</a>
+		{% endif -%}
+		{% if settings.use_product_share_twitter -%}
+		<a class='share-group__item twitter' target="_blank" href='http://twitter.com/share?text={{share_url}}'>
+			<i class="fab fa-twitter"></i>
+		</a>
+		{% endif -%}
+	</div>
+</div>

@@ -1,0 +1,174 @@
+.ega-badge-ctd {
+	display: flex;
+	align-items: center;
+}
+.ega-badge-ctd > div:not(.ega-badge-ctd__colon) {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 32px;
+	height: 38px;
+	border-radius: 3px;
+	font-size: 14px;
+	background-color: var(--countdown-background);
+}
+.ega-badge-ctd__item {
+	border-radius: 3px;
+	color: var(--countdown-color);
+	text-align: center;
+	display: flex;
+	place-items: center;
+	place-content: center;
+	font-size: 18px;
+	font-weight: 500;
+	line-height: 20px;
+}
+.ega-badge-ctd__item + span {
+	font-size: 10px;
+	line-height: 1.3;
+	color: var(--countdown-color);
+}
+.ega-badge-ctd__colon {
+	font-weight: bold;
+	font-size: 22px;
+	color: var(--countdown-background);
+	margin: auto 3px;
+}
+.ega-badge-ctd__s {
+	margin-right: 0px;
+}
+.flashsale {
+	--background-color: #f4ebc1;
+	--countdown-background: #d3232a;
+	--countdown-color: #fff;
+}
+.flashsale__container {
+	padding: 10px;
+	background: var(--background-color, transparent);
+}
+.flashsale .heading-bar {
+	background-color: transparent;
+	margin-bottom: 5px;
+	padding: 0;
+}
+.flashsale__title h5 {
+	margin-bottom: 0
+}
+.flashsale__item .item_product_main {
+	border-radius: 8px;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+.flashsale__title a {
+	color: var(--flashsale-heading-color);
+}
+@media (max-width: 575px) {
+	.flashsale__title {
+		text-align: center;
+		margin-top: 1rem;
+		margin-bottom: 1rem;
+	}
+}
+@media (max-width: 575px) {
+	.flashsale__header {
+		justify-content: center;
+		margin: auto;
+	}
+}
+.flashsale__news a {
+	margin: auto 10px;
+	font-size: 14px;
+	font-weight: 500;
+	color: var(--flashsale-news-color)!important;
+}
+.flashsale__news-list {
+	max-width: 100%;
+	overflow: hidden;
+}
+.flashsale__countdown-wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	margin-left: 15px;
+}
+@media (max-width: 767px) {
+	.flashsale .heading-bar {
+		margin-bottom: 0;
+	}
+	.flashsale__countdown-wrapper {
+		flex-direction: column;
+		margin: 0;
+	}
+	.ega-badge-ctd__item + span {
+		display: none;
+	}
+	.ega-badge-ctd > div:not(.ega-badge-ctd__colon) {
+		width: 24px;
+		height: 24px;
+	}
+	.ega-badge-ctd__item {
+		font-size: 14px;
+	}
+}
+.flashsale__countdown-label {
+	color: var(--flashsale-heading-color);
+	font-size: 16px;
+}
+@media (max-width: 767px) {
+	.flashsale__countdown-label {
+		display: none!important;
+	}
+}
+.flashsale__bottom {
+	padding: 0 10px 10px 10px;
+}
+@media (max-width: 767px) {
+	.flashsale__bottom {
+		padding: 0 8px 8px 8px;
+		font-size: 12px;
+	}
+}
+
+.flashsale__progressbar {
+	display: block;
+	width: 100%;
+	height: 10px;
+	background: var(--process-background);
+	margin-top: 2px;
+	border-radius: 9999px;
+	position: relative;
+	overflow: hidden;
+}
+.flashsale__progressbar.style2{
+	height: 18px;
+
+}
+.flashsale___percent {
+	width: 0%;
+	height: 100%;
+	background:linear-gradient(270deg,var(--process-color2),var(--process-color1));
+	border-radius: 9999px;
+	position: absolute;
+	top: 0;
+	z-index: 1;
+}
+.flashsale__label{
+	color: var(--stock-color);
+	font-size: 12px;
+
+}
+.flashsale__label img {
+	vertical-align: top;
+}
+.flashsale__progressbar .flashsale__label {
+	font-size: 12px;
+	position: relative;
+	left: 0;
+	z-index: 2;
+	text-align: center;
+	margin: auto;
+}

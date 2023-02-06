@@ -1,0 +1,53 @@
+{%if settings.use_collection_main_banner -%}
+{%if collection.handle == 'all'-%}
+<div class='collection_banner mb-4  container text-center'>
+	<a class="banner" href="{{settings.collection_main_banner_url}}" title="{{settings.collection_main_banner_alt}}">
+		<picture>
+			<source media="(min-width: 768px)" srcset="{{ 'collection_main_banner.jpg' | asset_url -}}"
+					data-srcset="{{ 'collection_main_banner.jpg' | asset_url -}}">
+			<source media="(max-width: 767px)" srcset="{{ 'collection_main_banner.jpg' | asset_url  | img_url: 'large'  -}}"
+					data-srcset="{{ 'collection_main_banner.jpg' | img_url: 'large' | asset_url -}}">
+			<img class=' img-fluid'
+				 src="{{ 'collection_main_banner.jpg' | asset_url -}}"
+				 loading="lazy"
+				 width="{{settings.collection_banner_width}}"
+				 height="{{settings.collection_banner_height}}"
+				 alt="{{ settings.collection_main_banner_alt -}}"/>
+		</picture>
+	</a>
+
+
+</div>
+{%else-%}
+{%assign coll_img = collection.image.src-%}
+{%assign title = coll_img-%}		
+{%assign link = collection.url %}
+{%unless collection.image-%}
+{%assign coll_img = 'collection_main_banner.jpg'-%}
+{%assign title = settings.collection_main_banner_alt-%}
+{%assign link = settings.collection_main_banner_url}%}
+
+{%endunless%}
+{%if collection.image   %} 
+<div class='collection_banner mb-4 container text-center'>
+	<a  class="banner" href="{{link}}" title="{{collection.title}}">
+
+		<picture>
+			<source media="(min-width: 768px)" srcset="{{ coll_img-}}"
+					data-srcset="{{ coll_img -}}">
+			<source media="(max-width: 767px)" srcset="{{ coll_img  | img_url: 'large'-}}"
+					data-srcset="{{ coll_img | img_url: 'large'-}}">
+			<img src="{{ coll_img}}"
+				 loading="lazy"
+				 class=' img-fluid'
+				 width="{{settings.collection_banner_width}}"
+				 height="{{settings.collection_banner_height}}"
+				 alt="{{ collection.title  -}}"/>
+		</picture>
+	</a>
+
+</div>
+{%endif-%}
+{%endif-%}
+
+{%endif-%}

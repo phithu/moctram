@@ -1,0 +1,85 @@
+{% if settings.use_newsletter or settings.social_facebook_link != blank or settings.social_zalo_link != blank or settings.social_instagram_link != blank -%}
+<div class='top-footer'>
+	<div class='container'>
+		<div class='row align-items-center'>
+			{% if settings.use_newsletter -%}
+			<div class='col-12 col-lg-8 col-xl-7 order-lg-1'>
+				<div class='subscribe align-items-center'>
+					<img src='{{"icon-email.png" | asset_url}}' width='32' height='32' loading='lazy' alt='email' />
+					<h6 class="m-0">
+						{{settings.newsletter_form_title}}
+					</h6>
+					<div class="form_register" style='flex: 1 1 100%'>
+						{%form 'customer'-%}
+						  <input type="hidden" id="newsletter-tags" name="contact[tags]" value="khách hàng tiềm năng, bản tin" />
+							<input class="form-control input-group-field  " aria-label="Địa chỉ Email" type="email"
+										 placeholder="{{settings.newsletter_placeholder}}" 
+										 name="contact[email]" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required autocomplete="off">
+							<div class="input-group-btn btn-action">
+								<button class="px-3 py-2 h-100 btn button_subscribe subscribe" style='line-height: 24px;'
+										type="submit" aria-label="Đăng ký nhận tin" name="subscribe">Đăng ký</button>
+							</div>
+						{%endform-%}
+						<div class="sitebox-recaptcha hidden"> This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy" target="_blank" rel="noreferrer">Privacy Policy</a> and <a href="https://policies.google.com/terms" target="_blank" rel="noreferrer">Terms of Service</a> apply. </div> 
+							{%if form.posted_successfully?-%}
+								<p class="newsletter-success success feedback accent-text text-success mt-3">
+									Cám ơn bạn đã đăng ký email theo dõi!
+								</p>
+							{%endif-%} 
+							{%if form.errors%} 
+								<div class="error-box newsletter-error text-danger mt-3">
+									{%for field in form.errors-%} 
+									{{ field }} {{ form.errors.messages[field] }} 
+									{%endfor-%}
+								</div>
+							{%endif-%} 
+					</div>
+				</div>
+			</div>
+			{%endif-%}
+			<div class='col-12{% if settings.use_newsletter %} col-lg-4 col-xl-5{% endif %} mt-3 mt-lg-0'>
+				<div class="social-footer">
+					<ul class="follow_option mb-0 mt-2 mt-sm-0 d-flex flex-wrap align-items-center p-0 list-unstyled">	
+						{% if settings.social_facebook_link != blank -%}
+						<li>
+							<a class="facebook link" href="{{settings.social_facebook_link}}"   target="_blank"
+							   title="Theo dõi Facebook {{shop.name}}">
+								<img src="{{'facebook.png' | asset_url}}" loading="lazy" width="36" height="36" alt="facebook"/>	
+							</a>
+						</li>
+						{% endif %}
+						{% if settings.social_instagram_link != blank -%}
+						<li>
+							<a class="instgram link" href="{{settings.social_instagram_link}}"   target="_blank" title="Theo dõi instgram {{shop.name}}">
+								<img src="{{'instagram.png' | asset_url}}" loading="lazy" width="36" height="36" alt="instgram"/>	
+							</a>
+						</li>
+						{% endif %}
+						{% if settings.social_youtube_link != blank -%}
+						<li>
+							<a class="youtube link" href="{{settings.social_youtube_link}}"   target="_blank" title="Theo dõi youtube {{shop.name}}">
+								<img src="{{'youtube.png' | asset_url}}" loading="lazy" width="36" height="36" alt="youtube"/>	
+							</a>
+						</li>
+						{% endif %}
+						{% if settings.social_tiktok_link != blank -%}
+						<li>
+							<a class="tiktok link" href="{{settings.social_tiktok_link}}"   target="_blank" title="Theo dõi tiktok {{shop.name}}">
+								<img src="{{'tiktok.png' | asset_url}}" loading="lazy" width="36" height="36" alt="tiktok"/>	
+							</a>
+						</li>
+						{% endif %}
+						{% if settings.social_zalo_link != blank -%}
+						<li>
+							<a class="zalo link" href="{{settings.social_zalo_link}}"   target="_blank" title="Theo dõi zalo {{shop.name}}">
+								<img src="{{'zalo.png' | asset_url}}" loading="lazy" width="36" height="36" alt="zalo"/>	
+							</a>
+						</li>
+						{% endif %}						
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endif -%}

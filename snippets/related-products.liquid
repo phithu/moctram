@@ -1,0 +1,148 @@
+{% assign related_tag = '' -%}
+{% assign tag_sanphamlienquan = settings.tag_sanphamlienquan | append: '_' -%}
+{% for tag in product.tags %}
+{% if tag contains tag_sanphamlienquan -%}
+{% assign related_tag = tag -%}
+{% break %}
+{% endif -%}
+{% endfor%}
+
+{% capture related_products_by_collection %}
+{% assign check11 = product.url %}
+{% assign productRelate = product.collections.first.handle %}
+{% assign productRelateCheck = product.collections.size %}
+{% assign productRelateCheck2 = product.collections.first.products_count %}
+{% if productRelateCheck > 0 and productRelateCheck2 > 1  %}
+{% assign count = 0 -%}
+{% assign limit = settings.limit_sanphamlienquan%}
+{% for product in collections[productRelate]products %}
+{% unless check11 == product.url -%}
+{% assign count = count | plus: 1 -%}
+<div class="item product-col">
+	<div class="item_product_main">
+		{% include 'product_grid_office' %}
+	</div>
+</div>
+{%if count >= limit -%}{%break-%}{%endif-%}
+{%endunless%}
+{% endfor %}
+
+{%else%}
+<div class='col-12'>
+	{{ settings.sanphamlienquan_empty_message }}
+</div>
+{% endif %}
+{% endcapture %}
+
+<div class='related-product'>
+	<div class="title_module heading-bar d-flex justify-content-between align-items-center"
+		 style='background-color: {{settings.section_heading_bg}}'>
+		<h2 class="bf_flower heading-bar__title" style='color: {{settings.section_heading_color}};'>
+			<a href="{{product.collections.first.url-}}" title="{{ settings.sanphamlienquan_title }}">
+				{{ settings.sanphamlienquan_title }}</a>
+		</h2>
+	</div>
+	<div id="sidebarproduct" class='card border-0 px-2 pt-1 pb-2'>
+		{%if settings.type_sanphamlienquan == 'tag' -%}
+		{%if related_tag != '' -%}
+		<div class="section_prd_feature section products product_related slick-product slickrelated row"></div>
+		{%else-%}
+
+		{% if settings.use_collection_alternative %}
+		<div class="section_prd_feature section products product_related slick-product slickrelated row">
+			{{ related_products_by_collection }}
+		</div>
+
+		<!-- Xem tất cả -->
+		{% else %}
+		<div class='col-12'>
+			{{ settings.sanphamlienquan_empty_message }}
+		</div>
+		{% endif %}
+
+		{%endif-%}
+		{%else-%}
+		<div class="section_prd_feature section products product_related slick-product slickrelated row">
+			{{ related_products_by_collection }}
+		</div>
+		{%endif-%}
+
+		<a href='{{product.collections.first.url-}}' class='seemore btn btn-main btn-pill mx-auto mt-3' style='display: none;'>Xem tất cả</a>
+	</div>
+</div>
+
+<script>
+	function relatedProductSlide(){
+		if(window.matchMedia('(min-width: 768px)').matches && $('.slickrelated .item').length >= 6){
+			$('.slickrelated').slick({
+				autoplay: false,
+				autoplaySpeed: 6000,
+				dots: false,
+				arrows: true,
+				infinite: false,
+				speed: 300,
+				slidesToShow: 5,
+				slidesToScroll: 1,
+				centerMode: false,
+				responsive: [
+					{
+						breakpoint: 1200,
+						settings: {
+							slidesToShow: 5,
+							slidesToScroll: 1
+						}
+					},
+					{
+						breakpoint: 1024,
+						settings: {
+							slidesToShow: 4,
+							slidesToScroll: 1
+						}
+					},
+					{
+						breakpoint: 767,
+						settings: {
+							slidesToShow: 2,
+							slidesToScroll: 2
+						}
+					}
+				]
+			});
+		}
+	}
+	function initProductsRelated() {
+		const tag = "{{related_tag}}"
+		const relatedType = "{{settings.type_sanphamlienquan}}"
+		const id= "{{product.id}}";
+		const alternative_col_count = {{ count | plus: 0 | default: 0 }};
+		if(relatedType === 'tag' && tag !== '') {
+			$.get(`/search?q=filter=(id:product<>${id}&&tag:product=${tag})&view=related`).then(response => {
+				if(response && response.length) {
+					$('.slickrelated').append(response)
+					relatedProductSlide()
+					$('.related-product .heading-bar__title a').attr('href', `search?q=tags:(${tag})`)
+					if ($('.related-product .item').length > 5) {
+						$('.related-product .seemore').show();
+					}
+				} else {
+					{% if settings.use_collection_alternative %}
+						$('.slickrelated').append(`{{related_products_by_collection}}`)
+						relatedProductSlide();
+						if (alternative_col_count > 5) {
+							$('.related-product .seemore').show();
+						}
+					{% else %}
+						$('.slickrelated').append(`<div class='col-12'>{{ settings.sanphamlienquan_empty_message }}</div>`)
+					{% endif %}
+				}
+			})
+		} else {
+			relatedProductSlide()
+			if (alternative_col_count > 5) {
+				console.log(alternative_col_count)
+				$('.related-product .seemore').show();
+			}
+		}
+	}
+	initProductsRelated()
+</script>

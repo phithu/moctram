@@ -1,0 +1,31 @@
+<div class="section_slider clearfix" style='max-height: {{settings.slider_1_height | default: "310"}}px'>
+	<div class="home-slider">
+		{% assign count = 0 -%}
+		{% for s2 in (1..3) -%}
+		{% capture enable_slide -%}slider_{{s2}}_enable{% endcapture -%}
+		{% capture naviimage -%}slider_{{s2}}.jpg{% endcapture -%}
+		{% capture url -%}slider_{{s2}}_url{% endcapture -%}
+		{% capture alt -%}slider_{{s2}}_alt{% endcapture -%}
+		{% capture width -%}slider_{{s2}}_width{% endcapture -%}
+		{% capture height -%}slider_{{s2}}_height{% endcapture -%}
+		{% if settings[enable_slide] -%}
+		<div class="items text-center">
+			<a href="{{ settings[url]}}" title="{{ settings[alt] }}">
+				<picture>
+					<source media="(max-width: 480px)" srcset="{{ naviimage | asset_url | img_url:'large' }}">
+					<img class=" img-fluid mx-auto" 
+						 {% if count > 0 -%}
+						 loading="lazy" 
+						 {% endif -%}
+						 src="{{ naviimage | asset_url  }}" 
+						 width="{{settings[width]}}"
+						 height="{{settings[height]}}"
+						 alt="{{ settings[alt] }}"/>
+				</picture>
+			</a>
+		</div>
+		{% assign count = count | plus: 1 -%}
+		{% endif -%}
+		{% endfor -%}
+	</div>
+</div>

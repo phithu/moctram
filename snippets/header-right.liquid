@@ -1,0 +1,57 @@
+<ul class="header-right mb-0 list-unstyled d-flex align-items-center justify-content-end">
+	<li class='media d-lg-block d-none '>
+		<a href="{{settings.header_order_link}}" class='d-block text-center' title="Đơn hàng">
+			<img loading="lazy"
+				 src="{{'order-icon.png' |asset_url}}" 
+				 width="24" height="24" class="align-self-center" 
+				 alt="order-icon"/>
+			<span class='d-none d-xl-block mt-1'>
+				Đơn hàng
+			</span>				
+		</a>
+	</li>
+	<li class='media d-lg-block d-none '>
+		<a href="{{settings.header_location_link}}" class='d-block text-center' title="Hệ thống cửa hàng">
+			<img loading="lazy"
+				 src="{{'address-icon.png' |asset_url}}" 
+				 width="24" height="24" class="align-self-center" 
+				 alt="phone-icon"/>
+			<span class='d-none d-xl-block mt-1'>
+				Cửa hàng
+			</span>				
+		</a>
+	</li>
+	<li class='media d-lg-block d-none  '>
+		<a href='{% if customer -%}/account{% else -%}/account/login{% endif -%}' class='text-center d-block' title="Tài khoản">
+			<img loading="lazy" src="{{'account-icon.png' |asset_url }}"  
+				 width="24" height="24" alt="account_icon"
+				 class="align-self-center" />
+			<span class='d-none d-xl-block mt-1'>Tài khoản</span>
+		</a>
+	</li>
+	<li class="cartgroup">
+		<div class="mini-cart text-xs-center">
+			<a class="img_hover_cart d-block d-xl-flex flex-column align-items-center" href="/cart" title="Giỏ hàng" > 
+				<div class="cart-icon">
+					<img loading="lazy" 
+					 src="{{'cart-icon.png' |asset_url}}" 
+					 width="24" height="24"
+					 alt="cart_icon"
+					 />
+								<span class="count_item count_item_pr">{{cart.item_count }}</span>
+				</div>
+				
+
+				<span class='d-xl-block d-none mt-1'>Giỏ hàng</span>
+			</a>
+			<div class="top-cart-content card ">
+				<ul id="cart-sidebar" class="mini-products-list count_li list-unstyled">
+					<li class="list-item">
+						<ul></ul>
+					</li>
+					<li class="action"></li>
+				</ul>
+			</div>
+		</div>
+	</li>
+</ul>

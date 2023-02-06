@@ -1,0 +1,38 @@
+<link  rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link  rel="dns-prefetch" href="https://fonts.gstatic.com" >
+<link  rel="dns-prefetch" href="https://haravan.dktcdn.net" >
+<link rel="dns-prefetch" href="https:{{shop.url}}">
+<!--
+<link rel="preload" as='style' type="text/css" href="{{ 'main.css' | asset_url }}" />
+-->
+
+<link rel="preload" as='style'  type="text/css" href="{{ 'index.css' | asset_url }}">
+{% if template contains 'index' -%}
+{% comment -%}
+<link rel="preload" as='style'  type="text/css" href="{{ 'bootstrap-lite.css' | asset_url }}">
+{% endcomment -%}
+{% else -%}
+<link rel="preload" as='style'  type="text/css" href="{{ 'bootstrap-4-3-min.css' | asset_url }}">
+{% endif -%}
+<link rel="preload" as='style'  type="text/css" href="{{ 'responsive.css' | asset_url }}">
+<link rel="preload" as='style'  type="text/css" href="{{ 'product-infor-style.css' | asset_url }}">
+<link rel="preload" as='style'  type="text/css" href="{{ 'quickviews-popup-cart.css' | asset_url }}">
+
+{% if template contains 'index' and settings['home_section_1'] == 'section_slider' -%}
+{% for s2 in (1..3) -%}
+{% capture enable_slide -%}slider_{{s2}}_enable{% endcapture -%}
+{% capture naviimage -%}slider_{{s2}}.jpg{% endcapture -%}
+{% capture url -%}slider_{{s2}}_url{% endcapture -%}
+{% capture alt -%}slider_{{s2}}_alt{% endcapture -%}
+{% if settings[enable_slide] -%}
+
+<link rel="preload" as="image" href="{{ naviimage | asset_url | img_url:'large' }}"  media="screen and (max-width: 480px)">
+<link rel="preload" as="image" href="{{ naviimage | asset_url  }}" media="screen and (min-width: 481px)" >
+{% break -%}
+{% endif -%}
+{% endfor -%}
+{% endif -%}
+
+{% if template contains 'product' -%}
+<link rel="preload" as="image" href="{{ product.images[0].src | img_url:'large'  }}">
+{% endif -%}

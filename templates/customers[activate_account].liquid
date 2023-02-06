@@ -1,0 +1,67 @@
+{% include 'breadcrumb' %} 
+<section class="signup page_customer_account section">
+	<div class="container card p-3">
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-lg-3 col-left-ac">
+				<div class="block-account">
+					<h5 class="title-account">Trang tài khoản</h5>
+					<p>Xin chào, <span style="color:{{settings.main-color}};">{{ customer.name }}</span>&nbsp;!</p>
+					<ul>
+						<li>
+							<a disabled="disabled" class="title-info" href="/account">Thông tin tài khoản</a>
+						</li>
+						<li>
+							<a class="title-info" href="/account/orders">Đơn hàng của bạn</a>
+						</li>
+						<li>
+							<a class="title-info active" href="javascript:void(0);">Đổi mật khẩu</a>
+						</li>
+						<li>
+							<a class="title-info" href="/account/addresses">Sổ địa chỉ ({{ customer.addresses_count }})</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-12 col-lg-9 col-right-ac">
+				<h1 class="title-head margin-top-0">Đổi mật khẩu</h1>
+				<div class="row">
+					<div class="col-md-6 col-12">
+						<div class="page-login">
+							{% form 'activate_customer_password' %}
+							{% if form.errors.size > 0 %}
+							{% for field in form.errors %}
+							<div class="alert alert-danger">
+								{{ form.errors.messages[field] }}
+							</div>
+							<br />
+							{% endfor %}
+							{% endif %}
+							{% if form.posted_successfully %}
+							<div class="alert alert-success">
+								Đổi mật khẩu thành công
+							</div>
+							<br />
+							{% endif %}
+							<p>
+								Để đảm bảo tính bảo mật vui lòng đặt mật khẩu với ít nhất 8 kí tự
+							</p>
+							<div class="form-signup clearfix">
+								<fieldset class="form-group">
+									<label for="oldPass">Mật khẩu  <span class="error">*</span></label>
+									<input required type="password" value="" name="customer[password]" id="customer_password" placeholder="Mật khẩu"  size="16"  class="form-control form-control-lg" />
+								</fieldset>
+			
+								<fieldset class="form-group">
+									<label for="confirmPass">Xác nhận lại mật khẩu <span class="error">*</span></label>
+									<input required type="password" value="" name="customer[password_confirmation]" id="customer_password" placeholder="Xác nhận mật khẩu"  size="16" class="form-control form-control-lg"/>
+								</fieldset>
+								<button class="button btn-edit-addr btn btn-primary btn-more"><i class="hoverButton"></i>Đặt lại mật khẩu</button>
+							</div>
+							{% endform %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

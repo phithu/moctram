@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="vi">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="theme-color" content="{{ settings.color_main }}" />
+		<link rel="canonical" href="{{ canonical_url }}"/>
+		<meta name='revisit-after' content='2 days' />
+		{% if current_page != 1 or template contains 'search' or template contains 'cart' %}<meta name="robots" content="follow, noindex">{% else %}<meta name="robots" content="noodp,index,follow" />{% endif %}
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+
+		{% if current_page != 1 %}<meta name="description" content="{{ page_description }} | Trang {{ current_page }}">{% else %}<meta name="description" content="{{ page_description }}">{% endif %}
+		<title>{%if page_title == 'All'%}Tất cả sản phẩm{%else%}{{ page_title }}{%endif%}{% if current_tags %} tagged "{{ current_tags | join: ', ' }}"{% endif %}{% if current_page != 1 %} - Trang {{ current_page }}{% endif %}		</title>
+		{%if template contains 'index' %}{% if settings.home_page_keywords != '' and settings.home_page_keywords != null%}<meta name="keywords" content="{{settings.home_page_keywords}}"/>{%else%}<meta name="keywords" content="{{shop.title}}, {{shop.domain}}"/>{%endif%}{%elsif template contains 'product'%}<meta name="keywords" content="{{product.title}}, {% for collection in product.collections%}{{collection.title}}, {%endfor%}{%if product.tags.size > 0%}{% for tag in product.tags %}{{tag}}, {% endfor%}{%endif%}{{shop.title}}, {{shop.domain}}"/>{%elsif template contains 'collection'%}<meta name="keywords" content="{{collection.title }}, {{shop.title}}, {{shop.domain}}"/>{%elsif template contains 'blog'%}<meta name="keywords" content="{{blog.title }}, {{shop.title}}, {{shop.domain}}"/>{%elsif template contains 'article'%}<meta name="keywords" content="{{article.title}}, {{blog.title}}, {%if article.tags.size > 0%}{% for tag in article.tags %}{{tag}}, {%endfor%}{%endif%} {{shop.title}}, {{shop.domain}}"/>{%else%}<meta name="keywords" content="{{page_title}}, {{shop.title}}, {{shop.domain}}"/>{%endif%}		
+		{% include 'fb-open-graph-tags' %}
+		{% if settings.favicon_enable%}<link rel="icon" href="{{ 'favicon.png' | asset_url }}" type="image/x-icon" />{%endif%}
+		{%include 'preload'%}
+
+		<link rel="stylesheet" href="{{'bootstrap-4-3-min.css' | asset_url}}">
+		<style>
+			:root{
+				--text-color: {{settings.color_body_text}};
+				--body-background: #F8F8F8;
+				--text-secondary-color: #9e9e9e;
+				--primary-color: {{settings.main-color}};
+				--secondary-color:{{settings.secondary-color}};
+				--price-color: {{settings.color_price}};
+				--header-background: {{settings.header_bg}};
+				--header-color: {{settings.header_color}};
+				--subheader-background: {{settings.subheader_bg}};
+				--subheader-color: {{settings.subheader_color}};
+				--header-category-bg: {{settings.header_category_bg}};
+				--header-category-color: {{settings.header_category_color}};
+				--label-background: {{settings.color_bg_label}};
+				--label-color: {{settings.color_label}};
+				--footer-bg:{{settings.footer_bg}};
+				--footer-color:{{settings.footer_color}};
+				--show-loadmore: {%if settings.cro_show -%}none!important;{%else -%}flex{%endif-%}
+				--order-loadmore: {%if settings.cro_show -%}-1!important;{%else -%}initial{%endif-%}
+				--sale-pop-color: {{settings.sale_pop_color-}};
+				--addtocart-bg: {{settings.color_addtocart | default: '#ED3324'}};
+				--addtocart-text-color: {{settings.color_addtocart_text | default: '#fff'}};
+				--cta-color: {{settings.color_checkout}};
+				--section-coupon-bg: {{settings.section_coupon_bg | default: 'transparent'}};
+				--coupon-title-color: {{settings.coupon_text_color}};
+				--coupon-button-color: {{settings.coupon_button_color}};
+				--col-menu: {{settings.menu_col | default: 3}};
+				--border-color: #f1f1f1;
+				--link-color: #2F80ED;
+				--coupon-code-background: {{ settings.coupon_icon_background | default: '#fff' }};
+				--coupon-lite-border: {{ settings.coupon_lite_border_text | default: '#fff' }};
+				--product-promotion-bg: {{ settings.product_promotion_bg -}};
+			}
+			.modal-scrollbar-measure {
+				display: none;
+			}
+			@font-face {
+				font-family: 'Lato';
+				font-style: normal;
+				font-weight: 300;
+				font-display: swap;
+				src: url({{'lato-light.woff2'|asset_url}}) format('woff2');
+			}
+			@font-face {
+				font-family: 'Lato';
+				font-style: normal;
+				font-weight: 400;
+				font-display: swap;
+				src: url({{'lato-regular.woff2'|asset_url}}) format('woff2');
+			}
+			@font-face {
+				font-family: 'Lato';
+				font-style: normal;
+				font-weight: 700;
+				font-display: swap;
+				src: url({{'lato-bold.woff2'|asset_url}}) format('woff2');
+			}
+		</style>
+		<link href="{{ 'main.css' | asset_url  }}" rel="stylesheet"/>
+
+		{{ 'product-infor-style.css' | asset_url | stylesheet_tag }}
+		{% include 'swatch-css' -%}
+		{{ 'quickviews-popup-cart.css' | asset_url | stylesheet_tag }}
+		{% if template contains 'index' -%}{{ 'index.css' | asset_url | stylesheet_tag }}{% endif -%}
+		{% if template contains 'cart' -%}{{ 'cartpage.css' | asset_url | stylesheet_tag }}{% endif-%}
+		{% if template contains 'blog' or template contains 'article' -%}{{ 'blog-article-style.css' | asset_url | stylesheet_tag }}{%endif%}
+		{% if template contains 'collection'or template contains 'search' %}{{ 'sidebar-style.css' | asset_url | stylesheet_tag }}	{%endif%}
+		{% if template contains 'product' %}{{ 'product-style.css' | asset_url | stylesheet_tag }}{%endif%}
+		{% if template contains 'contact' %}{{ 'contact-style.css' | asset_url | stylesheet_tag }}{%endif%}
+		{% if template contains 'customers' %}{{ 'account-style.css' | asset_url | stylesheet_tag }}{%endif%}
+		{% if template contains 'collection' or template contains 'search' %}{{ 'collection-style.css' | asset_url | stylesheet_tag }}{%endif%}
+		<link rel="preload" as="script" href="{{ 'jquery.js' | asset_url }}" />
+		{{ 'jquery.js'  | asset_url | script_tag }}
+		{% unless template contains 'index' -%}
+		<link rel="preload" as="script" href="{{ 'slick-min.js' | asset_url }}" />
+		{{ 'slick-min.js'  | asset_url | script_tag }}
+		{% endunless -%}
+		{{'responsive.css' | asset_url | stylesheet_tag}}
+		
+		{%- capture capserverHead-%}{{ content_for_header }}{%-endcapture-%}
+		{%- assign serverHead = capserverHead -%}
+
+		{%- capture capsrcCombo1 -%}"https://combo-omni.haravan.com/js/script_tag_production.js?v=1576487994026"{%-endcapture-%}
+		{%- assign srcCombo1 = capsrcCombo1 -%}
+		{%- capture capsrcCombo2 -%}"https://combo-omni.haravan.com/js/script_tag_production.js?v=1576487994026",{%-endcapture-%}
+		{%- capture capsrcCombo3 -%},"https://combo-omni.haravan.com/js/script_tag_production.js?v=1576487994026"{%-endcapture-%}
+		{%- assign srcCombo2 = capsrcCombo2 -%}
+		{%- assign srcCombo3 = capsrcCombo3 -%}
+
+		{%- capture capsrcBuyXY1 -%}"https://buyxgety-omni.haravan.com/js/script_tag_production.js?v=1576487994026"{%-endcapture-%}
+		{%- assign srcBuyXY1 = capsrcBuyXY1 -%}
+		{%- capture capsrcBuyXY2 -%}"https://buyxgety-omni.haravan.com/js/script_tag_production.js?v=1576487994026",{%-endcapture-%}
+		{%- capture capsrcBuyXY3 -%},"https://buyxgety-omni.haravan.com/js/script_tag_production.js?v=1576487994026"{%-endcapture-%}
+		{%- assign srcBuyXY2 = capsrcBuyXY2 -%}
+		{%- assign srcBuyXY3 = capsrcBuyXY3 -%}
+
+		{%- capture capsrcCombo_final1 -%}"https://combo-omni.haravan.com/js/script_tag_production.js?v=1003"{%-endcapture-%}
+		{%- assign srcCombo_final1 = capsrcCombo_final1 -%}
+
+		{%- capture capsrcBuyXY_final1 -%}"https://buyxgety-omni.haravan.com/js/script_tag_production.js?v=1002"{%-endcapture-%}
+		{%- assign srcBuyXY_final1 = capsrcBuyXY_final1 -%}
+		
+		
+		{%assign promotion_app_name = settings.promotion_app_name-%}
+		{%if promotion_app_name == "combo_app"-%}
+			{%-capture srcHead -%}{{ serverHead | remove: srcBuyXY2 | remove: srcBuyXY3 }}{%- endcapture -%}
+			{{ srcHead  }}
+		{%endif-%}
+		
+		{%if promotion_app_name == "buyxgety_app"-%}
+			{%-capture srcHead -%}{{ serverHead | remove: srcCombo2 | remove: srcCombo3 }}{%- endcapture -%}
+			{{ srcHead }}
+		{%endif-%}
+		
+		{%if promotion_app_name == "no_app"-%}
+					{{ serverHead | remove: srcBuyXY2 | remove: srcBuyXY3 | remove: srcCombo2 | remove: srcCombo3  }}
+		{%endif-%}
+		
+		{%if template contains 'customers'-%}
+			{{'haravan_common.js' |  haravan_asset_url | script_tag-}}
+			{{'customer_area.js' |  haravan_asset_url | script_tag-}}
+		{%endif-%}
+		
+		{% include 'schema' -%}
+		<!--
+Theme Information
+--------------------------------------
+Theme ID: EGA Cake
+Version: 1.2.0_20221028
+Company: EGANY
+changelog: {{"ega-changelog.js"| asset_url}}
+---------------------------------------
+-->
+
+		<script>var ProductReviewsAppUtil=ProductReviewsAppUtil || {};{% if customer %}ProductReviewsAppUtil.customer={id: '{{customer.id}}',name: '{{customer.title}}',email: '{{customer.email}}', phone: '{{customer.phone}}'};{% endif %}ProductReviewsAppUtil.store={name: '{{shop.title}}'};</script>
+		{% if template == 'index' -%}
+		<style>
+			{% if settings.brand_display_type == 'grid' -%}
+			.section_brand .row {
+				display: grid;
+				grid-template-columns: repeat(var(--item-display, 6), 1fr);
+				grid-gap: 10px;
+			}
+			{% endif -%}
+			@media (min-width: 991px) {
+				.home-slider__dot-fake.mobile {		
+					display: none;
+				}
+				.home-slider__dot-fake.desktop {
+					display: flex;
+				}
+			}
+			@media (max-width: 767px) {
+				.section_brand .row {
+					display: block;
+				}
+			}
+		</style>
+		{% endif -%}
+</head>
+	<body{%if template == "index"%} id="template-index"{% else %} id="template-{{template}}"{%endif%}>
+		<div class="opacity_menu"></div>
+		{% include 'header' -%}
+
+		{{ content_for_layout }}
+
+		{% include 'footer' -%}
+		{% include 'font-icon' -%}
+		<link rel="preload" as="script" href="{{ 'api.jquery.js' | haravan_asset_url  }}">
+
+		{{ 'api.jquery.js' | haravan_asset_url | script_tag }}
+		{{ 'option_selection.js' | haravan_asset_url | script_tag }}
+		{% if template contains 'product' %}{{ 'plugin.js' | asset_url | script_tag }}{% endif %}
+		{%if settings.quickview_enable -%}	
+		{% include 'quickview-template' -%}
+		{% include 'quickview-js' -%}
+		{% endif %}
+		{%unless template contains 'cart' -%}
+		{% include 'templatecart'%}
+		{%endunless -%}
+		{%unless template contains 'cart' or template contains 'customer' %}{% include 'popup-cart' %}{%endunless%}
+		
+		{% include 'api.jquery.custom' %}
+		{% if template contains 'index' -%}
+		<link rel="preload" as="script" href="{{ 'index.js' | asset_url }}" />
+		{{ 'index.js' | asset_url | script_tag }}
+		{% endif %}
+		<link rel="preload" as="script" href="{{ 'main.js' | asset_url }}" />
+		{{ 'main.js' | asset_url | script_tag }}
+		{% if template contains 'collection' %}
+
+		<link rel="preload" as="script" href="{{ 'search-filter.js' | asset_url }}" />
+		{{ 'search-filter.js'  | asset_url | script_tag }}
+		<script>
+			var filter = new Haravan.SearchFilter()
+			{% if collection.id > 0 %}
+			filter.addValue("collection", "collections", "{{ collection.id }}", "AND");
+							{% endif %}
+							function clearAllFiltered() {
+				filter = new Haravan.SearchFilter();
+				{% if collection.id > 0 %}
+				filter.addValue("collection", "collections", "{{ collection.id }}", "AND");
+								{%- endif -%}
+								$(`#sort-by [data-sort]`).removeClass('active')
+				$(".filter-container__selected-filter-list ul").html("");
+				$(".filter-container input[type=checkbox]").attr('checked', false);
+				$(".filter-container__selected-filter").hide();
+
+				doSearch(1);
+			}
+		</script>
+		{{ 'col.js'  | asset_url | script_tag }}
+		{% endif %}
+		
+		{%assign promotion_app_name = settings.promotion_app_name-%}
+		{%if promotion_app_name == "combo_app"-%}
+		   {{'ega-app-combo.js' | asset_url | script_tag-}}
+		{%endif-%}
+		{%if promotion_app_name == "buyxgety_app"-%}
+		   {{'ega-app-buyxgety.js' | asset_url | script_tag-}}
+		{%endif-%}
+
+		<link rel="preload" as="script" href="{{ 'ega-gateway-min.js' | asset_url}}">
+
+		{{ 'ega-gateway-min.js' | asset_url | script_tag }}
+		{%unless template contains 'cart' -%}
+		{%include 'ega.builtin-cr-button.configs'%}
+		{%endunless-%}
+		<!-- Add to cart -->
+		<div id="popupCartModal" class="modal fade" role="dialog">
+		</div>
+
+		{%include 'sales-pop'%}
+		{%include 'addthis-sharing'%}
+
+		{%if settings.ega_sm_enable-%}
+<div class="search-overlay">
+	
+</div>
+		<script>
+			const EGASmartSearchConfigs = {
+				settings: {
+					isEnabled: {%if settings.ega_sm_enable-%}{{settings.ega_sm_enable}}{%else-%}false{%endif%},
+					// color
+					colorBg: '{% if settings.ega_sm_color_bg %}{{ settings.ega_sm_color_bg }}{% else %}#FFFFFF{% endif %}',
+					colorBgHover: '{% if settings.ega_sm_color_bg_hover %}{{ settings.ega_sm_color_bg_hover }}{% else %}#F7F7F7{% endif %}',
+					colorLabelBg: '{% if settings.ega_sm_color_label_bg %}{{ settings.ega_sm_color_label_bg }}{% else %}#F7F7F7{% endif %}',
+					colorLabelText: '{% if settings.ega_sm_color_label_text %}{{ settings.ega_sm_color_label_text }}{% else %}#A0A0A0{% endif %}',
+					colorItemBorder: '{% if settings.ega_sm_color_item_border %}{{ settings.ega_sm_color_item_border }}{% else %}#EEEEEE{% endif %}',
+					colorItemTextTitle: '{% if settings.ega_sm_color_item_text_title %}{{ settings.ega_sm_color_item_text_title }}{% else %}#0288D1{% endif %}',
+					colorItemTextPrice: '{% if settings.ega_sm_color_item_text_price %}{{ settings.ega_sm_color_item_text_price }}{% else %}#014E70{% endif %}',
+					colorItemTextCompareAtPrice: '{% if settings.ega_sm_color_item_text_compare_at_price %}{{ settings.ega_sm_color_item_text_compare_at_price }}{% else %}#A7A7A7{% endif %}',
+					colorItemTextSku: '{% if settings.ega_sm_color_item_text_sku %}{{ settings.ega_sm_color_item_text_sku}}{% else %}#747474{% endif %}',
+					colorItemTextDescription: '{% if settings.ega_sm_color_item_text_description %}{{ settings.ega_sm_color_item_text_description }}{% else %}#747474{% endif %}',
+					colorItemTextViewAll: '{% if settings.ega_sm_color_item_text_view_all %}{{ settings.ega_sm_color_item_text_view_all }}{% else %}#0288D1{% endif %}',
+					colorHeaderText: '{% if settings.ega_sm_color_header %}{{settings.ega_sm_color_header}}{%else%}#A0A0A0{%endif%}',
+					colorLoading: '{%if settings.ega_sm_color_loading %}{{settings.ega_sm_color_loading}}{%else%}#ff0000{%endif%}',
+					// general
+					searchAccuracy: '{{settings.ega_sm_product_accuracy | default: "title"}}',
+					isFixedSearch: 'fixed',
+					searchWidth: '{% if settings.ega_sm_search_width %}{{ settings.ega_sm_search_width }}px{% else %}380px{% endif %}',
+					searchHeight: '{% if settings.ega_sm_search_height %}{{ settings.ega_sm_search_height }}px{% else %}500px{% endif %}',
+					searchView:	'list',
+					// product
+					productSortby: '{% if settings.ega_sm_product_sort_by and settings.ega_sm_product_sort_by != "default" %}{{ settings.ega_sm_product_sort_by }}{% else %}{% endif %}',
+					displayProductDescription: {%if settings.ega_sm_display_product_description%}{{settings.ega_sm_display_product_description}}{%else%}false{%endif%},
+					productLimit: {% if settings.ega_sm_product_limit %}{{ settings.ega_sm_product_limit }}{% else %}3{% endif %},
+					// article	
+					displayArticle: {{settings.ega_sm_show_article | default: false}},
+					articleLimit: {% if settings.ega_sm_article_limit %}{{ settings.ega_sm_article_limit }}{% else %}3{% endif %},
+				},
+				CONSTANT: {
+					shopDomain: '',
+					searchView: 'ega.smartsearch.json',
+					textHeaderSectionTitle: '{% if settings.ega_sm_search_header %}{{ settings.ega_sm_search_header }}{% else %}Kết quả tìm kiếm cho{% endif %}',
+					textProductSectionTitle: '{% if settings.ega_sm_product_heading %}{{ settings.ega_sm_product_heading }}{% else %}Sản phẩm{% endif %}',
+					textArticleSectionTitle: '{% if settings.ega_sm_article_heading %}{{ settings.ega_sm_article_heading }}{% else %}Bài viết{% endif %}',
+					notFound: '{% if settings.ega_sm_notfound %}{{ settings.ega_sm_notfound }}{% else %}Không tìm thấy kết quả{% endif %}',
+					textFrom: '',
+					textShowAll: '{% if settings.ega_sm_show_all%}{{ settings.ega_sm_show_all }}{% else %}Hiển thị sản phẩm có chứa {% endif %}'
+				}
+			}
+			window.egaSmartSearchValid = true;
+			if (EGASmartSearchConfigs.settings.isEnabled) {
+				const params = new URLSearchParams(location.search);
+				if (params) {
+					const urlSearchType = params.get('type')
+					if (urlSearchType === 'product,article' && EGASmartSearchConfigs.settings.displayArticle) {
+						$('#search-result').css('display', 'none')
+					}
+				}
+			}
+		</script>
+		{%endif-%}
+
+		{%if template == 'cart' and settings.delivery_show%}
+		{%include 'ega-delivery'%}
+		{%endif%}
+
+		{% if template == 'cart' and settings.use_cart_vat or settings.use_cart_limit %}
+		<script src='{{"sweetalert-min.js" | asset_url}}'></script>
+
+		{% if settings.use_cart_vat %}
+		<script src='{{"js-cookie-min.js" | asset_url}}'></script>
+		{% endif %}
+		{% endif %}
+		
+		{%if settings.use_reviews == 'easy review' -%}
+			{% include 'starbap-products-reviews'%}
+		{%endif-%}         
+</body>
+</html>

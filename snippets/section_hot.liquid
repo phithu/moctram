@@ -1,0 +1,59 @@
+<div class="section_product_new">
+	{% assign product_count = collections[settings.section_hot_url]products_count %}
+	<div class="title_module_main heading-bar d-flex" style='background-color: {{settings.section_hot_title_bg | default: 'transparent'}}'>
+		<h2 class="heading-bar__title" style='color: {{settings.section_hot_title_color | default: 'var(--text-color)'}}'>
+			{% if settings.section_hot_use_icon -%}
+			<img src='{{"section-hot-icon.png" | asset_url}}' alt='{{settings.section_hot_title}}'/>
+			{% endif -%}
+			<a class='link' href="{{collections[settings.section_hot_url].url}}" title="{{settings.section_hot_title}}">{{settings.section_hot_title}}</a>
+		</h2>
+	</div>
+	<div class='section__products'>
+		{% if product_count >= 1 %}
+		<div class="row mx-sm-0" data-section="hot-section">
+			{%if settings.section_hot_use_banner -%}
+			<div class="col-12 col-lg-6 text-center pb-3 product-col section-hot__banner d-none d-lg-block">
+				<a class="banner" href="{{settings.section_hot_link | default: settings.section_hot_url}}" title="{{settings.section_hot_title}}">
+					<picture>
+						<source media="(max-width: 480px)" srcset="{{'section_hot.jpg'|asset_url | img_url: 'large'}}" />
+						<img class=" img-fluid" 
+							 loading="lazy"
+							 src="{{'section_hot.jpg'|asset_url | img_url: 'grande'}}"
+							 width="{{settings.section_hot_width}}"
+							 height="{{settings.section_hot_height}}"
+							 alt="{{settings.section_hot_title}}">
+					</picture>
+				</a>
+			</div>
+			{%endif -%}
+			{%assign product_html = '' -%}
+			{% for product in collections[settings.section_hot_url].products limit: {{settings.section_hot_limit}} -%}
+			<div class="col-6 col-lg-3 col-md-4 product-col">
+				<div class="item_product_main item_skeleton">
+
+				</div>
+			</div>
+			{% capture product_block -%}
+
+			<div class="col-6 col-lg-3 col-md-4 product-col">
+				<div class="item_product_main">
+					{% include 'product_grid_office' %}
+				</div>
+			</div>
+			{%endcapture-%}
+			{% assign product_html = product_html | append : product_block -%}
+			{% endfor -%}
+			<script type="text/x-custom-template" data-template="hot-section">
+							{{product_html}}
+			</script>
+		</div>
+		<div class="text-center mt-3 col-12">
+			<a href="{{collections[settings.section_hot_url].url}}" title="Xem tất cả" class="btn btn-main btn-pill">
+				Xem tất cả {%include 'icon-arrow'%}
+			</a>
+		</div>
+		{% else -%}
+		<p class="a-center margin-top-15">Hiện tại chưa có sản phẩm nào trong danh mục này!...</p>
+		{% endif -%}
+	</div>
+</div>

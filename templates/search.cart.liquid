@@ -1,0 +1,40 @@
+{%layout 'none'-%}
+
+{%if search.results.size > 0-%}
+
+{%assign randomStr = "2,3,5##2,4,5##2,6,9##2,7,8##2,5,7##3,5,6##3,4,8##3,7,9##3,6,7##3,8,9##4,6,9##4,7,8##4,6,9##4,5,7##5,7,9##5,6,8##5,7,8##6,7,9##6,8,9##6,7,8"-%}
+{%assign randomArr = randomStr | split:"##"-%}
+
+{%- capture randNumber -%}
+{{ "now" | date: "%S" | modulo: randomArr.size -}}
+{%- endcapture -%}
+{%assign keyIndex = randNumber | times:1-%}
+{%assign randomList = randomArr[keyIndex]-%}
+
+{%capture relatedProduct-%}
+{%for product in search.results-%}
+{%capture loopIndex-%}{{forloop.index-}}{%endcapture-%}
+{%if randomList contains loopIndex-%}
+<div class="col-12 col-md-15">
+	<div class="item_product_main">
+		{% include 'product_grid_office' %}
+	</div>
+</div>
+{%endif-%}
+{%endfor-%}
+
+{%for product in search.results-%}
+{%capture loopIndex-%}{{forloop.index-}}{%endcapture-%}
+{%unless randomList contains loopIndex-%}
+<div class="col-12 col-md-15">
+	<div class="item_product_main">
+		{% include 'product_grid_office' %}
+	</div>
+</div>
+{%endunless-%}
+{%endfor-%}
+{%endcapture-%}
+
+{{relatedProduct-}}
+
+{%endif-%}

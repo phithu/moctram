@@ -1,0 +1,8 @@
+{%if template contains 'product' -%}
+<script>
+    //:generate:app_settings
+var cro_desktop_settings = {"scripts":[]};
+    //:endgenerate
+    window.loadCroScript && window.loadCroScript(cro_desktop_settings.scripts[0].url)
+</script>
+{%endif -%}

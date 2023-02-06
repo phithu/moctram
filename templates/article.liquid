@@ -1,0 +1,175 @@
+{% include 'breadcrumb' %} 
+<section class="blogpage section">
+	<div class="container article-wraper card py-2 border-0" >
+		<div itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
+			<div itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
+				<img class="hidden" src="{{'logo.png'|asset_url}}" alt="{{ shop.name }}"/>
+			</div>
+		</div>
+		<div class="wrap_background_aside padding-top-0 margin-bottom-40 ">
+			<div class="row">		
+				{%capture related_article-%}
+				{%if settings.blogs_related_enable and  blog.articles.size > 1-%}
+				<div class="blog-aside aside-item blog-aside-article">
+					<div class="aside-title">
+						<h2 class="title-head"><span><a href="{{blog.url}}" title="{{ settings.blogs_related_title }}">{{settings.blogs_related_title-}}</a></span></h2>
+					</div>
+					<div class="aside-content-article aside-content margin-top-0">
+						<div class="blog-list blog-image-list">
+							{%assign count = 0-%}
+							{%assign article_related_list_limit = settings.blogs_related_limit-%}
+							{%assign current_handle = article.title | handleize-%}
+							{%for art in blog.articles-%}
+							{%assign art_handle = art.title | handleize-%}
+							{%if current_handle != art_handle-%}
+							{%include 'blog_list_media_item', article: art%}
+							{%assign count = count | plus: 1-%}
+							{%if count == article_related_list_limit-%}
+							{%break-%}
+							{%endif-%}
+							{%endif-%}
+							{%endfor-%}
+						</div>
+					</div>
+				</div>
+				{%endif-%}
+				{%endcapture -%}
+				
+				{%if linklists[settings.aside_category_blog_menu] or settings.blogs_aside_enable -%}
+				{%assign showSidebar = true -%}
+				{%endif-%}
+			
+				<section class="right-content col-lg-9 col-md-12 col-sm-12 col-xs-12 py-3 mx-auto">
+					<article class="article-main">
+						<div class="article-details">
+							
+							<h1 class="article-title title_page">{{ article.title }}</h1>
+							<div class="media ">
+								<div class="media-body ">
+									<div class='mt-0'>{{article.author}}</div>
+									<small class='text-muted font-weight-light'>
+										{{ article.published_at | date:'%a %d/%m/%Y' }}	  
+									</small>  
+								</div>
+							</div>
+							<div class="article-content">
+								<div class="rte"  id="ega-uti-editable-content" data-platform='haravan' data-id="{{article.id}}" data-blog-id={{blog.id}}>
+									{%if article.content and article.content != ''%}
+									{{article.content-}}
+									{%else -%}
+									<p class="ega-color--secondary">
+										Nội dung "{{article.title}}" đang được cập nhật
+									</p>
+									{%endif-%}
+								</div>
+							</div>
+						</div>
+						<div class="tag-share">
+							<div class="row">
+								{%if article.tags.size >0%}
+								<div class=" col-12 tags-list">
+									<div class="inline-block">
+										<i class="fa fa-tags"></i>
+										&nbsp;<b>Tags:</b>
+										{% for tag in article.tags %}
+										<div class="tag_list d-inline-block">
+											<a href="/blogs/all/tagged/{{ tag | handle }}" title="{{tag}}" class="badge badge-secondary px-2 font-weight-normal ml-2 mt-2 ">{{ tag }}</a>
+
+										</div>
+										{% endfor %}
+									</div>
+								</div>
+								{%endif%}
+								{%if settings.article_social_enable%}
+								<div class="col-12 share_social mt-3">
+									<div class="addthis_inline_share_toolbox share_add {%if  article.tags.size > 0%}tag{%else%}no-tag{%endif%}">
+										<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-58589c2252fc2da4"></script>
+									</div>
+								</div>
+								{%endif%}
+							</div>
+						</div>
+						<div class="section clearfix mt-3">
+							{% if blog.comments_enabled %}
+							<div class="w-100 clearfix">
+								{% form "article_comments", article %} 
+								{% if comment and comment.created_on %}
+								<p class="alert alert-success">
+									{% if blog.moderated %} 
+									Bạn đã đăng bình luận thành công. Chúng tôi sẽ đăng bình luận của bạn sau khi được kiểm duyệt. 
+									{% else %} 
+									Bạn đã đăng bình luận thành công. Xin cảm ơn! 
+									{% endif %}
+								</p>
+								{% endif %}
+
+								{% if form.errors.size > 0 %}
+								<div class="alert alert-danger">{{ form.errors | default_errors }}</div>
+								{% endif %}
+								<div class="form-coment clear-fix">
+									<div class="margin-top-0 margin-bottom-30 w-100">
+										<h5 class="title-form-coment">Viết bình luận của bạn</h5>
+									</div>
+									<div class="row">
+										<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+											<fieldset class="form-group padding-0">
+												<input placeholder="Họ tên" type="text" class="form-control " value="{{ customer.name }}" id="full-name" name="comment[author]" Required>
+											</fieldset>
+										</div>
+										<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+											<fieldset class="form-group padding-0">	
+												<input placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$" type="email" class="form-control " value="{{ customer.email }}" name="comment[email]" Required>
+											</fieldset>
+										</div>
+										<fieldset class="form-group padding-right-15 padding-left-15 col-lg-12 col-md-12 col-sm-12 col-xs-12">	
+											<textarea placeholder="Nội dung" class="form-control " id="comment" name="comment[body]" rows="6" Required>{{ form.body }}</textarea>
+										</fieldset>
+										<div class="col-12 text-center margin-bottom-fix margin-bottom-50-article clearfix padding-right-15 padding-left-15">
+											<button type="submit" class="btn btn-action button_45 m-auto">Gửi bình luận</button>
+										</div>
+									</div>
+								</div> <!-- End form mail -->
+								{% endform %}
+								{% if article.comments_count > 0 %}
+								{% paginate article.comments by 5%} 
+								<div id="article-comments">
+									<h5 class="margin-bottom-25 mt-3 mb-3">Bình luận {% if article.comments_count > 0 %}<span>({{ article.comments_count }})</span>{% endif %}</h5>
+									{% for comment in article.comments %}							
+									<div class="article-comment clearfix media py-3">
+										<figure class="article-comment-user-image mr-3">
+											<img src="https://www.gravatar.com/avatar/{{ comment.email | remove: ' ' | strip_newlines | downcase | md5 }}?s=110&d=identicon" alt="binh-luan" class="block">
+										</figure>
+
+										<div class="article-comment-user-comment media-body">
+											<p class="user-name-comment mb-2"><strong>{{ comment.author }}</strong>
+												<a href="#article_comments" class="btn-link pull-xs-right hidden">Trả lời</a></p>
+											<small class="article-comment-date-bull">{{ comment.created_on | date:'dd/MM/yyyy' }}</small>
+											<p class="cm">{{ comment.content }}</p>
+
+										</div>
+									</div> 
+									{% endfor %}   
+								</div>
+								<div class="text-center article_page section paginate_center">
+									{% if paginate.pages > 1 %}
+									{% include 'paginate-pages' %}
+									{% endif %}
+								</div>
+								{%endpaginate%}
+								{% endif %}
+
+							</div>
+							{% endif %}
+						</div>
+
+					</article>
+				</section>
+				{%if showSidebar -%}
+				<div class="sidebar left-content col-lg-3 col-12">
+					{% include 'sidebar-blog' %}
+				</div>
+				{%endif%}
+			</div>
+		</div>
+	</div>
+</section>

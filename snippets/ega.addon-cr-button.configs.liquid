@@ -1,0 +1,23 @@
+<script>
+	window['cro-btn'] = {
+		shop :'{{shop.permanent_domain |replace: "https://" }}',
+		platform: 'haravan',
+		moneyFormat: '{% raw %}{{amount_no_decimals}}₫{% endraw %}',
+		shopId: '6232e7234956090014feb7b7',
+		appId:'6094bb2baae889149a94349d',
+		currentTemplate: '{{template}}',
+		platformApi: Haravan,
+		scripts: [],
+		lang: {
+		"email_invalid": "Email không đúng định dạng",
+        "phone_invalid": "Số điện thoại không đúng định dạng",
+        "require_invalid": "Vui lòng điền trường này",
+        "unavailable": "Liên hệ"
+		}
+	}
+    {%if template contains 'product' -%}
+    window['cro-btn'].productHandle = '{{product.url}}'
+    {%endif-%}
+	 window.egany = 	window.egany || {}
+	 !function(){"use strict";function n(n){if(!n||window.CroBtnInited)return;window.CroBtnInited=!0;let t=window["cro-btn"].scripts.find((n=>"cro-btn"==n.name));t&&window.loadCroScript(t.url)}window.loadCroScript=n=>{var t=document.getElementsByTagName("head").item(0),e=document.createElement("script");e.setAttribute("src",n),t.appendChild(e)},window.initCRO=t=>{window.addEventListener("mousemove",(()=>{n(t)}),{once:!0}),window.addEventListener("touchstart",(()=>{n(t)}),{once:!0}),window.addEventListener("scroll",(()=>{n(t)}),{once:!0})}}();
+</script>

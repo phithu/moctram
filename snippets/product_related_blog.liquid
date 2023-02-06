@@ -1,0 +1,59 @@
+{% assign tags = product.tags -%}
+{% assign is_show_blog = false -%}
+{% assign tag_prefix = settings.product_related_blog_tag_prefix | append: '_' -%}
+{% assign tag_related = '' -%}
+
+{% for tag in tags -%}
+{% if tag contains tag_prefix -%}
+{% assign tag_related = tag -%}
+{% break -%}
+{% endif -%}
+{% endfor -%}
+
+<div class='product-related-blog'>
+	<h2 class='heading-bar__title justify-content-center' 
+		style='background-color: {{settings.product_related_blog_heading_bg}}; color: {{settings.product_related_blog_heading_color}}'>
+		{{settings.product_related_blog_heading}}
+	</h2>
+	<div class='product-related-blog__items card border-0'></div>
+</div>
+
+<script>
+	const tagRelated = '{{tag_related | handleize}}';
+	const alternativeBlog = '{{settings.product_related_blog_alternative}}';
+	
+	function hideBlogOrShowAlternative() {
+		{% if settings.use_product_related_blog_alternative and settings.product_related_blog_alternative and settings.product_related_blog_alternative != '' -%}
+			getAlternativeBlog();
+		{% else -%}
+		hideBlog()
+		{% endif -%}
+	}
+	
+	function hideBlog() {
+		$('.product-content').removeClass('col-md-8')
+		$('.product-right').hide();
+	}
+	
+	function getAlternativeBlog() {
+		$.get('/blogs/' + alternativeBlog + '?view=related_tag').then(response => {
+			if(response && response.length) {
+				$(".product-related-blog__items").html(response);
+			} else {
+				hideBlogOrShowAlternative()
+			}
+		})
+	}
+	
+	if (tagRelated !== '') {
+		$.get('/blogs/all/tagged/' + tagRelated + '?view=related_tag').then(response => {
+			if(response && response.length) {
+				$(".product-related-blog__items").html(response);
+			} else {
+				hideBlog();
+			}
+		})
+	} else {
+		hideBlogOrShowAlternative();
+	}
+</script>

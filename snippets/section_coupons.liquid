@@ -1,0 +1,62 @@
+<link rel="preload" as='style' type="text/css" href="{{ 'coupon.css' | asset_url }}">
+
+<link rel="stylesheet" href="{{ 'coupon.css' | asset_url }}" >
+
+{% assign countItem  = 0 -%}
+{% capture items -%}
+{% for i in (1..8) -%}
+
+{% capture coupon_show -%}coupon_{{i-}}_home_show{% endcapture -%}
+{% assign show = settings[coupon_show] -%}
+{% if template contains 'collection' -%}
+{% capture coupon_coll -%}coupon_{{i-}}_coll{% endcapture -%}
+{% assign show =false -%}
+{% if settings[coupon_show] and (settings[coupon_coll] contains collection.handle or settings[coupon_coll] == blank or settings[coupon_coll] == '') -%}
+{% assign show = true -%}
+{% endif -%}
+{% endif -%}
+{% capture coupon_link -%}coupon_{{i-}}_link{% endcapture -%}
+{% capture coupon_text -%}coupon_{{i-}}_text{% endcapture -%}
+{% capture coupon_desc -%}coupon_{{i-}}_desc{% endcapture -%}
+{% capture coupon_info -%}coupon_{{i-}}_info{% endcapture -%}
+{% capture coupon_code -%}coupon_{{i-}}_code{% endcapture -%}
+{% capture coupon_imgshow -%}coupon_{{i-}}_imgshow{%endcapture-%}
+{% capture coupon_img -%}coupon_{{i-}}_img.png{%endcapture-%}
+
+{% if show -%} 
+{% assign countItem  = countItem | plus: 1-%}
+{% assign title = settings[coupon_text] -%}
+{% assign desc =  settings[coupon_desc] -%}
+{% assign info =  settings[coupon_info] -%}
+{% assign link = settings[coupon_link] -%}
+{% assign code =  settings[coupon_code] -%}
+{% assign showImage = settings[coupon_imgshow] -%}
+<div class="{%if template contains 'cart' or template contains 'product' %} col-12 mt-3{%else%} col-md-5 col-lg-6 col-9{% if settings.section_coupon_item_per_row == '3' %} col-xl-4{% else %} col-xl-3{% endif %}{%endif%}">
+	{% include 'coupon-item' -%}
+</div>
+{% endif -%}
+{% endfor -%}
+{% endcapture -%}
+{% case countItem -%}
+{% when 1 -%}
+{% assign class = 'justify-content-center' -%}
+{% when 2 -%}
+{% assign class = 'justify-content-start justify-content-md-center' -%}
+{% when 3 -%}
+{% assign class = 'justify-content-start justify-content-lg-center' -%}
+{% else -%}
+{% assign class = 'justify-content-xl-center' -%}
+{% endcase -%}
+
+{% assign couponCount = countItem -%}
+<div class="section_coupons">
+	<div class="container">
+			<div class="row scroll {{class}}">
+				{{couponMetafieldHtml-}}
+				{{items}}
+			</div>
+	</div>
+</div>
+{% include 'coupon-modal' -%}
+
+{% include 'coupon-script' -%}

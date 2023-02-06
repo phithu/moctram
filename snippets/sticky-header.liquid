@@ -1,0 +1,45 @@
+<header class="header header_sticky">
+
+	<div class="mid-header wid_100 d-flex align-items-center">
+		<div class="container">
+
+			<div class="row align-items-center">
+				<div class="col-2 col-md-3 header-left d-lg-none d-block py-1">
+					<div class="toggle-nav btn menu-bar mr-4 ml-0 p-0  d-lg-none d-flex text-white">
+						<span class="bar"></span>
+						<span class="bar"></span>
+						<span class="bar"></span>
+					</div>
+				</div>
+				<div class="col-4 col-xl-3 col-lg-3  header-left d-none d-lg-flex align-items-center h-100">
+
+					<div class="toogle-nav-wrapper w-100 " >
+						<div class=" d-flex align-items-center" style="height: 52px; font-size: 1rem; font-weight: 500">
+							<div class="icon-bar btn menu-bar mr-3 ml-0 p-0 d-inline-flex">
+							<span class="bar"></span>
+							<span class="bar"></span>
+							<span class="bar"></span>
+						</div>
+						Danh mục sản phẩm
+						</div>
+						
+						<div class="navigation-wrapper">
+							{%include 'main-nav' %}
+						</div>
+						
+					</div>
+					<div class="sticky-overlay">
+						
+					</div>
+				</div>
+				<div class=" col-8 col-md-6 col-lg-4 col-xl-4 header-center py-1" id="search-header">
+					{%include 'search-bar'%}
+				</div>
+				<div class="col-2 col-md-3 col-xl-5  col-lg-5 py-1">
+					{%include 'header-right'%}
+				</div>
+			</div>
+		</div>
+	</div>
+
+</header>

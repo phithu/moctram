@@ -1,0 +1,21 @@
+<div class="topbar">
+	<div class="container px-md-0 ">
+		<div class="row justify-content-between">
+			<div class="col-12 col-md-6">
+				<a class="link" href="{{settings.topbar_link}}" title="{{settings.topbar_content}}">
+					{{settings.topbar_content}}
+				</a>
+			</div>
+
+			<div class="d-none d-lg-flex align-items-center justify-content-end col-12 col-md-6 ">
+				<span class="d-inline-block mr-2">  
+					Email:  <a class="link" href="mail:{{settings.email_header | default:shop.customer_email }}" title="{{settings.email_header | default:shop.customer_email }}">
+					{{settings.email_header | default:shop.customer_email }}
+					</a></span>
+				<span class="d-inline-block mr-2"> Hotline:<a class="link" href="tel:{{settings.phone_header | default: shop.phone_number | remove: ' '}}" title="{{settings.phone_header | default: shop.phone_number}}">
+					{{settings.phone_header | default: shop.phone_number}}
+					</a></span>
+			</div>
+		</div>
+	</div>
+</div>

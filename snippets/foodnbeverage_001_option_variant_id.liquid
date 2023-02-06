@@ -1,0 +1,33 @@
+{%assign money0 = '0' | money %} 
+
+{%assign no_variant_available = true%}
+{% for variant in product.variants %}
+	{%assign variant_price = variant.price | money %}												
+	{%if variant_price != money0%}	
+	{%assign no_variant_available = false %}
+	{%break%} 
+	{%endif%}		
+{%endfor%}
+
+{%if no_variant_available %} 
+	{% for variant in product.variants %}
+		<option {%if forloop.index0 == 0 %}selected{%endif%} value="{{ variant.id }}" class="">{{ variant.title }} - {{ variant.price | money }}</option>   
+	{%endfor%} 
+{%else%}
+	{%assign first_variant_finding = true %}
+	{% for variant in product.variants %}
+		{%assign variant_price = variant.price | money %}												
+		{%if first_variant_finding %}
+			{%if variant_price != money0%}
+				<option selected value="{{ variant.id }}" class="">{{ variant.title }} - {{ variant.price | money }}</option>  
+				{%assign first_variant_finding = false %}
+			{%else%}
+				<option value="{{ variant.id }}" class="">{{ variant.title }} - {{ variant.price | money }}</option>   
+			{%endif%} 
+		{%else%}
+			<option value="{{ variant.id }}" class="">{{ variant.title }} - {{ variant.price | money }}</option>   
+		{%endif%} 
+	{% endfor %}
+{%endif%}
+
+

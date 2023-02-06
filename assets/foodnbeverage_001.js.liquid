@@ -1,0 +1,365 @@
+/********/
+var CLASS = {
+	_active: 'js-active',
+};
+
+var APPFE = {
+	init: function () {
+		this.waypoint.init();
+	}
+};
+
+$(document).ready(function () {
+	APPFE.init();
+	setLink();
+	hoverLink();
+});
+
+APPFE.waypoint = {
+
+	init: function () {
+		this.wayDown();
+		this.wayUp();
+		this.wayNext();
+		this.wayPrev();
+		this.wayZoom();
+	},
+
+	wayDown: function () {
+
+		var target = $('.way-down'),
+				item   = {},
+				delay  = 0;
+
+		TweenMax.set(target, {
+    	alpha: 0,
+    	y: 50
+    });
+
+		target.waypoint({
+		  handler: function(direction) {
+			  item = $(this.element);
+			  delay = parseInt(item.data('delay')) / 1000;
+
+				if (direction == 'down') {
+					TweenMax.to(item, 0.45, {
+						alpha: 1,
+						y: 0,
+						delay: delay,
+						force3D: true,
+						ease: Circ.easeOut
+					});
+				} else {
+					TweenMax.to(item, 0.45, {
+						alpha: 0,
+						y: 50,
+						delay: delay,
+						force3D: true,
+						ease: Power1.easeOut
+					});
+				}
+		  },
+		  offset: '75%'
+		});
+
+	},
+
+	wayUp: function () {
+
+		var target = $('.way-up'),
+				item   = {},
+				delay  = 0;
+
+		TweenMax.set(target, {
+    	alpha: 0,
+    	y: -50
+    });
+
+		target.waypoint({
+		  handler: function(direction) {
+			  item = $(this.element);
+			  delay = parseInt(item.data('delay')) / 1000;
+
+				if (direction == 'down') {
+					TweenMax.to(item, 0.45, {
+						alpha: 1,
+						y: 0,
+						delay: delay,
+						force3D: true,
+						ease: Circ.easeOut
+					});
+				} else {
+					TweenMax.to(item, 0.45, {
+						alpha: 0,
+						y: -50,
+						delay: delay,
+						force3D: true,
+						ease: Power1.easeOut
+					});
+				}
+		  },
+		  offset: '75%'
+		});
+
+	},
+
+	wayNext: function () {
+
+		var target = $('.way-next'),
+				item   = {},
+				delay  = 0;
+
+		TweenMax.set(target, {
+    	alpha: 0,
+    	x: -50
+    });
+
+		target.waypoint({
+		  handler: function(direction) {
+			  item = $(this.element);
+			  delay = parseInt(item.data('delay')) / 1000;
+
+				if (direction == 'down') {
+					TweenMax.to(item, 0.45, {
+						alpha: 1,
+						x: 0,
+						delay: delay,
+						force3D: true,
+						ease: Circ.easeOut
+					});
+				} else {
+					TweenMax.to(item, 0.45, {
+						alpha: 0,
+						x: -50,
+						force3D: true,
+						ease: Power1.easeOut
+					});
+				}
+		  },
+		  offset: '75%'
+		});
+
+	},
+
+	wayPrev: function () {
+
+		var target = $('.way-prev'),
+				item   = {},
+				delay  = 0;
+
+		TweenMax.set(target, {
+    	alpha: 0,
+    	x: 50
+    });
+
+		target.waypoint({
+		  handler: function(direction) {
+			  item = $(this.element);
+			  delay = parseInt(item.data('delay')) / 1000;
+
+				if (direction == 'down') {
+					TweenMax.to(item, 0.45, {
+						alpha: 1,
+						x: 0,
+						delay: delay,
+						force3D: true,
+						ease: Circ.easeOut
+					});
+				} else {
+					TweenMax.to(item, 0.45, {
+						alpha: 0,
+						x: 50,
+						force3D: true,
+						ease: Power1.easeOut
+					});
+				}
+		  },
+		  offset: '75%'
+		});
+
+	},
+
+	wayZoom: function () {
+
+		var target = $('.way-zoom'),
+				item   = {},
+				delay  = 0;
+
+		TweenMax.set(target, {
+    	alpha: 0,
+    	scale: 0,
+    });
+
+		target.waypoint({
+		  handler: function(direction) {
+			  item = $(this.element);
+			  delay = parseInt(item.data('delay')) / 1000;
+
+				if (direction == 'down') {
+					TweenMax.to(item, 0.45, {
+						alpha: 1,
+						scale: 1,
+						delay: delay,
+						force3D: true,
+						ease: Circ.easeOut
+					});
+				} else {
+					TweenMax.to(item, 0.45, {
+						alpha: 0,
+						scale: 0,
+						force3D: true,
+						ease: Power1.easeOut
+					});
+				}
+		  },
+		  offset: '75%'
+		});
+
+	},
+
+}
+
+function setLink() {
+	var btnBush = $('.line-link'),
+			strong = {},
+			iLine = {},
+			wBush = 0;
+
+	btnBush.each(function (index, el) {
+		wBush = $(el).find('strong').outerWidth();
+		iLine = $(el).find('b');
+    $(el).css({
+			minWidth: wBush
+		});
+		iLine.css({
+			minWidth: wBush
+		});
+	});
+}
+
+function hoverLink() {
+	var isAnimate = false,
+			btnBush = $('.line-link');
+
+	btnBush.hover(function () {
+		if (isAnimate) return;
+		isAnimate = true;
+		$(this).find('span').css({width: 0});
+		TweenMax.to($(this).find('.line-1'), 0.4, {
+			width: '100%',
+			delay: 0.1,
+			ease: Back.easeOut
+		});
+
+		TweenMax.to($(this).find('.line-2'), 0.4, {
+			width: '100%',
+			delay: 0.3,
+			ease: Back.easeOut,
+			onComplete: function () {
+				isAnimate = false;
+			}
+		});
+	});
+}
+
+
+$(document).ready(function(){
+	// scroll menu
+	var $root = $('html, body');
+	$('header ul li a, .target-link, .line-link').click(function() {
+		var padding = 92;
+		if ($('header.affix').length == 0) {
+			padding = 183;
+		}
+		if($(window).width() < 768){
+			var padding = 45;
+			if ($('header.affix').length == 0) {
+				padding = 90;
+			}
+		}
+
+		var location = $($.attr(this, 'href')).offset().top - padding;
+
+		$root.animate({
+			scrollTop: location
+		}, 500);
+		return false;
+	});
+
+	// menu mobile
+	$('.toggle-nav').click(function(){
+		$(this).parent().toggleClass('header--mb--open');
+	})
+
+	// product detail
+	var pd_handle = "{{ settings.foodnbeverage_001__product__handle }}";
+	if(pd_handle != ""){
+		$.ajax({
+			url : '/products/' + pd_handle + '?view=foodnbeverage_001',
+			async : false,
+			success :function(html){
+				$('#section-detail').html(html);
+			}
+		});
+	}
+
+	// Flash-sale
+	{%if settings.foodnbeverage_001__clock__show%}
+	var targetMonth = {{ settings.foodnbeverage_001__clock__month }}, 
+			targetDay = {{ settings.foodnbeverage_001__clock__day }}, 
+			targetYear = {{ settings.foodnbeverage_001__clock__year }}, 
+			targetTime = "{{ settings.foodnbeverage_001__clock__time }}",
+			ele = $('.countdown-clock');
+
+	flashSale(ele,targetMonth,targetDay,targetYear,targetTime);
+	{%endif%}
+
+	function flashSale(ele,m,d,y,t){
+		// Countdown
+		//var targetMonth = 10, targetDay = 10, targetYear = 2018, targetTime = '16:59:59';
+		var target = m + '/' + d + '/' + y + ' ' + t;
+		var targetDate = new Date(target).getTime(); 
+		// variables for time units 
+		var days, hours, minutes, seconds; 
+		// get tag element 
+		//var countDown = document.getElementById("countdown"); 
+		// update the tag with id "countdown" every 1 second 
+		var timer = setInterval(function () { 
+			//debugger;
+			// find the amount of "seconds" between now and target 
+			var currentDate = new Date().getTime(); 
+			if (targetDate <= currentDate) {
+				clearInterval(timer);
+			} else {
+				var secondsLeft = (targetDate - currentDate) / 1000; 
+				// do some time calculations 
+				days = parseInt(secondsLeft / 86400); 
+				secondsLeft = secondsLeft % 86400; 
+				hours = parseInt(secondsLeft / 3600); 
+				secondsLeft = secondsLeft % 3600; 
+				minutes = parseInt(secondsLeft / 60); 
+				seconds = parseInt(secondsLeft % 60); 
+				if(minutes < 10) minutes = "0" + minutes;
+				if (seconds < 10) seconds = "0" + seconds;
+				if (days < 10) days = "0" + days;
+				if (hours < 10) hours = "0" + hours; 
+				// format countdown string + set tag value 
+				var time_format = '<ul><li><div class=\"time-part\">' + days + '<span>Ngày</span></div></li>'
+				+ '<li><div class=\"time-part\">' + hours + '<span>Giờ</span></div></li>'
+				+ '<li><div class=\"time-part\">' + minutes + '<span>Phút</span></div></li>'
+				+ '<li><div class=\"time-part\">' + seconds + '<span>Giây</span></div></li></ul>';
+
+        ele.html(time_format);
+			}
+		}, 1000);
+	}
+})
+
+
+
+
+
+
+
+
+

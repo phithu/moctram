@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="vi">
+	<head>
+		{%-comment-%}CONSTANT{%-endcomment-%}
+		{%-assign ega_prefix = 'foodnbeverage_001'-%}
+		{%-capture ega_head_meta_snippet-%}{{- ega_prefix -}}_head_meta{%-endcapture-%}
+		{%-capture ega_fb_share_snippet-%}{{- ega_prefix -}}_fb_share{%-endcapture-%}
+		{%-capture ega_master_css_snippet-%}{{- ega_prefix -}}_master_css{%-endcapture-%}
+		{%-capture ega_lazycss_snippet-%}{{- ega_prefix -}}_lazycss{%-endcapture-%}
+		{%-capture ega_master_js_snippet-%}{{- ega_prefix -}}_master_js{%-endcapture-%}
+		{%-capture ega_css_file-%}{{- ega_prefix -}}.scss.css{%-endcapture-%}
+		{%-capture ega_vendors_js_file-%}{{- ega_prefix -}}_vendors.min.js{%-endcapture-%}
+		{%-capture ega_js_file-%}{{- ega_prefix -}}.js{%-endcapture-%}
+		{%-comment-%}END CONSTANT{%-endcomment-%}
+
+		{%-assign ega_theme_color = settings.foodnbeverage_001__theme__main_color-%}
+		{%-assign ega_tile_color = settings.foodnbeverage_001__theme__main_color-%}
+		{%-assign ega_fav = 'foodnbeverage_001_favicon.png' | asset_url-%}
+		{%-include ega_head_meta_snippet-%}
+		{%-include ega_fb_share_snippet-%}
+		{{- 'ega-global.css' | asset_url | stylesheet_tag -}}
+		{%-include 'ega-font-icon'-%}
+		{{ content_for_header }}
+	</head>
+	<body id='{{- ega_prefix | handleize -}}'>
+		<div id="fb-root"></div>
+		<script>(function(d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) return;
+			js = d.createElement(s); js.id = id;
+			js.src = 'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v3.1';
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));</script>
+
+		{{ content_for_layout }}
+
+		{%-capture settings_arr-%}{{ settings }}{%-endcapture-%}
+		{%-assign settings_arr = settings_arr | split: ']['-%}
+		{%-capture result-%}
+		{
+		{%-for setting in settings_arr-%}
+		{%-assign setting_json = setting | split: ','-%}
+		{%-if setting_json[0] contains 'foodnbeverage_001'-%}
+		,"{{setting_json[0] | remove: '['}}" : {{ setting | remove: ']' | remove: setting_json[0] | json | remove_first: ', ' }}
+		{%-endif-%}
+		{%-endfor-%}
+		}
+		{%-endcapture-%}
+		<input type="hidden" id="ega_layout_setting" value='{{ result | remove_first: "," }}'>
+		<input type="hidden" id="ega_layout_prefix" value="foodnbeverage_001">
+
+		{%-include ega_master_css_snippet-%}
+		{%-include ega_lazycss_snippet-%}
+		{%-include ega_master_js_snippet-%}
+	</body>
+</html>

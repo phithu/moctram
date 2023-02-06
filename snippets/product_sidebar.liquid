@@ -1,0 +1,26 @@
+{% assign product_count = collections[settings.product_sidebar_url]products_count %}
+{% if product_count > 0 -%}
+{%capture titleStyle-%}
+	font-size: 1rem;
+	color: #fff;
+	padding: 10px;
+	border-radius: 8px 8px 0 0;
+	margin: 0px;
+	background: var(--primary-color);
+	margin-bottom :0.75rem;
+{%endcapture -%}
+	<div class="product-sidebar">
+		<div class="">
+			<h3 class="product-sidebar__title text-center" style="{{titleStyle-}}">
+				<a style="font-size: 1rem; color: #fff" href="/{{settings.product_sidebar_url}}" title="{{settings.product_sidebar_title}}" > {{settings.product_sidebar_title}} </a>
+			</h3>
+		</div>
+		<div class="product-sidebar-title">
+			{% for product in collections[settings.product_sidebar_url].products limit: {{settings.product_sidebar_limit}}%}
+				<div class="item_product_main product--media">
+						{% include 'product_grid_office' %}
+				</div>
+			{% endfor -%}
+		</div>
+	</div>
+{%endif -%}

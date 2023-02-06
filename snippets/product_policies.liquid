@@ -1,0 +1,23 @@
+<div class="product-policises-wrapper">
+<ul class="product-policises list-unstyled py-sm-3 px-sm-3 m-0">
+	{%for i in (1..4) -%}
+	{%capture policy_product_use -%}policy_product_use_{{i}}{%endcapture -%}
+	{%capture policy_product_title -%}policy_product_title_{{i}}{%endcapture -%}
+	{%capture policy_product_image -%}policy_product_image_{{i}}.png{%endcapture -%}
+	{%if settings[policy_product_use] -%}
+	<li class="media">
+		<div  class="mr-2">
+			<img class="img-fluid " 
+				 loading="lazy"
+				 width="24"
+				 height="24"
+				 src="{{ policy_product_image | asset_url}}" alt="{{settings[policy_product_title]}}">
+		</div>
+		<div class="media-body"> 
+			{{settings[policy_product_title]}}
+		</div>
+	</li>
+	{%endif -%}
+	{%endfor -%}
+</ul>
+</div>

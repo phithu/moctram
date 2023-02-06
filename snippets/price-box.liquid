@@ -1,0 +1,116 @@
+<div class="price-box">
+	{%assign price = product.variants[0].price  -%}
+	{%assign compare_at_price = product.variants[0].compare_at_price  -%}
+	{%if on_var and product.selected_or_first_available_variant.available -%}
+	{% assign price = product.selected_or_first_available_variant.price -%}
+	{% assign compare_at_price = product.selected_or_first_available_variant.compare_at_price  -%}
+	{%endif-%}
+	{%if price == 0 -%}
+	{%assign contact = true -%}
+	{%endif -%}
+	{% if compare_at_price > price %}
+	{% capture discount %} 
+	{{compare_at_price | minus:price | times:100 | divided_by:compare_at_price | round }}% 
+	{% endcapture %}
+	{% assign pt = compare_at_price | minus:price | times:100 | divided_by:awe-compare-price%}
+	{% if pt > 99 %}
+	{% capture discount -%}
+	99%
+	{% endcapture %}
+	{% endif%}
+	{% if pt < 1 %}
+	{% capture discount -%}
+	1%
+	{% endcapture %}
+	{% endif %}
+	{% assign on_sale = true %}
+	{% endif %}
+	{% assign variantCount = product.variants | size %}
+	{% assign on_var = false %}
+	{% if variantCount > 1 %}
+	{% assign on_var = true %}
+	{% endif %}
+
+	{% if compare_at_price > price %}
+	{% capture discount -%} 
+	-{{compare_at_price | minus:price | times:100 | divided_by:compare_at_price | round }}% 
+	{% endcapture -%}
+	{% assign pt = compare_at_price | minus:price | times:100 | divided_by:compare_at_price -%}
+	{% if pt > 99 %}
+	{% capture discount -%}
+	-99%
+	{% endcapture -%}
+	{%endif%}
+	{% if pt < 1 %}
+	{% capture discount -%}
+	1%
+	{% endcapture -%}
+	{% endif %}
+	{% assign on_sale = true %}
+	{% endif %}
+	{%if on_var and price > 0%}
+
+	<span class="special-price"><span class="price product-price" >
+		{{ price | money }}
+		</span> 
+	</span> <!-- Giá Khuyến mại -->
+	<span class="old-price">
+		<del class="price product-price-old">
+			{% if compare_at_price > price %}
+			{{ compare_at_price | money }}
+			{% endif %}
+		</del> 
+	</span> 
+	
+	{% if compare_at_price > price %}
+	<div class="label_product">
+		{{discount -}}
+	</div>
+	<div class="save-price">
+		(Tiết kiệm: <span>{{compare_at_price | minus : price | money }}</span>)
+	</div>
+	{%else%}
+		<div class="label_product" style="display:none">
+	</div>
+	<div class="save-price">
+	</div>
+	{% endif %}
+	<!-- Giá gốc -->
+	{%elseif contact%}
+	<div class="special-price"><span class="price product-price">Liên hệ </span> </div> 
+	<span class="old-price">
+		<del class="price product-price-old sale"></del> 
+	</span> 
+	<div class="label_product" style="display:none">
+	</div>
+	<div class="save-price">
+	</div>
+	<!-- Hết hàng -->
+	{%elseif compare_at_price > price%}
+	<span class="special-price"><span class="price product-price">{{ price | money }}</span> 
+	</span> <!-- Giá Khuyến mại -->
+	<span class="old-price">
+		<del class=" product-price-old sale">{{ compare_at_price | money }}</del> 
+	</span> <!-- Giá gốc -->
+	{% if compare_at_price > price %}
+	<div class="label_product">
+		{{discount -}}
+	</div>
+	<div class="save-price">
+		(Tiết kiệm: <span>{{compare_at_price | minus : price | money }}</span>)
+	</div>
+	{% endif %}
+	{% else %}
+	<div class="special-price"><span class="price product-price">{{ price | money }}</span> 
+	</div> 
+	<span class="old-price">
+		<del class="price product-price-old sale"></del> 
+	</span> 
+	<div class="label_product" style="display:none">
+	</div>
+	<div class="save-price">
+	</div>
+	<!-- Giá -->
+	{% endif %}
+
+</div>

@@ -1,0 +1,198 @@
+<script>
+	{% assign delivery_attr_key = 'Thời gian giao hàng' %}
+	function updateVAT() { 
+		debugger;
+		$('.btn-checkout').addClass('disabled');
+		var invoice = $('input[name="attributes[invoice]"]').val();
+		var company = $('input[name="attributes[company_name]"]').val();
+		var address = $('[name="attributes[company_address]"]').val();
+		var tax = $('input[name="attributes[tax_code]"]').val();
+		var email_company = $('input[name="attributes[invoice_email]"]').val();
+		var cart_info = {
+			'{{invoice}}': invoice,
+			'{{company_name}}': company,
+			'{{company_address}}': address,
+			'{{tax_code}}': tax,
+			'{{invoice_email}}': email_company
+		};
+
+		Cookies.set('cart_info', {
+			'company': company,
+			'address': address,
+			'tax': tax,
+			'email_company': email_company,
+			'email': email_company
+		});
+		var attributes = Object.keys(cart_info).reduce(function(result, info) {
+			if (cart_info[info] !== "") {
+				return {
+					...result,
+					...{
+						[info]: cart_info[info]
+					}
+				}
+			}
+			return result;
+		}, {})
+		var note = document.getElementById('note').value;
+		const deliveryAttr =    sessionStorage.getItem("ega-delivery-value") || '';
+		if (deliveryAttr !== '') {
+			attributes['{{delivery_attr_key}}'] = deliveryAttr;
+		}
+		var data = {};
+		if (note.trim() !== '') {
+			data.note = note;
+		}
+		if (invoice === 'có') {
+			data.attributes = attributes;
+		}
+		debugger;
+		if (note.trim() !== '' || invoice === 'có') {
+			var params = {
+				type: 'POST',
+				url: '/cart/update.js',
+				data: data,
+				dataType: 'json',
+				success: function(cart) {
+					window.location.href = '/checkout'
+				},
+				complete: function() {
+					setTimeout(function() {
+						$('.btn-checkout').removeClass('disabled');
+					}, 1000);
+				},
+				error: function(XMLHttpRequest, textStatus) {
+					Haravan.onError(XMLHttpRequest, textStatus);
+				}
+			};
+			jQuery.ajax(params);
+		} else {
+			window.location.href = '/checkout'
+		}
+	}
+
+	 if($('.r-bill .regular-checkbox').is(':checked')){
+		 $('.bill-field').show();
+	 }
+
+	 $(document).on('click', '.r-bill .regular-checkbox', 'click', function() {
+		 if($(this).is(':checked')) {
+			 $('#re-checkbox-bill').val('có');
+		 } else {
+			 $('#re-checkbox-bill').val('không');
+		 }
+		 $('.bill-field').stop(true, true).slideToggle(400);
+	 })
+
+	 /** PHan hoa don **/
+
+   function goToCheckout(e) {
+		 e.preventDefault();
+		 if($('.btn-proceed-checkout-mobile').hasClass('disabled')) {
+			 return;
+		 }
+		 
+		 {% if settings.use_cart_limit %}
+		  const totalPrice = $('.js-total-price').val();
+			if ((totalPrice/100) < Number('{{settings.cart_limit}}')) {
+				swal({
+					title: `{{settings.cart_limit_title}}`,
+					text: `{{settings.cart_limit_message}}`,
+					type: "warning",
+					className: 'cart-limit-modal',
+					button: '{{settings.cart_limit_confirm}}'
+				})
+				$('.cart-limit-alert').css('display', 'block');
+				return;
+			} else {
+				$('.cart-limit-alert').css('display', 'none');
+			}
+			{% endif %}
+		
+			{% if settings.use_cart_vat %}
+				 if ($('#checkbox-bill').is(':checked')) {
+					 var a = $(this);
+					 let isValidated = true;
+					 $('.val-f').each(function() {
+						 if ($(this).val() === '') {
+							 isValidated = false;
+						 } else {
+							 if($(this).hasClass('val-n')
+									&& $(this).val().trim().length < Number('{{settings.cart_vat_tax_min}}')) {
+								 isValidated = false;
+							 }
+							 if ($(this).hasClass('val-email')
+									 && !(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test($(this).val().trim()))) {
+									 isValidated = false;
+							 }
+						 }
+					 })
+
+					 if (isValidated) {
+						 swal({
+							 title: `{{settings.cart_vat_checked_title}}`,
+							 text: `{{settings.cart_vat_checked_description}}`,
+							 type: "warning",
+							 className: 'vat-checked-modal',
+							 buttons: ["{{settings.cart_vat_checked_cancel}}", "{{settings.cart_vat_checked_confirm}}"],
+						 }).then(function() {
+							 $('body').on('click', '.swal-button--confirm', function() {
+								 updateVAT();
+							 })
+						 });
+					 } else {
+						 $('.val-f').each(function() {
+							 if ($(this).val() === '') {
+							 if ($(this).next('span.text-danger').length == 0) {
+								 $(this).after('<span class="text-danger">{{settings.cart_vat_empty_message}}</span>');
+							 }
+						 } else {
+							 $(this).next('span.text-danger').remove();
+							 if($(this).hasClass('val-n')
+								 && $(this).val().trim().length < Number('{{settings.cart_vat_tax_min}}')) {
+								$(this).after('<span class="text-danger">{{settings.cart_vat_tax_min_message}}</span>');
+							}
+							if ($(this).hasClass('val-email')
+								 && !(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test($(this).val().trim()))) {
+								$(this).after('<span class="text-danger">{{settings.cart_vat_email_error_message}}</span>');
+							}
+							}
+							})
+					 }
+				 } else {
+					 {% if settings.cart_vat_unchecked_confirm_show %}
+						 swal({
+							 title: `{{settings.cart_vat_unchecked_title}}`,
+							 text: `{{settings.cart_vat_unchecked_description}}`,
+							 type: "warning",
+							 className: 'vat-unchecked-modal',
+							 buttons: ["{{settings.cart_vat_unchecked_cancel}}", "{{settings.cart_vat_unchecked_confirm}}"],
+						 }).then(function(){
+							 $('body').on('click', '.swal-button--confirm', function() {
+								 $('#checkbox-bill').val("no");
+								 $('input[name="attributes[company_name]"]').val('');
+								 $('input[name="attributes[company_address]"]').val('');
+								 $('input[name="attributes[tax_code]"]').val('');
+								 $('input[name="attributes[invoice_email]"]').val('');
+								 if (document.cookie.indexOf('cart_info') !== -1 ) {
+									 Cookies.remove('cart_info');
+								 }
+								 updateVAT()
+							 })
+						 });
+					{% else %}
+						 updateVAT()
+					 {% endif %}
+				 }
+				return;
+			 {% endif %}
+			 $('body').off('click', '.swal-button--confirm');
+				location.href = '/checkout'
+	 }
+
+	 /** end hoa don **/  
+</script>
+
+
+
+

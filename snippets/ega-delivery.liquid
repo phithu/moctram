@@ -1,0 +1,65 @@
+<link rel="stylesheet" href="{{'datepicker.css' | asset_url}}">
+<script src="{{'datepicker.js' | asset_url}}" defer></script>
+<script>
+	window.egaDeliveryValid = true;
+	window.EGADeliverySettings = {
+		"general": {
+			"enabled":true,
+			"title":"{{settings.delivery_heading}}",
+			"optionDefault":"{{settings.delivery_time_default}}",
+			"inputBackground":"#e6e6e6",
+			"inputColor":"#000000",
+			"startTime":"09:30",
+			"endTime":"21:00",
+			"waitTime":120,
+			"orderTime":30,
+			"orderTimeUnit":"1",
+			"query":".timedeli",
+			"position":"left",
+			"inputBorder":"#d1d1d2",
+			"datepickerBg":"#dcdcdc",
+			"labelDatePicker":"{{settings.delivery_date_title}}",
+			"labelTimePicker":"{{settings.delivery_time_title}}"
+		},
+		"advanced":
+		{
+			"enableTimeSlots": true,
+			{%assign options = settings.delivery_time | split: ';'%}
+			{%capture option%}
+			{%for opt in options%}
+			,{"title": "{{opt}}"}
+			{%endfor%}
+			{%endcapture%}
+			"timeSlots": [
+			{{option | replace_first: ',', ''}}
+			],
+			"availableDay": [
+			{
+			"name": "1"
+		},
+		{
+		"name": "2"
+	},
+		{
+		"name": "3"
+	},
+		{
+		"name": "4"
+	},
+		{
+		"name": "5"
+	},
+		{
+		"name": "6"
+	},
+		{
+		"name": "0"
+	}],
+	}
+	}
+
+	window.EGADeliverySettings.general = Object.assign(window.EGADeliverySettings.general,{
+		currentTemplate: "cart",
+		platform: Haravan
+	})
+</script>

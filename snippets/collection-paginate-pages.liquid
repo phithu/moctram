@@ -1,0 +1,58 @@
+<nav class="clearfix relative nav_pagi w_100">
+	<ul class="pagination clearfix float-right">
+		{%assign pageTotalMin = 10 -%}
+		{% if paginate.previous %}
+		<li class="page-item hidden-xs"><a class="page-link" onclick="doSearch({{ paginate.current_page | minus: 1 }})" 
+										   href="?{{search.terms}}&page={{ paginate.current_page | minus: 1 }}&view=grid"><i class="fa fa-angle-left" aria-hidden="true"></i>
+			</a></li>
+		{% else %}  
+		<li class="page-item disabled"><a class="page-link" href="#"><i class="fa fa-angle-left"></i></a></li>
+		{% endif %}
+		{%assign max = paginate.current_page  |plus: 1 -%}
+		{%assign min = paginate.current_page  | minus: 1 -%}
+		{% for part in paginate.parts %}
+		{%if paginate.parts.size > pageTotalMin and part.title  > max and part.title < paginate.parts.size -%}
+			{%continue%}
+		{%endif %}
+		{%if paginate.parts.size > pageTotalMin and part.title  < min and part.title < paginate.parts.size -%}
+			{%continue%}
+		{%endif %}
+		{%if paginate.parts.size > pageTotalMin and max != paginate.parts.size and forloop.last and part.title  != paginate.current_page  -%}
+			<li class=" page-item "><a class="page-link" href="?{{search.terms}}&page={{ paginate.current_page | plus: 2 }}&view=grid" 
+									   onclick="doSearch({{ paginate.current_page | plus: 2 }})">...</a></li>
+			{%if forloop.last == max | plus: 1 -%}
+				{%break%}
+			{%endif%}
+		{%endif -%}
+		{%if paginate.parts.size > pageTotalMin and  part.title  == min  and min > 1 -%}
+			<li class=" page-item "><a class="page-link" href="?{{search.terms}}&page={{ paginate.current_page | minus: 2 }}&view=grid" onclick="doSearch({{ paginate.current_page | minus: 2}})">...</a></li>
+		{%endif -%}
+		{% if part.is_link %}
+			<li class="page-item"><a class="page-link" onclick="doSearch({{ part.title }})" href="?{{search.terms}}&page={{ part.title  }}&view=grid">{{ part.title }}</a></li>
+		{% else %}
+			{% if part.title == paginate.current_page %}
+				<li class="active page-item disabled"><a class="page-link" href="javascript:;">{{ part.title }}</a></li>
+			{% else %}
+				<li class="page-item"><a class="page-link" href="javascript:;">{{ part.title }}</a></li>
+			{% endif %}
+		
+		{% endif %}
+		
+		{% endfor %}
+
+		{% if paginate.next %}
+		<li class="page-item hidden-xs"><a class="page-link" onclick="doSearch({{ paginate.current_page | plus: 1 }})" 
+										   href="?{{search.terms}}&page={{ paginate.current_page | plus: 1 }}&view=grid"><i class="fa fa-angle-right" aria-hidden="true"></i>
+			</a></li>
+		{% else %}
+		<li class="page-item disabled"><a class="page-link" href="#"><i class="fa fa-angle-right"></i></a></li>
+		{% endif %}
+	</ul>
+</nav>
+<script>
+	{%if paginate.current_page > 0%}
+	var cuPage = {{paginate.current_page}}
+		{%else%}
+		var cuPage = 0
+		{%endif%}
+</script>

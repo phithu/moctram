@@ -1,0 +1,16 @@
+<div class="section_banner_adv">
+	{% if settings.section_hot_banner -%}
+	<a class="banner" href="{{settings.section_hot_banner_link}}" title="{{settings.section_hot_banner_alt}}">
+		<picture>
+			<source media="(max-width: 600px)" srcset="{{ 'section_hot_banner.png' | asset_url | img_url:'grande' }}">
+			<img class="img-fluid" loading="lazy" 
+				 src="{{'section_hot_banner.png'|asset_url}}" 
+				 alt="{{settings.section_hot_banner_alt}}" 
+				 width="{{settings.section_hot_banner_width}}"
+				 height="{{settings.section_hot_banner_height}}"
+				 />
+		</picture>
+
+	</a>
+	{% endif -%}
+</div>

@@ -1,0 +1,10 @@
+{% layout none -%}
+{% if search.results.size > 0 -%}
+{% for product in search.results -%}
+<div class="product-col">
+	<div class="item_product_main item_product_main_relative">
+		{% include 'product_grid_office' -%}	
+	</div>
+</div>
+{% endfor -%}
+{% endif -%}

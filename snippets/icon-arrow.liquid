@@ -1,0 +1,15 @@
+{%capture transform -%}
+{% case dir -%}
+{% when 'left' -%}
+style="transform: rotate(180deg)"
+{% when 'up' -%}
+style="transform: rotate(-90deg)"
+{% when 'down' -%}
+style="transform: rotate(90deg)"
+{% endcase -%}
+{%endcapture-%}
+
+
+<svg class="icon" {{transform}}>
+	<use xlink:href="#icon-arrow" />
+</svg>

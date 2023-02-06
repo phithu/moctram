@@ -1,0 +1,89 @@
+<link rel="preload" as='style' type="text/css" href="{{ 'recentview.css' | asset_url }}">
+<link rel="stylesheet" href="{{ 'recentview.css' | asset_url }}">
+
+<div class='card border-0 px-2 py-1'>
+<div class="recent-view-list row"></div>
+</div>
+
+<script>
+	let data = []
+	function getProductByView(handle){
+	return	$.ajax({
+				url: `/products/${handle}?view=product-item`,
+				success: function(res){
+				data.push(res)
+				}
+			})
+
+	}
+	function renderRecentView(data,query){
+		if(data && data.length){
+			let wrapper = $(query).find('.recent-view-list');
+			data = data.map(item =>{
+			return `<div class="product-col">
+								${item}
+							</div>`
+			}).join('')
+			wrapper.html(data)
+
+			window.matchMedia('(min-width: 768px)').matches && wrapper.find('.item_product_main').length >= 5 && $(`${query} .recent-view-list:not(.slick-initialized)`).slick({
+								autoplay: false,
+								autoplaySpeed: 6000,
+								dots: false,
+								arrows: true,
+								infinite: false,
+								speed: 300,
+								slidesToShow: 5,
+								slidesToScroll: 5,
+								centerMode: false,
+								responsive: [
+									{
+										breakpoint: 1200,
+										settings: {
+											slidesToShow: 5,
+											slidesToScroll: 5
+										}
+									},
+									{
+										breakpoint: 991,
+										settings: {
+											slidesToShow: 5,
+											slidesToScroll: 1
+										}
+									},
+									{
+										breakpoint: 767,
+										settings: {
+											slidesToShow: 2,
+											slidesToScroll: 2
+										}
+									}
+								]
+							});
+
+		}else{
+			$(query).remove()
+		}
+	}
+	function getRecentView(query){
+		try{
+		let storage = JSON.parse(localStorage.getItem('recentProduct')) || []
+		if(storage && storage.length && Array.isArray(storage)){
+			//	$.when.apply($, my_array).then( ___ )
+			let getProductArr = storage.map((handle)=>getProductByView(handle));
+				$.when.apply($,getProductArr ).then( ()=>{
+				renderRecentView(data,query)
+			},()=>{
+				renderRecentView(data,query)
+			} )
+			}else{
+				$(query).remove()
+			}
+		}catch(e){
+			console.log(e)
+		}
+	}
+	if(typeof getRecentView != 'undefined'){
+		getRecentView('#recent-view-coll')
+	}
+</script>

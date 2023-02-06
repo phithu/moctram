@@ -1,0 +1,18 @@
+{%layout none-%}
+{% for article in blog.articles limit: 3 -%}
+<div class='blogwp clearfix'>
+	<a class="image-blog card-img-top text-center position-relative 
+			  d-flex align-items-center justify-content-center
+			  aspect-ratio
+			  " href="{{article.url}}" title="{{article.title}}"
+	   style=" --width: 360; --height: 192;">
+		<img class="img-fluid m-auto mh-100 w-auto"
+			 src="{{article.image.src}}" alt="{{article.title}}">
+	</a>
+	<div class='content_blog clearfix card-body px-0 py-2'>
+	<h3>
+		<a class="link" href="{{article.url}}" title="{{article.title}}">{{article.title}}</a>
+	</h3>
+	</div>
+</div>
+{% endfor -%}

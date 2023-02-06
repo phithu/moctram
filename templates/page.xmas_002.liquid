@@ -1,0 +1,575 @@
+{%layout 'xmas_002'%}
+{%assign themeName = 'ega-cake'-%}
+<header>
+   <a id="back-to-home" title="Trở về trang chủ" href="/"><i class="fa fa-reply"></i></a>
+   <a id="logo" href="/"><img src='{{ "xmas_002_logo.png" | asset_url }}' data-setting="theme__logo"/></a>
+</header>    
+<body>
+	{%if settings.xmas_002__banner__show%}
+	<div class="home-banner" data-setting="banner">
+		{%if settings.xmas_002__banner0__show-%} 
+			<img src="{{ 'xmas_002__banner__img.jpg' | asset_url }}" alt="xmas_002__banner__img.jpg" data-setting="banner__img_url"/>
+		{%else-%}
+			<img src="https://mixcdn.egany.com/themes/assets/xmas_002__banner__img.jpg" alt="xmas_002__banner__img.jpg"/>
+		{%endif-%}
+		
+		<div class="home-banner__content" data-setting="banner__content">
+			{%if settings.xmas_002__banner__content__show%}
+			<h2 class="home-banner__title" data-setting="banner__content__title">{{ settings.xmas_002__banner__content__title }}</h2>
+			<div class="home-banner__desc" data-setting="banner__content__desc">
+				{{ settings.xmas_002__banner__content__desc }}
+			</div>
+			{%endif%}
+
+			{%if settings.xmas_002__clock__show%}
+				<div id="countdown" data-setting="clock"></div>
+			{%endif%}			
+
+			{%if settings.xmas_002__banner__content__show%}
+			<div style="align: center;">
+			<a href="{{ settings.xmas_002__banner__content__url }}" class="home-banner__button scroll-to">{{ settings.xmas_002__banner__content__button__text }}</a>
+			</div>
+			{%endif-%}
+		</div>
+		
+
+		{%if settings.xmas_002__snow__show%}
+		 <div class="snow snow--1"></div>
+		 <div class="snow snow--2"></div>
+		 <div class="snow snow--3"></div>
+      {%endif%}
+		<a href="#category" class="next-section scroll-to fa fa-angle-down ega-hidden ega-block--sm"></a>
+	</div>
+	{%endif%}
+
+
+
+	{%if settings.xmas_002__sub_banner__show%}
+	<div id="category" class="block block--category" data-setting="sub_banner">
+		<div class="ega-container">
+			<div class="ega-row ega-flex--center">
+				{%for i in (1..3)%}
+				{%capture sub_banner__show%}xmas_002__sub_banner__{{i}}__show{%endcapture%}
+				{%capture sub_banner0__show%}xmas_002__sub_banner0__{{i}}__show{%endcapture%}
+				{%capture sub_banner__img%}xmas_002__sub_banner__{{i}}__img.jpg{%endcapture%}
+        		{%capture sub_banner__url%}xmas_002__sub_banner__{{i}}__url{%endcapture%}
+				{%capture sub_banner__title%}xmas_002__sub_banner__{{i}}__title{%endcapture%}
+				{%capture sub_banner__sub_title%}xmas_002__sub_banner__{{i}}__sub_title{%endcapture%}
+				{%capture sub_banner__content%}xmas_002__sub_banner__{{i}}__content{%endcapture%}
+				{%if settings[sub_banner__show]-%}
+					<div class="ega-col-lg-4 ega-col-12">
+						<a href="{{ settings[sub_banner__url] }}" class="category__item scroll-to" data-setting="sub_banner__{{i}}">
+							{%if settings[sub_banner0__show]-%} 
+								<img src="{{ sub_banner__img | asset_url }}" alt="{{ sub_banner__img }}" data-setting="sub_banner__{{i}}__img_url"/>
+							{%else-%}
+								<img src="https://mixcdn.egany.com/salespage/{{themeName-}}/{{sub_banner__img-}}" alt="{{ sub_banner__img }}"/>
+							{%endif-%}
+							<div class="category__content">
+								<h2>{{ settings[sub_banner__title] }}<span>{{ settings[sub_banner__sub_title] }}</span></h2>
+								<p>{{settings[sub_banner__content]}}</p>
+							</div>
+						</a>
+					</div>
+				{%endif-%}
+				{%endfor%}
+			</div>
+		</div>
+	</div>	
+	{%endif%}
+
+
+  {%if settings.xmas_002__featured__show%}
+  <div id="featured" class="block block--products" data-setting="featured">
+		<div class="featured__title">
+			<h2 data-setting="featured__title">{{ settings.xmas_002__featured__title }}</h2>
+		</div>  
+		<div class="featured__hanger" data-setting="featured__img_url"></div>
+		<div class="featured__contain">
+    	<div class="ega-container">
+      <div class="ega-row">
+        {%assign coll_handle = settings.xmas_002__featured__coll%}
+        {%assign coll_limit = settings.xmas_002__featured__limit%}
+        {%if collections[coll_handle].products_count > 0%}
+        {%for product in collections[coll_handle].products limit:coll_limit%}
+        <div class="ega-col-6 ega-col-lg-3">
+          {%include 'xmas_002_product_item'%}
+        </div>
+        {%endfor%}
+        {%else%}
+        {%for i in (1..coll_limit)%}
+        <div class="ega-col-6 ega-col-lg-3">
+          <a class="product" href="#">
+            <div class="product__img">
+              <img src="{{ 'product_demo.jpg' | asset_url }}" alt="img_demo_{{i}}"/>
+            </div>
+            <div class="product__info">
+              <h3 class="product__title">Demo {{i}}</h3>
+              <div class="product__price">
+                <ins>{{ 10000000 | money }}</ins>
+                <del>{{ 20000000  | money }}</del>
+              </div>
+              <span class="button__action">XEM NGAY</span>
+            </div>
+            <div class="product__sale">
+              <span>-50%</span>
+              <div class="triangle triangle--left"></div>
+              <div class="triangle triangle--right"></div>
+            </div>
+          </a>
+        </div>
+        {%endfor%}
+        {%endif%}
+      </div>
+    </div>
+		</div>
+  </div>
+  {%endif%}
+
+	{%if settings.xmas_002__gift__show%}
+	<div class="block block--gift" data-setting="gift">
+		<div class="ega-container">
+		<div class="gift">
+			<h3 class="gift__title">{{ settings.xmas_002__gift__title }}</h3>
+			<div class="gift__code">{{ settings.xmas_002__gift__code }}</div>
+			<span class="gift__desc">{{ settings.xmas_002__gift__desc }}</span>
+		</div>
+</div>
+	</div>
+	{%endif%}
+
+  {%for i in (1..5)%}
+  {%capture collection__show%}xmas_002__collection__{{i}}__show{%endcapture%}
+  {%capture collection__title%}xmas_002__collection__{{i}}__title{%endcapture%}
+  {%capture collection__coll%}xmas_002__collection__{{i}}__coll{%endcapture%}
+  {%capture collection__limit%}xmas_002__collection__{{i}}__limit{%endcapture%}
+  {%if settings[collection__show]%}
+  <div id="collection-{{i}}" class="block block--products" data-setting="collection__{{i}}">
+		<div class="block__title">
+			<h2 data-setting="collection__{{i}}__title">{{ settings[collection__title] }}</h2>
+			<span class="block__title__line"></span>
+		</div> 
+    <div class="ega-container">
+      <div class="ega-row">
+        {%assign coll_handle = settings[collection__coll]%}
+        {%assign coll_limit = settings[collection__limit]%}
+        {%if collections[coll_handle].products_count > 0%}
+        {%for product in collections[coll_handle].products limit:coll_limit%}
+        <div class="ega-col-6 ega-col-lg-3">
+          {%include 'xmas_002_product_item'%}
+        </div>
+        {%endfor%}
+        {%else%}
+        {%for i in (1..coll_limit)%}
+        <div class="ega-col-6 ega-col-lg-3">
+          <a class="product" href="#">
+            <div class="product__img">
+              <img src="{{ 'product_demo.jpg' | asset_url }}" alt="img_demo_{{i}}"/>
+            </div>
+            <div class="product__info">
+              <h3 class="product__title">Demo {{i}}</h3>
+              <div class="product__price">
+                <ins>{{ 10000000 | money }}</ins>
+                <del>{{ 20000000 | money }}</del>
+              </div>
+              <span class="button__action">XEM NGAY</span>
+            </div>
+            <div class="product__sale">
+              <span>-50%</span>
+              <div class="triangle triangle--left"></div>
+              <div class="triangle triangle--right"></div>
+            </div>
+          </a>
+        </div>
+        {%endfor%}
+        {%endif%}
+      </div>
+    </div>
+  </div>
+  {%endif%}
+  {%endfor%}
+
+	{%if settings.xmas_002__banner_offer__show-%} 
+	<div class="offers_banner" data-setting="banner_offer">
+			<h2>{{settings.xmas_002__banner_offer__title-}}</h2>
+			<a href="{{settings.xmas_002__banner_offer__url-}}" class="offers_btn scroll-to">XEM NGAY</a>
+	</div>
+	{%endif-%}
+
+
+	{%if settings.xmas_002__promotion__show-%} 
+	<div id="promotion" class="promotion" data-setting="promotion">
+		<div class="ega-container">
+			<div class="promotion__title">
+				<h2 data-setting="promotion__title">{{settings.xmas_002__promotion__title-}}</h2>
+				<span data-setting="promotion__desc">{{settings.xmas_002__promotion__desc-}}</span>
+			</div>
+			<div class="ega-row ega-flex--center">
+				{%for i in (1..3)%}
+				{%capture promotion_show-%}xmas_002__promotion__{{i}}__show{%endcapture-%}
+				{%capture promotion_img-%}xmas_002__promotion__{{i}}__img.jpg{%endcapture-%}
+				{%capture promotion_title-%}xmas_002__promotion__{{i}}__title{%endcapture-%}
+				{%capture promotion_desc-%}xmas_002__promotion__{{i}}__desc{%endcapture-%}
+				{%capture promotion_url-%}xmas_002__promotion__{{i}}__url{%endcapture-%}
+				{%if settings[promotion_show]-%} 
+				<div class="ega-col-md-4 ega-col-lg-4">
+					<a class="promotion__item" href="{{settings[promotion_url]-}}" data-setting="promotion__{{i}}">
+						<img src="{{ promotion_img | asset_url}}" data-setting="promotion__{{i}}__img_url"/>
+						<h3>{{settings[promotion_title]-}}</h3>
+						<span>{{settings[promotion_desc]-}}</span>
+					</a>
+				</div>
+				{%endif-%}
+				{%endfor%}
+			</div>
+		</div>
+	</div>
+	{%endif-%}
+
+{%if settings.xmas_002__payment__show-%} 
+	<div class="payment" data-setting="payment">
+		<div class="ega-container">
+			<div class="payment__wrap">
+				<div class="ega-row">
+					<div class="ega-col-lg-6 payment__desc">
+						{{settings.xmas_002__payment__desc-}} 
+					</div>
+					<div class="ega-col-lg-6 payment__img">
+						<img src="{{ 'xmas_002__payment__img.jpg' | asset_url }}" alt="payment" data-setting="payment__img_url"/>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{%endif-%}
+
+	<footer data-setting="footer">
+		{%if settings.xmas_002__footer__coupon__show-%}
+		<div class="footer__coupon">
+			<div class="ega-container">
+				{{settings.xmas_002__footer__coupon__desc-}}
+			</div>		
+		</div>
+		{%endif-%}
+		<div class="footer__body">
+			{%if settings.xmas_002__footer__register__show-%}
+			<div class="footer__hanger" data-setting="footer__register__img_url"></div>
+			<div class="footer__form">
+				<div class="ega-container">
+					<div class="ega-row ega-flex--center">
+						<div class="form_contain ega-col-lg-6 ega-col-12">							
+							<form id="mc-form" class="newsletter-form d-flex align-items-center " data-toggle="validator">
+								<h4>{{settings.xmas_002__footer__register__title-}}</h4>
+								<p>{{settings.xmas_002__footer__register__desc-}}</p>
+								<input class="subscribe__email form-control input-group-field " aria-label="Địa chỉ Email" type="email" placeholder="Nhập địa chỉ email"  name="EMAIL" required autocomplete="off" >
+								<button class="subscribe__btn h-100 btn text-white button_subscribe subscribe" type="submit" aria-label="Đăng ký nhận tin" name="subscribe">
+									{{settings.xmas_002__footer__register__btn_text-}}
+								</button>
+							</form>
+							<div class="mailchimp-alerts ">
+								<div class="mailchimp-submitting"></div><!-- mailchimp-submitting end -->
+								<div class="mailchimp-success"></div><!-- mailchimp-success end -->
+								<div class="mailchimp-error"></div><!-- mailchimp-error end -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			{%endif-%}
+
+			{%if settings.xmas_002__footer__copyright__show-%}
+			<div class="footer__copyright" data-setting="footer__copyright">		
+				{{settings.xmas_002__footer__copyright__text-}}
+			</div>
+			{%endif-%}
+		</div>
+	</footer>
+
+	{%if settings.xmas_002__footer__gotop__show%}
+	<div id="gotop" data-setting="footer__gotop"><img src="{{ 'xmas_002__footer__gotop__img.png' | asset_url }}" alt="xmas_002__footer__gotop__img.png" data-setting="footer__gotop__img_url"/></div>
+	{%endif%}
+
+</body>
+
+
+<script>
+   $(window).scroll(function(){
+      if($(this).scrollTop() == 0){
+         $('header').removeClass('fixed_header');
+      } else {
+         $('header').addClass('fixed_header');
+      }
+   })
+
+   // scroll to block
+   var $root = $('html, body');
+
+   $('.scroll-to').click(function() {
+     if($.attr(this, 'href').indexOf("#") == 0){
+        var padding = 50;
+        if ($('header.fixed_header').length == 0) {
+           padding = 100;
+        }
+
+        var location = $($.attr(this, 'href')).offset().top - padding;
+
+        $root.animate({
+           scrollTop: location
+        }, 500);
+        return false;
+      }
+   });
+
+	 // scroll to top
+	$(window).scroll(function() {
+		if ($(this).scrollTop() > 800) {
+			return $('#gotop').addClass("show");
+		} else {
+			return $('#gotop').removeClass("show");
+		}
+	});
+
+	$("#gotop").on("click", function(e) {
+		$("body, html").animate({
+			scrollTop: 0
+		}, 800);
+		return false;
+	});
+
+   function validateEmail(email){
+      var re = /\S+@\S+\.\S+/;
+      return re.test(email);
+    }
+
+   $('.form__button--contact').click(function(){
+      var $form = $(this).closest('form');
+      var flag = true;
+      $form.find('.ega-required').each(function(){
+        $(this).parent().removeClass('form__error');
+        $(this).next().hide();
+        if($(this).val().length == 0){
+          $(this).parent().addClass('form__error');
+          $(this).next().show();
+          flag = false;
+        }
+      })
+      if(flag){
+        var $email = $('form input[type="email"]');
+        if(validateEmail($email.val())){
+          alert('Gửi thông tin thành công!');
+          $form.submit();
+        } else {
+          $email.parent().addClass('form__error');
+          $email.next().show();
+        }
+      }
+    })
+
+	 $('.subscribe__btn').click(function(e){
+		 var email = $('.subscribe__email').val();
+		 if(validateEmail(email)){
+			 $('.subscribe__lastname').val(email);
+			 alert('Đăng ký thành công!')
+		 }
+	 })
+
+{%if settings.xmas_002__clock__show%}
+   /**
+    * FlipClock English Language Pack
+    *
+    * This class will used to translate tokens into the English language.
+    *
+    */
+
+   FlipClock.Lang.Vietnamese = {
+      'years': 'Năm',
+      'months': 'Tháng',
+      'days': 'Ngày',
+      'hours': 'Giờ',
+      'minutes': 'Phút',
+      'seconds': 'Giây'
+   };
+
+   /* Create various aliases for convenience */
+
+   FlipClock.Lang['vi']      = FlipClock.Lang.Vietnamese;
+   FlipClock.Lang['vi-vi']   = FlipClock.Lang.Vietnamese;
+   FlipClock.Lang['vietnamese']  = FlipClock.Lang.Vietnamese;
+
+   
+   
+   var targetMonth = {{ settings.xmas_002__clock__month }}, 
+         targetDay = {{ settings.xmas_002__clock__day }}, 
+         targetYear = {{ settings.xmas_002__clock__year }}, 
+         targetTime = "{{ settings.xmas_002__clock__time }}";
+
+   var target = targetMonth + '/' + targetDay + '/' + targetYear + ' ' + targetTime;
+
+   let expDate = new Date(target),
+         today = new Date();
+   let countdown = (expDate - today) / 1000;
+
+	 if(countdown < 0){
+		 countdown = 0;
+	 }
+
+   let clock = $('#countdown').FlipClock(countdown, {
+     clockFace: 'DailyCounter',
+     countdown: true,
+     language:'vi-vi',
+     callbacks: {
+       stop: function() {
+         setTimeout(function(){
+           clock.reset();
+           clock.setTime(10);
+           clock.start();
+         },1000)
+       },
+       destroy: function() {
+         debugger;
+       }
+     }
+   }); 
+{%endif%}
+//EGA Modal
+	if ((typeof EGA) === 'undefined') {
+		EGA = {};
+	}
+
+	EGA.moneyFormat = '{{shop.money_format-}}';
+
+	EGA.modal = {
+			body: document.getElementsByTagName('body')[0],
+			bodyShowClass: 'ega-modal-showed',
+			modalClass: 'ega-modal',
+			modalShowClass: 'show',
+			openBtnClass: 'ega-modal__open',
+			closeBtnClass: 'ega-modal__close',
+
+			/**
+			 * Open modal by id
+			 * @param {String} id
+			 */
+			openModalById: (id) => {
+				const modal = document.getElementById(id);
+				if (modal) {
+					modal.classList.add(EGA.modal.modalShowClass);
+					EGA.modal.body.classList.add(EGA.modal.bodyShowClass);
+				}
+			},
+
+			/**
+			 * Close modal by click on close button
+			 */
+			close: () => {
+				const modals = document.querySelectorAll('.' + EGA.modal.modalClass);
+				const closeBtns = document.querySelectorAll('.' + EGA.modal.closeBtnClass);
+
+				const closeModal = (modal) => {
+					modal.classList.remove(EGA.modal.modalShowClass);
+					EGA.modal.body.classList.remove(EGA.modal.bodyShowClass);
+				}
+
+				modals.forEach(modal => {
+					modal.addEventListener('click', function(e) {
+						//e.preventDefault();
+						if (e.target.classList.contains(EGA.modal.modalClass)) {
+							closeModal(modal);
+						}
+					})
+				})
+
+				if (closeBtns) {
+					closeBtns.forEach(btn => {
+						btn.addEventListener('click', function(e) {
+							e.preventDefault();
+							const closeBtn = e.target;
+							const modal = closeBtn.closest('.' + EGA.modal.modalClass);
+							closeModal(modal);
+						})
+					})
+				}
+			}
+	}	
+
+	window.onload = function() {
+		EGA.modal.close();
+	}
+
+	$('[data-ega-role="btn_action"]').click(function(e) {
+		var action = 0;
+		{%if settings.xmas_002__theme__buynow__action%}
+			action = {{ settings.xmas_002__theme__buynow__action }};
+		{%endif%}
+
+    var checkout = function() { window.location = '/checkout'; },
+        addtocart = function() {
+            Haravan.getCart(function(cart) {
+                var total_price = Haravan.formatMoney(cart.total_price, EGA.moneyFormat);
+                $('.ega-top-cart__qty').text(cart.item_count);
+                $('.ega-top-cart__checkout-price').text(total_price);
+            });
+
+            EGA.modal.openModalById('cart-popup-desktop');
+        }
+
+    if (action != 0) {
+        e.preventDefault();
+        var variant_id = $(this).siblings('input[name="id"]').val(),
+            callback = (action == 1) ? checkout : addtocart;
+        Haravan.addItem(variant_id, 1, callback);
+    }
+})
+	
+	/*Mailchimp*/
+	
+	function mailChimpResponse(resp) {
+		if (resp.result === 'success') {
+			if(resp.msg == 'Thank you for subscribing!'){
+				$('.mailchimp-success').html('Cảm ơn bạn đã đăng ký!').fadeIn(900);
+			}else{
+				$('.mailchimp-success').html('' + resp.msg).fadeIn(900);
+			}
+			$('.mailchimp-error').fadeOut(100);
+		} else if (resp.result === 'error') {
+			if(resp.msg == '0 - Please enter a value'){
+				$('.mailchimp-error').html('Vui lòng nhập các trường thông tin').fadeIn(900);
+			}else if(resp.msg == '0 - An email address must contain a single @'){
+				$('.mailchimp-error').html('Địa chỉ email phải chứa ký tự @').fadeIn(900);
+			}else if(resp.msg == 'This email cannot be added to this list. Please enter a different email address.'){
+				$('.mailchimp-error').html('Email này không thể được thêm vào danh sách này. Vui lòng nhập một địa chỉ email khác.').fadeIn(900);
+			}else if(resp.msg.includes('0 - The domain portion of the email address is invalid')){
+				$('.mailchimp-error').html('Phần tên miền của địa chỉ email không hợp lệ').fadeIn(900);
+			}else if(resp.msg.includes('0 - The username portion of the email address is empty')){
+				$('.mailchimp-error').html('Phần tên người dùng của địa chỉ email trống').fadeIn(900);
+			}else if(resp.msg.includes('0 - The username portion of the email address is invalid')){
+				$('.mailchimp-error').html('Phần tên người dùng của địa chỉ email không hợp lệ').fadeIn(900);
+			}else if(resp.msg == 'Thank you for subscribing!'){
+				$('.mailchimp-error').html('Cảm ơn bạn đã đăng ký!').fadeIn(900);
+			}else{
+				$('.mailchimp-error').html('' + resp.msg).fadeIn(900);
+			}
+		}
+	}
+	
+	$('#mc-form').ajaxChimp({
+		language: 'en',
+		callback: mailChimpResponse,
+		url: '{{ settings.newsletter_form_action }}'
+	});
+</script>
+
+
+<div id='cart-popup-desktop' class='ega-modal toast right top'>
+    <div class='ega-modal__content'>
+        <a class='ega-modal__close'>X</a>
+        <div class="ega-modal__body">
+            <span>Bạn đã thêm:</span>
+            <strong><span class="ega-top-cart__qty">2</span> sản phẩm</strong>
+            <span>Tổng thanh toán: </span>
+            <strong class="ega-top-cart__checkout-price">11,647,000₫</strong>
+            <a href="/cart" class="ega-btn ega-btn-color--outline">
+                Xem giỏ hàng </a>
+            <a href="/checkout" class="ega-btn ega-btn-color">Thanh toán</a>
+        </div>
+    </div>
+</div>

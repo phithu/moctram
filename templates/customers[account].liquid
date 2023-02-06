@@ -1,0 +1,143 @@
+{% include 'breadcrumb' %} 
+<section class="signup page_customer_account section">
+    <div class="container card p-3">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-lg-3 col-left-ac">
+                <div class="block-account">
+                    <h5 class="title-account">Trang tài khoản</h5>
+                    <p>
+                        Xin chào, <span style="color:{{settings.main-color}};">{{ customer.name }}</span>&nbsp;!
+                    </p>
+                    <ul>
+                        <li>
+                            <a disabled="disabled" class="title-info active" href="/account">Thông tin tài khoản</a>
+                        </li>
+   
+                        <li>
+                            <a class="title-info" href="/account/addresses">Sổ địa chỉ ({{ customer.addresses_count }})</a>
+                        </li>
+											<li>
+												<a href="/account/logout" title="Đăng xuất" class="font-weight: light">
+										Đăng xuất
+									</a>
+											</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-lg-9 col-right-ac">
+							<div id="b" class=" col-right-account border-0 margin-top-20">
+							<div class="block-account">
+								<div class="block-title-account"><h1>Tài khoản</h1></div>
+								<div class="block-content form-signup">
+									<p>Tên tài khoản: <strong style="line-height: 20px;"> {{ customer.name }}!</strong></p>
+									<p><i class="fa fa-home font-some" aria-hidden="true"></i>  <span>Địa chỉ: 									{% if customer.default_address.address1 != null %}{{ customer.default_address.address1 }}{% endif %}{% if customer.default_address.district != null %}, {{ customer.default_address.district }}{% endif %}{% if customer.default_address.city != null %}, {{ customer.default_address.city }}{% endif %}{% if customer.default_address.country != null %}, {{ customer.default_address.country }}{% endif %}
+</span></p>
+									<p><i class="fa fa-mobile font-some" aria-hidden="true"></i> <span>Điện thoại: {{ customer.default_address.phone }}</span> </p>
+							
+
+								</div>
+							</div>
+						</div>
+                <h5 class="title-head margin-top-0">Đơn hàng của bạn</h5>
+                <div class="col-xs-12 col-sm-12 col-lg-12 no-padding">
+                    {% paginate customer.orders by 10 %}
+                    <div class="my-account">
+                        <div class="dashboard">
+
+                            <div class="recent-orders">
+                                <div class="table-responsive-block tab-all" style="overflow-x:auto;">
+                                    <table class="table table-cart table-order" id="my-orders-table">
+                                        <thead class="thead-default">
+                                            <tr>
+                                                <th>Mã đơn hàng</th>
+                                                <th>Ngày đặt</th>
+                                                <th>Thành tiền</th>
+                                                <th>TT thanh toán</th>
+                                                <th>TT vận chuyển</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody>
+                                            {% if customer.orders.size > 0 %}
+                                            {% for order in customer.orders %}
+                                            <tr class="first odd">
+                                                <td>{{ order.name | link_to: order.customer_url }}</td>
+                                                <td>{{ order.created_at | date: "%d/%m/%Y" }}</td>
+                                             
+                                                <td>
+                                                    <span class="price">{{ order.total_price | money }}</span>
+                                                </td>
+                                                <td>
+                                              
+                                                    {% case order.financial_status %}
+                                                    {% when 'paid' %}
+                                                    <span class="span_{{ order.financial_status }}">
+                                                        <strong>Đã thanh toán</strong>
+                                                    </span>
+                                                    {% when 'pending' %}
+                                                    <span class="span_{{ order.financial_status }}">Chưa thu tiền</span>
+                                                    {% when 'partially_paid' %}
+                                                    <span class="span_{{ order.financial_status }}">Thanh toán một phần</span>
+                                                    {% when 'partially_refunded'%}
+                                                    <span class="span_{{ order.financial_status }}">
+                                                        <strong>Đã hoàn trả một phần</strong>
+                                                    </span>
+                                                    {%when 'refunded'%}
+                                                    <span class="span_{{ order.financial_status }}">
+                                                        <strong>Đã hoàn trả toàn phần</strong>
+                                                    </span>
+                                                    {%when 'voided '%}
+                                                    <span class="span_{{ order.financial_status }}">Vô hiệu</span>
+                                                    {% endcase %}
+                                                  
+                                                </td>
+                                                <td>
+                                                    {% case order.status %}
+                                                    {% when 'cancelled' %}
+                                                    <span style="color: red;">Đã hủy</span>
+                                                    {% else %}
+                                                    {% case order.fulfillment_status %}
+                                                    {% when 'fulfilled' %}
+                                                    <span class="span_{{ order.fulfillment_status }}">
+                                                        <strong>Chuyển toàn bộ</strong>
+                                                    </span>
+                                                    {% when 'partial' %}
+                                                    <span class="span_{{ order.fulfillment_status }}">
+                                                        <strong>Chuyển một phần</strong>
+                                                    </span>
+                                                    {% else %}
+                                                    <span class="span_{{ order.fulfillment_status }}">Chưa chuyển</span>
+                                                    {% endcase %}
+                                                    {% endcase %}
+                                                </td>
+                                            </tr>
+                                            {% endfor %}
+                                            {% else %}
+                                            <tr>
+                                                <td colspan="6">
+                                                    <p>Không có đơn hàng nào.</p>
+                                                </td>
+                                            </tr>
+                                            {% endif %}
+                                        </tbody>
+
+
+                                    </table>
+
+                                </div>
+
+                                <div class="paginate-pages pull-right page-account text-right col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    {% if paginate.pages > 1 %}
+                                    {% include 'paginate-pages' %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    {% endpaginate %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

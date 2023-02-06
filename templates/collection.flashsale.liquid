@@ -1,0 +1,244 @@
+{%capture flashSaleStyle -%}
+--background-color: {{settings.flashsale_bg | default: 'transparent'}};
+--countdown-background: {{settings.flashsale_countdown_bg | default: '#ff4949' }};
+--countdown-color: {{settings.flashsale_countdown_color | default: '#fff'}}
+{%endcapture-%}
+{%assign mobileLayout = settings.flashsale_mobile_layout%}
+<div style="background: {{settings.flashsale_coll_bg }} ;padding-bottom: 30px">
+	<div class="container flashsale rounded-0" style="--background-color: transparent">
+		<div class='d-flex align-items-center flex-column flashsale__header '>
+			<a class='link' href="{{settings.flashsale_banner_link}}" title="{{settings.flashsale_banner_alt}}">
+				<img alt="{{settings.flashsale_banner_alt}}" src="{{'flashsale_banner.png' | asset_url}}" />
+
+			</a>
+			{%if settings.flashsale_countdown_show -%}
+			<div class="flashsale__countdown-wrapper mt-4">
+				<span class="flashsale__countdown-label " style="display:none">{{settings.flashsale_countdown_label}}</span>
+				<div class="flashsale__countdown" data-countdown-type="{{settings.flashsale_countdown_type}}" data-countdown="{{settings.flashsale_countdown_duedate}}">
+				</div>
+			</div>
+			{%endif-%}
+		</div>
+	</div>
+	{%if settings.use_promo_box_coll -%}
+	<section class="section">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					{%include 'section_coupons'-%}
+				</div>
+			</div>
+		</div>
+	</section>
+	{%endif-%}
+	
+	
+	
+	<section class="section_flashsale flashsale  container"  style="{{flashSaleStyle}}">
+		<div class="container  py-2 card border-0 ">
+			{% assign product_count = collections[settings.flashsale_coll]products_count %}
+
+			<div class="category-products products">
+
+				{% paginate collection.products by settings.collection_number_product %}
+
+				{% if collection.products.size > 0 %}
+				{%include 'products-grid-item'%}
+				{% else %}
+				<div class="section pt-3">
+					<div class="alert alert-warning alert-dismissible margin-top-15 section" role="alert">
+						Sản phẩm đang được cập nhật.
+					</div>
+				</div>
+				{% endif %}
+				{% endpaginate %}
+			</div>
+
+		</div>
+	</section>
+	{%if settings.use_recent_view -%}
+	<section class="section" id="recent-view-coll">
+		<div class="container card py-2">
+			<div class="title_module  heading-bar d-flex justify-content-between align-items-center">
+				<h2 class="bf_flower heading-bar__title">
+					Sản phẩm đã xem
+				</h2>
+			</div>
+			{%include 'recent-view'%}
+		</div>
+	</section>
+	{%endif-%}
+</div>
+<script>
+	window.falshSale = {
+		flashSaleColl: "{{settings.flashsale_coll}}",
+		type:"{{settings.flashsale_countdown_type}}",
+		dateStart: "{{settings.flashsale_countdown_date_start}}",
+		dateFinish: "{{settings.flashsale_countdown_date_finish}}",
+		hourStart: "{{settings.flashsale_countdown_hour_start}}",
+		hourFinish:  "{{settings.flashsale_countdown_hour_finish}}",
+		activeDay: "{{ settings.flashsale_countdown_week_loop }}",
+		finishAction: "{{ settings.flashsale_finish_action }}",
+		finishLabel :"{{settings.flashsale_countdown_end_label}}"
+	}
+
+</script>
+<script>
+	function egaFlashSale (){
+		// call product ajax
+		// init countdown
+		if(!window.falshSale) return
+
+		Date.prototype.addDays = function(days) {
+			var date = new Date(this.valueOf());
+			date.setDate(date.getDate() + days);
+			return date;
+		}
+		Date.prototype.addHours = function(hours) {
+			this.setTime(this.getTime() + ((hours)*60*60*1000));
+			return this; 
+		}
+		const getDays = (times) => Math.floor((times / (1000 * 60 * 60 * 24))) 
+		const getHours =  (times) => Math.floor((times % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+		const getMinutes  = (times) => Math.floor((times % (1000 * 60 * 60)) / (1000 * 60));
+		const getSeconds = (times) => Math.floor((times % (1000 * 60)) / 1000);
+
+		function renderCountDown(distance) {
+			// Time loop from settings
+			let html = [];
+			let days = getDays(distance) 
+			let hours = `<div class="ega-badge-ctd__item ega-badge-ctd__h">${getHours(distance) >= 10 ? getHours(distance) : `0${getHours(distance)}`}</div>`
+			let minutes = `	<div class="ega-badge-ctd__item  ega-badge-ctd__m">${getMinutes(distance) >= 10 ? getMinutes(distance) : `0${getMinutes(distance)}`}</div>`
+			let seconds = `<div class="ega-badge-ctd__item ega-badge-ctd__s">${ getSeconds(distance) >= 10 ? getSeconds(distance) : `0${getSeconds(distance)}`}</div>`
+			html = [hours,minutes,seconds]
+			if(days > 0 ) html.unshift(`	<div class="ega-badge-ctd__item ega-badge-ctd__d">${days >= 10 ? days : `0${days}`}</div>`)
+			return `<div class="ega-badge-ctd">
+${html.join(`	<div class="ega-badge-ctd__colon" > : </div>`)}
+
+	</div>`;
+		}
+		function calcCountDown(startTime, endTime){
+			let distance = 0
+			let now = new Date().getTime()
+			//console.log(now >= startTime , now <= endTime )
+			if(now >= startTime && now <= endTime ){
+				distance = (endTime - now);
+
+				return distance
+			}
+			return distance
+		}
+		let now = new Date()
+		let {type, 
+			 dateStart, 
+			 dateFinish,
+			 hourStart,
+			 hourFinish,
+			 dayLoop, 
+			 activeDay,
+			 finishAction,
+			 finishLabel
+			} = window.falshSale
+		let distance = 0, startTime, endTime;
+		if(type === 'hours' && ( new Date().getDay() === +activeDay || +activeDay === 7 ) ){
+			// expireTime
+			hourStart = hourStart.split(':')
+			// check is start time valid
+			// convert start time to time stamp
+			startTime = new Date().setHours(hourStart[0] != '24' ? hourStart[0] : '00' ,hourStart[1] || '00','00')
+			endTime =  new Date(startTime).addHours(+hourFinish).getTime()
+			//check is flash sale started || finished
+		}
+		if(type === 'days' ){
+			var pattern = /(\d{2})\/(\d{2})\/(\d{4})/;
+			startTime = new Date(dateStart.replace(pattern,'$3-$2-$1'))
+			startTime = startTime.setHours('00','00','00')
+			// check valid date
+			endTime =  new Date(startTime).addDays(+dateFinish).getTime()
+
+		}
+		distance = calcCountDown(startTime, endTime);
+		if(	distance > 0){
+			setInterval(function(){
+				distance = calcCountDown(startTime, endTime);
+				$(`.flashsale__countdown`).html(renderCountDown(distance))
+			},1000)
+			let dotAnimation = `<span class="ega-dot"><span class="ega-ping"></span></span>`
+			//$(`.flashsale__title`).prepend(dotAnimation)
+			$(`.flashsale__countdown`).html(renderCountDown(distance))
+			$(`.flashsale__countdown-label`).show()
+		}else{
+			if(finishAction == 'show' ){
+				$(`.flashsale__countdown`).html('') 
+				$(`.flashsale__countdown-label`).html(finishLabel).show()
+
+			}
+			finishAction == 'hide' && $(`.flashsale`).remove()
+		}
+
+	}
+	egaFlashSale()
+
+	var colName = "{%if page_title == 'All'%}Tất cả sản phẩm{%else%}{{ page_title }}{%endif%}";
+	{% if collection.id > 0 %}
+	var colId = {{collection.id}};
+	{%else%}
+	var colId = 0;
+	{%endif%}
+
+	var selectedViewData = "{% if template contains '.list' %}data_list{% else %}data{% endif %}";
+	/*$(document).ready(()=>{
+		if(typeof getRecentView != 'undefined'){
+			getRecentView('#recent-view-coll')
+		}
+	})*/
+
+</script>
+
+<script>
+	$(document).ready(()=>{
+		if(window.matchMedia('(min-width: 768px)').matches){
+			let couponLength = $('.promo-box-wrapper .flashsale-coupon').length 
+			$('.promo-box-wrapper').slick({
+			autoplay: false,
+			autoplaySpeed: 6000,
+			dots: false,
+			arrows: true,
+			infinite: false,
+			speed: 300,
+			slidesToShow: 4,
+			slidesToScroll: 4,
+			responsive: [
+				{
+					breakpoint: 1200,
+					settings: {
+						slidesToShow: 4,
+						slidesToScroll: 4
+					}
+				},
+				{
+					breakpoint: 1024,
+					settings: {
+						slidesToShow: 2,
+						slidesToScroll: 2
+					}
+				},
+				{
+					breakpoint: 991,
+					settings: {
+						slidesToShow: 2,
+						slidesToScroll: 2
+					}
+				},
+				{
+					breakpoint: 767,
+					settings: {
+						slidesToShow: 2,
+						slidesToScroll: 2
+					}
+				}
+			]
+		})
+		}
+	})
+</script>

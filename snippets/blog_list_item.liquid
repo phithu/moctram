@@ -1,0 +1,46 @@
+<div class="blogwp clearfix card border-0 " >
+		<a  class="image-blog card-img-top text-center position-relative  d-flex align-items-center justify-content-center" 
+		   href="{{ article.url }}" 
+		   title="{{ article.title }}"
+		   style="aspect-ratio: 326 / 162"
+		   >
+
+	{% if article.image != null %}
+		<img class="img-fluid m-auto object-contain mh-100 w-auto position-absolute"
+			 loading="lazy"
+			 src="{{ article.image.src}}"  
+			 width="326"
+			 height="162"
+			 alt="{{ article.title }}">
+	{%else%}
+		<img class="img-fluid m-auto object-contain mh-100 w-auto position-absolute"
+			 loading="lazy"
+			  src="{{ '555x350.png' | asset_url}}" alt="{{ article.title }}" 
+			  width="326"
+			 height="162"
+			 title="{{ article.title }}"/>
+	{% endif %}
+				</a>
+
+	<div class="content_blog clearfix card-body px-0 py-2">
+		<h3>
+			<a class='link' href="{{ article.url }}" title="{{ article.title }}">{{ article.title }}</a>
+		</h3>
+		<div class="media">
+			<div class="media-body">
+				<div class='mt-0'>{{article.author}}</div>
+				<small class='text-muted font-weight-light'>
+					{{ article.published_at | date:'%a %d/%m/%Y' }}
+				</small>  
+			</div>
+		</div>
+		<p class="justify">
+			<span class="art-summary">
+				{{ article.content | strip_html | truncatewords: 26 }}
+			</span>
+			{%if article.content != null and article.content != ""%}
+			<a class="button_custome_35 link" href="{{ article.url }}" title="Đọc tiếp">Đọc tiếp</a>
+			{%endif%}
+		</p>
+	</div>
+</div>

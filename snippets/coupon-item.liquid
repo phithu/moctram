@@ -1,0 +1,50 @@
+{% case type -%}
+{% when 'lite' -%}
+<div class="coupon_item lite">
+	<div class='coupon_content'>
+		{% if title_short and title_short != '' -%}
+		{{ title_short }}
+		{% else -%}
+		{{code}}
+		{% endif -%}
+	</div>
+</div>
+{% else -%}
+<div class="coupon_item{%unless showImage%} no-icon{%endunless%}">
+	{% if showImage -%} 
+	<div class="coupon_icon pos-relative embed-responsive embed-responsive-1by1">
+		{% if link and link != blank -%}
+		<a href="{{link}}" title="{{link}}">
+			<img class="img-fluid" src="{{ coupon_img | asset_url  | img_url: 'medium'-}}" alt="{{coupon_img-}}"
+				 loading="lazy" width="79" height="70"/>
+		</a>
+		{% else -%}
+		<img  class="img-fluid" src="{{ coupon_img | asset_url | img_url: 'medium' -}}" alt="{{coupon_img-}}"
+			 loading="lazy" width="79" height="70"/>
+		{% endif -%}
+	</div>
+	{% endif -%}
+	<div class="coupon_body">
+		<div class="coupon_head">
+			<h3 class="coupon_title">{{title-}}</h3>
+			<div class="coupon_desc">{{desc-}}
+			</div>
+
+		</div>
+		<div class="d-flex align-items-center flex-wrap justify-content-between">
+			<button class="btn btn-main btn-sm coupon_copy" data-ega-coupon="{{code-}}">
+				<span>{{settings.coupon_copy_text-}}</span></button>
+			{% if info and info != blank -%}
+			<span class="coupon_info_toggle"
+				  data-coupon="{{code-}}" >
+				Điều kiện
+			</span>
+			<div class="coupon_info">
+				{{info-}}
+			</div>
+			{% endif -%}
+
+		</div>
+	</div>
+</div>
+{% endcase -%}
